@@ -3,8 +3,9 @@ package com.innovate.conversormaestro.datasource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 import com.linuxense.javadbf.DBFException;
 import com.linuxense.javadbf.DBFField;
@@ -17,6 +18,8 @@ public class DBFController {
     private static DBFController dbfController;
     private String PathSourceDBF;
 	private ConnectionController connectionController;
+
+	
 
 
     private DBFController(){
@@ -64,6 +67,29 @@ public class DBFController {
 		}
     }
 
+	public ArrayList<String> getColumnOrigin(){
+		ArrayList<String> result = new ArrayList<String>();
 
+		DBFReader reader = null;
 
+		try {
+			reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);		
+
+			int numberOfFields = reader.getFieldCount();			
+
+			for (int i = 0; i < numberOfFields; i++) {
+				DBFField field = reader.getField(i);
+				result.add(field.getName());
+			}
+		} catch (DBFException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DBFUtils.close(reader);
+		}
+
+		return result;
+	}
 }

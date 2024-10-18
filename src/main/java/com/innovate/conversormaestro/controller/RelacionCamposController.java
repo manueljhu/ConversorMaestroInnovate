@@ -70,8 +70,10 @@ public class RelacionCamposController implements Initializable {
             fillComboSource();
         } else if (connectionController.getSourceTab().equals("DBF")) {
             cbSourceFields.setDisable(true);
+            fillListSource();
         } else if (connectionController.getSourceTab().equals("Excel")) {
             cbSourceFields.setDisable(true);
+            fillListSource();
         }
 
         fillComboDestination();
@@ -117,7 +119,14 @@ public class RelacionCamposController implements Initializable {
 
     private void fillListSource() {
         lvSourceFields.getItems().clear();
-        lvSourceFields.getItems().addAll(sqlController.getColumnOrigin(cbSourceFields.getValue()));
+        if (connectionController.getSourceTab().equals("SQL")) {
+            lvSourceFields.getItems().addAll(sqlController.getColumnOrigin(cbSourceFields.getValue()));
+        } else if (connectionController.getSourceTab().equals("DBF")) {
+            lvSourceFields.getItems().addAll(dbfController.getColumnOrigin());
+        } else if (connectionController.getSourceTab().equals("Excel")) {
+            cbSourceFields.setDisable(true);
+        }
+        
     }
 
     private void fillComboDestination() {
