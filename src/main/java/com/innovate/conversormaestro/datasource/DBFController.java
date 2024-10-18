@@ -2,10 +2,8 @@ package com.innovate.conversormaestro.datasource;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
+
 import java.nio.charset.StandardCharsets;
 
 import com.linuxense.javadbf.DBFException;
@@ -54,18 +52,7 @@ public class DBFController {
 				System.out.println(field.getName());
 			}
 
-			// Now, lets us start reading the rows
-
-			Object[] rowObjects;
-
-			while ((rowObjects = reader.nextRecord()) != null) {
-
-				for (int i = 0; i < rowObjects.length; i++) {
-					System.out.println(rowObjects[i]);
-				}
-			}
-
-			// By now, we have iterated through all of the rows
+			
 
 		} catch (DBFException e) {
 			e.printStackTrace();
