@@ -2,12 +2,11 @@ package com.innovate.conversormaestro.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ResourceBundle;
-import java.util.jar.Attributes.Name;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.SQLController;
 
 import javafx.fxml.FXML;
@@ -22,6 +21,7 @@ public class RelacionCamposController implements Initializable {
 
     private ConnectionController connectionController;
     private SQLController sqlController;
+    private DBFController dbfController;
 
     @FXML
     private Label title = new Label();
@@ -53,10 +53,12 @@ public class RelacionCamposController implements Initializable {
     ToggleGroup group = new ToggleGroup();
     String NameOption;
 
+    @SuppressWarnings("null")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         connectionController = ConnectionController.getConectionController();
         sqlController = SQLController.getSQLController();
+        dbfController = DBFController.getDBFController();
         title.setText(connectionController.getSourceTab());
         lblServerSource.setText(connectionController.getSourceTab());
         System.out.println(lblServerSource.getText());
@@ -103,6 +105,11 @@ public class RelacionCamposController implements Initializable {
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("ConfiguracionConexion");
+    }
+
+    @FXML
+    private void readDBF(){
+        dbfController.readDBFFile();
     }
 
     private void fillComboSource() {
