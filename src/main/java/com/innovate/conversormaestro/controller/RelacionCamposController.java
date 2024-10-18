@@ -42,7 +42,6 @@ public class RelacionCamposController implements Initializable {
     @FXML
     private ListView<String> lvDestinationFields = new ListView<String>();
 
-
     // Radio buttons to select the option to insert or update
     @FXML
     private RadioButton rbInsert;
@@ -70,9 +69,9 @@ public class RelacionCamposController implements Initializable {
         if (connectionController.getSourceTab().equals("SQL")) {
             fillComboSource();
         } else if (connectionController.getSourceTab().equals("DBF")) {
-                    cbSourceFields.setDisable(true);
-        } else if (connectionController.getSourceTab().equals("Excel")){
-                    cbSourceFields.setDisable(true);
+            cbSourceFields.setDisable(true);
+        } else if (connectionController.getSourceTab().equals("Excel")) {
+            cbSourceFields.setDisable(true);
         }
 
         fillComboDestination();
@@ -80,13 +79,13 @@ public class RelacionCamposController implements Initializable {
         cbSourceFields.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             if (newValue != null || !newValue.isEmpty()) {
                 fillListSource();
-            } 
+            }
         });
 
         cbDestinationFields.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             if (newValue != null || !newValue.isEmpty()) {
                 fillListDestination();
-            } 
+            }
         });
 
         NameOption = "Insert";
@@ -108,7 +107,7 @@ public class RelacionCamposController implements Initializable {
     }
 
     @FXML
-    private void readDBF(){
+    private void readDBF() {
         dbfController.readDBFFile();
     }
 
@@ -127,7 +126,8 @@ public class RelacionCamposController implements Initializable {
 
     private void fillListDestination() {
         lvDestinationFields.getItems().clear();
-        lvDestinationFields.getItems().addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
+        lvDestinationFields.getItems()
+                .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
     }
 
 }
