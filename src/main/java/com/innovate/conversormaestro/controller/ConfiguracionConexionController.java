@@ -26,6 +26,7 @@ import javafx.beans.value.ChangeListener;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.utils.MyAlert;
 
 public class ConfiguracionConexionController implements Initializable {
 
@@ -197,12 +198,8 @@ public class ConfiguracionConexionController implements Initializable {
         if (txServerDestination.getText().isEmpty() || txUserDestination.getText().isEmpty()
                 || txPasswordDestination.getText().isEmpty() || txEnterpriseDestination.getText().isEmpty()
                 || txExerciseDestination.getText().isEmpty() || txWarehouseDestination.getText().isEmpty()) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Test Connection");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all the fields!");
-
-            alert.showAndWait();
+            MyAlert alert = new MyAlert();
+            alert.showAlert(AlertType.ERROR, "Test Connection", "Please fill all the fields!");
             return;
         } else {
             setDestination();
@@ -222,19 +219,11 @@ public class ConfiguracionConexionController implements Initializable {
                     GroupDigitsDestination, WarehouseDestinationDestination);
 
             if (test) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Test Connection");
-                alert.setHeaderText(null);
-                alert.setContentText("Connection test successful!");
-
-                alert.showAndWait();
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.INFORMATION, "Test Connection", "Connection test successful!");
             } else {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Test Connection");
-                alert.setHeaderText(null);
-                alert.setContentText("Connection test failed!");
-
-                alert.showAndWait();
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.ERROR, "Test Connection", "Connection test failed!");
             }
         }
     }
@@ -255,12 +244,8 @@ public class ConfiguracionConexionController implements Initializable {
     private void testConnectionSource() {
         if (txServerSource.getText().isEmpty() || txUserSource.getText().isEmpty()
                 || txPasswordSource.getText().isEmpty() || txDataBaseSource.getText().isEmpty()) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Test Connection");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all the fields!");
-
-            alert.showAndWait();
+            MyAlert alert = new MyAlert();
+            alert.showAlert(AlertType.ERROR, "Test Connection", "Please fill all the fields!");
             return;
         } else {
             setSource();
@@ -277,19 +262,11 @@ public class ConfiguracionConexionController implements Initializable {
                     DataBaseSource);
 
             if (test) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Test Connection");
-                alert.setHeaderText(null);
-                alert.setContentText("Connection test successful!");
-
-                alert.showAndWait();
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.INFORMATION, "Test Connection", "Connection test successful!");
             } else {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Test Connection");
-                alert.setHeaderText(null);
-                alert.setContentText("Connection test failed!");
-
-                alert.showAndWait();
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.ERROR, "Test Connection", "Connection test failed!");
             }
         }
     }
@@ -352,12 +329,8 @@ public class ConfiguracionConexionController implements Initializable {
                     || txServerSource.getText().isEmpty() || txUserSource.getText().isEmpty()
                     || txPasswordSource.getText().isEmpty()
                     || txDataBaseSource.getText().isEmpty()) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Next");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all the fields!");
-
-                alert.showAndWait();
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
                 setDestination();
                 connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
@@ -373,12 +346,8 @@ public class ConfiguracionConexionController implements Initializable {
                     || txPasswordDestination.getText().isEmpty() || txEnterpriseDestination.getText().isEmpty()
                     || txExerciseDestination.getText().isEmpty()
                     || txWarehouseDestination.getText().isEmpty() || txPathSourceDBF.getText().isEmpty()) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Next");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all the fields!");
-
-                alert.showAndWait();
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
                 connectionController.saveCredentialsOriginDBF(txPathSourceDBF.getText());
                 App.setRoot("RelacionCampos");
@@ -388,12 +357,9 @@ public class ConfiguracionConexionController implements Initializable {
                     || txPasswordDestination.getText().isEmpty() || txEnterpriseDestination.getText().isEmpty()
                     || txExerciseDestination.getText().isEmpty()
                     || txWarehouseDestination.getText().isEmpty() || txPathSourceExcel.getText().isEmpty()) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Next");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all the fields!");
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
 
-                alert.showAndWait();
             } else {
                 connectionController.saveCredentialsOriginExcel(txPathSourceExcel.getText());
                 App.setRoot("RelacionCampos");
