@@ -41,19 +41,19 @@
                               <ListView fx:id="lvSourceFields" prefHeight="200.0" prefWidth="200.0" />
                            </content>
                         </TitledPane>
-                        <Button layoutX="190.0" layoutY="213.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="-&gt;" />
+                        <Button layoutX="190.0" layoutY="213.0" mnemonicParsing="false" onAction="#relateFieldsFromSource" prefHeight="25.0" prefWidth="50.0" text="-&gt;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="450.0" prefWidth="400.0">
                      <children>
                         <TitledPane animated="false" layoutY="76.0" prefHeight="330.0" prefWidth="200.0" text="Columna origen">
                            <content>
-                              <ListView prefHeight="330.0" prefWidth="190.0" />
+                              <ListView fx:id="lvRelationSourceFields" prefHeight="330.0" prefWidth="190.0" />
                            </content>
                         </TitledPane>
                         <TitledPane animated="false" layoutX="200.0" layoutY="76.0" prefHeight="330.0" prefWidth="200.0" text="Columna destino">
                            <content>
-                              <ListView prefHeight="339.0" prefWidth="190.0" />
+                              <ListView fx:id="lvRelationDestinationFields" prefHeight="339.0" prefWidth="190.0" />
                            </content>
                         </TitledPane>
                         <RadioButton fx:id="rbInsert" layoutX="62.0" layoutY="420.0" mnemonicParsing="false" onAction="#SelectedOption" text="Insertar">
@@ -66,13 +66,13 @@
                               <Font size="15.0" />
                            </font>
                         </RadioButton>
-                        <Button layoutX="54.0" layoutY="35.0" mnemonicParsing="false" text="Borrar relacion" />
-                        <Button layoutX="248.0" layoutY="35.0" mnemonicParsing="false" text="Vaciar relaciones" />
+                        <Button layoutX="54.0" layoutY="35.0" mnemonicParsing="false" onAction="#deleteRelation" text="Borrar relacion" />
+                        <Button layoutX="248.0" layoutY="35.0" mnemonicParsing="false" onAction="#emptyRelation" text="Vaciar relaciones" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="450.0" prefWidth="250.0">
                      <children>
-                        <Button layoutX="10.0" layoutY="213.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="&lt;-" />
+                        <Button layoutX="10.0" layoutY="213.0" mnemonicParsing="false" onAction="#relateFieldsFromDestination" prefHeight="25.0" prefWidth="50.0" text="&lt;-" />
                         <TitledPane animated="false" layoutX="70.0" layoutY="76.0" prefHeight="330.0" prefWidth="170.0" text="Nombre columna">
                            <content>
                               <ListView fx:id="lvDestinationFields" prefHeight="200.0" prefWidth="200.0" />

@@ -42,6 +42,12 @@ public class RelacionCamposController implements Initializable {
     @FXML
     private ListView<String> lvDestinationFields = new ListView<String>();
 
+    @FXML
+    private ListView<String> lvRelationSourceFields = new ListView<String>();
+
+    @FXML
+    private ListView<String> lvRelationDestinationFields = new ListView<String>();
+
     // Radio buttons to select the option to insert or update
     @FXML
     private RadioButton rbInsert;
@@ -137,6 +143,42 @@ public class RelacionCamposController implements Initializable {
         lvDestinationFields.getItems().clear();
         lvDestinationFields.getItems()
                 .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
+    }
+
+    @FXML
+    private void relateFieldsFromSource(){
+        int sourceIndex = lvSourceFields.getSelectionModel().getSelectedIndex();
+        String sourceValue = lvSourceFields.getSelectionModel().getSelectedItem();
+        
+        lvRelationSourceFields.getItems().add(sourceValue);
+
+        System.out.println("Index origen: "+sourceIndex+" Valor origen: "+sourceValue);
+    }
+
+    @FXML
+    private void relateFieldsFromDestination(){
+        int sourceIndex = lvDestinationFields.getSelectionModel().getSelectedIndex();
+        String sourceValue = lvDestinationFields.getSelectionModel().getSelectedItem();
+        
+        lvRelationDestinationFields.getItems().add(sourceValue);
+
+        System.out.println("Index destino: "+sourceIndex+" Valor destino: "+sourceValue);
+    }
+
+    @FXML
+    private void deleteRelation(){
+        int indexSource = lvRelationSourceFields.getSelectionModel().getSelectedIndex();
+        int indexDestination = lvRelationDestinationFields.getSelectionModel().getSelectedIndex();
+
+        System.out.println("Index origen: "+indexSource);
+        System.out.println("Index destino: "+indexDestination);
+    }
+
+    @FXML
+    private void emptyRelation(){
+        lvRelationSourceFields.getItems().clear();
+        lvRelationDestinationFields.getItems().clear();
+        
     }
 
 }
