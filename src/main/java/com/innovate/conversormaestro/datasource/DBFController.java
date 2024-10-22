@@ -66,6 +66,10 @@ public class DBFController {
 		}
     }
 
+	public String getPathSourceDBF(){
+		return PathSourceDBF;
+	}
+
 	public ArrayList<String> getColumnOrigin(){
 		ArrayList<String> result = new ArrayList<String>();
 
