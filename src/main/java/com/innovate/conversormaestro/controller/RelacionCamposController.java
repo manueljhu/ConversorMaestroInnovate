@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -92,6 +93,9 @@ public class RelacionCamposController implements Initializable {
     @FXML
     private RadioButton rbUpdate;
 
+    @FXML
+    private CheckBox cboxEmptyDestination;
+
     ToggleGroup group = new ToggleGroup();
     String NameOption;
     File fileDBF;
@@ -99,9 +103,7 @@ public class RelacionCamposController implements Initializable {
     @SuppressWarnings("null")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        connectionController = ConnectionController.getConectionController();
-        sqlController = SQLController.getSQLController();
-        dbfController = DBFController.getDBFController();
+        connectionController = ConnectionController.getConectionController();  
         title.setText(connectionController.getSourceTab());
         lblServerSource.setText(connectionController.getSourceTab());
         System.out.println(lblServerSource.getText());
@@ -119,8 +121,10 @@ public class RelacionCamposController implements Initializable {
         rbUpdate.setToggleGroup(group);
 
         if (connectionController.getSourceTab().equals("SQL")) {
+            sqlController = SQLController.getSQLController();
             fillComboSource();
         } else if (connectionController.getSourceTab().equals("DBF")) {
+            dbfController = DBFController.getDBFController();
             fileDBF = new File(dbfController.getPathSourceDBF());
             lblServerSource.setText(fileDBF.getName());
             cbSourceFields.setDisable(true);
@@ -280,7 +284,7 @@ public class RelacionCamposController implements Initializable {
             fileChooser.setTitle("Save DBF File");
 
             // Set extension filter for .dbf files
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.*)", "*.*");
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.txt)", "*.txt");
             fileChooser.getExtensionFilters().add(extFilter);
 
             Stage stage = (Stage) title.getScene().getWindow();
@@ -327,7 +331,7 @@ public class RelacionCamposController implements Initializable {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open File");
 
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.*)", "*.*");
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.txt)", "*.txt");
             fileChooser.getExtensionFilters().add(extFilter);
 
             Stage stage = (Stage) title.getScene().getWindow();
@@ -352,7 +356,7 @@ public class RelacionCamposController implements Initializable {
                 }
 
                 cbDestinationFields.setValue(ini.get("Destination", "Table"));
-                if(cbDestinationFields.getItems().contains(ini.get("Destination", "Table"))){
+                if (cbDestinationFields.getItems().contains(ini.get("Destination", "Table"))) {
                     String destination = ini.get("Destination", "Fields");
                     lvRelationDestinationFields.getItems().clear();
                     String[] destinationFields = destination.replace("[", "").replace("]", "").split(", ");
@@ -365,20 +369,31 @@ public class RelacionCamposController implements Initializable {
                 }
 
             } else if (connectionController.getSourceTab().equals("DBF")) {
-                lblServerSource.setText(ini.get("Source", "File"));
-                String source = ini.get("Source", "Fields");
-                lvRelationSourceFields.getItems().clear();
-                String[] sourceFields = source.replace("[", "").replace("]", "").split(", ");
-                for (String field : sourceFields) {
-                    lvRelationSourceFields.getItems().add(field);
+
+                if (fileDBF.getName().equals(ini.get("Source", "File"))) {
+                    lblServerSource.setText(ini.get("Source", "File"));
+                    String source = ini.get("Source", "Fields");
+                    lvRelationSourceFields.getItems().clear();
+                    String[] sourceFields = source.replace("[", "").replace("]", "").split(", ");
+                    for (String field : sourceFields) {
+                        lvRelationSourceFields.getItems().add(field);
+                    }
+                } else {
+                    MyAlert alert = new MyAlert();
+                    alert.showAlert(AlertType.ERROR, "Error", "El archivo de origen no es el mismo");
                 }
 
                 cbDestinationFields.setValue(ini.get("Destination", "Table"));
-                String destination = ini.get("Destination", "Fields");
-                lvRelationDestinationFields.getItems().clear();
-                String[] destinationFields = destination.replace("[", "").replace("]", "").split(", ");
-                for (String field : destinationFields) {
-                    lvRelationDestinationFields.getItems().add(field);
+                if (cbDestinationFields.getItems().contains(ini.get("Destination", "Table"))) {
+                    String destination = ini.get("Destination", "Fields");
+                    lvRelationDestinationFields.getItems().clear();
+                    String[] destinationFields = destination.replace("[", "").replace("]", "").split(", ");
+                    for (String field : destinationFields) {
+                        lvRelationDestinationFields.getItems().add(field);
+                    }
+                } else {
+                    MyAlert alert = new MyAlert();
+                    alert.showAlert(AlertType.ERROR, "Error", "La tabla de destino no existe");
                 }
 
             } else if (connectionController.getSourceTab().equals("Excel")) {
@@ -406,5 +421,4 @@ public class RelacionCamposController implements Initializable {
             System.out.println(s + " " + lvRelationDestinationFields.getItems().indexOf(s));
         }
     }
-
 }
