@@ -11,74 +11,56 @@ import com.linuxense.javadbf.DBFField;
 import com.linuxense.javadbf.DBFReader;
 import com.linuxense.javadbf.DBFUtils;
 
-
-
 public class DBFController {
-    private static DBFController dbfController;
-    private String PathSourceDBF;
+	private static DBFController dbfController;
+	private String PathSourceDBF;
 	private ConnectionController connectionController;
 
-	
-
-
-    private DBFController(){
+	private DBFController() {
 		connectionController = ConnectionController.getConectionController();
 		PathSourceDBF = connectionController.getPathSourceDBF();
-    }
+	}
 
-	
+	public static DBFController getDBFController() {
 
-    public static DBFController getDBFController(){
+		if (dbfController == null) {
+			dbfController = new DBFController();
+		}
 
-        if(dbfController == null){
-            dbfController = new DBFController();
-        }
+		return dbfController;
+	}
 
-        return dbfController;
-    }
-
-    public void readDBFFile(){
-        DBFReader reader = null;
+	public void readDBFFile() {
+		DBFReader reader = null;
 		try {
-			reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);		
+			reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);
 
-			int numberOfFields = reader.getFieldCount();			
+			int numberOfFields = reader.getFieldCount();
 
 			for (int i = 0; i < numberOfFields; i++) {
-
 				DBFField field = reader.getField(i);
-
-				// do something with it if you want
-				// refer the JavaDoc API reference for more details
-				//
 				System.out.println(field.getName());
 			}
-
-			
-
-		} catch (DBFException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			DBFUtils.close(reader);
 		}
-    }
+	}
 
-	public String getPathSourceDBF(){
+	public String getPathSourceDBF() {
 		return PathSourceDBF;
 	}
 
-	public ArrayList<String> getColumnOrigin(){
+	public ArrayList<String> getColumnOrigin() {
 		ArrayList<String> result = new ArrayList<String>();
 
 		DBFReader reader = null;
 
 		try {
-			reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);		
+			reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);
 
-			int numberOfFields = reader.getFieldCount();			
+			int numberOfFields = reader.getFieldCount();
 
 			for (int i = 0; i < numberOfFields; i++) {
 				DBFField field = reader.getField(i);
@@ -88,11 +70,9 @@ public class DBFController {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			DBFUtils.close(reader);
 		}
-
 		return result;
 	}
 }
