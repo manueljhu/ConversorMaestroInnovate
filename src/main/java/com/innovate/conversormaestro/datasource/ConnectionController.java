@@ -222,8 +222,8 @@ public class ConnectionController {
             result = true;
         } catch (Exception e) {
             result = false;
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
+            /* System.out.println("Error: " + e.getMessage());
+            e.printStackTrace(); */
         }
     }
 
@@ -247,8 +247,8 @@ public class ConnectionController {
                 result.add(rs.getString("name"));
             }
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
+            /* System.out.println("Error: " + e.getMessage());
+            e.printStackTrace(); */
         }
         if(tablename.equals("FORPAG")){
             closeConnectionGP();

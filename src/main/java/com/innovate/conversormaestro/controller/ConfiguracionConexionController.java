@@ -16,7 +16,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import java.io.File;
@@ -95,16 +94,11 @@ public class ConfiguracionConexionController implements Initializable {
     private String UserSource;
     private String PasswordSource;
     private String DataBaseSource;
-    private String TablesSource;
-    private String ViewsSource;
     private String NameOption;
 
     // Tabs
     @FXML
     private TabPane tabPane;
-    private Tab tabSQL;
-    private Tab tabDBF;
-    private Tab tabExcel;
 
     String ActualTab;
 
@@ -115,16 +109,12 @@ public class ConfiguracionConexionController implements Initializable {
     @FXML
     private Button btPathSourceDBF;
 
-    private String PathSourceDBF;
-
     // Excel conection to the source database
     @FXML
     private TextField txPathSourceExcel;
 
     @FXML
     private Button btPathSourceExcel;
-
-    private String PathSourceExcel;
 
     // Next button
     @FXML
@@ -349,6 +339,10 @@ public class ConfiguracionConexionController implements Initializable {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
+                setDestination();
+                connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
+                        EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
+                        WarehouseDestinationDestination);
                 connectionController.saveCredentialsOriginDBF(txPathSourceDBF.getText());
                 App.setRoot("RelacionCampos");
             }
@@ -359,8 +353,11 @@ public class ConfiguracionConexionController implements Initializable {
                     || txWarehouseDestination.getText().isEmpty() || txPathSourceExcel.getText().isEmpty()) {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
-
             } else {
+                setDestination();
+                connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
+                        EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
+                        WarehouseDestinationDestination);
                 connectionController.saveCredentialsOriginExcel(txPathSourceExcel.getText());
                 App.setRoot("RelacionCampos");
             }
