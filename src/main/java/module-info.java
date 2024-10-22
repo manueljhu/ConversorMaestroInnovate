@@ -3,7 +3,9 @@ module com.innovate.conversormaestro {
     requires javafx.fxml;
     requires java.sql;
     requires com.github.albfernandez.javadbf;
+    requires org.apache.poi.poi;
     requires ini4j;
+    
 
 
     opens com.innovate.conversormaestro to javafx.fxml;

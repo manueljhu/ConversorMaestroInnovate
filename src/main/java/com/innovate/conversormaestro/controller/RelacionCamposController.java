@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.DBFController;
+import com.innovate.conversormaestro.datasource.ExcelController;
 import com.innovate.conversormaestro.datasource.SQLController;
 import com.innovate.conversormaestro.utils.MyAlert;
 
@@ -35,6 +36,7 @@ public class RelacionCamposController implements Initializable {
     private ConnectionController connectionController;
     private SQLController sqlController;
     private DBFController dbfController;
+    private ExcelController excelController;
 
     @FXML
     private MenuItem miSave = new MenuItem();
@@ -100,8 +102,8 @@ public class RelacionCamposController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         connectionController = ConnectionController.getConectionController();
-        sqlController = SQLController.getSQLController();
-        dbfController = DBFController.getDBFController();
+        
+        
         title.setText(connectionController.getSourceTab());
         lblServerSource.setText(connectionController.getSourceTab());
         System.out.println(lblServerSource.getText());
@@ -119,13 +121,18 @@ public class RelacionCamposController implements Initializable {
         rbUpdate.setToggleGroup(group);
 
         if (connectionController.getSourceTab().equals("SQL")) {
+            sqlController = SQLController.getSQLController();
             fillComboSource();
         } else if (connectionController.getSourceTab().equals("DBF")) {
+            dbfController = DBFController.getDBFController();
+            
             fileDBF = new File(dbfController.getPathSourceDBF());
             lblServerSource.setText(fileDBF.getName());
             cbSourceFields.setDisable(true);
             fillListSource();
         } else if (connectionController.getSourceTab().equals("Excel")) {
+            excelController = ExcelController.getExcelController();
+
             cbSourceFields.setDisable(true);
             fillListSource();
         }
@@ -181,6 +188,7 @@ public class RelacionCamposController implements Initializable {
             lvSourceFields.getItems().addAll(dbfController.getColumnOrigin());
         } else if (connectionController.getSourceTab().equals("Excel")) {
             cbSourceFields.setDisable(true);
+            excelController.readExcelFile();
         }
 
     }
