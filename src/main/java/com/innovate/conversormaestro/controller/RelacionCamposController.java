@@ -101,11 +101,12 @@ public class RelacionCamposController implements Initializable {
     ToggleGroup group = new ToggleGroup();
     String NameOption;
     File fileDBF;
+    File fileExcel;
 
     @SuppressWarnings("null")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        connectionController = ConnectionController.getConectionController();  
+        connectionController = ConnectionController.getConectionController();
         title.setText(connectionController.getSourceTab());
         lblServerSource.setText(connectionController.getSourceTab());
         System.out.println(lblServerSource.getText());
@@ -118,6 +119,7 @@ public class RelacionCamposController implements Initializable {
         tpDestinationColumn.setCollapsible(false);
         btnOrigintoRelation.setDisable(true);
         btnDestinationtoRelation.setDisable(true);
+        cboxEmptyDestination.setSelected(false);
 
         rbInsert.setToggleGroup(group);
         rbUpdate.setToggleGroup(group);
@@ -133,7 +135,7 @@ public class RelacionCamposController implements Initializable {
             fillListSource();
         } else if (connectionController.getSourceTab().equals("Excel")) {
             excelController = ExcelController.getExcelController();
-
+            fileExcel = new File(excelController.getPathSourceExcel());
             cbSourceFields.setDisable(true);
             fillListSource();
         }
@@ -188,8 +190,7 @@ public class RelacionCamposController implements Initializable {
         } else if (connectionController.getSourceTab().equals("DBF")) {
             lvSourceFields.getItems().addAll(dbfController.getColumnOrigin());
         } else if (connectionController.getSourceTab().equals("Excel")) {
-            cbSourceFields.setDisable(true);
-            excelController.readExcelFile();
+            lvSourceFields.getItems().addAll(excelController.getColumnOrigin());
         }
 
     }
@@ -283,14 +284,33 @@ public class RelacionCamposController implements Initializable {
                     "Las listas de campos de origen y destino no tienen la misma cantidad de elementos");
             return;
         }
-
+        if (lvRelationSourceFields.getItems().isEmpty() || lvRelationDestinationFields.getItems().isEmpty()) {
+            MyAlert alert = new MyAlert();
+            alert.showAlert(AlertType.ERROR, "Error", "Las listas de campos de origen y/o destino están vacías");
+            return;
+        }
         try {
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save DBF File");
+            fileChooser.setTitle("Save File");
 
-            // Set extension filter for .dbf files
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.txt)", "*.txt");
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.crin)", "*.crin");
             fileChooser.getExtensionFilters().add(extFilter);
+
+            String t = connectionController.getSourceTab();
+            String s = cbSourceFields.getValue();
+            if (t.equals("SQL")) {
+                s = cbSourceFields.getValue();
+            } else if (t.equals("DBF")) {
+                String name = fileDBF.getName();
+                s = name.replace(".dbf", "");
+            } else if (t.equals("Excel")) {
+                String name = fileExcel.getName();
+                s = name.replace(".xls", "");
+            }
+            
+            String d = cbDestinationFields.getValue();
+
+            fileChooser.setInitialFileName(t+"-"+s+"-"+d+".crin");
 
             Stage stage = (Stage) title.getScene().getWindow();
             System.out.println("Stage: " + stage);
@@ -309,18 +329,24 @@ public class RelacionCamposController implements Initializable {
                 ini.put("Source", "Fields", lvRelationSourceFields.getItems());
                 ini.put("Destination", "Table", cbDestinationFields.getValue());
                 ini.put("Destination", "Fields", lvRelationDestinationFields.getItems());
+                ini.put("Option", "Name", rbInsert.isSelected() ? "Insert" : "Update");
+                ini.put("Option", "Empty", cboxEmptyDestination.isSelected() ? "True" : "False");
 
             } else if (connectionController.getSourceTab().equals("DBF")) {
                 ini.put("Source", "File", fileDBF.getName());
                 ini.put("Source", "Fields", lvRelationSourceFields.getItems());
                 ini.put("Destination", "Table", cbDestinationFields.getValue());
                 ini.put("Destination", "Fields", lvRelationDestinationFields.getItems());
+                ini.put("Option", "Name", rbInsert.isSelected() ? "Insert" : "Update");
+                ini.put("Option", "Empty", cboxEmptyDestination.isSelected() ? "True" : "False");
 
             } else if (connectionController.getSourceTab().equals("Excel")) {
-                ini.put("Source", "File", dbfController);
+                ini.put("Source", "File", fileExcel.getName());
                 ini.put("Source", "Fields", lvRelationSourceFields.getItems());
                 ini.put("Destination", "Table", cbDestinationFields.getValue());
                 ini.put("Destination", "Fields", lvRelationDestinationFields.getItems());
+                ini.put("Option", "Name", rbInsert.isSelected() ? "Insert" : "Update");
+                ini.put("Option", "Empty", cboxEmptyDestination.isSelected() ? "True" : "False");
             }
 
             ini.store();
@@ -336,8 +362,9 @@ public class RelacionCamposController implements Initializable {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open File");
 
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.txt)", "*.txt");
-            fileChooser.getExtensionFilters().add(extFilter);
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.crin)", "*.crin");
+            FileChooser.ExtensionFilter extFilter2 = new FileChooser.ExtensionFilter("All files (*.*)", "*.*");
+            fileChooser.getExtensionFilters().addAll(extFilter, extFilter2);
 
             Stage stage = (Stage) title.getScene().getWindow();
             System.out.println("Stage: " + stage);
@@ -373,6 +400,10 @@ public class RelacionCamposController implements Initializable {
                     alert.showAlert(AlertType.ERROR, "Error", "La tabla de destino no existe");
                 }
 
+                rbInsert.setSelected(ini.get("Option", "Name").equals("Insert"));
+                rbUpdate.setSelected(ini.get("Option", "Name").equals("Update"));
+                cboxEmptyDestination.setSelected(ini.get("Option", "Empty").equals("True"));
+
             } else if (connectionController.getSourceTab().equals("DBF")) {
 
                 if (fileDBF.getName().equals(ini.get("Source", "File"))) {
@@ -401,11 +432,40 @@ public class RelacionCamposController implements Initializable {
                     alert.showAlert(AlertType.ERROR, "Error", "La tabla de destino no existe");
                 }
 
+                rbInsert.setSelected(ini.get("Option", "Name").equals("Insert"));
+                rbUpdate.setSelected(ini.get("Option", "Name").equals("Update"));
+                cboxEmptyDestination.setSelected(ini.get("Option", "Empty").equals("True"));
+
             } else if (connectionController.getSourceTab().equals("Excel")) {
-                lblServerSource.setText(ini.get("Source", "File"));
-                lvRelationSourceFields.getItems().addAll(ini.get("Source", "Fields"));
+                if (fileExcel.getName().equals(ini.get("Source", "File"))) {
+                    lblServerSource.setText(ini.get("Source", "File"));
+                    String source = ini.get("Source", "Fields");
+                    lvRelationSourceFields.getItems().clear();
+                    String[] sourceFields = source.replace("[", "").replace("]", "").split(", ");
+                    for (String field : sourceFields) {
+                        lvRelationSourceFields.getItems().add(field);
+                    }
+                } else {
+                    MyAlert alert = new MyAlert();
+                    alert.showAlert(AlertType.ERROR, "Error", "El archivo de origen no es el mismo");
+                }
+
                 cbDestinationFields.setValue(ini.get("Destination", "Table"));
-                lvRelationDestinationFields.getItems().addAll(ini.get("Destination", "Fields"));
+                if (cbDestinationFields.getItems().contains(ini.get("Destination", "Table"))) {
+                    String destination = ini.get("Destination", "Fields");
+                    lvRelationDestinationFields.getItems().clear();
+                    String[] destinationFields = destination.replace("[", "").replace("]", "").split(", ");
+                    for (String field : destinationFields) {
+                        lvRelationDestinationFields.getItems().add(field);
+                    }
+                } else {
+                    MyAlert alert = new MyAlert();
+                    alert.showAlert(AlertType.ERROR, "Error", "La tabla de destino no existe");
+                }
+
+                rbInsert.setSelected(ini.get("Option", "Name").equals("Insert"));
+                rbUpdate.setSelected(ini.get("Option", "Name").equals("Update"));
+                cboxEmptyDestination.setSelected(ini.get("Option", "Empty").equals("True"));
             }
 
         } catch (Exception e) {

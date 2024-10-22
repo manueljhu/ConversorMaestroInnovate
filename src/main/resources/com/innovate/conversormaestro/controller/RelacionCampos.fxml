@@ -22,8 +22,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Archivo">
             <items>
-              <MenuItem mnemonicParsing="false" text="Guardar Relación" />
-                  <MenuItem mnemonicParsing="false" text="Cargar Relación" />
+              <MenuItem fx:id="miSave" mnemonicParsing="false" onAction="#saveRelations" text="Guardar Relación" />
+                  <MenuItem fx:id="miLoad" mnemonicParsing="false" onAction="#loadRelations" text="Cargar Relación" />
             </items>
           </Menu>
         </menus>
@@ -98,7 +98,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <CheckBox layoutX="51.0" layoutY="417.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="189.0" text="Vaciar Datos en Destino">
+                        <CheckBox fx:id="cboxEmptyDestination" layoutX="51.0" layoutY="417.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="189.0" text="Vaciar Datos en Destino">
                            <font>
                               <Font size="15.0" />
                            </font>

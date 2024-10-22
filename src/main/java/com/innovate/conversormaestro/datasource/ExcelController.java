@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -21,10 +22,7 @@ public class ExcelController {
 		PathSourceExcel = connectionController.getPathSourceExcel();
     }
 
-	
-
     public static ExcelController getExcelController(){
-
         if(excelController == null){
             excelController = new ExcelController();
         }
@@ -66,10 +64,36 @@ public class ExcelController {
 		return PathSourceExcel;
 	}
 
-    
+    public ArrayList<String> getColumnOrigin(){
+        ArrayList<String> result = new ArrayList<String>();
 
-	
+        InputStream excelStream = null;
+        try {
+            excelStream = new FileInputStream(PathSourceExcel);
 
+            HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream);
+            HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
+            HSSFRow hssfRowCabecera;
 
+            HSSFCell cell;
+            hssfRowCabecera = hssfSheet.getRow(0);
 
+            for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
+                System.out.println(hssfRowCabecera.getCell(c).getStringCellValue());
+                result.add(hssfRowCabecera.getCell(c).getStringCellValue());
+            }
+
+        } catch (FileNotFoundException fileNotFoundException) {
+            System.out.println("The file not exists (No se encontró el fichero): " + fileNotFoundException);
+        } catch (IOException ex) {
+            System.out.println("Error in file procesing (Error al procesar el fichero): " + ex);
+        } finally {
+            try {
+                excelStream.close();
+            } catch (IOException ex) {
+                System.out.println("Error in file processing after close it (Error al procesar el fichero después de cerrarlo): " + ex);
+            }
+        }
+        return result;
+    }
 }
