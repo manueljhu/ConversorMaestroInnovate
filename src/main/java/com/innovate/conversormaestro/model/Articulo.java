@@ -798,6 +798,10 @@ public class Articulo {
         return this.web_h2_2;
     }
 
+    public String getSincro() {
+        return this.sincro;
+    }
+
     public void setCod(String cod) {
         if (cod.length() > 25) {
             this.cod = cod.trim().substring(0, 25).replace("'", "");
@@ -1743,6 +1747,14 @@ public class Articulo {
             this.web_h2_2 = web_h2_2.trim().substring(0, 80).replace("'", "");
         } else {
             this.web_h2_2 = web_h2_2.replace("'", "");
+        }
+    }
+
+    public void setSincro(String sincro) {
+        if (sincro.length() > 1) {
+            this.sincro = sincro.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.sincro = sincro.replace("'", "");
         }
     }
 
