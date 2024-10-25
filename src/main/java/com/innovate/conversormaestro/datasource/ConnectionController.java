@@ -54,9 +54,19 @@ public class ConnectionController {
         tables.add(table);
         table = new Tables("CLIENT", "Clientes");
         tables.add(table);
-        table = new Tables("CONTAC", "Contactos de clientes y proveedores");
+        table = new Tables("CONTAC", "Contactos de clientes");
         tables.add(table);
-        table = new Tables("DIRECC", "Direcciones de clientes y proveedores");
+        table = new Tables("CONTAC", "Contactos de proveedores");
+        tables.add(table);
+        table = new Tables("DATBAN", "Datos bancarios clientes");
+        tables.add(table);
+        table = new Tables("DATBAN", "Datos bancarios proveedores");
+        tables.add(table);
+        table = new Tables("DIRECC", "Direcciones de clientes");
+        tables.add(table);
+        table = new Tables("DIRECC", "Direcciones de proveedores");
+        tables.add(table);
+        table = new Tables("ALMAXX", "Existencias");
         tables.add(table);
         table = new Tables("FACEMI", "Facturas emitidas");
         tables.add(table);
@@ -64,16 +74,19 @@ public class ConnectionController {
         tables.add(table);
         table = new Tables("FAMILI", "Familias");
         tables.add(table);
+        table = new Tables("FORPAG", "Formas de pago");
+        tables.add(table);
         table = new Tables("MARART", "Marcas articulo");
+        tables.add(table);
+        table = new Tables("CUENTA", "Plan contable");
         tables.add(table);
         table = new Tables("EFECTO", "Previsiones de cobro y de pago");
         tables.add(table);
+        table = new Tables("PROVEE", "Proveedores");
+        tables.add(table);
         table = new Tables("SUBFAM", "Subfamilias");
         tables.add(table);
-        table = new Tables("ALMAXX", "Existencias");
-        tables.add(table);
-        table = new Tables("FORPAG", "Formas de pago");
-        tables.add(table);
+        
     }
 
     public static ConnectionController getConectionController(){

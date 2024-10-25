@@ -12,6 +12,7 @@ import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.ExcelController;
 import com.innovate.conversormaestro.datasource.SQLController;
+import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.MyAlert;
 
 import javafx.fxml.FXML;
@@ -109,7 +110,6 @@ public class RelacionCamposController implements Initializable {
         connectionController = ConnectionController.getConectionController();
         title.setText(connectionController.getSourceTab());
         lblServerSource.setText(connectionController.getSourceTab());
-        System.out.println(lblServerSource.getText());
         rbInsert.setSelected(true);
         tpSourceFields.setText("Campos de origen");
         tpDestinationFields.setText("Campos de destino");
@@ -161,8 +161,11 @@ public class RelacionCamposController implements Initializable {
     private void SelectedOption() {
         if (rbInsert.isSelected()) {
             NameOption = "Insert";
+            cboxEmptyDestination.setDisable(false);
         } else if (rbUpdate.isSelected()) {
             NameOption = "Update";
+            cboxEmptyDestination.setSelected(false);
+            cboxEmptyDestination.setDisable(true);
         }
         System.out.println(NameOption);
     }
@@ -307,13 +310,12 @@ public class RelacionCamposController implements Initializable {
                 String name = fileExcel.getName();
                 s = name.replace(".xls", "");
             }
-            
+
             String d = cbDestinationFields.getValue();
 
-            fileChooser.setInitialFileName(t+"-"+s+"-"+d+".crin");
+            fileChooser.setInitialFileName(t + "-" + s + "-" + d + ".crin");
 
             Stage stage = (Stage) title.getScene().getWindow();
-            System.out.println("Stage: " + stage);
             File iniFile = fileChooser.showSaveDialog(stage);
 
             Wini ini;
@@ -367,7 +369,6 @@ public class RelacionCamposController implements Initializable {
             fileChooser.getExtensionFilters().addAll(extFilter, extFilter2);
 
             Stage stage = (Stage) title.getScene().getWindow();
-            System.out.println("Stage: " + stage);
             File iniFile = fileChooser.showOpenDialog(stage);
 
             Wini ini = new Wini(iniFile);
@@ -475,15 +476,22 @@ public class RelacionCamposController implements Initializable {
 
     @FXML
     private void readArrayList() {
-        System.out.println("-------------------------------------");
-        System.out.println("Origen");
-        for (String s : lvRelationSourceFields.getItems()) {
-            System.out.println(s + " " + lvRelationSourceFields.getItems().indexOf(s));
+        Relacion relacion;
+        ArrayList<Relacion> relaciones = new ArrayList<Relacion>();
+
+        for (int i = 0; i < lvRelationSourceFields.getItems().size(); i++) {
+            relacion = new Relacion();
+            relacion.setCampoOrigen(lvRelationSourceFields.getItems().get(i));
+            relacion.setCampoDestino(lvRelationDestinationFields.getItems().get(i));
+            relaciones.add(relacion);
         }
-        System.out.println("-------------------------------------");
-        System.out.println("Destino");
-        for (String s : lvRelationDestinationFields.getItems()) {
-            System.out.println(s + " " + lvRelationDestinationFields.getItems().indexOf(s));
-        }
+
+        excelController.setRelaciones(relaciones);
+        excelController.tableExcelDestination(cbDestinationFields.getValue());
+        
+        /* for (int i = 0; i < relaciones.size(); i++) {
+            System.out.println(relaciones.get(i).getCampoOrigen());
+            System.out.println(relaciones.get(i).getCampoDestino());
+        } */
     }
 }
