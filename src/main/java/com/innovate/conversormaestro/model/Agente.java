@@ -2,73 +2,73 @@ package com.innovate.conversormaestro.model;
 
 public class Agente {
 
-    private String cod;
-    private String nom;
-    private String dir;
-    private String pob;
-    private int npro;
-    private String pro;
-    private String nif;
-    private String te1;
-    private String te2;
-    private String fax;
-    private String mov;
-    private String ob1;
-    private String ob2;
-    private String ob3;
-    private String rut;
-    private int tip;
-    private int com;
-    private float co1;
-    private float co2;
-    private float co3;
-    private float co4;
-    private float co5;
-    private float lim;
-    private float pais;
-    private int tia;
-    private String alt;
-    private String fot;
-    private String web;
-    private String xxx;
-    private String rut_crm;
-    private float vdi_crm;
-    private float ldi_crm;
-    private String tcu_crm;
-    private String cud_crm;
-    private String est_crm;
-    private String v01;
-    private String v02;
-    private String v03;
-    private String v04;
-    private String v05;
-    private String v06;
-    private String v07;
-    private String v08;
-    private String v09;
-    private String v10;
-    private String v11;
-    private String v12;
-    private String historia;
-    private float lopd_ori;
-    private String lopd_otr_o;
-    private String lopd_ces;
-    private String lopd_otr_c;
-    private String age_usu;
-    private String age_ver_todo;
-    private int com_per;
-    private int com_imp;
-    private int com_inc;
-    private float com_impinc;
-    private float com_por;
-    private String web_acc;
-    private String web_psw;
-    private String web_todo;
-    private String web_crear;
-    private String web_pago;
-    private String web_dto;
-    private String web_edipre;
-    private String web_acccob;
+    public String cod = "";
+    public String nom = "";
+    public String dir = "";
+    public String pob = "      -";
+    public int npro = 0;
+    public String pro = "";
+    public String nif = "";
+    public String te1 = "";
+    public String te2 = "";
+    public String fax = "";
+    public String mov = "";
+    public String ob1 = "";
+    public String ob2 = "";
+    public String ob3 = "";
+    public String rut = "000001";
+    public int tip = 1;
+    public int com = 1;
+    public float co1 = 0.00f;
+    public float co2 = 0.00f;
+    public float co3 = 0.00f;
+    public float co4 = 0.00f;
+    public float co5 = 0.00f;
+    public float lim = 0.000f;
+    public float pais = 1;
+    public int tia = 1;
+    public String alt;
+    public String fot = "";
+    public String web = "";
+    public String xxx = "";
+    public String rut_crm = "";
+    public float vdi_crm = 0;
+    public float ldi_crm = 0;
+    public String tcu_crm = "V";
+    public String cud_crm = "S";
+    public String est_crm = "A";
+    public String v01 = "";
+    public String v02 = "";
+    public String v03 = "";
+    public String v04 = "";
+    public String v05 = "";
+    public String v06 = "";
+    public String v07 = "";
+    public String v08 = "";
+    public String v09 = "";
+    public String v10 = "";
+    public String v11 = "";
+    public String v12 = "";
+    public String historia = "";
+    public float lopd_ori = 0;
+    public String lopd_otr_o = "";
+    public String lopd_ces = "";
+    public String lopd_otr_c = "";
+    public String age_usu = "";
+    public String age_ver_todo = "N";
+    public int com_per = 1;
+    public int com_imp = 1;
+    public int com_inc = 1;
+    public float com_impinc = 0.000f;
+    public float com_por = 0.000f;
+    public String web_acc = "N";
+    public String web_psw = "";
+    public String web_todo = "N";
+    public String web_crear = "N";
+    public String web_pago = "N";
+    public String web_dto = "N";
+    public String web_edipre = "N";
+    public String web_acccob = "N";
 
     public Agente() {
     }
@@ -789,4 +789,22 @@ public class Agente {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Agente: cod=" + cod + ", nom=" + nom + ", dir=" + dir + ", pob=" + pob + ", npro=" + npro + ", pro="
+                + pro + ", nif=" + nif + ", te1=" + te1 + ", te2=" + te2 + ", fax=" + fax + ", mov=" + mov + ", ob1="
+                + ob1 + ", ob2=" + ob2 + ", ob3=" + ob3 + ", rut=" + rut + ", tip=" + tip + ", com=" + com + ", co1="
+                + co1 + ", co2=" + co2 + ", co3=" + co3 + ", co4=" + co4 + ", co5=" + co5 + ", lim=" + lim + ", pais="
+                + pais + ", tia=" + tia + ", alt=" + alt + ", fot=" + fot + ", web=" + web + ", xxx=" + xxx
+                + ", rut_crm=" + rut_crm + ", vdi_crm=" + vdi_crm + ", ldi_crm=" + ldi_crm + ", tcu_crm=" + tcu_crm
+                + ", cud_crm=" + cud_crm + ", est_crm=" + est_crm + ", v01=" + v01 + ", v02=" + v02 + ", v03=" + v03
+                + ", v04=" + v04 + ", v05=" + v05 + ", v06=" + v06 + ", v07=" + v07 + ", v08=" + v08 + ", v09=" + v09
+                + ", v10=" + v10 + ", v11=" + v11 + ", v12=" + v12 + ", historia=" + historia + ", lopd_ori=" + lopd_ori
+                + ", lopd_otr_o=" + lopd_otr_o + ", lopd_ces=" + lopd_ces + ", lopd_otr_c=" + lopd_otr_c + ", age_usu="
+                + age_usu + ", age_ver_todo=" + age_ver_todo + ", com_per=" + com_per + ", com_imp=" + com_imp
+                + ", com_inc=" + com_inc + ", com_impinc=" + com_impinc + ", com_por=" + com_por + ", web_acc="
+                + web_acc + ", web_psw=" + web_psw + ", web_todo=" + web_todo + ", web_crear=" + web_crear
+                + ", web_pago=" + web_pago + ", web_dto=" + web_dto + ", web_edipre=" + web_edipre + ", web_acccob="
+                + web_acccob + "";
+    }
 }
