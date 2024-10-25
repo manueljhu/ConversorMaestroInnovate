@@ -37,7 +37,7 @@ import com.innovate.conversormaestro.model.Tables;
 public class ExcelController {
     private static ExcelController excelController;
     private String PathSourceExcel;
-	private ConnectionController connectionController;
+    private ConnectionController connectionController;
     private ArrayList<Relacion> relaciones;
 
     private static ArrayList<Agente> agentes;
@@ -62,25 +62,25 @@ public class ExcelController {
     private static ArrayList<Stock> stocks;
     private static ArrayList<Subfamilia> subfamiliaArticulos;
 
-    private ExcelController(){
-		connectionController = ConnectionController.getConectionController();
-		PathSourceExcel = connectionController.getPathSourceExcel();
+    private ExcelController() {
+        connectionController = ConnectionController.getConectionController();
+        PathSourceExcel = connectionController.getPathSourceExcel();
     }
 
-    public static ExcelController getExcelController(){
-        if(excelController == null){
+    public static ExcelController getExcelController() {
+        if (excelController == null) {
             excelController = new ExcelController();
         }
 
         return excelController;
     }
 
-    public void setRelaciones(ArrayList<Relacion> relaciones){
+    public void setRelaciones(ArrayList<Relacion> relaciones) {
         this.relaciones = relaciones;
     }
 
-    public void readExcelFile(){
-        
+    public void readExcelFile() {
+
         InputStream excelStream = null;
         try {
             excelStream = new FileInputStream(PathSourceExcel);
@@ -92,9 +92,11 @@ public class ExcelController {
             HSSFCell cell;
             hssfRowCabecera = hssfSheet.getRow(0);
 
-            /* for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
-                System.out.println(hssfRowCabecera.getCell(c).getStringCellValue());
-            } */
+            /*
+             * for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
+             * System.out.println(hssfRowCabecera.getCell(c).getStringCellValue());
+             * }
+             */
 
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("The file not exists (No se encontró el fichero): " + fileNotFoundException);
@@ -104,16 +106,18 @@ public class ExcelController {
             try {
                 excelStream.close();
             } catch (IOException ex) {
-                System.out.println("Error in file processing after close it (Error al procesar el fichero después de cerrarlo): " + ex);
+                System.out.println(
+                        "Error in file processing after close it (Error al procesar el fichero después de cerrarlo): "
+                                + ex);
             }
         }
     }
 
-    public String getPathSourceExcel(){
-		return PathSourceExcel;
-	}
+    public String getPathSourceExcel() {
+        return PathSourceExcel;
+    }
 
-    public ArrayList<String> getColumnOrigin(){
+    public ArrayList<String> getColumnOrigin() {
         ArrayList<String> result = new ArrayList<String>();
 
         InputStream excelStream = null;
@@ -140,13 +144,15 @@ public class ExcelController {
             try {
                 excelStream.close();
             } catch (IOException ex) {
-                System.out.println("Error in file processing after close it (Error al procesar el fichero después de cerrarlo): " + ex);
+                System.out.println(
+                        "Error in file processing after close it (Error al procesar el fichero después de cerrarlo): "
+                                + ex);
             }
         }
         return result;
     }
 
-    public int devuelveNFilasExcel(){
+    public int devuelveNFilasExcel() {
         int result = 0;
 
         InputStream excelStream = null;
@@ -170,13 +176,15 @@ public class ExcelController {
             try {
                 excelStream.close();
             } catch (IOException ex) {
-                System.out.println("Error in file processing after close it (Error al procesar el fichero después de cerrarlo): " + ex);
+                System.out.println(
+                        "Error in file processing after close it (Error al procesar el fichero después de cerrarlo): "
+                                + ex);
             }
         }
         return result;
     }
 
-    public String devuelveValorCelda(int fila, String columna){
+    public String devuelveValorCelda(int fila, String columna) {
         String result = "";
         InputStream excelStream = null;
         try {
@@ -189,13 +197,13 @@ public class ExcelController {
             hssfRowCabecera = hssfSheet.getRow(0);
             hssfRow = hssfSheet.getRow(fila);
             for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
-                if(hssfRowCabecera.getCell(c).getStringCellValue().equals(columna)){
+                if (hssfRowCabecera.getCell(c).getStringCellValue().equals(columna)) {
                     System.out.println(hssfRowCabecera.getCell(c).getStringCellValue().equals(columna));
                     if (hssfRow.getCell(c) != null) {
                         hssfRow.getCell(c).setCellType(CellType.STRING);
                         System.out.println(hssfRow.getCell(c).getStringCellValue());
                         result = hssfRow.getCell(c).getStringCellValue();
-                    } 
+                    }
                 }
             }
 
@@ -213,12 +221,12 @@ public class ExcelController {
         return result;
     }
 
-    public void tableExcelDestination(String tablename){
+    public void tableExcelDestination(String tablename) {
         switch (tablename) {
             case "Agentes":
                 AgentesSwitch();
                 break;
-            /*case "Almacenes":
+            case "Almacenes":
                 AlmacenesSwitch();
                 break;
             case "Articulos":
@@ -279,13 +287,13 @@ public class ExcelController {
                 SubfamiliasSwitch();
                 break;
             default:
-                break;*/
+                break;
         }
     }
 
-    public void AgentesSwitch(){
+    public void AgentesSwitch() {
         agentes = new ArrayList<Agente>();
-        
+
         int nFilas = devuelveNFilasExcel();
         Agente agente;
         int longitud = 0;
@@ -293,9 +301,11 @@ public class ExcelController {
 
         for (int i = 1; i <= nFilas; i++) {
             agente = new Agente();
-            for (int j = 0; j < relaciones.size() ; j++) {
-                /* System.out.println(relaciones.get(j).getCampoOrigen());
-                System.out.println(relaciones.get(j).getCampoDestino()); */
+            for (int j = 0; j < relaciones.size(); j++) {
+                /*
+                 * System.out.println(relaciones.get(j).getCampoOrigen());
+                 * System.out.println(relaciones.get(j).getCampoDestino());
+                 */
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
                         cod = devuelveValorCelda(i, relaciones.get(j).getCampoOrigen());
@@ -470,7 +480,8 @@ public class ExcelController {
                         agente.setCom_Inc(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "com_impinc":
-                        agente.setCom_Impinc(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        agente.setCom_Impinc(
+                                Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "com_por":
                         agente.setCom_Por(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
@@ -502,10 +513,606 @@ public class ExcelController {
                 }
             }
             System.out.println(agente);
+            agentes.add(agente);
         }
     }
 
-    public void Almacen(){
+    public void AlmacenesSwitch() {
         almacenes = new ArrayList<Almacen>();
+        int nFilas = devuelveNFilasExcel();
+        Almacen almacen;
+        int longitud = 0;
+
+        for (int i = 1; i < nFilas; i++) {
+            almacen = new Almacen();
+            for (int j = 0; j < relaciones.size(); j++) {
+                switch (relaciones.get(j).getCampoDestino()) {
+                    case "nom":
+                        almacen.setNom(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ser":
+                        almacen.setSer(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "se2":
+                        almacen.setSe2(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "age":
+                        almacen.setAge(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                }
+            }
+            System.out.println(almacen);
+            almacenes.add(almacen);
+        }
     }
+
+    public void ArticulosSwitch() {
+        articulos = new ArrayList<Articulo>();
+        int nFilas = devuelveNFilasExcel();
+        Articulo articulo;
+        int longitud = 0;
+
+        for (int i = 1; i < nFilas; i++) {
+            articulo = new Articulo();
+            for (int j = 0; j < relaciones.size(); j++) {
+                switch (relaciones.get(j).getCampoDestino()) {
+                    case "cod":
+                        articulo.setCod(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "nom":
+                        articulo.setNom(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "fam":
+                        articulo.setFam(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "obs":
+                        articulo.setObs(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "min":
+                        articulo.setMin(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "max":
+                        articulo.setMax(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "med":
+                        articulo.setMed(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "uni":
+                        articulo.setUni(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "cla":
+                        articulo.setCla(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "iva":
+                        articulo.setIva(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ubi":
+                        articulo.setUbi(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "rea":
+                        articulo.setRea(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "rep":
+                        articulo.setRep(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "cos":
+                        articulo.setCos(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "pba":
+                        articulo.setPba(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "dtocom1":
+                        articulo.setDtocom1(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "dtocom2":
+                        articulo.setDtocom2(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "dtoven1":
+                        articulo.setDtoven1(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "dtoven2":
+                        articulo.setDtoven2(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "dt1":
+                        articulo.setDt1(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "dt2":
+                        articulo.setDt2(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "dt3":
+                        articulo.setDt3(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "dt4":
+                        articulo.setDt4(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "dt5":
+                        articulo.setDt5(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "co1":
+                        articulo.setCo1(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "co2":
+                        articulo.setCo2(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "co3":
+                        articulo.setCo3(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "co4":
+                        articulo.setCo4(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "co5":
+                        articulo.setCo5(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "pmc":
+                        articulo.setPmc(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "upc":
+                        articulo.setUpc(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ufc":
+                        articulo.setUfc(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "pro":
+                        articulo.setPro(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "pmv":
+                        articulo.setPmv(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "upv":
+                        articulo.setUpv(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ufv":
+                        articulo.setUfv(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "exi":
+                        articulo.setExi(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "vai":
+                        articulo.setVai(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ent":
+                        articulo.setEnt(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ptc":
+                        articulo.setPtc(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "sal":
+                        articulo.setSal(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ptv":
+                        articulo.setPtv(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ma1":
+                        articulo.setMa1(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ma2":
+                        articulo.setMa2(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ma3":
+                        articulo.setMa3(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ma4":
+                        articulo.setMa4(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ma5":
+                        articulo.setMa5(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "d01":
+                        articulo.setD01(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "d02":
+                        articulo.setD02(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "d03":
+                        articulo.setD03(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "d04":
+                        articulo.setD04(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "d05":
+                        articulo.setD05(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "cuc":
+                        articulo.setCuc(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "cuv":
+                        articulo.setCuv(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "bar":
+                        articulo.setBar(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "p21":
+                        articulo.setP21(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "p22":
+                        articulo.setP22(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "p23":
+                        articulo.setP23(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "p24":
+                        articulo.setP24(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "p25":
+                        articulo.setP25(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "iv2":
+                        articulo.setIv2(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ima":
+                        articulo.setIma(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "abr":
+                        articulo.setAbr(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "coi":
+                        articulo.setCoi(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "di1":
+                        articulo.setDi1(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "di2":
+                        articulo.setDi2(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "sec":
+                        articulo.setSec(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "tem":
+                        articulo.setTem(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ide":
+                        articulo.setIde(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "tra":
+                        articulo.setTra(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "coe":
+                        articulo.setCoe(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "eim":
+                        articulo.setEim(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "gru":
+                        articulo.setGru(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "pos":
+                        articulo.setPos(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "fot":
+                        articulo.setFot(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "trazab":
+                        articulo.setTrazab(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "medida":
+                        articulo.setMedida(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "num_med":
+                        articulo.setNum_Med(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "med_1":
+                        articulo.setMed_1(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "med_2":
+                        articulo.setMed_2(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "med_3":
+                        articulo.setMed_3(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "bultos":
+                        articulo.setBultos(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "paquet":
+                        articulo.setPaquet(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "impues":
+                        articulo.setImpues(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "art_Imp":
+                        articulo.setArt_Imp(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "sum_Imp":
+                        articulo.setSum_Imp(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "fac_Can":
+                        articulo.setFac_Can(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "fac_Imp":
+                        articulo.setFac_Imp(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "fec_Cre":
+                        articulo.setFec_Cre(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "obsole":
+                        articulo.setObsole(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "per_Com":
+                        articulo.setPer_Com(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "per_Ven":
+                        articulo.setPer_Ven(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "peso":
+                        articulo.setPeso(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "volumen":
+                        articulo.setVolumen(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "men_Sto":
+                        articulo.setMen_Sto(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "con_Sto":
+                        articulo.setCon_Sto(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "marca1":
+                        articulo.setMarca1(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "marca2":
+                        articulo.setMarca2(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ped_Tex":
+                        articulo.setPed_Tex(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ped_Cos":
+                        articulo.setPed_Cos(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "env":
+                        articulo.setEnv(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v01":
+                        articulo.setV01(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v02":
+                        articulo.setV02(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v03":
+                        articulo.setV03(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v04":
+                        articulo.setV04(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v05":
+                        articulo.setV05(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v06":
+                        articulo.setV06(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v07":
+                        articulo.setV07(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v08":
+                        articulo.setV08(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v09":
+                        articulo.setV09(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v10":
+                        articulo.setV10(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v11":
+                        articulo.setV11(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "v12":
+                        articulo.setV12(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ctadevcom":
+                        articulo.setCtadevcom(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ctadevven":
+                        articulo.setCtadevven(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ctadtocom":
+                        articulo.setCtadtocom(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ctadtoven":
+                        articulo.setCtadtoven(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "meses":
+                        articulo.setMeses(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "imaweb":
+                        articulo.setImaweb(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "fabpro":
+                        articulo.setFabpro(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "fabtip":
+                        articulo.setFabtip(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "nse":
+                        articulo.setNse(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "historia":
+                        articulo.setHistoria(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "art_Minped":
+                        articulo.setArt_Minped(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "art_Subfam":
+                        articulo.setArt_Subfam(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "art_Marca":
+                        articulo.setArt_Marca(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Nov":
+                        articulo.setWeb_Nov(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Fealno":
+                        articulo.setWeb_Fealno(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Des":
+                        articulo.setWeb_Des(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "coefici":
+                        articulo.setCoefici(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "web_Sub":
+                        articulo.setWeb_Sub(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Actd":
+                        articulo.setWeb_Actd(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Acth":
+                        articulo.setWeb_Acth(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "divs1":
+                        articulo.setDivs1(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "divs2":
+                        articulo.setDivs2(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Cat1":
+                        articulo.setWeb_Cat1(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "web_Cat2":
+                        articulo.setWeb_Cat2(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "web_Cat3":
+                        articulo.setWeb_Cat3(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "ntv":
+                        articulo.setNtv(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "agr":
+                        articulo.setAgr(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "com":
+                        articulo.setCom(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "hor":
+                        articulo.setHor(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "come":
+                        articulo.setCome(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "tim":
+                        articulo.setTim(Integer.parseInt(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "dos":
+                        articulo.setDos(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "num_Pro":
+                        articulo.setNum_Pro(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "num_Com":
+                        articulo.setNum_Com(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "csi":
+                        articulo.setCsi(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "inc_Pre":
+                        articulo.setInc_Pre(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "inc_Red":
+                        articulo.setInc_Red(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "web_Orcat1":
+                        articulo.setWeb_Orcat1(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "web_Orcat2":
+                        articulo.setWeb_Orcat2(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "web_Orcat3":
+                        articulo.setWeb_Orcat3(Float.parseFloat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "web_Metat":
+                        articulo.setWeb_Metat(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Metad":
+                        articulo.setWeb_Metad(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_Urla":
+                        articulo.setWeb_Urla(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_H1":
+                        articulo.setWeb_H1(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_H2_1":
+                        articulo.setWeb_H2_1(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "web_H2_2":
+                        articulo.setWeb_H2_2(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "sincro":
+                        articulo.setSincro(devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                }
+            }
+            System.out.println(articulo);
+            articulos.add(articulo);
+        }
+    }
+
+    public void BancoEmpresaSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void ClientesSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void ContactosClientesSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void ContactosProveedoresSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void DatosBancariosClientesSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void DatosBancariosProveedoresSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void DireccionesClientesSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void DireccionesProveedoresSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void ExistenciasSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void FacturasEmitidasSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void FacturasRecibidasSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void FamiliasSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void FormasPagoSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void MarcasArticuloSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void PlanContableSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void PrevisionesCobroPagoSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void ProveedoresSwitch() {
+        System.out.println("En desarrollo");
+    }
+
+    public void SubfamiliasSwitch() {
+        System.out.println("En desarrollo");
+    }
+
 }

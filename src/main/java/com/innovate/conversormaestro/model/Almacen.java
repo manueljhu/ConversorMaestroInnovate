@@ -54,4 +54,9 @@ public class Almacen {
             this.age = age.replace("'", "");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Almacen: nom=" + nom + ", ser=" + ser + ", se2=" + se2 + ", age=" + age + "";
+    }
 }
