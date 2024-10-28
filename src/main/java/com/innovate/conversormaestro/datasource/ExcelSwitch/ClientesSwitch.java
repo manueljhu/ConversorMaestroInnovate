@@ -2,32 +2,26 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
-import com.innovate.conversormaestro.model.Apunte;
 import com.innovate.conversormaestro.model.Cliente;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class ClientesSwitch {
-    private ArrayList<Relacion> relaciones;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Cliente> clientes;
 
     public void Clientes(ArrayList<Relacion> relaciones) {
-        this.relaciones = relaciones;
         int nFilas = excelUtils.devuelveNFilasExcel();
-        int longitud = 0;
 
         clientes = new ArrayList<Cliente>();
         Cliente cliente;
-        String cod;
 
         for (int i = 0; i < nFilas; i++) {
             cliente = new Cliente();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        cod = excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen());
-                        cliente.setCod(cod);
+                        cliente.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "nom":
                         cliente.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

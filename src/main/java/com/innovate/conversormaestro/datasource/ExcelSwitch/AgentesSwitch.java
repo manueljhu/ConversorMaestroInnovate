@@ -7,31 +7,22 @@ import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class AgentesSwitch {
-    private ArrayList<Relacion> relaciones;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Agente> agentes;
 
     public void Agentes(ArrayList<Relacion> relaciones){
-        this.relaciones = relaciones;
         int nFilas = excelUtils.devuelveNFilasExcel();
-        int longitud = 0;
 
         agentes = new ArrayList<Agente>();
         Agente agente;
-        String cod;
-    
+
         for(int i = 1;i<=nFilas;i++)
         {
             agente = new Agente();
             for (int j = 0; j < relaciones.size(); j++) {
-                /*
-                 * System.out.println(relaciones.get(j).getCampoOrigen());
-                 * System.out.println(relaciones.get(j).getCampoDestino());
-                 */
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        cod = excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen());
-                        agente.setCod(cod);
+                        agente.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "nom":
                         agente.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

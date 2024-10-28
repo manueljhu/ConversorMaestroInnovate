@@ -7,18 +7,14 @@ import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class AsientosSwitch {
-    private ArrayList<Relacion> relaciones;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Apunte> asientos;
 
     public void Asientos(ArrayList<Relacion> relaciones) {
-        this.relaciones = relaciones;
         int nFilas = excelUtils.devuelveNFilasExcel();
-        int longitud = 0;
 
         asientos = new ArrayList<Apunte>();
         Apunte asiento;
-        String cod;
 
         for (int i = 0; i < nFilas; i++) {
             asiento = new Apunte();

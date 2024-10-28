@@ -25,7 +25,6 @@ public class SQLController {
 
     // Method to start the connection to the source database
     private void startConnectionOrigin() {
-        ArrayList<String> result = new ArrayList<String>();
         String Servercon = connectionController.getServerSource();
         String[] ServerElements;
         Servercon = Servercon.replace("\\", "%");

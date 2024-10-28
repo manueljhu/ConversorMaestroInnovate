@@ -237,4 +237,11 @@ public class DatoBancario {
         this.fman = fman;
     }
 
+    @Override
+    public String toString() {
+        return "DatoBancario: cla=" + cla + ", cod=" + cod + ", dir=" + dir + ", pob=" + pob + ", npro=" + npro
+                + ", pro=" + pro + ", pais=" + pais + ", iban=" + iban + ", bic=" + bic + ", cu1=" + cu1 + ", cu2="
+                + cu2 + ", cu3=" + cu3 + ", cu4=" + cu4 + ", hab=" + hab + ", bban=" + bban + ", trem=" + trem
+                + ", epri=" + epri + ", nman=" + nman + ", fman=" + fman + "";
+    }   
 }

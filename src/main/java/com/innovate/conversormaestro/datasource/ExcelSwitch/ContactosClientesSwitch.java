@@ -2,24 +2,19 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
-import com.innovate.conversormaestro.model.Apunte;
 import com.innovate.conversormaestro.model.Contacto;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class ContactosClientesSwitch {
-    private ArrayList<Relacion> relaciones;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Contacto> contactos;
 
-    public void ContactosClientes(ArrayList<Relacion> relaciones){
-        this.relaciones = relaciones;
+    public void Contactos(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
-        int longitud = 0;
 
         contactos = new ArrayList<Contacto>();
         Contacto contacto;
-        String cod;
 
         for (int i = 0; i < nFilas; i++) {
             contacto = new Contacto();

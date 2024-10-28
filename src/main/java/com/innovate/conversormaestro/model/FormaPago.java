@@ -161,4 +161,11 @@ public class FormaPago {
         }
     }
 
+    @Override
+    public String toString() {
+        return "FormaPago [nom=" + nom + ", di1=" + di1 + ", di2=" + di2 + ", dir=" + dir + ", npa=" + npa + ", mes="
+                + mes + ", vto=" + vto + ", inc=" + inc + ", cad=" + cad + ", cob=" + cob + ", car=" + car
+                + ", porcobdir=" + porcobdir + ", inclib=" + inclib + ", reppro=" + reppro + ", cuecobdir=" + cuecobdir
+                + "]";
+    }
 }

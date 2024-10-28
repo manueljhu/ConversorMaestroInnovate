@@ -163,6 +163,7 @@ public class ConnectionController {
 
         setApunTable();
         setAlmaTable();
+        System.out.println();
         
         System.out.println("----------------------------------------");
         System.out.println("BBDD Destino \nServer: "+ServerDestination+"\nUser: "+UserDestination+"\nPassword: "+PasswordDestination+"\nEnterprise: "+EnterpriseDestination+"\nExercise: "+ExerciseDestination+"\nAccountDigits: "+AccountDigitsDestination+"\nGroupDigits: "+GroupDigitsDestination+"\nWarehouseDestination: "+WarehouseDestination);
@@ -213,7 +214,7 @@ public class ConnectionController {
     }
 
     public void setAlmaTable(){
-        tables.get(14).setName("ALMA"+WarehouseDestination);
+        tables.get(12).setName("ALMA"+WarehouseDestination);
     }
 
     // Method to start the connection to the destination database
@@ -243,7 +244,8 @@ public class ConnectionController {
     public ArrayList<String> getColumnDestination(String description){
         String tablename = tables.get(getTableIndex(description)).getName();
         ArrayList<String> result = new ArrayList<String>();
-        String query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename + "'";
+        String query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename + "' AND COLUMN_NAME <> 'id'";
+        System.out.println(query);
         java.sql.Statement st;
         try {
 

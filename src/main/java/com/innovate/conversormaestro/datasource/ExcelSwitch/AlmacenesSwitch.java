@@ -1,6 +1,5 @@
 package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Almacen;
@@ -8,14 +7,11 @@ import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class AlmacenesSwitch {
-private ArrayList<Relacion> relaciones;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Almacen> almacenes;
 
     public void Almacenes(ArrayList<Relacion> relaciones) {
-        this.relaciones = relaciones;
         int nFilas = excelUtils.devuelveNFilasExcel();
-        int longitud = 0;
         
         almacenes = new ArrayList<Almacen>();
         Almacen almacen;

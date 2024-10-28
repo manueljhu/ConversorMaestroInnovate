@@ -7,14 +7,11 @@ import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class ArticulosSwitch {
-    private ArrayList<Relacion> relaciones;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Articulo> articulos;
 
     public void Articulos(ArrayList<Relacion> relaciones){
-        this.relaciones = relaciones;
         int nFilas = excelUtils.devuelveNFilasExcel();
-        int longitud = 0;
 
         articulos = new ArrayList<Articulo>();
         Articulo articulo;

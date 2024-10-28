@@ -7,18 +7,14 @@ import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class BancoEmpresaSwitch {
-    private ArrayList<Relacion> relaciones;
     private ExcelUtils excelUtils = new ExcelUtils();
     private static ArrayList<Banco> bancoEmpresa;
 
     public void Bancos(ArrayList<Relacion> relaciones){
-        this.relaciones = relaciones;
         int nFilas = excelUtils.devuelveNFilasExcel();
-        int longitud = 0;
 
         bancoEmpresa = new ArrayList<Banco>();
         Banco banco;
-        String cod;
 
         for (int i = 0; i < nFilas; i++) {
             banco = new Banco();

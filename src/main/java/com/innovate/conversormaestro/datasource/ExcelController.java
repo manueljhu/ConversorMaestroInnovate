@@ -30,21 +30,22 @@ public class ExcelController {
     private static ClientesSwitch clientesSwitch = new ClientesSwitch();
     private static ContactosClientesSwitch contactosClientesSwitch = new ContactosClientesSwitch();
     private static ContactosProveedoresSwitch contactosProveedoresSwitch = new ContactosProveedoresSwitch();
+    private static DatosBancariosClientesSwitch datosBancariosClientesSwitch = new DatosBancariosClientesSwitch();
+    private static DatosBancariosProveedoresSwitch datosBancariosProveedoresSwitch = new DatosBancariosProveedoresSwitch();
+    private static DireccionesClientesSwitch direccionesClientesSwitch = new DireccionesClientesSwitch();
+    private static DireccionesProveedoresSwitch direccionesProveedoresSwitch = new DireccionesProveedoresSwitch();
+    private static ExistenciasSwitch existenciasSwitch = new ExistenciasSwitch();
+    private static FacturasEmitidasSwitch facturasEmitidasSwitch = new FacturasEmitidasSwitch();
+    private static FacturasRecibidasSwitch facturasRecibidasSwitch = new FacturasRecibidasSwitch();
 
-
-    private static ArrayList<DatoBancario> bancoClientes;
-    private static ArrayList<DatoBancario> bancoProveedores;
-    private static ArrayList<Cuenta> cuentasContables;
-    private static ArrayList<Direccion> direccionesClientes;
-    private static ArrayList<Direccion> direccionesProveedores;
     private static ArrayList<FacturaEmitida> facturasEmitidas;
     private static ArrayList<FacturaRecibida> facturasRecibidas;
     private static ArrayList<Familia> familias;
     private static ArrayList<FormaPago> formasPago;
     private static ArrayList<MarcasArticulo> marcasArticulos;
+    private static ArrayList<Cuenta> cuentasContables;
     private static ArrayList<Efecto> efectos;
     private static ArrayList<Proveedor> proveedores;
-    private static ArrayList<Stock> stocks;
     private static ArrayList<Subfamilia> subfamiliaArticulos;
 
     private ExcelController() {
@@ -158,28 +159,28 @@ public class ExcelController {
                 clientesSwitch.Clientes(relaciones);
                 break;
             case "Contactos de clientes":
-                contactosClientesSwitch.ContactosClientes(relaciones);
+                contactosClientesSwitch.Contactos(relaciones);
                 break;
             case "Contactos de proveedores":
-                contactosProveedoresSwitch.ContactosProveedores(relaciones);
+                contactosProveedoresSwitch.Contactos(relaciones);
                 break;
             case "Datos bancarios clientes":
-                DatosBancariosClientesSwitch();
+                datosBancariosClientesSwitch.DatosBancarios(relaciones);
                 break;
             case "Datos bancarios proveedores":
-                DatosBancariosProveedoresSwitch();
+                datosBancariosProveedoresSwitch.DatosBancarios(relaciones);
                 break;
             case "Direcciones de clientes":
-                DireccionesClientesSwitch();
+                direccionesClientesSwitch.DireccionesSwitch(relaciones);
                 break;
             case "Direcciones de proveedores":
-                DireccionesProveedoresSwitch();
+                direccionesProveedoresSwitch.DireccionesSwitch(relaciones);
                 break;
             case "Existencias":
-                ExistenciasSwitch();
+                existenciasSwitch.Existencias(relaciones);
                 break;
             case "Facturas emitidas":
-                FacturasEmitidasSwitch();
+                facturasEmitidasSwitch.FacturasEmitidas(relaciones);
                 break;
             case "Facturas recibidas":
                 FacturasRecibidasSwitch();
@@ -208,26 +209,6 @@ public class ExcelController {
             default:
                 break;
         }
-    }
-
-    public void DatosBancariosClientesSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void DatosBancariosProveedoresSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void DireccionesClientesSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void DireccionesProveedoresSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void ExistenciasSwitch() {
-        System.out.println("En desarrollo");
     }
 
     public void FacturasEmitidasSwitch() {
