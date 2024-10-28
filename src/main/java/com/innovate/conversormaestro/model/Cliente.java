@@ -1804,4 +1804,44 @@ public class Cliente {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Cliente: cod=" + cod + ", nom=" + nom + ", sno=" + sno + ", dir=" + dir + ", pob=" + pob + ", npro="
+                + npro + ", pro=" + pro + ", nif=" + nif + ", te1=" + te1 + ", te2=" + te2 + ", fax=" + fax + ", mov="
+                + mov + ", per=" + per + ", car=" + car + ", ter=" + ter + ", req=" + req + ", red=" + red + ", dto="
+                + dto + ", com=" + com + ", fin=" + fin + ", fac=" + fac + ", tar=" + tar + ", forpag=" + forpag
+                + ", di1=" + di1 + ", di2=" + di2 + ", di3=" + di3 + ", mnp=" + mnp + ", m30=" + m30 + ", vto=" + vto
+                + ", inc=" + inc + ", rie=" + rie + ", rut=" + rut + ", age=" + age + ", nco=" + nco + ", alv=" + alv
+                + ", fa1=" + fa1 + ", fa2=" + fa2 + ", tra=" + tra + ", mar=" + mar + ", dt2=" + dt2 + ", tia=" + tia
+                + ", fo2=" + fo2 + ", d1b=" + d1b + ", d2b=" + d2b + ", d3b=" + d3b + ", mnb=" + mnb + ", imp=" + imp
+                + ", tre=" + tre + ", ret=" + ret + ", fgl=" + fgl + ", ifg=" + ifg + ", web=" + web + ", doc=" + doc
+                + ", fpd=" + fpd + ", pais=" + pais + ", ext=" + ext + ", ob1=" + ob1 + ", ob2=" + ob2 + ", rediva1="
+                + rediva1 + ", rediva2=" + rediva2 + ", rediva3=" + rediva3 + ", rediva4=" + rediva4 + ", rediva5="
+                + rediva5 + ", avi0ped=" + avi0ped + ", avi1ped=" + avi1ped + ", avi2ped=" + avi2ped + ", avi0alb="
+                + avi0alb + ", avi1alb=" + avi1alb + ", avi2alb=" + avi2alb + ", avi0fac=" + avi0fac + ", avi1fac="
+                + avi1fac + ", avi2fac=" + avi2fac + ", avi0rec=" + avi0rec + ", avi1rec=" + avi1rec + ", avi2rec="
+                + avi2rec + ", avi0pre=" + avi0pre + ", avi1pre=" + avi1pre + ", avi2pre=" + avi2pre + ", ivainc="
+                + ivainc + ", fot=" + fot + ", env=" + env + ", xxx=" + xxx + ", fcr_crm=" + fcr_crm + ", tip_crm="
+                + tip_crm + ", ftr_crm=" + ftr_crm + ", tco_crm=" + tco_crm + ", ref_crm=" + ref_crm + ", vis_crm="
+                + vis_crm + ", pvi_crm=" + pvi_crm + ", lla_crm=" + lla_crm + ", pll_crm=" + pll_crm + ", ru1_crm="
+                + ru1_crm + ", ru2_crm=" + ru2_crm + ", ru3_crm=" + ru3_crm + ", sec_crm=" + sec_crm + ", dias_crm="
+                + dias_crm + ", tpl_crm=" + tpl_crm + ", fna_crm=" + fna_crm + ", imprap=" + imprap + ", dtorap="
+                + dtorap + ", tar_art=" + tar_art + ", tar_fam=" + tar_fam + ", efactura=" + efactura + ", perrap="
+                + perrap + ", facedir=" + facedir + ", facepob=" + facepob + ", facenpro=" + facenpro + ", facepro="
+                + facepro + ", facepais=" + facepais + ", facenom=" + facenom + ", faceape1=" + faceape1 + ", faceape2="
+                + faceape2 + ", facefoj=" + facefoj + ", v01=" + v01 + ", v02=" + v02 + ", v03=" + v03 + ", v04=" + v04
+                + ", v05=" + v05 + ", v06=" + v06 + ", v07=" + v07 + ", v08=" + v08 + ", v09=" + v09 + ", v10=" + v10
+                + ", v11=" + v11 + ", v12=" + v12 + ", historia=" + historia + ", lopd_ori=" + lopd_ori
+                + ", lopd_otr_o=" + lopd_otr_o + ", lopd_ces=" + lopd_ces + ", lopd_otr_c=" + lopd_otr_c
+                + ", cli_facalb=" + cli_facalb + ", cln_tarsub=" + cln_tarsub + ", cln_tarmar=" + cln_tarmar
+                + ", cln_idioma=" + cln_idioma + ", moneda=" + moneda + ", avi0dep=" + avi0dep + ", avi_dep=" + avi_dep
+                + ", avi_ped=" + avi_ped + ", avi_pre=" + avi_pre + ", avi_alb=" + avi_alb + ", avi_fac=" + avi_fac
+                + ", avi_rec=" + avi_rec + ", web_acc=" + web_acc + ", web_psw=" + web_psw + ", obs_doc=" + obs_doc
+                + ", actividad=" + actividad + ", emailweb=" + emailweb + ", web_exepor=" + web_exepor + ", tip_rem="
+                + tip_rem + ", fec_man=" + fec_man + ", cri_caja=" + cri_caja + ", facemed=" + facemed + ", faceiban="
+                + faceiban + ", facever=" + facever + ", facepol=" + facepol + ", por_efac=" + por_efac
+                + ", web_codact=" + web_codact + ", sincro=" + sincro + "";
+    }
+
+    
 }

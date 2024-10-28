@@ -1,0 +1,87 @@
+package com.innovate.conversormaestro.datasource.ExcelSwitch;
+
+import java.util.ArrayList;
+
+import com.innovate.conversormaestro.model.Apunte;
+import com.innovate.conversormaestro.model.Relacion;
+import com.innovate.conversormaestro.utils.ExcelUtils;
+
+public class AsientosSwitch {
+    private ArrayList<Relacion> relaciones;
+    private ExcelUtils excelUtils = new ExcelUtils();
+    private ArrayList<Apunte> asientos;
+
+    public void Asientos(ArrayList<Relacion> relaciones) {
+        this.relaciones = relaciones;
+        int nFilas = excelUtils.devuelveNFilasExcel();
+        int longitud = 0;
+
+        asientos = new ArrayList<Apunte>();
+        Apunte asiento;
+        String cod;
+
+        for (int i = 0; i < nFilas; i++) {
+            asiento = new Apunte();
+            for (int j = 0; j < relaciones.size(); j++) {
+                switch (relaciones.get(j).getCampoDestino()) {
+                    case "num":
+                        asiento.setNum(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "fec":
+                        asiento.setFec(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "cue":
+                        asiento.setCue(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "con":
+                        asiento.setCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "sig":
+                        asiento.setSig(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "mar":
+                        asiento.setMar(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "fac":
+                        asiento.setFac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "doc":
+                        asiento.setDoc(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "xxx":
+                        asiento.setXxx(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "impeu":
+                        asiento.setImpeu(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "acl":
+                        asiento.setAcl(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "cen":
+                        asiento.setCen(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "ren":
+                        asiento.setRen(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "met":
+                        asiento.setMet(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                    case "apu_tipdoc":
+                        asiento.setApu_Tipdoc(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "apu_numdoc":
+                        asiento.setApu_Numdoc(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
+                    case "anno_efe":
+                        asiento.setAnno_Efe(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
+                }
+            }
+            System.out.println(asiento);
+            asientos.add(asiento);
+        }
+    }
+}

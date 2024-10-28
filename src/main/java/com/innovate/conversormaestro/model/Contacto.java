@@ -193,4 +193,13 @@ public class Contacto {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Contacto: cla=" + cla + ", cod=" + cod + ", nom=" + nom + ", car=" + car + ", tel=" + tel + ", ext="
+                + ext + ", ob1=" + ob1 + ", ob2=" + ob2 + ", ob3=" + ob3 + ", email=" + email + ", codcon=" + codcon
+                + ", lopd_ori=" + lopd_ori + ", lopd_otr_o=" + lopd_otr_o + ", lopd_ces=" + lopd_ces + ", lopd_otr_c="
+                + lopd_otr_c + "";
+    }
+
+    
 }

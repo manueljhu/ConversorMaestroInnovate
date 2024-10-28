@@ -1758,4 +1758,40 @@ public class Articulo {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Articulo: cod=" + cod + ", nom=" + nom + ", fam=" + fam + ", obs=" + obs + ", min=" + min + ", max="
+                + max + ", med=" + med + ", uni=" + uni + ", cla=" + cla + ", iva=" + iva + ", ubi=" + ubi + ", rea="
+                + rea + ", rep=" + rep + ", cos=" + cos + ", pba=" + pba + ", dtocom1=" + dtocom1 + ", dtocom2="
+                + dtocom2 + ", dtoven1=" + dtoven1 + ", dtoven2=" + dtoven2 + ", dt1=" + dt1 + ", dt2=" + dt2 + ", dt3="
+                + dt3 + ", dt4=" + dt4 + ", dt5=" + dt5 + ", co1=" + co1 + ", co2=" + co2 + ", co3=" + co3 + ", co4="
+                + co4 + ", co5=" + co5 + ", pmc=" + pmc + ", upc=" + upc + ", ufc=" + ufc + ", pro=" + pro + ", pmv="
+                + pmv + ", upv=" + upv + ", ufv=" + ufv + ", exi=" + exi + ", vai=" + vai + ", ent=" + ent + ", ptc="
+                + ptc + ", sal=" + sal + ", ptv=" + ptv + ", ma1=" + ma1 + ", ma2=" + ma2 + ", ma3=" + ma3 + ", ma4="
+                + ma4 + ", ma5=" + ma5 + ", d01=" + d01 + ", d02=" + d02 + ", d03=" + d03 + ", d04=" + d04 + ", d05="
+                + d05 + ", cuc=" + cuc + ", cuv=" + cuv + ", bar=" + bar + ", p21=" + p21 + ", p22=" + p22 + ", p23="
+                + p23 + ", p24=" + p24 + ", p25=" + p25 + ", iv2=" + iv2 + ", ima=" + ima + ", abr=" + abr + ", coi="
+                + coi + ", di1=" + di1 + ", di2=" + di2 + ", sec=" + sec + ", tem=" + tem + ", ide=" + ide + ", tra="
+                + tra + ", coe=" + coe + ", eim=" + eim + ", gru=" + gru + ", pos=" + pos + ", fot=" + fot + ", trazab="
+                + trazab + ", medida=" + medida + ", num_med=" + num_med + ", med_1=" + med_1 + ", med_2=" + med_2
+                + ", med_3=" + med_3 + ", bultos=" + bultos + ", paquet=" + paquet + ", impues=" + impues + ", art_imp="
+                + art_imp + ", sum_imp=" + sum_imp + ", fac_can=" + fac_can + ", fac_imp=" + fac_imp + ", fec_cre="
+                + fec_cre + ", obsole=" + obsole + ", per_com=" + per_com + ", per_ven=" + per_ven + ", peso=" + peso
+                + ", volumen=" + volumen + ", men_sto=" + men_sto + ", con_sto=" + con_sto + ", marca1=" + marca1
+                + ", marca2=" + marca2 + ", ped_tex=" + ped_tex + ", ped_cos=" + ped_cos + ", env=" + env + ", v01="
+                + v01 + ", v02=" + v02 + ", v03=" + v03 + ", v04=" + v04 + ", v05=" + v05 + ", v06=" + v06 + ", v07="
+                + v07 + ", v08=" + v08 + ", v09=" + v09 + ", v10=" + v10 + ", v11=" + v11 + ", v12=" + v12
+                + ", ctadevcom=" + ctadevcom + ", ctadevven=" + ctadevven + ", ctadtocom=" + ctadtocom + ", ctadtoven="
+                + ctadtoven + ", meses=" + meses + ", imaweb=" + imaweb + ", fabpro=" + fabpro + ", fabtip=" + fabtip
+                + ", nse=" + nse + ", historia=" + historia + ", art_minped=" + art_minped + ", art_subfam="
+                + art_subfam + ", art_marca=" + art_marca + ", web_nov=" + web_nov + ", web_fealno=" + web_fealno
+                + ", web_des=" + web_des + ", coefici=" + coefici + ", web_sub=" + web_sub + ", web_actd=" + web_actd
+                + ", web_acth=" + web_acth + ", divs1=" + divs1 + ", divs2=" + divs2 + ", web_cat1=" + web_cat1
+                + ", web_cat2=" + web_cat2 + ", web_cat3=" + web_cat3 + ", ntv=" + ntv + ", agr=" + agr + ", com=" + com
+                + ", hor=" + hor + ", come=" + come + ", tim=" + tim + ", dos=" + dos + ", num_pro=" + num_pro
+                + ", num_com=" + num_com + ", csi=" + csi + ", inc_pre=" + inc_pre + ", inc_red=" + inc_red
+                + ", web_orcat1=" + web_orcat1 + ", web_orcat2=" + web_orcat2 + ", web_orcat3=" + web_orcat3
+                + ", web_metat=" + web_metat + ", web_metad=" + web_metad + ", web_urla=" + web_urla + ", web_h1="
+                + web_h1 + ", web_h2_1=" + web_h2_1 + ", web_h2_2=" + web_h2_2 + ", sincro=" + sincro + "";
+    } 
 }
