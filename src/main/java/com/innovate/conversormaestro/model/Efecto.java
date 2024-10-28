@@ -473,7 +473,7 @@ public class Efecto {
 
     @Override
     public String toString() {
-        return "Efecto [num=" + num + ", fec=" + fec + ", cue=" + cue + ", con=" + con + ", tip=" + tip + ", ban=" + ban
+        return "Efecto: num=" + num + ", fec=" + fec + ", cue=" + cue + ", con=" + con + ", tip=" + tip + ", ban=" + ban
                 + ", vto=" + vto + ", fac=" + fac + ", rem=" + rem + ", fre=" + fre + ", fpa=" + fpa + ", dev=" + dev
                 + ", xx1=" + xx1 + ", xx2=" + xx2 + ", xx3=" + xx3 + ", impeu=" + impeu + ", pageu=" + pageu + ", car="
                 + car + ", imprem=" + imprem + ", cueapu=" + cueapu + ", impdev=" + impdev + ", impgas=" + impgas
@@ -481,6 +481,6 @@ public class Efecto {
                 + ", serie=" + serie + ", impreso=" + impreso + ", efe_tipagr=" + efe_tipagr + ", efe_docagr="
                 + efe_docagr + ", efe_nefagr=" + efe_nefagr + ", efe_genagr=" + efe_genagr + ", efe_ren=" + efe_ren
                 + ", numefedev=" + numefedev + ", moneda=" + moneda + ", cotiza=" + cotiza + ", impmon=" + impmon
-                + ", diasmax=" + diasmax + ", fecini=" + fecini + "]";
+                + ", diasmax=" + diasmax + ", fecini=" + fecini + "";
     }
 }

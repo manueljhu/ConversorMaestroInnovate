@@ -80,7 +80,9 @@ public class ConnectionController {
         tables.add(table);
         table = new Tables("CUENTA", "Plan contable");
         tables.add(table);
-        table = new Tables("EFECTO", "Previsiones de cobro y de pago");
+        table = new Tables("EFECTO", "Previsiones de cobro");
+        tables.add(table);
+        table = new Tables("EFECTO", "Previsiones de pago");
         tables.add(table);
         table = new Tables("PROVEE", "Proveedores");
         tables.add(table);
@@ -245,7 +247,6 @@ public class ConnectionController {
         String tablename = tables.get(getTableIndex(description)).getName();
         ArrayList<String> result = new ArrayList<String>();
         String query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename + "' AND COLUMN_NAME <> 'id'";
-        System.out.println(query);
         java.sql.Statement st;
         try {
 
