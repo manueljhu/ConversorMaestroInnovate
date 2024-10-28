@@ -207,4 +207,11 @@ public class Apunte {
         this.anno_efe = anno_efe;
     }
 
+    @Override
+    public String toString() {
+        return "Apunte: num=" + num + ", fec=" + fec + ", cue=" + cue + ", con=" + con + ", sig=" + sig + ", mar=" + mar
+                + ", fac=" + fac + ", doc=" + doc + ", xxx=" + xxx + ", impeu=" + impeu + ", acl=" + acl + ", cen="
+                + cen + ", ren=" + ren + ", met=" + met + ", apu_tipdoc=" + apu_tipdoc + ", apu_numdoc=" + apu_numdoc
+                + ", anno_efe=" + anno_efe + "";
+    }
 }
