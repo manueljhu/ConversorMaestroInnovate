@@ -163,4 +163,10 @@ public class Direccion {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Direccion: cla=" + cla + ", cod=" + cod + ", den=" + den + ", dir=" + dir + ", pob=" + pob + ", npro="
+                + npro + ", pro=" + pro + ", pais=" + pais + ", email=" + email + ", rut=" + rut + ", tel=" + tel
+                + ", hab=" + hab + ", per=" + per + "";
+    }
 }

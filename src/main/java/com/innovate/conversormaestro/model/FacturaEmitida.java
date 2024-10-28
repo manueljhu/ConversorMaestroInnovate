@@ -1732,4 +1732,49 @@ public class FacturaEmitida {
         this.aeatimpcon = aeatimpcon;
     }
 
+    @Override
+    public String toString() {
+        return "FacturaEmitida: num=" + num + ", fea=" + fea + ", doc=" + doc + ", fee=" + fee + ", gas=" + gas
+                + ", cue=" + cue + ", li1=" + li1 + ", li2=" + li2 + ", dt1=" + dt1 + ", dt2=" + dt2 + ", fuc=" + fuc
+                + ", forpag=" + forpag + ", fin=" + fin + ", alm=" + alm + ", com=" + com + ", nom=" + nom + ", nif="
+                + nif + ", ba1eu=" + ba1eu + ", iv1eu=" + iv1eu + ", re1eu=" + re1eu + ", ba2eu=" + ba2eu + ", iv2eu="
+                + iv2eu + ", re2eu=" + re2eu + ", ba3eu=" + ba3eu + ", iv3eu=" + iv3eu + ", re3eu=" + re3eu + ", ba4eu="
+                + ba4eu + ", iv4eu=" + iv4eu + ", re4eu=" + re4eu + ", ba5eu=" + ba5eu + ", iv5eu=" + iv5eu + ", re5eu="
+                + re5eu + ", exeeu=" + exeeu + ", ulceu=" + ulceu + ", toceu=" + toceu + ", enteu=" + enteu + ", imceu="
+                + imceu + ", imreu=" + imreu + ", tre=" + tre + ", pre=" + pre + ", ireeu=" + ireeu + ", den=" + den
+                + ", rut=" + rut + ", obr=" + obr + ", ivainc=" + ivainc + ", tra=" + tra + ", entped=" + entped
+                + ", impuesto=" + impuesto + ", tip=" + tip + ", web=" + web + ", aut=" + aut + ", comis=" + comis
+                + ", negativa=" + negativa + ", fecope=" + fecope + ", efacgen=" + efacgen + ", efacenv=" + efacenv
+                + ", sno=" + sno + ", dir=" + dir + ", pob=" + pob + ", npro=" + npro + ", pro=" + pro + ", pais="
+                + pais + ", mod303=" + mod303 + ", mod303a=" + mod303a + ", mod303b=" + mod303b + ", mod303c=" + mod303c
+                + ", mod347=" + mod347 + ", usuario_bloqueo=" + usuario_bloqueo + ", emi_deb_pag=" + emi_deb_pag
+                + ", emi_incluir=" + emi_incluir + ", emi_antes_dto=" + emi_antes_dto + ", emi_iva_inc=" + emi_iva_inc
+                + ", moneda=" + moneda + ", cotiza=" + cotiza + ", basmon=" + basmon + ", totmon=" + totmon
+                + ", entmon=" + entmon + ", obs_doc=" + obs_doc + ", recargo=" + recargo + ", retgar=" + retgar
+                + ", porretgar=" + porretgar + ", impretgar=" + impretgar + ", tipretgar=" + tipretgar + ", suplidos="
+                + suplidos + ", iva1=" + iva1 + ", iva2=" + iva2 + ", iva3=" + iva3 + ", iva4=" + iva4 + ", iva5="
+                + iva5 + ", rec1=" + rec1 + ", rec2=" + rec2 + ", rec3=" + rec3 + ", rec4=" + rec4 + ", rec5=" + rec5
+                + ", tipivaok=" + tipivaok + ", exento=" + exento + ", numtic=" + numtic + ", cri_caja=" + cri_caja
+                + ", ded_cie=" + ded_cie + ", cen_adm=" + cen_adm + ", siiest=" + siiest + ", siiact=" + siiact
+                + ", siitipfra=" + siitipfra + ", siifraemi=" + siifraemi + ", siitiprec=" + siitiprec + ", siitipsuj="
+                + siitipsuj + ", siitipnsu=" + siitipnsu + ", siitipexe=" + siitipexe + ", siidesfra=" + siidesfra
+                + ", siiimpnsu=" + siiimpnsu + ", siiimptai=" + siiimptai + ", siiimpexe=" + siiimpexe + ", siinifemi="
+                + siinifemi + ", siiemiter=" + siiemiter + ", siicupon=" + siicupon + ", siivardes=" + siivardes
+                + ", siidatrec=" + siidatrec + ", siidatinm=" + siidatinm + ", siidatagr=" + siidatagr + ", siibasrec="
+                + siibasrec + ", siicuorec=" + siicuorec + ", siirecrec=" + siirecrec + ", siibascos=" + siibascos
+                + ", siitraiva=" + siitraiva + ", siientexe=" + siientexe + ", siientcexe=" + siientcexe
+                + ", siienttsuj=" + siienttsuj + ", siientnsu=" + siientnsu + ", siienttai=" + siienttai
+                + ", siientdes=" + siientdes + ", siiserexe=" + siiserexe + ", siisercexe=" + siisercexe
+                + ", siisertsuj=" + siisertsuj + ", siisernsu=" + siisernsu + ", siisertai=" + siisertai
+                + ", siiserdes=" + siiserdes + ", siidatdes=" + siidatdes + ", siifraemi1=" + siifraemi1
+                + ", siifraemi2=" + siifraemi2 + ", siinumacu=" + siinumacu + ", siinumresf=" + siinumresf
+                + ", siinemiter=" + siinemiter + ", siidesman=" + siidesman + ", patron=" + patron + ", siirefext="
+                + siirefext + ", siinomensu=" + siinomensu + ", siinifensu=" + siinifensu + ", siidesnoid=" + siidesnoid
+                + ", siifraiden=" + siifraiden + ", siimergas=" + siimergas + ", siidesexen=" + siidesexen
+                + ", siimacro=" + siimacro + ", siiregprev=" + siiregprev + ", siientdexe=" + siientdexe
+                + ", siiserdexe=" + siiserdexe + ", aeattipfac=" + aeattipfac + ", aeattiping=" + aeattiping
+                + ", aeatimpcon=" + aeatimpcon + "";
+    }
+
+    
 }

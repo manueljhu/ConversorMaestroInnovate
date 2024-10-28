@@ -82,4 +82,9 @@ public class Stock {
         this.max = max;
     }
 
+    @Override
+    public String toString() {
+        return "Stock: cod=" + cod + ", exi=" + exi + ", ent=" + ent + ", sal=" + sal + ", ubi=" + ubi + ", ide=" + ide
+                + ", min=" + min + ", max=" + max + "";
+    }
 }

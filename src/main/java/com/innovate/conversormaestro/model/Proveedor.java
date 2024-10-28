@@ -1142,8 +1142,27 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return "INSERT INTO PROVEE (cod, 	nom, 	dir, 	npro, 	pob, 	pro, 	nif, 	te1, 	te2, 	fax, 	mov, 	ter, 	per, 	car, 	for, 	dto, 	red, 	por, 	poa, 	ctg, 	mar, 	dt2, 	di1, 	di2, 	di3, 	mnp, 	tia, 	tre, 	ret, 	ob1, 	ob2, 	ob3, 	web, 	ext, 	rediva1, 	rediva2, 	rediva3, 	rediva4, 	rediva5, 	avi0ped, 	avi1ped, 	avi2ped, 	avi0alb, 	avi1alb, 	avi2alb, 	avi0fac, 	avi1fac, 	avi2fac, 	avi0rec, 	avi1rec, 	avi2rec, 	ivainc, 	fot, 	doc, 	pais, 	xxx, 	imprap, 	dtorap, 	perrap, 	v01, 	v02, 	v03, 	v04, 	v05, 	v06, 	v07, 	v08, 	v09, 	v10, 	v11, 	v12, 	historia, 	lopd_ori, 	lopd_otr_o, 	lopd_ces, 	lopd_otr_c, 	pro_idioma, 	moneda, 	avi_ped, 	avi_alb, 	avi_fac, 	avi_rec, 	actividad, 	contrato, 	fec_eval, 	res_eval, 	fec_apro, 	nota_eval, 	product1, 	product2, 	obs_cal, 	cer_cal, 	cer_med, 	cer_pre, 	perval, 	diasmax, 	autof, 	tip_rem, 	cri_caja)"
-                + " VALUES('" + cod + "',	'" + nom + "',	'" + dir + "',	" + npro + ",	'" + pob + "',	'" + pro + "',	'" + nif + "',	'" + te1 + "',	'" + te2 + "',"
-                + "	'" + fax + "',	'" + mov + "',	'" + ter + "',	'" + per + "',	'" + car + "',	" + forpag + ",	" + dto + ",	'" + red + "',	'" + por + "',	'" + poa + "',	'" + ctg + "',	'" + mar + "',	" + dt2 + ",	" + di1 + ",	" + di2 + ",	" + di3 + ",	" + mnp + ",	'" + tia + "',	" + tre + ",	" + ret + ",	'" + ob1 + "',	'" + ob2 + "',	'" + ob3 + "',	'" + web + "',	'" + ext + "',	" + rediva1 + ",	" + rediva2 + ",	" + rediva3 + ",	" + rediva4 + ",	" + rediva5 + ",	" + avi0ped + ",	'" + avi1ped + "',	'" + avi2ped + "',	" + avi0alb + ",	'" + avi1alb + "',	'" + avi2alb + "',	" + avi0fac + ",	'" + avi1fac + "',	'" + avi2fac + "',	" + avi0rec + ",	'" + avi1rec + "',	'" + avi2rec + "',	'" + ivainc + "',	'" + fot + "',	'" + doc + "',	" + pais + ",	'" + xxx + "',	" + imprap + ",	" + dtorap + ",	" + perrap + ",	'" + v01 + "',	'" + v02 + "',	'" + v03 + "',	'" + v04 + "',	'" + v05 + "',	'" + v06 + "',	'" + v07 + "',	'" + v08 + "',	'" + v09 + "',	'" + v10 + "',	'" + v11 + "',	'" + v12 + "',	'" + historia + "',	" + lopd_ori + ",	'" + lopd_Otr_O + "',	'" + lopd_Ces + "',	'" + lopd_Otr_C + "',	" + pro_idioma + ",	" + moneda + ",	'" + avi_Ped + "',	'" + avi_Alb + "',	'" + avi_Fac + "',	'" + avi_Rec + "',	'" + actividad + "',	'" + contrato + "',	'" + fec_Eval + "',	'" + res_Eval + "',	'" + fec_Apro + "',	" + nota_Eval + ",	'" + product1 + "',	'" + product2 + "',	'" + obs_Cal + "',	'" + cer_Cal + "',	'" + cer_Med + "',	'" + cer_Pre + "',	" + perval + ",	" + diasmax + ",	'" + autof + "',	" + tip_Rem + ",	'" + cri_Caja + "');";
+        return "Proveedor: cod=" + cod + ", nom=" + nom + ", dir=" + dir + ", npro=" + npro + ", pob=" + pob + ", pro="
+                + pro + ", nif=" + nif + ", te1=" + te1 + ", te2=" + te2 + ", fax=" + fax + ", mov=" + mov + ", ter="
+                + ter + ", per=" + per + ", car=" + car + ", forpag=" + forpag + ", dto=" + dto + ", red=" + red
+                + ", por=" + por + ", poa=" + poa + ", ctg=" + ctg + ", mar=" + mar + ", dt2=" + dt2 + ", di1=" + di1
+                + ", di2=" + di2 + ", di3=" + di3 + ", mnp=" + mnp + ", tia=" + tia + ", tre=" + tre + ", ret=" + ret
+                + ", ob1=" + ob1 + ", ob2=" + ob2 + ", ob3=" + ob3 + ", web=" + web + ", ext=" + ext + ", rediva1="
+                + rediva1 + ", rediva2=" + rediva2 + ", rediva3=" + rediva3 + ", rediva4=" + rediva4 + ", rediva5="
+                + rediva5 + ", avi0ped=" + avi0ped + ", avi1ped=" + avi1ped + ", avi2ped=" + avi2ped + ", avi0alb="
+                + avi0alb + ", avi1alb=" + avi1alb + ", avi2alb=" + avi2alb + ", avi0fac=" + avi0fac + ", avi1fac="
+                + avi1fac + ", avi2fac=" + avi2fac + ", avi0rec=" + avi0rec + ", avi1rec=" + avi1rec + ", avi2rec="
+                + avi2rec + ", ivainc=" + ivainc + ", fot=" + fot + ", doc=" + doc + ", pais=" + pais + ", xxx=" + xxx
+                + ", imprap=" + imprap + ", dtorap=" + dtorap + ", perrap=" + perrap + ", v01=" + v01 + ", v02=" + v02
+                + ", v03=" + v03 + ", v04=" + v04 + ", v05=" + v05 + ", v06=" + v06 + ", v07=" + v07 + ", v08=" + v08
+                + ", v09=" + v09 + ", v10=" + v10 + ", v11=" + v11 + ", v12=" + v12 + ", historia=" + historia
+                + ", lopd_ori=" + lopd_ori + ", lopd_Otr_O=" + lopd_Otr_O + ", lopd_Ces=" + lopd_Ces + ", lopd_Otr_C="
+                + lopd_Otr_C + ", pro_idioma=" + pro_idioma + ", moneda=" + moneda + ", avi_Ped=" + avi_Ped
+                + ", avi_Alb=" + avi_Alb + ", avi_Fac=" + avi_Fac + ", avi_Rec=" + avi_Rec + ", actividad=" + actividad
+                + ", contrato=" + contrato + ", fec_Eval=" + fec_Eval + ", res_Eval=" + res_Eval + ", fec_Apro="
+                + fec_Apro + ", nota_Eval=" + nota_Eval + ", product1=" + product1 + ", product2=" + product2
+                + ", obs_Cal=" + obs_Cal + ", cer_Cal=" + cer_Cal + ", cer_Med=" + cer_Med + ", cer_Pre=" + cer_Pre
+                + ", perval=" + perval + ", diasmax=" + diasmax + ", autof=" + autof + ", tip_Rem=" + tip_Rem
+                + ", cri_Caja=" + cri_Caja + "";
     }
 }
