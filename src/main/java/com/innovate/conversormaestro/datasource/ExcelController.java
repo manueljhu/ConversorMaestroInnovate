@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -37,16 +36,14 @@ public class ExcelController {
     private static ExistenciasSwitch existenciasSwitch = new ExistenciasSwitch();
     private static FacturasEmitidasSwitch facturasEmitidasSwitch = new FacturasEmitidasSwitch();
     private static FacturasRecibidasSwitch facturasRecibidasSwitch = new FacturasRecibidasSwitch();
-
-    private static ArrayList<FacturaEmitida> facturasEmitidas;
-    private static ArrayList<FacturaRecibida> facturasRecibidas;
-    private static ArrayList<Familia> familias;
-    private static ArrayList<FormaPago> formasPago;
-    private static ArrayList<MarcasArticulo> marcasArticulos;
-    private static ArrayList<Cuenta> cuentasContables;
-    private static ArrayList<Efecto> efectos;
-    private static ArrayList<Proveedor> proveedores;
-    private static ArrayList<Subfamilia> subfamiliaArticulos;
+    private static FamiliasSwitch familiasSwitch = new FamiliasSwitch();
+    private static FormasPagoSwitch formasPagoSwitch = new FormasPagoSwitch();
+    private static MarcasArticuloSwitch marcasArticuloSwitch = new MarcasArticuloSwitch();
+    private static PlanContableSwitch planContableSwitch = new PlanContableSwitch();
+    private static PrevisionesCobroSwitch previsionesCobroSwitch = new PrevisionesCobroSwitch();
+    private static PrevisionesPagoSwitch previsionesPagoSwitch = new PrevisionesPagoSwitch();
+    private static ProveedoresSwitch proveedoresSwitch = new ProveedoresSwitch();
+    private static SubFamiliasSwitch subFamiliasSwitch = new SubFamiliasSwitch();
 
     private ExcelController() {
         connectionController = ConnectionController.getConectionController();
@@ -183,68 +180,32 @@ public class ExcelController {
                 facturasEmitidasSwitch.FacturasEmitidas(relaciones);
                 break;
             case "Facturas recibidas":
-                FacturasRecibidasSwitch();
+                facturasRecibidasSwitch.FacturasRecibidas(relaciones);
                 break;
             case "Familias":
-                FamiliasSwitch();
+                familiasSwitch.Familias(relaciones);
                 break;
             case "Formas de pago":
-                FormasPagoSwitch();
+                formasPagoSwitch.FormasPago(relaciones);
                 break;
             case "Marcas articulo":
-                MarcasArticuloSwitch();
+                marcasArticuloSwitch.MarcasArticulos(relaciones);
                 break;
             case "Plan contable":
-                PlanContableSwitch();
+                planContableSwitch.PlanesContables(relaciones);
                 break;
-            case "Previsiones de cobro y de pago":
-                PrevisionesCobroPagoSwitch();
+            case "Previsiones de cobro":
+                previsionesCobroSwitch.PrevisionesCobro(relaciones);
+                break;
+            case "Previsiones de pago":
+                previsionesPagoSwitch.PrevisionesPago(relaciones);
                 break;
             case "Proveedores":
-                ProveedoresSwitch();
+                proveedoresSwitch.Proveedores(relaciones);
                 break;
             case "Subfamilias":
-                SubfamiliasSwitch();
-                break;
-            default:
+                subFamiliasSwitch.Subfamilias(relaciones);
                 break;
         }
     }
-
-    public void FacturasEmitidasSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void FacturasRecibidasSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void FamiliasSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void FormasPagoSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void MarcasArticuloSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void PlanContableSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void PrevisionesCobroPagoSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void ProveedoresSwitch() {
-        System.out.println("En desarrollo");
-    }
-
-    public void SubfamiliasSwitch() {
-        System.out.println("En desarrollo");
-    }
-
 }
