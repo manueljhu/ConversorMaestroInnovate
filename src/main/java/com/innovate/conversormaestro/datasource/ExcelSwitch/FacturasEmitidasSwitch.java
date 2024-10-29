@@ -2,6 +2,7 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.FacturaEmitida;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
@@ -11,6 +12,9 @@ public class FacturasEmitidasSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FacturaEmitida> facturasEmitidas;
     private FormatUtils formatUtils = new FormatUtils();
+    private ConnectionController connectionController;
+    String group = connectionController.getGroupDigitsDestination();
+    String account = connectionController.getAccountDigitsDestination();
 
     public void FacturasEmitidas(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -23,7 +27,7 @@ public class FacturasEmitidasSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
                     case "num":
-                        facturaEmitida.setNum(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        facturaEmitida.setNum(formatUtils.format2digits6("FACEMI", excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fea":
                         facturaEmitida.setFea(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -38,7 +42,7 @@ public class FacturasEmitidasSwitch {
                         facturaEmitida.setGas(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cue":
-                        facturaEmitida.setCue(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        facturaEmitida.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "li1":
                         facturaEmitida.setLi1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

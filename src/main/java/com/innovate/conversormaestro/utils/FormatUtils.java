@@ -1,13 +1,17 @@
 package com.innovate.conversormaestro.utils;
 
+import java.sql.ResultSet;
 import java.util.Scanner;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.utils.MyAlert;
 
 import javafx.scene.control.Alert.AlertType;
 
 public class FormatUtils {
+    ConnectionController connectionController;
     Scanner scanner = new Scanner(System.in);
+    private int last_num = 0;
 
     public String format6digits(String value) {
         String result = "";
@@ -70,6 +74,41 @@ public class FormatUtils {
                 alert.showAlert(AlertType.ERROR, "Error en el formato de la cuenta", "La cuenta no cumple con el formato requerido");
             }
         }
+        System.out.println("Result: " + result);
+        return result;
+    }
+
+    public String format2digits6(String table, String value) {
+        String result = "";
+        connectionController = ConnectionController.getConectionController();
+        if (value.isEmpty()) {
+            String query = "SELECT MAX(CAST(RIGHT(num, 6) AS INT)) AS LAST_NUM FROM " + table;
+            System.out.println(connectionController);
+            ResultSet rs = connectionController.getDataQuery(query);
+            try {
+                while (rs.next()) {
+                    int temp = rs.getInt("LAST_NUM");
+                    if (last_num == 0){
+                        last_num = temp + 1;
+                    } else {
+                        last_num++;
+                    }
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+
+            String temp = connectionController.getExerciseDestination();
+            temp = temp.substring(2, 4);
+            result = temp + "/" + format6digits(String.valueOf(last_num));
+        } else {
+            String temp = connectionController.getExerciseDestination();
+            temp = temp.substring(2, 4);
+            result = temp + "/" + format6digits(value);
+        }
+        
+
+        
         System.out.println("Result: " + result);
         return result;
     }

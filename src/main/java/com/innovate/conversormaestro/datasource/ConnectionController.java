@@ -1,7 +1,10 @@
 package com.innovate.conversormaestro.datasource;
 
+import java.sql.Statement;
+import java.lang.Thread.State;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -9,6 +12,7 @@ import com.innovate.conversormaestro.model.Tables;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ConnectionController {
+    private FormatUtils formatUtils = new FormatUtils();
     private static ConnectionController instance = null;
     private Connection connectionDestination = null;
     private Connection connectionGP = null;
@@ -227,7 +231,7 @@ public class ConnectionController {
     }
 
     // Method to start the connection to the destination database
-    private void startConnectionDestination() {
+    public void startConnectionDestination() {
         String Servercon = getServerDestination();
         String[] ServerElements;
         Servercon = Servercon.replace("\\", "%");
@@ -237,7 +241,7 @@ public class ConnectionController {
 
         String URLConection = "jdbc:jtds:sqlserver://" + ServerIP + ";instance=" + ServerInstance
                 + ";DatabaseName=GPBusiness" + getEnterpriseDestination();
-
+        
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             connectionDestination = DriverManager.getConnection(URLConection, getUserDestination(),
@@ -329,6 +333,25 @@ public class ConnectionController {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public ResultSet getDataQuery(String query){
+        ResultSet rs = null;
+        Statement st = null;
+        
+        try {
+            startConnectionDestination();
+            st = connectionDestination.createStatement();
+            rs = st.executeQuery(query);
+
+            System.out.println("Sale del getDataQuery");
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        closeConnectionDestination();
+        return rs;
     }
 
     public static ConnectionController getInstance() {

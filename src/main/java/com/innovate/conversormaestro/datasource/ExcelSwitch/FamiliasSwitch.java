@@ -2,13 +2,19 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Familia;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FamiliasSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Familia> familias;
+    private FormatUtils formatUtils = new FormatUtils();
+    private ConnectionController connectionController;
+    String group = connectionController.getGroupDigitsDestination();
+    String account = connectionController.getAccountDigitsDestination();
 
     public void Familias(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -24,10 +30,10 @@ public class FamiliasSwitch {
                         familia.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cuc":
-                        familia.setCuc(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        familia.setCuc(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cuv":
-                        familia.setCuv(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        familia.setCuv(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "co1":
                         familia.setCo1(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
@@ -114,16 +120,16 @@ public class FamiliasSwitch {
                         familia.setPos(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ctadevcom":
-                        familia.setCtadevcom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        familia.setCtadevcom(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadevven":
-                        familia.setCtadevven(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        familia.setCtadevven(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadtocom":
-                        familia.setCtadtocom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        familia.setCtadtocom(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadtoven":
-                        familia.setCtadtoven(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        familia.setCtadtoven(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "historia":
                         familia.setHistoria(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
