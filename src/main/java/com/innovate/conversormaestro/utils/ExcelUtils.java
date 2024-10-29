@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -28,13 +27,9 @@ public class ExcelUtils {
 
             HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream);
             HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
-            HSSFRow hssfRowCabecera;
-
-            HSSFCell cell;
-            hssfRowCabecera = hssfSheet.getRow(0);
 
             result = hssfSheet.getLastRowNum();
-
+            hssfWorkbook.close();
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("The file not exists (No se encontró el fichero): " + fileNotFoundException);
         } catch (IOException ex) {
@@ -60,7 +55,7 @@ public class ExcelUtils {
             HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
             HSSFRow hssfRowCabecera;
             HSSFRow hssfRow;
-            HSSFCell cell;
+
             hssfRowCabecera = hssfSheet.getRow(0);
             hssfRow = hssfSheet.getRow(fila);
             for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
@@ -73,7 +68,7 @@ public class ExcelUtils {
                     }
                 }
             }
-
+            hssfWorkbook.close();
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("Error al leer el fichero excel");
         } catch (IOException ex) {

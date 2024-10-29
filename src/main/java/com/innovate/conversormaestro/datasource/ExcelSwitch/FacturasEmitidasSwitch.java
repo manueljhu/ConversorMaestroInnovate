@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.FacturaEmitida;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FacturasEmitidasSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FacturaEmitida> facturasEmitidas;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void FacturasEmitidas(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -27,13 +29,13 @@ public class FacturasEmitidasSwitch {
                         facturaEmitida.setFea(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "doc":
-                        facturaEmitida.setDoc(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        facturaEmitida.setDoc(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fee":
                         facturaEmitida.setFee(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "gas":
-                        facturaEmitida.setGas(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        facturaEmitida.setGas(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cue":
                         facturaEmitida.setCue(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -147,7 +149,7 @@ public class FacturasEmitidasSwitch {
                         facturaEmitida.setDen(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "rut":
-                        facturaEmitida.setRut(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        facturaEmitida.setRut(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "obr":
                         facturaEmitida.setObr(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

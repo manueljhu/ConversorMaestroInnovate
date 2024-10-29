@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Tables;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ConnectionController {
-
     private static ConnectionController instance = null;
     private Connection connectionDestination = null;
     private Connection connectionGP = null;
@@ -38,7 +38,7 @@ public class ConnectionController {
     private String PathSourceExcel;
 
     ArrayList<Tables> tables;
-    
+
     private ConnectionController() {
         tables = new ArrayList<Tables>();
         Tables table = new Tables();
@@ -88,11 +88,11 @@ public class ConnectionController {
         tables.add(table);
         table = new Tables("SUBFAM", "Subfamilias");
         tables.add(table);
-        
+
     }
 
-    public static ConnectionController getConectionController(){
-        if(instance == null){
+    public static ConnectionController getConectionController() {
+        if (instance == null) {
             instance = new ConnectionController();
         }
         return instance;
@@ -142,6 +142,7 @@ public class ConnectionController {
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             con = DriverManager.getConnection(URLConection, User, Password);
+            System.out.println(con);
             result = true;
         } catch (Exception e) {
             result = false;
@@ -152,7 +153,8 @@ public class ConnectionController {
         return result;
     }
 
-    public void saveCredentialsDestination(String ServerD, String UserD, String PasswordD, String EnterpriseD, String ExerciseD,
+    public void saveCredentialsDestination(String ServerD, String UserD, String PasswordD, String EnterpriseD,
+            String ExerciseD,
             String AccountDigitsD, String GroupDigitsD, String WarehouseDestinationD) {
         ServerDestination = ServerD;
         UserDestination = UserD;
@@ -166,12 +168,16 @@ public class ConnectionController {
         setApunTable();
         setAlmaTable();
         System.out.println();
-        
+
         System.out.println("----------------------------------------");
-        System.out.println("BBDD Destino \nServer: "+ServerDestination+"\nUser: "+UserDestination+"\nPassword: "+PasswordDestination+"\nEnterprise: "+EnterpriseDestination+"\nExercise: "+ExerciseDestination+"\nAccountDigits: "+AccountDigitsDestination+"\nGroupDigits: "+GroupDigitsDestination+"\nWarehouseDestination: "+WarehouseDestination);
+        System.out.println("BBDD Destino \nServer: " + ServerDestination + "\nUser: " + UserDestination + "\nPassword: "
+                + PasswordDestination + "\nEnterprise: " + EnterpriseDestination + "\nExercise: " + ExerciseDestination
+                + "\nAccountDigits: " + AccountDigitsDestination + "\nGroupDigits: " + GroupDigitsDestination
+                + "\nWarehouseDestination: " + WarehouseDestination);
     }
 
-    public void saveCredentialsOriginSQL(String ServerO, String UserO, String PasswordO, String DatabaseO, String OptionO) {
+    public void saveCredentialsOriginSQL(String ServerO, String UserO, String PasswordO, String DatabaseO,
+            String OptionO) {
         ServerSource = ServerO;
         UserSource = UserO;
         PasswordSource = PasswordO;
@@ -180,48 +186,48 @@ public class ConnectionController {
         SourceTab = "SQL";
 
         System.out.println("----------------------------------------");
-        System.out.println("BBDD Origen \nServer: "+ServerSource+"\nUser: "+UserSource+"\nPassword: "+PasswordSource+"\nDatabase: "+DataBaseSource+"\nOption: "+OptionSource);
-        //SQLController
+        System.out.println("BBDD Origen \nServer: " + ServerSource + "\nUser: " + UserSource + "\nPassword: "
+                + PasswordSource + "\nDatabase: " + DataBaseSource + "\nOption: " + OptionSource);
+        // SQLController
     }
 
-    public void saveCredentialsOriginDBF(String PathO){
+    public void saveCredentialsOriginDBF(String PathO) {
         PathSourceDBF = PathO;
         SourceTab = "DBF";
 
         System.out.println("----------------------------------------");
-        System.out.println("DBF Origen: \nPath "+PathSourceDBF);
+        System.out.println("DBF Origen: \nPath " + PathSourceDBF);
     }
 
-    public void saveCredentialsOriginExcel(String PathO){
+    public void saveCredentialsOriginExcel(String PathO) {
         PathSourceExcel = PathO;
         SourceTab = "Excel";
 
         System.out.println("----------------------------------------");
-        System.out.println("Excel Origen: \nPath "+PathSourceExcel);
+        System.out.println("Excel Origen: \nPath " + PathSourceExcel);
     }
 
-    public ArrayList<String> getDataComboDestination(){
-        
+    public ArrayList<String> getDataComboDestination() {
+
         ArrayList<String> result = new ArrayList<String>();
 
         for (Tables table : tables) {
             result.add(table.getDescription());
         }
-        
+
         return result;
     }
 
-    public void setApunTable(){
-        tables.get(3).setName("APUN"+ExerciseDestination.substring(ExerciseDestination.length()-2));
+    public void setApunTable() {
+        tables.get(3).setName("APUN" + ExerciseDestination.substring(ExerciseDestination.length() - 2));
     }
 
-    public void setAlmaTable(){
-        tables.get(12).setName("ALMA"+WarehouseDestination);
+    public void setAlmaTable() {
+        tables.get(12).setName("ALMA" + WarehouseDestination);
     }
 
     // Method to start the connection to the destination database
     private void startConnectionDestination() {
-        boolean result = false;
         String Servercon = getServerDestination();
         String[] ServerElements;
         Servercon = Servercon.replace("\\", "%");
@@ -234,50 +240,50 @@ public class ConnectionController {
 
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            connectionDestination = DriverManager.getConnection(URLConection, getUserDestination(), getPasswordDestination());
-            result = true;
+            connectionDestination = DriverManager.getConnection(URLConection, getUserDestination(),
+                    getPasswordDestination());
         } catch (Exception e) {
-            result = false;
-            /* System.out.println("Error: " + e.getMessage());
-            e.printStackTrace(); */
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    public ArrayList<String> getColumnDestination(String description){
+    public ArrayList<String> getColumnDestination(String description) {
         String tablename = tables.get(getTableIndex(description)).getName();
         ArrayList<String> result = new ArrayList<String>();
-        String query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename + "' AND COLUMN_NAME <> 'id'";
+        String query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename
+                + "' AND COLUMN_NAME <> 'id'";
         java.sql.Statement st;
         try {
 
-            if(tablename.equals("FORPAG")){
+            if (tablename.equals("FORPAG")) {
                 startConnectionGP();
                 st = connectionGP.createStatement();
             } else {
                 startConnectionDestination();
                 st = connectionDestination.createStatement();
             }
-            
+
             java.sql.ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 result.add(rs.getString("name"));
             }
         } catch (Exception e) {
-            /* System.out.println("Error: " + e.getMessage());
-            e.printStackTrace(); */
+
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+
         }
-        if(tablename.equals("FORPAG")){
+        if (tablename.equals("FORPAG")) {
             closeConnectionGP();
         } else {
             closeConnectionDestination();
         }
 
-        
         return result;
     }
 
-    public void startConnectionGP(){
-        boolean result = false;
+    public void startConnectionGP() {
         String Servercon = getServerDestination();
         String[] ServerElements;
         Servercon = Servercon.replace("\\", "%");
@@ -291,18 +297,16 @@ public class ConnectionController {
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             connectionGP = DriverManager.getConnection(URLConection, getUserDestination(), getPasswordDestination());
-            result = true;
         } catch (Exception e) {
-            result = false;
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private int getTableIndex(String description){
+    private int getTableIndex(String description) {
         int index = 0;
         for (Tables table : tables) {
-            if (table.getDescription().equals(description)){
+            if (table.getDescription().equals(description)) {
                 index = tables.indexOf(table);
             }
         }
@@ -326,7 +330,6 @@ public class ConnectionController {
             e.printStackTrace();
         }
     }
-
 
     public static ConnectionController getInstance() {
         return instance;

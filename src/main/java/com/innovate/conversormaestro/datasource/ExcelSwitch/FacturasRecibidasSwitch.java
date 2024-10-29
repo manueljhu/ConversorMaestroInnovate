@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.FacturaRecibida;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FacturasRecibidasSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FacturaRecibida> facturasRecibidas;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void FacturasRecibidas(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -27,7 +29,7 @@ public class FacturasRecibidasSwitch {
                         facturaRecibida.setFea(excelUtils.devuelveValorCelda(index, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "doc":
-                        facturaRecibida.setDoc(excelUtils.devuelveValorCelda(index, relaciones.get(j).getCampoOrigen()));
+                        facturaRecibida.setDoc(formatUtils.format6digits(excelUtils.devuelveValorCelda(index, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nuf":
                         facturaRecibida.setNuf(excelUtils.devuelveValorCelda(index, relaciones.get(j).getCampoOrigen()));

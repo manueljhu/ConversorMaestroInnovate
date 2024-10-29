@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.Cliente;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ClientesSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Cliente> clientes;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void Clientes(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -21,7 +23,7 @@ public class ClientesSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        cliente.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        cliente.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
                         cliente.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

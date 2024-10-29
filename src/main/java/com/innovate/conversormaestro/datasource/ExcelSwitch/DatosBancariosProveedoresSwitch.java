@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.DatoBancario;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class DatosBancariosProveedoresSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<DatoBancario> datosBancarios;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void DatosBancarios(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -22,7 +24,7 @@ public class DatosBancariosProveedoresSwitch {
                 datoBancario.setCla("PR");
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cod":
-                        datoBancario.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dir":
                         datoBancario.setDir(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

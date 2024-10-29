@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.Proveedor;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ProveedoresSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Proveedor> proveedores;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void Proveedores(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -21,7 +23,7 @@ public class ProveedoresSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        proveedor.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
                         proveedor.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

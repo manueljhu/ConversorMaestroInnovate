@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.Agente;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class AgentesSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Agente> agentes;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void Agentes(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -22,7 +24,7 @@ public class AgentesSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        agente.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        agente.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
                         agente.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -64,7 +66,7 @@ public class AgentesSwitch {
                         agente.setOb3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "rut":
-                        agente.setRut(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        agente.setRut(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tip":
                         agente.setTip(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
