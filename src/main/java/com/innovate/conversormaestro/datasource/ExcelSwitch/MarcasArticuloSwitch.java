@@ -2,13 +2,19 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.MarcasArticulo;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class MarcasArticuloSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<MarcasArticulo> marcasArticulos;
+    private FormatUtils formatUtils = new FormatUtils();
+    private ConnectionController connectionController;
+    String group = connectionController.getGroupDigitsDestination();
+    String account = connectionController.getAccountDigitsDestination();
 
     public void MarcasArticulos(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -117,16 +123,16 @@ public class MarcasArticuloSwitch {
                         marcasArticulo.setPos(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ctadevcom":
-                        marcasArticulo.setCtadevcom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        marcasArticulo.setCtadevcom(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadevven":
-                        marcasArticulo.setCtadevven(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        marcasArticulo.setCtadevven(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadtocom":
-                        marcasArticulo.setCtadtocom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        marcasArticulo.setCtadtocom(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadtoven":
-                        marcasArticulo.setCtadtoven(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        marcasArticulo.setCtadtoven(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "historia":
                         marcasArticulo.setHistoria(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

@@ -2,6 +2,7 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Efecto;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
@@ -11,6 +12,9 @@ public class PrevisionesPagoSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Efecto> previsionespagos;
     private FormatUtils formatUtils = new FormatUtils();
+    private ConnectionController connectionController;
+    String group = connectionController.getGroupDigitsDestination();
+    String account = connectionController.getAccountDigitsDestination();
 
     public void PrevisionesPago(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -30,7 +34,7 @@ public class PrevisionesPagoSwitch {
                         previsionespago.setFec(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cue":
-                        previsionespago.setCue(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "con":
                         previsionespago.setCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

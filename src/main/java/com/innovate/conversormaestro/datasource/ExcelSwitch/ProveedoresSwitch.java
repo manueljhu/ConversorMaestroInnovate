@@ -2,6 +2,7 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Proveedor;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
@@ -11,6 +12,9 @@ public class ProveedoresSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Proveedor> proveedores;
     private FormatUtils formatUtils = new FormatUtils();
+    private ConnectionController connectionController;
+    String group = connectionController.getGroupDigitsDestination();
+    String account = connectionController.getAccountDigitsDestination();
 
     public void Proveedores(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -80,7 +84,7 @@ public class ProveedoresSwitch {
                         proveedor.setPoa(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ctg":
-                        proveedor.setCtg(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setCtg(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "mar":
                         proveedor.setMar(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

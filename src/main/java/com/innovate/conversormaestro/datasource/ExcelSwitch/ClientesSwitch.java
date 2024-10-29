@@ -116,10 +116,10 @@ public class ClientesSwitch {
                         cliente.setRie(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rut":
-                        cliente.setRut(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        cliente.setRut(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "age":
-                        cliente.setAge(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        cliente.setAge(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nco":
                         cliente.setNco(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
@@ -296,7 +296,7 @@ public class ClientesSwitch {
                         cliente.setPll_Crm(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ru1_crm":
-                        cliente.setRu1_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        cliente.setRu1_Crm(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ru2_crm":
                         cliente.setRu2_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
