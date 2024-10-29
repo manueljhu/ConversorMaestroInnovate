@@ -103,10 +103,12 @@ public class SQLController {
         SQLController.instance = instance;
     }
 
+    @SuppressWarnings("exports")
     public Connection getConnectionOrigin() {
         return connectionOrigin;
     }
 
+    @SuppressWarnings("exports")
     public void setConnectionOrigin(Connection connectionOrigin) {
         this.connectionOrigin = connectionOrigin;
     }

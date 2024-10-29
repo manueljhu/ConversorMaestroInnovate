@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.Direccion;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class DireccionesProveedoresSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Direccion> direcciones;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void DireccionesSwitch(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -22,7 +24,7 @@ public class DireccionesProveedoresSwitch {
                 direccion.setCla("PR");
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cod":
-                        direccion.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "den":
                         direccion.setDen(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -46,7 +48,7 @@ public class DireccionesProveedoresSwitch {
                         direccion.setEmail(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "rut":
-                        direccion.setRut(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setRut(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tel":
                         direccion.setTel(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

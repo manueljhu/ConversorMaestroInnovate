@@ -2,13 +2,19 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Apunte;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class AsientosSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Apunte> asientos;
+    private FormatUtils formatUtils = new FormatUtils();
+    private ConnectionController connectionController;
+    String group = connectionController.getGroupDigitsDestination();
+    String account = connectionController.getAccountDigitsDestination();
 
     public void Asientos(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -21,13 +27,15 @@ public class AsientosSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "num":
-                        asiento.setNum(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        asiento.setNum(formatUtils
+                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fec":
                         asiento.setFec(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cue":
-                        asiento.setCue(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        asiento.setCue(formatUtils.formatDigitGroupAccount(group, account,
+                                excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "con":
                         asiento.setCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -42,7 +50,8 @@ public class AsientosSwitch {
                         asiento.setFac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "doc":
-                        asiento.setDoc(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        asiento.setDoc(formatUtils
+                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "xxx":
                         asiento.setXxx(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

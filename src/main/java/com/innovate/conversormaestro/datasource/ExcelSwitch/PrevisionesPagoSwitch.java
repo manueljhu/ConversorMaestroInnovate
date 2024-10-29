@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.Efecto;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class PrevisionesPagoSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Efecto> previsionespagos;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void PrevisionesPago(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
@@ -22,7 +24,7 @@ public class PrevisionesPagoSwitch {
                 previsionespago.setTip("P");
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "num":
-                        previsionespago.setNum(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setNum(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fec":
                         previsionespago.setFec(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

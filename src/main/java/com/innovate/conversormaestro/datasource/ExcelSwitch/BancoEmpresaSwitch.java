@@ -2,15 +2,21 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Banco;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class BancoEmpresaSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private static ArrayList<Banco> bancoEmpresa;
+    private FormatUtils formatUtils = new FormatUtils();
+    private ConnectionController connectionController;
+    String group = connectionController.getGroupDigitsDestination();
+    String account = connectionController.getAccountDigitsDestination();
 
-    public void Bancos(ArrayList<Relacion> relaciones){
+    public void Bancos(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
 
         bancoEmpresa = new ArrayList<Banco>();
@@ -19,15 +25,16 @@ public class BancoEmpresaSwitch {
         for (int i = 0; i < nFilas; i++) {
             banco = new Banco();
             for (int j = 0; j < relaciones.size(); j++) {
-                switch(relaciones.get(j).getCampoDestino()){
+                switch (relaciones.get(j).getCampoDestino()) {
                     case "cue":
-                        banco.setCue(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        banco.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "des":
                         banco.setDes(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "rie":
-                        banco.setRie(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        banco.setRie(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cta":
                         banco.setCta(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -39,7 +46,8 @@ public class BancoEmpresaSwitch {
                         banco.setPob(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "npro":
-                        banco.setNpro(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        banco.setNpro(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pro":
                         banco.setPro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

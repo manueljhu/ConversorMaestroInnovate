@@ -6,11 +6,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
+/* import org.apache.poi.hssf.usermodel.HSSFCell; */
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellType;
+/* import org.apache.poi.ss.usermodel.CellType; */
 
 import com.innovate.conversormaestro.model.*;
 import com.innovate.conversormaestro.datasource.ExcelSwitch.*;
@@ -62,40 +62,6 @@ public class ExcelController {
         this.relaciones = relaciones;
     }
 
-    public void readExcelFile() {
-
-        InputStream excelStream = null;
-        try {
-            excelStream = new FileInputStream(PathSourceExcel);
-
-            HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream);
-            HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
-            HSSFRow hssfRowCabecera;
-
-            HSSFCell cell;
-            hssfRowCabecera = hssfSheet.getRow(0);
-
-            /*
-             * for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
-             * System.out.println(hssfRowCabecera.getCell(c).getStringCellValue());
-             * }
-             */
-
-        } catch (FileNotFoundException fileNotFoundException) {
-            System.out.println("The file not exists (No se encontró el fichero): " + fileNotFoundException);
-        } catch (IOException ex) {
-            System.out.println("Error in file procesing (Error al procesar el fichero): " + ex);
-        } finally {
-            try {
-                excelStream.close();
-            } catch (IOException ex) {
-                System.out.println(
-                        "Error in file processing after close it (Error al procesar el fichero después de cerrarlo): "
-                                + ex);
-            }
-        }
-    }
-
     public String getPathSourceExcel() {
         return PathSourceExcel;
     }
@@ -111,13 +77,14 @@ public class ExcelController {
             HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
             HSSFRow hssfRowCabecera;
 
-            HSSFCell cell;
+            /* HSSFCell cell; */
             hssfRowCabecera = hssfSheet.getRow(0);
 
             for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
                 /* System.out.println(hssfRowCabecera.getCell(c).getStringCellValue()); */
                 result.add(hssfRowCabecera.getCell(c).getStringCellValue());
             }
+            hssfWorkbook.close();
 
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("The file not exists (No se encontró el fichero): " + fileNotFoundException);
@@ -138,73 +105,73 @@ public class ExcelController {
     public void tableExcelDestination(String tablename) {
         switch (tablename) {
             case "Agentes":
-                agentesSwitch.Agentes(relaciones);
+                agentesSwitch.Agentes(this.relaciones);
                 break;
             case "Almacenes":
-                almacenesSwitch.Almacenes(relaciones);
+                almacenesSwitch.Almacenes(this.relaciones);
                 break;
             case "Articulos":
-                articulosSwitch.Articulos(relaciones);;
+                articulosSwitch.Articulos(this.relaciones);;
                 break;
             case "Asientos":
-                asientosSwitch.Asientos(relaciones);
+                asientosSwitch.Asientos(this.relaciones);
                 break;
             case "Bancos de la empresa":
-                bancoEmpresaSwitch.Bancos(relaciones);
+                bancoEmpresaSwitch.Bancos(this.relaciones);
                 break;
             case "Clientes":
-                clientesSwitch.Clientes(relaciones);
+                clientesSwitch.Clientes(this.relaciones);
                 break;
             case "Contactos de clientes":
-                contactosClientesSwitch.Contactos(relaciones);
+                contactosClientesSwitch.Contactos(this.relaciones);
                 break;
             case "Contactos de proveedores":
-                contactosProveedoresSwitch.Contactos(relaciones);
+                contactosProveedoresSwitch.Contactos(this.relaciones);
                 break;
             case "Datos bancarios clientes":
-                datosBancariosClientesSwitch.DatosBancarios(relaciones);
+                datosBancariosClientesSwitch.DatosBancarios(this.relaciones);
                 break;
             case "Datos bancarios proveedores":
-                datosBancariosProveedoresSwitch.DatosBancarios(relaciones);
+                datosBancariosProveedoresSwitch.DatosBancarios(this.relaciones);
                 break;
             case "Direcciones de clientes":
-                direccionesClientesSwitch.DireccionesSwitch(relaciones);
+                direccionesClientesSwitch.DireccionesSwitch(this.relaciones);
                 break;
             case "Direcciones de proveedores":
-                direccionesProveedoresSwitch.DireccionesSwitch(relaciones);
+                direccionesProveedoresSwitch.DireccionesSwitch(this.relaciones);
                 break;
             case "Existencias":
-                existenciasSwitch.Existencias(relaciones);
+                existenciasSwitch.Existencias(this.relaciones);
                 break;
             case "Facturas emitidas":
-                facturasEmitidasSwitch.FacturasEmitidas(relaciones);
+                facturasEmitidasSwitch.FacturasEmitidas(this.relaciones);
                 break;
             case "Facturas recibidas":
-                facturasRecibidasSwitch.FacturasRecibidas(relaciones);
+                facturasRecibidasSwitch.FacturasRecibidas(this.relaciones);
                 break;
             case "Familias":
-                familiasSwitch.Familias(relaciones);
+                familiasSwitch.Familias(this.relaciones);
                 break;
             case "Formas de pago":
-                formasPagoSwitch.FormasPago(relaciones);
+                formasPagoSwitch.FormasPago(this.relaciones);
                 break;
             case "Marcas articulo":
-                marcasArticuloSwitch.MarcasArticulos(relaciones);
+                marcasArticuloSwitch.MarcasArticulos(this.relaciones);
                 break;
             case "Plan contable":
-                planContableSwitch.PlanesContables(relaciones);
+                planContableSwitch.PlanesContables(this.relaciones);
                 break;
             case "Previsiones de cobro":
-                previsionesCobroSwitch.PrevisionesCobro(relaciones);
+                previsionesCobroSwitch.PrevisionesCobro(this.relaciones);
                 break;
             case "Previsiones de pago":
-                previsionesPagoSwitch.PrevisionesPago(relaciones);
+                previsionesPagoSwitch.PrevisionesPago(this.relaciones);
                 break;
             case "Proveedores":
-                proveedoresSwitch.Proveedores(relaciones);
+                proveedoresSwitch.Proveedores(this.relaciones);
                 break;
             case "Subfamilias":
-                subFamiliasSwitch.Subfamilias(relaciones);
+                subFamiliasSwitch.Subfamilias(this.relaciones);
                 break;
         }
     }
