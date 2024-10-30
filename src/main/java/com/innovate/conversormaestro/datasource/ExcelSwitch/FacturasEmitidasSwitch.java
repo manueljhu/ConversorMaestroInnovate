@@ -12,17 +12,19 @@ public class FacturasEmitidasSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FacturaEmitida> facturasEmitidas;
     private FormatUtils formatUtils = new FormatUtils();
-    private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void FacturasEmitidas(ArrayList<Relacion> relaciones){
+        ConnectionController connectionController = ConnectionController.getConectionController(); 
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
 
         facturasEmitidas = new ArrayList<FacturaEmitida>();
         FacturaEmitida facturaEmitida;
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 1; i < nFilas; i++) {
             facturaEmitida = new FacturaEmitida();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
@@ -42,7 +44,7 @@ public class FacturasEmitidasSwitch {
                         facturaEmitida.setGas(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cue":
-                        facturaEmitida.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        facturaEmitida.setCue(formatUtils.formatDigitFacEmi(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "li1":
                         facturaEmitida.setLi1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

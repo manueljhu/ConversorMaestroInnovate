@@ -22,7 +22,7 @@ public class MarcasArticuloSwitch {
         marcasArticulos = new ArrayList<MarcasArticulo>();
         MarcasArticulo marcasArticulo;
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 1; i < nFilas; i++) {
             marcasArticulo = new MarcasArticulo();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {

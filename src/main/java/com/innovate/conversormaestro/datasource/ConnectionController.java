@@ -1,7 +1,6 @@
 package com.innovate.conversormaestro.datasource;
 
 import java.sql.Statement;
-import java.lang.Thread.State;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,10 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Tables;
-import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ConnectionController {
-    private FormatUtils formatUtils = new FormatUtils();
     private static ConnectionController instance = null;
     private Connection connectionDestination = null;
     private Connection connectionGP = null;
@@ -97,6 +94,7 @@ public class ConnectionController {
 
     public static ConnectionController getConectionController() {
         if (instance == null) {
+            System.out.println("ConnectionController generado");
             instance = new ConnectionController();
         }
         return instance;
@@ -160,14 +158,14 @@ public class ConnectionController {
     public void saveCredentialsDestination(String ServerD, String UserD, String PasswordD, String EnterpriseD,
             String ExerciseD,
             String AccountDigitsD, String GroupDigitsD, String WarehouseDestinationD) {
-        ServerDestination = ServerD;
-        UserDestination = UserD;
-        PasswordDestination = PasswordD;
-        EnterpriseDestination = EnterpriseD;
-        ExerciseDestination = ExerciseD;
-        AccountDigitsDestination = AccountDigitsD;
-        GroupDigitsDestination = GroupDigitsD;
-        WarehouseDestination = WarehouseDestinationD;
+        setServerDestination(ServerD);
+        setUserDestination(UserD);
+        setPasswordDestination(PasswordD);
+        setEnterpriseDestination(EnterpriseD);
+        setExerciseDestination(ExerciseD);
+        setAccountDigitsDestination(AccountDigitsD);
+        setGroupDigitsDestination(GroupDigitsD);
+        setWarehouseDestination(WarehouseDestinationD);
 
         setApunTable();
         setAlmaTable();
@@ -204,6 +202,8 @@ public class ConnectionController {
     }
 
     public void saveCredentialsOriginExcel(String PathO) {
+        ExcelController excelController = ExcelController.getExcelController();
+        excelController.setPathSourceExcel(PathO);
         PathSourceExcel = PathO;
         SourceTab = "Excel";
 
@@ -241,7 +241,7 @@ public class ConnectionController {
 
         String URLConection = "jdbc:jtds:sqlserver://" + ServerIP + ";instance=" + ServerInstance
                 + ";DatabaseName=GPBusiness" + getEnterpriseDestination();
-        
+
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             connectionDestination = DriverManager.getConnection(URLConection, getUserDestination(),
@@ -335,23 +335,24 @@ public class ConnectionController {
         }
     }
 
-    public ResultSet getDataQuery(String query){
+    public int getDataQuery(String query) {
         ResultSet rs = null;
         Statement st = null;
-        
+        int last_num = 0;
         try {
             startConnectionDestination();
             st = connectionDestination.createStatement();
             rs = st.executeQuery(query);
-
-            System.out.println("Sale del getDataQuery");
-            
+            while (rs.next()) {
+                int temp = rs.getInt("LAST_NUM");
+                last_num = temp;
+            }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
         closeConnectionDestination();
-        return rs;
+        return last_num;
     }
 
     public static ConnectionController getInstance() {

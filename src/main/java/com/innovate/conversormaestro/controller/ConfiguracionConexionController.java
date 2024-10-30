@@ -25,7 +25,6 @@ import javafx.beans.value.ChangeListener;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
-import com.innovate.conversormaestro.utils.FormatUtils;
 import com.innovate.conversormaestro.utils.MyAlert;
 
 public class ConfiguracionConexionController implements Initializable {
@@ -156,6 +155,8 @@ public class ConfiguracionConexionController implements Initializable {
             txUserSource.setText(properties.getProperty("user.source"));
             txPasswordSource.setText(properties.getProperty("password.source"));
             txDataBaseSource.setText(properties.getProperty("database.source"));
+
+            txPathSourceExcel.setText(properties.getProperty("path.source.excel"));
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -363,15 +364,5 @@ public class ConfiguracionConexionController implements Initializable {
                 App.setRoot("RelacionCampos");
             }
         }
-    }
-
-    FormatUtils formatUtils = new FormatUtils();
-    
-    public void testing(){
-        setDestination();
-        connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
-                        EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
-                        WarehouseDestinationDestination);
-        formatUtils.format2digits6("FACEMI", "14");
     }
 }
