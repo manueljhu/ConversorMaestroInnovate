@@ -12,17 +12,19 @@ public class FacturasRecibidasSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FacturaRecibida> facturasRecibidas;
     private FormatUtils formatUtils = new FormatUtils();
-    private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void FacturasRecibidas(ArrayList<Relacion> relaciones) {
+        ConnectionController connectionController = ConnectionController.getConectionController(); 
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
 
         facturasRecibidas = new ArrayList<FacturaRecibida>();
         FacturaRecibida facturaRecibida;
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 1; i < nFilas; i++) {
             facturaRecibida = new FacturaRecibida();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
@@ -45,7 +47,7 @@ public class FacturasRecibidasSwitch {
                         facturaRecibida.setGas(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cue":
-                        facturaRecibida.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        facturaRecibida.setCue(formatUtils.formatDigitFacRec(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "li1":
                         facturaRecibida.setLi1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

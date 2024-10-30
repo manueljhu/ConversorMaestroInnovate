@@ -2,26 +2,35 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Cuenta;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class PlanContableSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Cuenta> planesContables;
+    private FormatUtils formatUtils = new FormatUtils();
+    String group;
+    String account;
 
     public void PlanesContables(ArrayList<Relacion> relaciones){
+        ConnectionController connectionController = ConnectionController.getConectionController(); 
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
 
         planesContables = new ArrayList<Cuenta>();
         Cuenta planContable;
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 1; i < nFilas; i++) {
             planContable = new Cuenta();
             for (int j = 0; j < relaciones.size(); j++) {
-                switch(relaciones.get(j).getCampoOrigen()){
+                System.out.println("Campo origen: " + relaciones.get(j).getCampoOrigen());
+                switch(relaciones.get(j).getCampoDestino()){
                     case "cue":
-                        planContable.setCue(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCue(formatUtils.formatDigitGroupAccount(group, account, excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
                         planContable.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

@@ -16,7 +16,7 @@ public class FormasPagoSwitch {
         formasPago = new ArrayList<FormaPago>();
         FormaPago formaPago;
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 1; i < nFilas; i++) {
             formaPago = new FormaPago();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {

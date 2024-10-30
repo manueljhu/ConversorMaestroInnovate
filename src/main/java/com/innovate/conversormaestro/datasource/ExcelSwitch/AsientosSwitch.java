@@ -22,7 +22,7 @@ public class AsientosSwitch {
         asientos = new ArrayList<Apunte>();
         Apunte asiento;
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 1; i < nFilas; i++) {
             asiento = new Apunte();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {

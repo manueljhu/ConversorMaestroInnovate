@@ -6,11 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-/* import org.apache.poi.hssf.usermodel.HSSFCell; */
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-/* import org.apache.poi.ss.usermodel.CellType; */
 
 import com.innovate.conversormaestro.model.*;
 import com.innovate.conversormaestro.datasource.ExcelSwitch.*;
@@ -21,33 +19,32 @@ public class ExcelController {
     private ConnectionController connectionController;
     private ArrayList<Relacion> relaciones;
 
-    private static AgentesSwitch agentesSwitch = new AgentesSwitch();
-    private static AlmacenesSwitch almacenesSwitch = new AlmacenesSwitch();
-    private static ArticulosSwitch articulosSwitch = new ArticulosSwitch();
-    private static AsientosSwitch asientosSwitch = new AsientosSwitch();
-    private static BancoEmpresaSwitch bancoEmpresaSwitch = new BancoEmpresaSwitch();
-    private static ClientesSwitch clientesSwitch = new ClientesSwitch();
-    private static ContactosClientesSwitch contactosClientesSwitch = new ContactosClientesSwitch();
-    private static ContactosProveedoresSwitch contactosProveedoresSwitch = new ContactosProveedoresSwitch();
-    private static DatosBancariosClientesSwitch datosBancariosClientesSwitch = new DatosBancariosClientesSwitch();
-    private static DatosBancariosProveedoresSwitch datosBancariosProveedoresSwitch = new DatosBancariosProveedoresSwitch();
-    private static DireccionesClientesSwitch direccionesClientesSwitch = new DireccionesClientesSwitch();
-    private static DireccionesProveedoresSwitch direccionesProveedoresSwitch = new DireccionesProveedoresSwitch();
-    private static ExistenciasSwitch existenciasSwitch = new ExistenciasSwitch();
-    private static FacturasEmitidasSwitch facturasEmitidasSwitch = new FacturasEmitidasSwitch();
-    private static FacturasRecibidasSwitch facturasRecibidasSwitch = new FacturasRecibidasSwitch();
-    private static FamiliasSwitch familiasSwitch = new FamiliasSwitch();
-    private static FormasPagoSwitch formasPagoSwitch = new FormasPagoSwitch();
-    private static MarcasArticuloSwitch marcasArticuloSwitch = new MarcasArticuloSwitch();
-    private static PlanContableSwitch planContableSwitch = new PlanContableSwitch();
-    private static PrevisionesCobroSwitch previsionesCobroSwitch = new PrevisionesCobroSwitch();
-    private static PrevisionesPagoSwitch previsionesPagoSwitch = new PrevisionesPagoSwitch();
-    private static ProveedoresSwitch proveedoresSwitch = new ProveedoresSwitch();
-    private static SubFamiliasSwitch subFamiliasSwitch = new SubFamiliasSwitch();
+    private static AgentesSwitch agentesSwitch;
+    private static AlmacenesSwitch almacenesSwitch;
+    private static ArticulosSwitch articulosSwitch;
+    private static AsientosSwitch asientosSwitch;
+    private static BancoEmpresaSwitch bancoEmpresaSwitch;
+    private static ClientesSwitch clientesSwitch;
+    private static ContactosClientesSwitch contactosClientesSwitch;
+    private static ContactosProveedoresSwitch contactosProveedoresSwitch;
+    private static DatosBancariosClientesSwitch datosBancariosClientesSwitch;
+    private static DatosBancariosProveedoresSwitch datosBancariosProveedoresSwitch;
+    private static DireccionesClientesSwitch direccionesClientesSwitch;
+    private static DireccionesProveedoresSwitch direccionesProveedoresSwitch;
+    private static ExistenciasSwitch existenciasSwitch;
+    private static FacturasEmitidasSwitch facturasEmitidasSwitch;
+    private static FacturasRecibidasSwitch facturasRecibidasSwitch;
+    private static FamiliasSwitch familiasSwitch;
+    private static FormasPagoSwitch formasPagoSwitch;
+    private static MarcasArticuloSwitch marcasArticuloSwitch;
+    private static PlanContableSwitch planContableSwitch;
+    private static PrevisionesCobroSwitch previsionesCobroSwitch;
+    private static PrevisionesPagoSwitch previsionesPagoSwitch;
+    private static ProveedoresSwitch proveedoresSwitch;
+    private static SubFamiliasSwitch subFamiliasSwitch;
 
-    private ExcelController() {
+    public ExcelController() {
         connectionController = ConnectionController.getConectionController();
-        PathSourceExcel = connectionController.getPathSourceExcel();
     }
 
     public static ExcelController getExcelController() {
@@ -66,6 +63,10 @@ public class ExcelController {
         return PathSourceExcel;
     }
 
+    public void setPathSourceExcel(String pathSourceExcel) {
+        PathSourceExcel = pathSourceExcel;
+    }
+
     public ArrayList<String> getColumnOrigin() {
         ArrayList<String> result = new ArrayList<String>();
 
@@ -77,7 +78,6 @@ public class ExcelController {
             HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
             HSSFRow hssfRowCabecera;
 
-            /* HSSFCell cell; */
             hssfRowCabecera = hssfSheet.getRow(0);
 
             for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
@@ -105,72 +105,95 @@ public class ExcelController {
     public void tableExcelDestination(String tablename) {
         switch (tablename) {
             case "Agentes":
+                agentesSwitch = new AgentesSwitch();
                 agentesSwitch.Agentes(this.relaciones);
                 break;
             case "Almacenes":
+                almacenesSwitch = new AlmacenesSwitch();
                 almacenesSwitch.Almacenes(this.relaciones);
                 break;
             case "Articulos":
-                articulosSwitch.Articulos(this.relaciones);;
+                articulosSwitch = new ArticulosSwitch();
+                articulosSwitch.Articulos(this.relaciones);
                 break;
             case "Asientos":
+                asientosSwitch = new AsientosSwitch();
                 asientosSwitch.Asientos(this.relaciones);
                 break;
             case "Bancos de la empresa":
+                bancoEmpresaSwitch = new BancoEmpresaSwitch();
                 bancoEmpresaSwitch.Bancos(this.relaciones);
                 break;
             case "Clientes":
+                clientesSwitch = new ClientesSwitch();
                 clientesSwitch.Clientes(this.relaciones);
                 break;
             case "Contactos de clientes":
+                contactosClientesSwitch = new ContactosClientesSwitch();
                 contactosClientesSwitch.Contactos(this.relaciones);
                 break;
             case "Contactos de proveedores":
+                contactosProveedoresSwitch = new ContactosProveedoresSwitch();
                 contactosProveedoresSwitch.Contactos(this.relaciones);
                 break;
             case "Datos bancarios clientes":
+                datosBancariosClientesSwitch = new DatosBancariosClientesSwitch();
                 datosBancariosClientesSwitch.DatosBancarios(this.relaciones);
                 break;
             case "Datos bancarios proveedores":
+                datosBancariosProveedoresSwitch = new DatosBancariosProveedoresSwitch();
                 datosBancariosProveedoresSwitch.DatosBancarios(this.relaciones);
                 break;
             case "Direcciones de clientes":
+                direccionesClientesSwitch = new DireccionesClientesSwitch();
                 direccionesClientesSwitch.DireccionesSwitch(this.relaciones);
                 break;
             case "Direcciones de proveedores":
+                direccionesProveedoresSwitch = new DireccionesProveedoresSwitch();
                 direccionesProveedoresSwitch.DireccionesSwitch(this.relaciones);
                 break;
             case "Existencias":
+                existenciasSwitch = new ExistenciasSwitch();
                 existenciasSwitch.Existencias(this.relaciones);
                 break;
             case "Facturas emitidas":
+                facturasEmitidasSwitch = new FacturasEmitidasSwitch();
                 facturasEmitidasSwitch.FacturasEmitidas(this.relaciones);
                 break;
             case "Facturas recibidas":
+                facturasRecibidasSwitch = new FacturasRecibidasSwitch();
                 facturasRecibidasSwitch.FacturasRecibidas(this.relaciones);
                 break;
             case "Familias":
+                familiasSwitch = new FamiliasSwitch();
                 familiasSwitch.Familias(this.relaciones);
                 break;
             case "Formas de pago":
+                formasPagoSwitch = new FormasPagoSwitch();
                 formasPagoSwitch.FormasPago(this.relaciones);
                 break;
             case "Marcas articulo":
+                marcasArticuloSwitch = new MarcasArticuloSwitch();
                 marcasArticuloSwitch.MarcasArticulos(this.relaciones);
                 break;
             case "Plan contable":
+                planContableSwitch = new PlanContableSwitch();
                 planContableSwitch.PlanesContables(this.relaciones);
                 break;
             case "Previsiones de cobro":
+                previsionesCobroSwitch = new PrevisionesCobroSwitch();
                 previsionesCobroSwitch.PrevisionesCobro(this.relaciones);
                 break;
             case "Previsiones de pago":
+                previsionesPagoSwitch = new PrevisionesPagoSwitch();
                 previsionesPagoSwitch.PrevisionesPago(this.relaciones);
                 break;
             case "Proveedores":
+                proveedoresSwitch = new ProveedoresSwitch();
                 proveedoresSwitch.Proveedores(this.relaciones);
                 break;
             case "Subfamilias":
+                subFamiliasSwitch = new SubFamiliasSwitch();
                 subFamiliasSwitch.Subfamilias(this.relaciones);
                 break;
         }

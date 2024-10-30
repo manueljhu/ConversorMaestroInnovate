@@ -35,8 +35,7 @@ public class RelacionCamposController implements Initializable {
     private ConnectionController connectionController;
     private SQLController sqlController;
     private DBFController dbfController;
-    private ExcelController excelController;
-
+    private ExcelController excelController = new ExcelController();
     @FXML
     private MenuItem miSave = new MenuItem();
 

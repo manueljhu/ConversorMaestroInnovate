@@ -17,7 +17,7 @@
    <children>
       <AnchorPane prefHeight="190.0" prefWidth="900.0">
          <children>
-            <Label layoutX="273.0" layoutY="12.0" onMouseClicked="#testing" prefHeight="21.0" prefWidth="355.0" text="Configurador de conexión a base de datos de destino">
+            <Label layoutX="273.0" layoutY="12.0" prefHeight="21.0" prefWidth="355.0" text="Configurador de conexión a base de datos de destino">
                <font>
                   <Font size="15.0" />
                </font>
