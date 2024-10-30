@@ -24,13 +24,13 @@ public class PlanContableSwitch {
         planesContables = new ArrayList<Cuenta>();
         Cuenta planContable;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i < nFilas + 1; i++) {
             planContable = new Cuenta();
             for (int j = 0; j < relaciones.size(); j++) {
                 System.out.println("Campo origen: " + relaciones.get(j).getCampoOrigen());
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cue":
-                        planContable.setCue(formatUtils.formatDigitGroupAccount(group, account, excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setCue(formatUtils.formatDigitPlanCon(group, account, excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
                         planContable.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
