@@ -1,23 +1,27 @@
 package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
+import java.text.Normalizer.Form;
 import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Almacen;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class AlmacenesSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Almacen> almacenes;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void Almacenes(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
         
         almacenes = new ArrayList<Almacen>();
         Almacen almacen;
-
+        int idalmacen = formatUtils.formatAlmace();
         for (int i = 1; i < nFilas; i++) {
             almacen = new Almacen();
+            almacen.setId(idalmacen);
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "nom":
@@ -34,6 +38,7 @@ public class AlmacenesSwitch {
                         break;
                 }
             }
+            idalmacen++;
             System.out.println(almacen);
             almacenes.add(almacen);
         }

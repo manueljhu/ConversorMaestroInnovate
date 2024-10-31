@@ -2,11 +2,16 @@ package com.innovate.conversormaestro.model;
 
 public class Almacen {
 
+    private int id;
     private String nom;
     private String ser;
     private String se2;
     private String age;
 
+    public int getId() {
+        return id;
+    }
+    
     public String getNom() {
         return this.nom;
     }
@@ -23,6 +28,10 @@ public class Almacen {
         return this.age;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public void setNom(String nom) {
         if (nom.length() > 20) {
             this.nom = nom.trim().substring(0, 20).replace("'", "");
@@ -57,6 +66,6 @@ public class Almacen {
 
     @Override
     public String toString() {
-        return "Almacen: nom=" + nom + ", ser=" + ser + ", se2=" + se2 + ", age=" + age + "";
+        return "Almacen:" + "id= " + id + ", nom=" + nom + ", ser=" + ser + ", se2=" + se2 + ", age=" + age + "";
     }
 }
