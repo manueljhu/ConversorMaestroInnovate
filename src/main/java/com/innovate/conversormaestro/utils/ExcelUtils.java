@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -81,5 +83,55 @@ public class ExcelUtils {
             }
         }
         return result;
+    }
+
+    public List<Integer> buscarDatosIgualesEnColumna(String columna, String dato) {
+        List<Integer> filasConDato = new ArrayList<>();
+        InputStream excelStream = null;
+        PathSourceExcel = "C:\\Users\\PC\\Documents\\previsiones_cobro.xls";
+        try {
+            excelStream = new FileInputStream(PathSourceExcel);
+            HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream);
+            HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
+            HSSFRow hssfRowCabecera = hssfSheet.getRow(0);
+
+            int columnaIndex = -1;
+            for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
+                if (hssfRowCabecera.getCell(c).getStringCellValue().equals(columna)) {
+                    columnaIndex = c;
+                    break;
+                }
+            }
+
+            if (columnaIndex == -1) {
+                System.out.println("Columna no encontrada");
+                return filasConDato;
+            }
+
+            for (int r = 1; r <= hssfSheet.getLastRowNum(); r++) {
+                HSSFRow hssfRow = hssfSheet.getRow(r);
+                if (hssfRow != null && hssfRow.getCell(columnaIndex) != null) {
+                    hssfRow.getCell(columnaIndex).setCellType(CellType.STRING);
+                    if (hssfRow.getCell(columnaIndex).getStringCellValue().equals(dato)) {
+                        filasConDato.add(r);
+                    }
+                }
+            }
+
+            hssfWorkbook.close();
+        } catch (FileNotFoundException fileNotFoundException) {
+            System.out.println("Error al leer el fichero excel");
+        } catch (IOException ex) {
+            System.out.println("Error al leer el fichero excel");
+        } finally {
+            try {
+                if (excelStream != null) {
+                    excelStream.close();
+                }
+            } catch (IOException ex) {
+                System.out.println("Error al leer el fichero excel");
+            }
+        }
+        return filasConDato;
     }
 }

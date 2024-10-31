@@ -1,5 +1,8 @@
 package com.innovate.conversormaestro.utils;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
@@ -283,18 +286,95 @@ public class FormatUtils {
                             "La cuenta no cumple con el formato requerido");
                 }
             }
-        } 
+        }
         System.out.println("Result: " + result);
         return result;
     }
 
-    public String formatEfectCon(){
+    public String formatEfectFac(String factura, String type) {
         String result = "0";
+        /*
+         * String year = Date.valueOf(java.time.LocalDate.now()).toString().substring(2,
+         * 4);
+         */
+        String year = "23";
+        System.out.println("Year: " + year);
+        if (factura.length() == 6) {
+            result = year + "/" + factura;
+        } else if (factura.length() < 6) {
+            int dif = 6 - factura.length();
+            for (int i = 1; i < dif; i++) {
+                result = "0" + result;
+            }
+            result = year + "/" + result + factura;
+        } else if (factura.length() > 6) {
+            int temp = factura.length() - 6;
+            result = year + "/" + factura.substring(temp, factura.length());
+        }
+        if (type.equals("E")) {
+            result = "E" + result;
+        } else if (type.equals("R")) {
+            result = "R" + result;
+        }
+        System.out.println("Result: " + result);
         return result;
     }
 
-    public String formatEfectFac(){
+    public String formatEfectCon(String factura, String type, String source, int rowint) {
+        System.out.println("Factura: " + factura + "Type: " + type + "Source: " + source + "rowint: " + rowint);
         String result = "0";
+        List<Integer> temp = null;
+        int pos = 1;
+
+        switch (source) {
+            case "SQL":
+
+                break;
+            case "DBF":
+
+                break;
+            case "Excel":
+                ExcelUtils excelUtils = new ExcelUtils();
+                temp = excelUtils.buscarDatosIgualesEnColumna("fac", factura);
+                System.out.println("Fac: " + temp);
+                break;
+            default:
+                break;
+        }
+
+        String fac = formatEfectFac(factura, type);
+        System.out.println("Fac: " + fac);
+
+        if (temp != null) {
+            if (temp.size() > 1) {
+                for (int i = 0; i < temp.size(); i++) {
+                    if (temp.get(i) == rowint) {
+                        pos = i + 1;
+                        break;
+                    }
+                }
+            } 
+        }
+
+        int rs = 0;
+        connectionController = ConnectionController.getConectionController();
+        String query = "SELECT COUNT(*) AS LAST_NUM FROM EFECTO WHERE fac = '" + fac + "'";
+        System.out.println("Query: " + query);
+
+        rs = connectionController.getDataQuery(query);
+
+        if (rs == 0 && pos == 1) {
+            result = "NºFAC. " + fac + "/01";
+        } else {
+            int temp2 = rs + pos;
+            if (temp2 < 10) {
+                result = "NºFAC. " + fac + "/0" + temp2;
+            } else {
+                result = "NºFAC. " + fac + "/" + temp2;
+            }
+        }
+
+        System.out.println("Result: " + result);
         return result;
     }
 }

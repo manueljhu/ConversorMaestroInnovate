@@ -182,6 +182,7 @@ public class ExcelController {
                 break;
             case "Previsiones de cobro":
                 previsionesCobroSwitch = new PrevisionesCobroSwitch();
+                System.out.println("Previsiones de cobro");
                 previsionesCobroSwitch.PrevisionesCobro(this.relaciones);
                 break;
             case "Previsiones de pago":
