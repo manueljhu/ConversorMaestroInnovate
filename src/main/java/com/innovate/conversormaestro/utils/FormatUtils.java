@@ -377,4 +377,13 @@ public class FormatUtils {
         System.out.println("Result: " + result);
         return result;
     }
+
+    public int formatAlmace(){
+        int result = 1;
+        connectionController = ConnectionController.getConectionController();
+        String query = "SELECT TOP 1 id AS LAST_NUM FROM ALMACE WHERE nom = ''";
+        result = connectionController.getDataQuery(query);
+        System.out.println("RS: " + result);
+        return result;
+    }
 }
