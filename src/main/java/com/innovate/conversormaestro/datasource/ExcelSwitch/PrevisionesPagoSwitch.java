@@ -37,7 +37,7 @@ public class PrevisionesPagoSwitch {
                         previsionespago.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "con":
-                        previsionespago.setCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setCon(formatUtils.formatEfectCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "R", "Excel", i));
                         break;
                     case "ban":
                         previsionespago.setBan(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -46,7 +46,7 @@ public class PrevisionesPagoSwitch {
                         previsionespago.setVto(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fac":
-                        previsionespago.setFac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setFac(formatUtils.formatEfectFac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "R"));
                         break;
                     case "rem":
                         previsionespago.setRem(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));

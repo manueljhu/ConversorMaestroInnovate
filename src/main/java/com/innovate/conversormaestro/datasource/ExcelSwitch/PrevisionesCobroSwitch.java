@@ -13,10 +13,13 @@ public class PrevisionesCobroSwitch {
     private ArrayList<Efecto> previsionescobros;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void PrevisionesCobro(ArrayList<Relacion> relaciones){
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
 
         previsionescobros = new ArrayList<Efecto>();
@@ -37,7 +40,7 @@ public class PrevisionesCobroSwitch {
                         previsionescobro.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "con":
-                        previsionescobro.setCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionescobro.setCon(formatUtils.formatEfectCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "E", "Excel", i));
                         break;
                     case "ban":
                         previsionescobro.setBan(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -46,7 +49,7 @@ public class PrevisionesCobroSwitch {
                         previsionescobro.setVto(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fac":
-                        previsionescobro.setFac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionescobro.setFac(formatUtils.formatEfectFac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "E"));
                         break;
                     case "rem":
                         previsionescobro.setRem(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
