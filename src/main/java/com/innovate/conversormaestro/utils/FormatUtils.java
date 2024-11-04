@@ -1,7 +1,6 @@
 package com.innovate.conversormaestro.utils;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -378,10 +377,10 @@ public class FormatUtils {
         return result;
     }
 
-    public int formatAlmace(){
+    public int formatUpdate(String table){
         int result = 1;
         connectionController = ConnectionController.getConectionController();
-        String query = "SELECT TOP 1 id AS LAST_NUM FROM ALMACE WHERE nom = ''";
+        String query = "SELECT TOP 1 id AS LAST_NUM FROM " + table + " WHERE nom = ''";
         result = connectionController.getDataQuery(query);
         System.out.println("RS: " + result);
         return result;

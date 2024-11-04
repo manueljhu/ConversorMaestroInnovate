@@ -5,19 +5,22 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.FormaPago;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FormasPagoSwitch {
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FormaPago> formasPago;
+    private FormatUtils formatUtils = new FormatUtils();
 
     public void FormasPago(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
 
         formasPago = new ArrayList<FormaPago>();
         FormaPago formaPago;
-
+        int idforpag = formatUtils.formatUpdate("FORPAG");
         for (int i = 1; i < nFilas; i++) {
             formaPago = new FormaPago();
+            formaPago.setId(idforpag);
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "nom":
@@ -67,6 +70,7 @@ public class FormasPagoSwitch {
                         break;
                 }
             }
+            idforpag++;
             System.out.println(formaPago);
             formasPago.add(formaPago);
         }

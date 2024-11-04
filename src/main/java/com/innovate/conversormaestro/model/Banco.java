@@ -152,10 +152,7 @@ public class Banco {
 
     @Override
     public String toString() {
-        return "Banco: cue=" + cue + ", des=" + des + ", rie=" + rie + ", cta=" + cta + ", dir=" + dir + ", pob=" + pob
-                + ", npro=" + npro + ", pro=" + pro + ", suf=" + suf + ", email=" + email + ", iban=" + iban
-                + ", swift=" + swift + "";
+        return "INSERT INTO BANCO (cue,des,rie,cta,dir,pob,npro,pro,suf,email,iban,swift) VALUES "+
+        "('"+cue+"','"+des+"',"+rie+",'"+cta+"','"+dir+"','"+pob+"',"+npro+",'"+pro+"','"+suf+"','"+email+"','"+iban+"','"+swift+"')";
     }
-
-    
 }
