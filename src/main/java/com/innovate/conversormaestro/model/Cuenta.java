@@ -600,16 +600,18 @@ public class Cuenta {
 
     @Override
     public String toString() {
-        return "Cuenta: cue=" + cue + ", nom=" + nom + ", nif=" + nif + ", deb=" + deb + ", hab=" + hab + ", dir=" + dir
-                + ", pob=" + pob + ", npro=" + npro + ", pro=" + pro + ", cont1=" + cont1 + ", cont2=" + cont2
-                + ", cont3=" + cont3 + ", cont4=" + cont4 + ", cont5=" + cont5 + ", cons1=" + cons1 + ", cons2=" + cons2
-                + ", cons3=" + cons3 + ", cons4=" + cons4 + ", cons5=" + cons5 + ", cons6=" + cons6 + ", cons7=" + cons7
-                + ", cons8=" + cons8 + ", cons9=" + cons9 + ", cons10=" + cons10 + ", pais=" + pais + ", gru=" + gru
-                + ", nifr=" + nifr + ", tdoc=" + tdoc + ", lopd_Ori=" + lopd_Ori + ", lopd_Otr_O=" + lopd_Otr_O
-                + ", lopd_Ces=" + lopd_Ces + ", lopd_Otr_C=" + lopd_Otr_C + ", cue_Apoyo=" + cue_Apoyo + ", lap_Den="
-                + lap_Den + ", lap_Con=" + lap_Con + ", lap_Cta=" + lap_Cta + ", ope_Tip=" + ope_Tip + ", ope_Cla="
-                + ope_Cla + ", ope_Pla=" + ope_Pla + ", ope_Des=" + ope_Des + ", cta=" + cta + ", suf=" + suf
-                + ", iban=" + iban + ", swift=" + swift + ", cri_Caja=" + cri_Caja + ", siidesfac=" + siidesfac
-                + ", patron=" + patron + ", patron_Cv=" + patron_Cv + "";
-    }    
+        return "INSERT INTO CUENTA (cue,nom,nif,deb,hab,dir,pob,npro,pro,cont1,cont2,cont3,cont4,cont5,cons1,cons2,cons3,cons4,cons5,"
+                +
+                "cons6,cons7,cons8,cons9,cons10,pais,gru,nifr,tdoc,lopd_ori,lopd_otr_o,lopd_ces,lopd_otr_c,cue_apoyo,lap_den,lap_con,lap_cta,"
+                +
+                "ope_tip,ope_cla,ope_pla,ope_des,cta,suf,iban,swift,cri_caja,siidesfac,patron,patron_cv) VALUES ('"
+                + cue + "','" + nom + "','" + nif + "'," + deb + "," + hab + ",'" + dir + "','" + pob + "'," + npro
+                + ",'" + pro + "','" + cont1 + "','" + cont2 + "','" + cont3 + "','" + cont4 + "','" + cont5 + "','"
+                + cons1 + "','" + cons2 + "','" + cons3 + "','" + cons4 + "','" + cons5 + "','" + cons6 + "','" + cons7
+                + "','" + cons8 + "','" + cons9 + "','" + cons10 + "'," + pais + "," + gru + ",'" + nifr + "'," + tdoc
+                + "," + lopd_Ori + ",'" + lopd_Otr_O + "','" + lopd_Ces + "','" + lopd_Otr_C + "','" + cue_Apoyo + "','"
+                + lap_Den + "','" + lap_Con + "','" + lap_Cta + "','" + ope_Tip + "','" + ope_Cla + "'," + ope_Pla
+                + ",'" + ope_Des + "','" + cta + "','" + suf + "','" + iban + "','" + swift + "','" + cri_Caja + "','"
+                + siidesfac + "','" + patron + "','" + patron_Cv + "',)";
+    }
 }

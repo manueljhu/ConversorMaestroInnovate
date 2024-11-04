@@ -165,8 +165,8 @@ public class Direccion {
 
     @Override
     public String toString() {
-        return "Direccion: cla=" + cla + ", cod=" + cod + ", den=" + den + ", dir=" + dir + ", pob=" + pob + ", npro="
-                + npro + ", pro=" + pro + ", pais=" + pais + ", email=" + email + ", rut=" + rut + ", tel=" + tel
-                + ", hab=" + hab + ", per=" + per + "";
+        return "INSERT INTO DIRECC (cla,cod,den,dir,pob,npro,pro,pais,email,rut,tel,hab,per) VALUES ('" + cla + "','"
+                + cod + "','" + den + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'" + email
+                + "','" + rut + "','" + tel + "','" + hab + "','" + per + "')";
     }
 }

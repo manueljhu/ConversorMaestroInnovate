@@ -791,20 +791,26 @@ public class Agente {
 
     @Override
     public String toString() {
-        return "Agente: cod=" + cod + ", nom=" + nom + ", dir=" + dir + ", pob=" + pob + ", npro=" + npro + ", pro="
-                + pro + ", nif=" + nif + ", te1=" + te1 + ", te2=" + te2 + ", fax=" + fax + ", mov=" + mov + ", ob1="
-                + ob1 + ", ob2=" + ob2 + ", ob3=" + ob3 + ", rut=" + rut + ", tip=" + tip + ", com=" + com + ", co1="
-                + co1 + ", co2=" + co2 + ", co3=" + co3 + ", co4=" + co4 + ", co5=" + co5 + ", lim=" + lim + ", pais="
-                + pais + ", tia=" + tia + ", alt=" + alt + ", fot=" + fot + ", web=" + web + ", xxx=" + xxx
-                + ", rut_crm=" + rut_crm + ", vdi_crm=" + vdi_crm + ", ldi_crm=" + ldi_crm + ", tcu_crm=" + tcu_crm
-                + ", cud_crm=" + cud_crm + ", est_crm=" + est_crm + ", v01=" + v01 + ", v02=" + v02 + ", v03=" + v03
-                + ", v04=" + v04 + ", v05=" + v05 + ", v06=" + v06 + ", v07=" + v07 + ", v08=" + v08 + ", v09=" + v09
-                + ", v10=" + v10 + ", v11=" + v11 + ", v12=" + v12 + ", historia=" + historia + ", lopd_ori=" + lopd_ori
-                + ", lopd_otr_o=" + lopd_otr_o + ", lopd_ces=" + lopd_ces + ", lopd_otr_c=" + lopd_otr_c + ", age_usu="
-                + age_usu + ", age_ver_todo=" + age_ver_todo + ", com_per=" + com_per + ", com_imp=" + com_imp
-                + ", com_inc=" + com_inc + ", com_impinc=" + com_impinc + ", com_por=" + com_por + ", web_acc="
-                + web_acc + ", web_psw=" + web_psw + ", web_todo=" + web_todo + ", web_crear=" + web_crear
-                + ", web_pago=" + web_pago + ", web_dto=" + web_dto + ", web_edipre=" + web_edipre + ", web_acccob="
-                + web_acccob + "";
+        return "INSERT INTO AGENTG(cod, nom, dir, pob, npro, pro, nif, te1, te2, fax, mov, ob1, ob2, ob3, rut, tip, com, "
+                +
+                "co1, co2, co3, co4, co5, lim, pais, tia, alt, fot, web, xxx, rut_crm, vdi_crm, ldi_crm, tcu_crm, cud_crm, est_crm, "
+                +
+                "v01, v02, v03, v04, v05, v06, v07, v08, v09, v10, v11, v12, historia, lopd_ori, lopd_otr_o, lopd_ces, lopd_otr_c, "
+                +
+                "age_usu, age_ver_todo, com_per, com_imp, com_inc, com_impinc, com_por, web_acc, web_psw, web_todo, web_crear, web_pago, "
+                +
+                "web_dto, web_edipre, web_acccob) VALUES ('"
+                + cod + "', '" + nom + "', '" + dir + "', '" + pob + "', " + npro + ", '" + pro + "', '" + nif + "', '"
+                + te1 + "', '" + te2 + "', '" + fax + "', '" + mov + "', '" + ob1 + "', '" + ob2 + "', '" + ob3 + "', '"
+                + rut + "', " + tip + ", " + com + ", " + co1 + ", " + co2 + ", " + co3 + ", " + co4 + ", " + co5 + ", "
+                + lim + ", " + pais + ", " + tia + ", '" + alt + "', '" + fot + "', '" + web + "', '" + xxx + "', '"
+                + rut_crm + "', " + vdi_crm + ", " + ldi_crm + ", '" + tcu_crm + "', '" + cud_crm + "', '" + est_crm
+                + "', '" + v01 + "', '" + v02 + "', '" + v03 + "', '" + v04 + "', '" + v05 + "', '" + v06 + "', '" + v07
+                + "', '" + v08 + "', '" + v09 + "', '" + v10 + "', '" + v11 + "', '" + v12 + "', '" + historia + "', "
+                + lopd_ori + ", '" + lopd_otr_o + "', '" + lopd_ces + "', '" + lopd_otr_c + "', '" + age_usu + "', '"
+                + age_ver_todo + "', " + com_per + ", " + com_imp + ", " + com_inc + ", " + com_impinc + ", " + com_por
+                + ", '" + web_acc + "', '" + web_psw + "', '" + web_todo + "', '" + web_crear + "', '" + web_pago + "', '"
+                + web_dto + "', '" + web_edipre + "', '" + web_acccob + "');";
     }
+
 }

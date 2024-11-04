@@ -1,6 +1,5 @@
 package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Almacen;
@@ -18,7 +17,7 @@ public class AlmacenesSwitch {
         
         almacenes = new ArrayList<Almacen>();
         Almacen almacen;
-        int idalmacen = formatUtils.formatAlmace();
+        int idalmacen = formatUtils.formatUpdate("ALMACE");
         for (int i = 1; i < nFilas; i++) {
             almacen = new Almacen();
             almacen.setId(idalmacen);

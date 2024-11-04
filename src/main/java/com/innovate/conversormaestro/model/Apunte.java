@@ -209,9 +209,8 @@ public class Apunte {
 
     @Override
     public String toString() {
-        return "Apunte: num=" + num + ", fec=" + fec + ", cue=" + cue + ", con=" + con + ", sig=" + sig + ", mar=" + mar
-                + ", fac=" + fac + ", doc=" + doc + ", xxx=" + xxx + ", impeu=" + impeu + ", acl=" + acl + ", cen="
-                + cen + ", ren=" + ren + ", met=" + met + ", apu_tipdoc=" + apu_tipdoc + ", apu_numdoc=" + apu_numdoc
-                + ", anno_efe=" + anno_efe + "";
+        return "INSERT INTO APUNXX (num, fec, cue, con, sig, mar, fac, doc, xxx, impeu, acl, cen, ren, met, apu_tipdoc, "+
+        "apu_numdoc, anno_efe) VALUES ('"+num+"', '"+fec+"', '"+cue+"', '"+con+"', '"+sig+"', '"+mar+"', '"+fac+"', '"+doc+"', "+
+        "'"+xxx+"', "+impeu+", '"+acl+"', '"+cen+"', '"+ren+"', "+met+", '"+apu_tipdoc+"', '"+apu_numdoc+"', "+anno_efe+");";
     }
 }

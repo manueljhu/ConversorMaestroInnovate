@@ -66,6 +66,6 @@ public class Almacen {
 
     @Override
     public String toString() {
-        return "Almacen:" + "id= " + id + ", nom=" + nom + ", ser=" + ser + ", se2=" + se2 + ", age=" + age + "";
+        return "UPDATE FROM ALMACE SET nom = '"+nom+"', ser = '"+ser+"', se2 = '"+se2+"', age = '"+age+"' WHERE id = "+id+";";
     }
 }

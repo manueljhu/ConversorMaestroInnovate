@@ -239,9 +239,10 @@ public class DatoBancario {
 
     @Override
     public String toString() {
-        return "DatoBancario: cla=" + cla + ", cod=" + cod + ", dir=" + dir + ", pob=" + pob + ", npro=" + npro
-                + ", pro=" + pro + ", pais=" + pais + ", iban=" + iban + ", bic=" + bic + ", cu1=" + cu1 + ", cu2="
-                + cu2 + ", cu3=" + cu3 + ", cu4=" + cu4 + ", hab=" + hab + ", bban=" + bban + ", trem=" + trem
-                + ", epri=" + epri + ", nman=" + nman + ", fman=" + fman + "";
-    }   
+        return "INSERT INTO DATBAN cla,cod,dir,pob,npro,pro,pais,iban,bic,cu1,cu2,cu3,cu4,hab,bban,trem,epri,nman,fman VALUES "
+                +
+                "('" + cla + "','" + cod + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'"
+                + iban + "','" + bic + "','" + cu1 + "','" + cu2 + "','" + cu3 + "','" + cu4 + "','" + hab + "','"
+                + bban + "','" + trem + "','" + epri + "','" + nman + "','" + fman + "')";
+    }
 }
