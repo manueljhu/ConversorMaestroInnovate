@@ -28,7 +28,7 @@ public class FormatUtils {
         } else if (value.length() == 6) {
             result = value;
         }
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
@@ -36,7 +36,7 @@ public class FormatUtils {
         String result = "";
         int groupInt = Integer.parseInt(group);
         int accountInt = Integer.parseInt(account);
-        System.out.println("Value" + value.length());
+        // System.out.println("Value" + value.length());
         if (accountInt == value.length()) {
             result = value;
         } else if (accountInt > value.length()) {
@@ -47,27 +47,27 @@ public class FormatUtils {
                 result = "0" + temp2;
             }
             result = temp + result;
-            System.out.println("Resto: " + temp2);
+            // System.out.println("Resto: " + temp2);
         } else if (accountInt < value.length()) {
             String temp = value.substring(0, groupInt);
-            System.out.println("Grupo: " + temp);
+            // System.out.println("Grupo: " + temp);
             String temp2 = value.substring(groupInt, value.length());
-            System.out.println("Cuenta: " + temp2);
+            // System.out.println("Cuenta: " + temp2);
             int dif = temp2.length() - (accountInt - groupInt);
             temp2 = temp2.substring(0, dif);
-            System.out.println("Resto: " + temp2);
+            // System.out.println("Resto: " + temp2);
             String temp3 = "";
             for (int i = 0; i < temp2.length(); i++) {
                 temp3 = "0" + temp3;
             }
-            System.out.println("Resto: " + temp3);
+            // System.out.println("Resto: " + temp3);
             if (temp2.equals(temp3)) {
                 dif = 0;
                 temp2 = value.substring(groupInt, value.length());
                 dif = temp2.length() - (accountInt - groupInt);
-                System.out.println("Diferencia: " + dif);
+                // System.out.println("Diferencia: " + dif);
                 temp2 = temp2.substring(dif, temp2.length());
-                System.out.println("Resto: " + temp2);
+                // System.out.println("Resto: " + temp2);
                 result = temp + temp2;
             } else {
                 alert = new MyAlert();
@@ -75,7 +75,7 @@ public class FormatUtils {
                         "La cuenta no cumple con el formato requerido");
             }
         }
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
@@ -88,7 +88,7 @@ public class FormatUtils {
 
             rs = connectionController.getDataQuery(query);
 
-            System.out.println("Last rs: " + rs);
+            // System.out.println("Last rs: " + rs);
             if (last_num == 0) {
                 last_num = rs + 1;
             } else {
@@ -104,7 +104,7 @@ public class FormatUtils {
             result = temp + "/" + format6digits(value);
         }
 
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
@@ -128,7 +128,7 @@ public class FormatUtils {
                     temp2 = "0" + temp2;
                 }
                 result = temp + temp2;
-                System.out.println("Result: " + result);
+                // System.out.println("Result: " + result);
             } else if (groupInt < value.length()) {
                 String temp = "43";
                 String temp2 = value;
@@ -141,28 +141,28 @@ public class FormatUtils {
                     temp2 = "0" + temp2;
                 }
                 result = temp + temp2;
-                System.out.println("Result: " + result);
+                // System.out.println("Result: " + result);
             }
         } else if (accountInt < value.length()) {
             String temp = value.substring(0, groupInt);
-            System.out.println("Grupo: " + temp);
+            // System.out.println("Grupo: " + temp);
             String temp2 = value.substring(groupInt, value.length());
-            System.out.println("Cuenta: " + temp2);
+            // System.out.println("Cuenta: " + temp2);
             int dif = temp2.length() - (accountInt - groupInt);
             temp2 = temp2.substring(0, dif);
-            System.out.println("Resto: " + temp2);
+            // System.out.println("Resto: " + temp2);
             String temp3 = "";
             for (int i = 0; i < temp2.length(); i++) {
                 temp3 = "0" + temp3;
             }
-            System.out.println("Resto: " + temp3);
+            // System.out.println("Resto: " + temp3);
             if (temp2.equals(temp3)) {
                 dif = 0;
                 temp2 = value.substring(groupInt, value.length());
                 dif = temp2.length() - (accountInt - groupInt);
-                System.out.println("Diferencia: " + dif);
+                // System.out.println("Diferencia: " + dif);
                 temp2 = temp2.substring(dif, temp2.length());
-                System.out.println("Resto: " + temp2);
+                // System.out.println("Resto: " + temp2);
                 result = temp + temp2;
             } else {
                 alert = new MyAlert();
@@ -170,7 +170,7 @@ public class FormatUtils {
                         "La cuenta no cumple con el formato requerido");
             }
         }
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
@@ -194,7 +194,7 @@ public class FormatUtils {
                     temp2 = "0" + temp2;
                 }
                 result = temp + temp2;
-                System.out.println("Result: " + result);
+                // System.out.println("Result: " + result);
             } else if (groupInt < value.length()) {
                 String temp = "40";
                 String temp2 = value;
@@ -207,28 +207,28 @@ public class FormatUtils {
                     temp2 = "0" + temp2;
                 }
                 result = temp + temp2;
-                System.out.println("Result: " + result);
+                // System.out.println("Result: " + result);
             }
         } else if (accountInt < value.length()) {
             String temp = value.substring(0, groupInt);
-            System.out.println("Grupo: " + temp);
+            // System.out.println("Grupo: " + temp);
             String temp2 = value.substring(groupInt, value.length());
-            System.out.println("Cuenta: " + temp2);
+            // System.out.println("Cuenta: " + temp2);
             int dif = temp2.length() - (accountInt - groupInt);
             temp2 = temp2.substring(0, dif);
-            System.out.println("Resto: " + temp2);
+            // System.out.println("Resto: " + temp2);
             String temp3 = "";
             for (int i = 0; i < temp2.length(); i++) {
                 temp3 = "0" + temp3;
             }
-            System.out.println("Resto: " + temp3);
+            // System.out.println("Resto: " + temp3);
             if (temp2.equals(temp3)) {
                 dif = 0;
                 temp2 = value.substring(groupInt, value.length());
                 dif = temp2.length() - (accountInt - groupInt);
-                System.out.println("Diferencia: " + dif);
+                // System.out.println("Diferencia: " + dif);
                 temp2 = temp2.substring(dif, temp2.length());
-                System.out.println("Resto: " + temp2);
+                // System.out.println("Resto: " + temp2);
                 result = temp + temp2;
             } else {
                 alert = new MyAlert();
@@ -236,7 +236,7 @@ public class FormatUtils {
                         "La cuenta no cumple con el formato requerido");
             }
         }
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
@@ -259,25 +259,25 @@ public class FormatUtils {
                     temp2 = "0" + temp2;
                 }
                 result = temp + temp2;
-                System.out.println("Result: " + result);
+                // System.out.println("Result: " + result);
             } else if (accountInt < value.length()) {
                 String temp = value.substring(0, groupInt);
                 String temp2 = value.substring(groupInt, value.length());
                 int dif = temp2.length() - (accountInt - groupInt);
                 temp2 = temp2.substring(0, dif);
-                System.out.println("Resto: " + temp2);
+                // System.out.println("Resto: " + temp2);
                 String temp3 = "";
                 for (int i = 0; i < temp2.length(); i++) {
                     temp3 = "0" + temp3;
                 }
-                System.out.println("Resto: " + temp3);
+                // System.out.println("Resto: " + temp3);
                 if (temp2.equals(temp3)) {
                     dif = 0;
                     temp2 = value.substring(groupInt, value.length());
                     dif = temp2.length() - (accountInt - groupInt);
-                    System.out.println("Diferencia: " + dif);
+                    // System.out.println("Diferencia: " + dif);
                     temp2 = temp2.substring(dif, temp2.length());
-                    System.out.println("Resto: " + temp2);
+                    // System.out.println("Resto: " + temp2);
                     result = temp + temp2;
                 } else {
                     alert = new MyAlert();
@@ -286,7 +286,7 @@ public class FormatUtils {
                 }
             }
         }
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
@@ -297,7 +297,7 @@ public class FormatUtils {
          * 4);
          */
         String year = "23";
-        System.out.println("Year: " + year);
+        // System.out.println("Year: " + year);
         if (factura.length() == 6) {
             result = year + "/" + factura;
         } else if (factura.length() < 6) {
@@ -315,12 +315,12 @@ public class FormatUtils {
         } else if (type.equals("R")) {
             result = "R" + result;
         }
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
     public String formatEfectCon(String factura, String type, String source, int rowint) {
-        System.out.println("Factura: " + factura + "Type: " + type + "Source: " + source + "rowint: " + rowint);
+        // System.out.println("Factura: " + factura + "Type: " + type + "Source: " + source + "rowint: " + rowint);
         String result = "0";
         List<Integer> temp = null;
         int pos = 1;
@@ -335,14 +335,14 @@ public class FormatUtils {
             case "Excel":
                 ExcelUtils excelUtils = new ExcelUtils();
                 temp = excelUtils.buscarDatosIgualesEnColumna("fac", factura);
-                System.out.println("Fac: " + temp);
+                // System.out.println("Fac: " + temp);
                 break;
             default:
                 break;
         }
 
         String fac = formatEfectFac(factura, type);
-        System.out.println("Fac: " + fac);
+        // System.out.println("Fac: " + fac);
 
         if (temp != null) {
             if (temp.size() > 1) {
@@ -358,7 +358,7 @@ public class FormatUtils {
         int rs = 0;
         connectionController = ConnectionController.getConectionController();
         String query = "SELECT COUNT(*) AS LAST_NUM FROM EFECTO WHERE fac = '" + fac + "'";
-        System.out.println("Query: " + query);
+        // System.out.println("Query: " + query);
 
         rs = connectionController.getDataQuery(query);
 
@@ -373,7 +373,7 @@ public class FormatUtils {
             }
         }
 
-        System.out.println("Result: " + result);
+        // System.out.println("Result: " + result);
         return result;
     }
 
@@ -382,7 +382,7 @@ public class FormatUtils {
         connectionController = ConnectionController.getConectionController();
         String query = "SELECT TOP 1 id AS LAST_NUM FROM " + table + " WHERE nom = ''";
         result = connectionController.getDataQuery(query);
-        System.out.println("RS: " + result);
+        // System.out.println("RS: " + result);
         return result;
     }
 }

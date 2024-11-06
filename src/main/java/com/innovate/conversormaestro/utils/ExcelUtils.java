@@ -62,10 +62,10 @@ public class ExcelUtils {
             hssfRow = hssfSheet.getRow(fila);
             for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
                 if (hssfRowCabecera.getCell(c).getStringCellValue().equals(columna)) {
-                    System.out.println(hssfRowCabecera.getCell(c).getStringCellValue().equals(columna));
+                    //System.out.println(hssfRowCabecera.getCell(c).getStringCellValue().equals(columna));
                     if (hssfRow.getCell(c) != null) {
                         hssfRow.getCell(c).setCellType(CellType.STRING);
-                        System.out.println(hssfRow.getCell(c).getStringCellValue());
+                        //System.out.println(hssfRow.getCell(c).getStringCellValue());
                         result = hssfRow.getCell(c).getStringCellValue();
                     }
                 }
