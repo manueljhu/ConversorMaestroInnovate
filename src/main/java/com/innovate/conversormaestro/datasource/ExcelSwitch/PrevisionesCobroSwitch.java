@@ -25,7 +25,7 @@ public class PrevisionesCobroSwitch {
         previsionescobros = new ArrayList<Efecto>();
         Efecto previsionescobro;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             previsionescobro = new Efecto();
             for (int j = 0; j < relaciones.size(); j++) {
                 previsionescobro.setTip("C");

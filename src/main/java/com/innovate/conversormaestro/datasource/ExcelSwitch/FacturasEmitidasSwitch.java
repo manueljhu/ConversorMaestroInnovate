@@ -24,7 +24,7 @@ public class FacturasEmitidasSwitch {
         facturasEmitidas = new ArrayList<FacturaEmitida>();
         FacturaEmitida facturaEmitida;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             facturaEmitida = new FacturaEmitida();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){

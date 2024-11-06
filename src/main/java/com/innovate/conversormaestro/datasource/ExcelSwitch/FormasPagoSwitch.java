@@ -18,7 +18,7 @@ public class FormasPagoSwitch {
         formasPago = new ArrayList<FormaPago>();
         FormaPago formaPago;
         int idforpag = formatUtils.formatUpdate("FORPAG");
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             formaPago = new FormaPago();
             formaPago.setId(idforpag);
             for (int j = 0; j < relaciones.size(); j++) {

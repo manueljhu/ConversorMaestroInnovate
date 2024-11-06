@@ -2,21 +2,23 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.model.Cliente;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.model.Stock;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 
 public class ExistenciasSwitch {
+    private FinalList<Stock> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Stock> existencias;
 
     public void Existencias(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         existencias = new ArrayList<Stock>();
         Stock existencia;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             existencia = new Stock();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
@@ -49,5 +51,6 @@ public class ExistenciasSwitch {
             System.out.println(existencia);
             existencias.add(existencia);
         }
+        lista.setLista(existencias);
     }
 }
