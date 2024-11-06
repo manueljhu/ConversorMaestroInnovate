@@ -20,6 +20,11 @@
             </Label>
             <ProgressBar fx:id="progressBar" layoutX="10.0" layoutY="60.0" prefHeight="30.0" prefWidth="880.0" progress="0.0" />
             <Button layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToSecondary" text="&lt;-" />
+            <Label fx:id="txtLabel" layoutX="702.0" layoutY="20.0" text="Traspaso de Datos">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="395.0" prefWidth="900.0">
@@ -30,7 +35,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextArea layoutX="10.0" layoutY="45.0" prefHeight="335.0" prefWidth="880.0" />
+            <TextArea fx:id="txtArea" layoutX="10.0" layoutY="45.0" prefHeight="335.0" prefWidth="880.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="55.0" prefWidth="900.0">

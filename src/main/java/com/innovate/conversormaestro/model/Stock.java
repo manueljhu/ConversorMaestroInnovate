@@ -1,14 +1,18 @@
 package com.innovate.conversormaestro.model;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
+
 public class Stock {
-    private String cod;
-    private float exi;
-    private float ent;
-    private float sal;
-    private String ubi;
-    private float ide;
-    private float min;
-    private float max;
+    ConnectionController connectionController = ConnectionController.getConectionController();
+
+    public String cod = "";
+    public float exi = 0.00f;
+    public float ent = 0.00f;
+    public float sal = 0.00f;
+    public String ubi = "";
+    public float ide = 0.00f;
+    public float min = 0.00f;
+    public float max = 0.00f;
 
     public String getCod() {
         return this.cod;
@@ -84,7 +88,8 @@ public class Stock {
 
     @Override
     public String toString() {
-        return "INSERT INTO ALMAXX (cod,exi,ent,sal,ubi,ide,min,max) VALUES ('" + cod + "'," + exi + "," + ent + ","
+        return "INSERT INTO ALMA" + connectionController.getWarehouseDestination()
+                + " (cod,exi,ent,sal,ubi,ide,min,max) VALUES ('" + cod + "'," + exi + "," + ent + ","
                 + sal + ",'" + ubi + "'," + ide + "," + min + "," + max + ")";
     }
 }

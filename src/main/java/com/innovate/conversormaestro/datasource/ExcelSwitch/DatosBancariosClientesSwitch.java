@@ -18,7 +18,7 @@ public class DatosBancariosClientesSwitch {
         datosBancarios = new ArrayList<DatoBancario>();
         DatoBancario datoBancario;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             datoBancario = new DatoBancario();
             for (int j = 0; j < relaciones.size(); j++) {
                 datoBancario.setCla("CL");

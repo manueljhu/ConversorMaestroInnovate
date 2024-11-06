@@ -1,164 +1,164 @@
 package com.innovate.conversormaestro.model;
 
 public class Cliente {
-    private String cod;
-    private String nom;
-    private String sno;
-    private String dir;
-    private String pob;
-    private int npro;
-    private String pro;
-    private String nif;
-    private String te1;
-    private String te2;
-    private String fax;
-    private String mov;
-    private String per;
-    private String car;
-    private String ter;
-    private String req;
-    private String red;
-    private float dto;
-    private int com;
-    private float fin;
-    private float fac;
-    private int tar;
-    private int forpag;
-    private int di1;
-    private int di2;
-    private int di3;
-    private int mnp;
-    private String m30;
-    private int vto;
-    private float inc;
-    private float rie;
-    private String rut;
-    private String age;
-    private int nco;
-    private String alv;
-    private String fa1;
-    private String fa2;
-    private String tra;
-    private String mar;
-    private float dt2;
-    private String tia;
-    private int fo2;
-    private int d1b;
-    private int d2b;
-    private int d3b;
-    private int mnb;
-    private float imp;
-    private int tre;
-    private float ret;
-    private String fgl;
-    private float ifg;
-    private String web;
-    private String doc;
-    private String fpd;
-    private float pais;
-    private String ext;
-    private String ob1;
-    private String ob2;
-    private int rediva1;
-    private int rediva2;
-    private int rediva3;
-    private int rediva4;
-    private int rediva5;
-    private int avi0ped;
-    private String avi1ped;
-    private String avi2ped;
-    private int avi0alb;
-    private String avi1alb;
-    private String avi2alb;
-    private int avi0fac;
-    private String avi1fac;
-    private String avi2fac;
-    private int avi0rec;
-    private String avi1rec;
-    private String avi2rec;
-    private int avi0pre;
-    private String avi1pre;
-    private String avi2pre;
-    private String ivainc;
-    private String fot;
-    private String env;
-    private String xxx;
-    private String fcr_crm;
-    private float tip_crm;
-    private String ftr_crm;
-    private float tco_crm;
-    private String ref_crm;
-    private String vis_crm;
-    private float pvi_crm;
-    private String lla_crm;
-    private float pll_crm;
-    private String ru1_crm;
-    private String ru2_crm;
-    private String ru3_crm;
-    private float sec_crm;
-    private String dias_crm;
-    private String tpl_crm;
+    private String cod = "";
+    private String nom = "";
+    private String sno = "";
+    private String dir = "";
+    private String pob = "";
+    private int npro = 0;
+    private String pro = "";
+    private String nif = "";
+    private String te1 = "";
+    private String te2 = "";
+    private String fax = "";
+    private String mov = "";
+    private String per = "";
+    private String car = "";
+    private String ter = "";
+    private String req = "N";
+    private String red = "N";
+    private float dto = 0.00f;
+    private int com = 1;
+    private float fin = 0.00f;
+    private float fac = 0.00f;
+    private int tar = 1;
+    private int forpag = 1;
+    private int di1 = 0;
+    private int di2 = 0;
+    private int di3 = 0;
+    private int mnp = 0;
+    private String m30 = "";
+    private int vto = 0;
+    private float inc = 0;
+    private float rie = 0.000f;
+    private String rut = "000001";
+    private String age = "1";
+    private int nco = 1;
+    private String alv = "S";
+    private String fa1 = "";
+    private String fa2 = "";
+    private String tra = "N";
+    private String mar = "N";
+    private float dt2 = 0.0f;
+    private String tia = "N";
+    private int fo2 = 1;
+    private int d1b = 0;
+    private int d2b = 0;
+    private int d3b = 0;
+    private int mnb = 0;
+    private float imp = 0.00F;
+    private int tre = 0;
+    private float ret = 0.000F;
+    private String fgl = "";
+    private float ifg = 0.00F;
+    private String web = "";
+    private String doc = "I";
+    private String fpd = "N";
+    private float pais = 0;
+    private String ext = "";
+    private String ob1 = "";
+    private String ob2 = "";
+    private int rediva1 = 1;
+    private int rediva2 = 2;
+    private int rediva3 = 3;
+    private int rediva4 = 4;
+    private int rediva5 = 5;
+    private int avi0ped = 1;
+    private String avi1ped = "";
+    private String avi2ped = "";
+    private int avi0alb = 1;
+    private String avi1alb = "";
+    private String avi2alb = "";
+    private int avi0fac = 1;
+    private String avi1fac = "";
+    private String avi2fac = "";
+    private int avi0rec = 0;
+    private String avi1rec = "";
+    private String avi2rec = "";
+    private int avi0pre = 0;
+    private String avi1pre = "";
+    private String avi2pre = "";
+    private String ivainc = "N";
+    private String fot = "";
+    private String env = "N";
+    private String xxx = "";
+    private String fcr_crm = null;
+    private float tip_crm = 1;
+    private String ftr_crm = null;
+    private float tco_crm = 0;
+    private String ref_crm = "";
+    private String vis_crm = "S";
+    private float pvi_crm = 0;
+    private String lla_crm = "S";
+    private float pll_crm = 0;
+    private String ru1_crm = "000001";
+    private String ru2_crm = "";
+    private String ru3_crm = "";
+    private float sec_crm = 0;
+    private String dias_crm = "SSSSS";
+    private String tpl_crm = "N";
     private String fna_crm;
-    private float imprap;
-    private float dtorap;
-    private String tar_art;
-    private String tar_fam;
-    private String efactura;
-    private int perrap;
-    private String facedir;
-    private String facepob;
-    private int facenpro;
-    private String facepro;
-    private float facepais;
-    private String facenom;
-    private String faceape1;
-    private String faceape2;
-    private String facefoj;
-    private String v01;
-    private String v02;
-    private String v03;
-    private String v04;
-    private String v05;
-    private String v06;
-    private String v07;
-    private String v08;
-    private String v09;
-    private String v10;
-    private String v11;
-    private String v12;
-    private String historia;
-    private float lopd_ori;
-    private String lopd_otr_o;
-    private String lopd_ces;
-    private String lopd_otr_c;
-    private String cli_facalb;
-    private String cln_tarsub;
-    private String cln_tarmar;
-    private int cln_idioma;
-    private int moneda;
-    private int avi0dep;
-    private String avi_dep;
-    private String avi_ped;
-    private String avi_pre;
-    private String avi_alb;
-    private String avi_fac;
-    private String avi_rec;
-    private String web_acc;
-    private String web_psw;
-    private String obs_doc;
-    private String actividad;
-    private String emailweb;
-    private String web_exepor;
-    private int tip_rem;
+    private float imprap = 0.000F;
+    private float dtorap = 0.00F;
+    private String tar_art = "";
+    private String tar_fam = "";
+    private String efactura = "N";
+    private int perrap = 0;
+    private String facedir = "";
+    private String facepob = "";
+    private int facenpro = 0;
+    private String facepro = "";
+    private float facepais = 0;
+    private String facenom = "";
+    private String faceape1 = "";
+    private String faceape2 = "";
+    private String facefoj = "J";
+    private String v01 = "";
+    private String v02 = "";
+    private String v03 = "";
+    private String v04 = "";
+    private String v05 = "";
+    private String v06 = "";
+    private String v07 = "";
+    private String v08 = "";
+    private String v09 = "";
+    private String v10 = "";
+    private String v11 = "";
+    private String v12 = "";
+    private String historia = "";
+    private float lopd_ori = 0;
+    private String lopd_otr_o = "";
+    private String lopd_ces = "";
+    private String lopd_otr_c = "";
+    private String cli_facalb = "";
+    private String cln_tarsub = "";
+    private String cln_tarmar = "";
+    private int cln_idioma = 1;
+    private int moneda = 1;
+    private int avi0dep = 1;
+    private String avi_dep = "";
+    private String avi_ped = "";
+    private String avi_pre = "";
+    private String avi_alb = "";
+    private String avi_fac = "";
+    private String avi_rec = "";
+    private String web_acc = "N";
+    private String web_psw = "";
+    private String obs_doc = "";
+    private String actividad = "";
+    private String emailweb = "";
+    private String web_exepor = "N";
+    private int tip_rem = 2;
     private String fec_man;
-    private String cri_caja;
-    private String facemed;
-    private String faceiban;
-    private String facever;
-    private String facepol;
-    private String por_efac;
-    private String web_codact;
-    private String sincro;
+    private String cri_caja = "S";
+    private String facemed = "";
+    private String faceiban = "";
+    private String facever = "";
+    private String facepol = "";
+    private String por_efac = "001";
+    private String web_codact = "";
+    private String sincro = "X";
 
     public String getCod() {
         return this.cod;
@@ -1305,7 +1305,11 @@ public class Cliente {
     }
 
     public void setFcr_Crm(String fcr_crm) {
-        this.fcr_crm = fcr_crm;
+        if (fcr_crm != null){
+            this.fcr_crm = "'"+fcr_crm+"'";
+        } else {
+            this.fcr_crm = "NULL";
+        }
     }
 
     public void setTip_Crm(float tip_crm) {
@@ -1313,7 +1317,11 @@ public class Cliente {
     }
 
     public void setFtr_Crm(String ftr_crm) {
-        this.ftr_crm = ftr_crm;
+        if(ftr_crm != null){
+            this.ftr_crm = "'"+ftr_crm+"'";
+        } else {
+            this.ftr_crm = "NULL";
+        }
     }
 
     public void setTco_Crm(float tco_crm) {
@@ -1397,7 +1405,11 @@ public class Cliente {
     }
 
     public void setFna_Crm(String fna_crm) {
-        this.fna_crm = fna_crm;
+        if (fna_crm == null){
+            this.fna_crm = "'"+fna_crm+"'";
+        } else {
+            this.fna_crm = "NULL";
+        }
     }
 
     public void setImprap(float imprap) {
@@ -1737,7 +1749,11 @@ public class Cliente {
     }
 
     public void setFec_Man(String fec_man) {
-        this.fec_man = fec_man;
+        if (fec_man == null){
+            this.fec_man = "'"+fec_man+"'";
+        } else {
+            this.fec_man = "NULL";
+        }
     }
 
     public void setCri_Caja(String cri_caja) {
@@ -1834,10 +1850,10 @@ public class Cliente {
                 + rediva5 + "," + avi0ped + ",'" + avi1ped + "','" + avi2ped + "'," + avi0alb + ",'" + avi1alb + "','"
                 + avi2alb + "'," + avi0fac + ",'" + avi1fac + "','" + avi2fac + "'," + avi0rec + ",'" + avi1rec + "','"
                 + avi2rec + "'," + avi0pre + ",'" + avi1pre + "','" + avi2pre + "','" + ivainc + "','" + fot + "','"
-                + env + "','" + xxx + "','" + fcr_crm + "'," + tip_crm + ",'" + ftr_crm + "'," + tco_crm + ",'"
+                + env + "','" + xxx + "'," + fcr_crm + "," + tip_crm + "," + ftr_crm + "," + tco_crm + ",'"
                 + ref_crm + "','" + vis_crm + "'," + pvi_crm + ",'" + lla_crm + "'," + pll_crm + ",'" + ru1_crm + "','"
-                + ru2_crm + "','" + ru3_crm + "'," + sec_crm + ",'" + dias_crm + "','" + tpl_crm + "','" + fna_crm
-                + "'," + imprap + "," + dtorap + ",'" + tar_art + "','" + tar_fam + "','" + efactura + "'," + perrap
+                + ru2_crm + "','" + ru3_crm + "'," + sec_crm + ",'" + dias_crm + "','" + tpl_crm + "'," + fna_crm
+                + "," + imprap + "," + dtorap + ",'" + tar_art + "','" + tar_fam + "','" + efactura + "'," + perrap
                 + ",'" + facedir + "','" + facepob + "'," + facenpro + ",'" + facepro + "'," + facepais + ",'" + facenom
                 + "','" + faceape1 + "','" + faceape2 + "','" + facefoj + "','" + v01 + "','" + v02 + "','" + v03
                 + "','" + v04 + "','" + v05 + "','" + v06 + "','" + v07 + "','" + v08 + "','" + v09 + "','" + v10
@@ -1845,7 +1861,7 @@ public class Cliente {
                 + "','" + lopd_otr_c + "','" + cli_facalb + "','" + cln_tarsub + "','" + cln_tarmar + "'," + cln_idioma
                 + "," + moneda + "," + avi0dep + ",'" + avi_dep + "','" + avi_ped + "','" + avi_pre + "','" + avi_alb
                 + "','" + avi_fac + "','" + avi_rec + "','" + web_acc + "','" + web_psw + "','" + obs_doc + "','"
-                + actividad + "','" + emailweb + "','" + web_exepor + "'," + tip_rem + ",'" + fec_man + "','" + cri_caja
+                + actividad + "','" + emailweb + "','" + web_exepor + "'," + tip_rem + "," + fec_man + ",'" + cri_caja
                 + "','" + facemed + "','" + faceiban + "','" + facever + "','" + facepol + "','" + por_efac + "','"
                 + web_codact + "','" + sincro + "');";
     }

@@ -18,7 +18,7 @@ public class ContactosProveedoresSwitch {
         contactos = new ArrayList<Contacto>();
         Contacto contacto;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             contacto = new Contacto();
             for (int j = 0; j < relaciones.size(); j++) {
                 contacto.setCla("PR");

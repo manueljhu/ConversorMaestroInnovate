@@ -22,7 +22,7 @@ public class FamiliasSwitch {
         familias = new ArrayList<Familia>();
         Familia familia;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             familia = new Familia();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {

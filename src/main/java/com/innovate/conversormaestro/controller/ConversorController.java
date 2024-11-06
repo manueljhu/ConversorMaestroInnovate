@@ -5,17 +5,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextArea;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.ExcelController;
 import com.innovate.conversormaestro.datasource.ExcelSwitch.FinalList;
 
-public class ConversorController<T> implements Initializable{
+public class ConversorController<T> implements Initializable {
 
     private static ConversorController<?> conversorController;
     private ConnectionController connectionController;
@@ -23,18 +27,32 @@ public class ConversorController<T> implements Initializable{
     private FinalList<T> finalList;
     private int nTraspasos = 0;
     private ArrayList<T> lista = new ArrayList<T>();
+    int nfilasTotales = 0;
 
     @FXML
-    public ProgressBar progressBar = new ProgressBar();
+    private ProgressBar progressBar = new ProgressBar();
+
+    @FXML
+    private TextArea txtArea = new TextArea();
+
+    @FXML
+    private Label txtLabel = new Label();
+
+    private StringProperty progressMessage = new SimpleStringProperty();
+    private StringProperty detailMessage = new SimpleStringProperty();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         connectionController = ConnectionController.getConectionController();
         excelController = ExcelController.getExcelController();
         finalList = FinalList.getFinalList();
+        txtArea.setEditable(false);
+        txtArea.setDisable(true);
         lista = finalList.getLista();
-        progressBar.setProgress(0); 
-        progressBar.setAccessibleText("Procesando 0 de "+ nTraspasos +" filas");
+        nfilasTotales = lista.size();
+        txtLabel.setText("Procesando 0 de " + nfilasTotales + " filas");
+        txtLabel.textProperty().bind(progressMessage);
+        txtArea.textProperty().bind(detailMessage);
     }
 
     public static <T> ConversorController<T> getConversorController() {
@@ -46,23 +64,26 @@ public class ConversorController<T> implements Initializable{
     }
 
     @FXML
-    public void setProgressBar(double progress, int nfilas, int nfilasTotales) {
-        System.out.println("Procesando " + nfilas + " de " + nfilasTotales + " filas");
-        if (progressBar == null) {
-            throw new NullPointerException("progressBar is null");
-        }
-        progressBar.setProgress(progress);
-        String text = "Procesando " + nfilas + " de " + nfilasTotales + " filas";
-        conversorController.progressBar.setAccessibleText(text);
-    }
-
-    @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("RelacionCampos");
     }
 
     @FXML
     private void convertButton() {
+        int nfilas = 0;
+
+        /*
+         * for (T t : lista) {
+         * System.out.println(t.toString());
+         * connectionController.insertDataQuery(t.toString());
+         * nfilas++;
+         * double progress = (double) nfilas / nfilasTotales;
+         * double finalProgress = progress * 100;
+         * System.out.println("Procesando " + nfilas + " de " + nfilasTotales +
+         * " filas");
+         * System.out.println("Progreso: " + finalProgress + "%");
+         * }
+         */
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
@@ -73,11 +94,19 @@ public class ConversorController<T> implements Initializable{
                     connectionController.insertDataQuery(t.toString());
                     nfilas++;
                     double progress = (double) nfilas / nfilasTotales;
-                    setProgressBar(progress, nfilas, nfilasTotales);
+                    updateProgress(progress, 1.0);
+                    updateMessage("Procesando " + nfilas + " de " + nfilasTotales + " filas");
+                    detailMessage.set("Detalle: " + t.toString());
+                    System.out.println("Procesando " + nfilas + " de " + nfilasTotales + " filas");
+                    System.out.println("Progreso: " + (progress * 100) + "%");
                 }
                 return null;
             }
         };
+
+        progressBar.progressProperty().bind(task.progressProperty());
+        progressMessage.bind(task.messageProperty());
+        
         new Thread(task).start();
     }
 
@@ -85,5 +114,4 @@ public class ConversorController<T> implements Initializable{
         this.nTraspasos = nTraspasos;
     }
 
-    
 }

@@ -24,7 +24,7 @@ public class PlanContableSwitch {
         planesContables = new ArrayList<Cuenta>();
         Cuenta planContable;
 
-        for (int i = 1; i < nFilas + 1; i++) {
+        for (int i = 1; i <= nFilas + 1; i++) {
             planContable = new Cuenta();
             for (int j = 0; j < relaciones.size(); j++) {
                 System.out.println("Campo origen: " + relaciones.get(j).getCampoOrigen());

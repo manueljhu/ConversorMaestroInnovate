@@ -22,7 +22,7 @@ public class SubFamiliasSwitch {
         subfamilias = new ArrayList<>();
         Subfamilia subfamilia;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             subfamilia = new Subfamilia();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
