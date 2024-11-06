@@ -8,22 +8,24 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ClientesSwitch {
+    private FinalList<Cliente> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Cliente> clientes;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void Clientes(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
-
-        clientes = new ArrayList<Cliente>();
+        lista = FinalList.getFinalList();
+        clientes = new ArrayList<>();
         Cliente cliente;
 
-        for (int i = 1; i < nFilas; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             cliente = new Cliente();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        cliente.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setCod(formatUtils
+                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
                         cliente.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -38,7 +40,8 @@ public class ClientesSwitch {
                         cliente.setPob(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "npro":
-                        cliente.setNpro(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setNpro(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pro":
                         cliente.setPro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -74,55 +77,71 @@ public class ClientesSwitch {
                         cliente.setRed(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "dto":
-                        cliente.setDto(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setDto(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "com":
-                        cliente.setCom(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setCom(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fin":
-                        cliente.setFin(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setFin(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fac":
-                        cliente.setFac(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setFac(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tar":
-                        cliente.setTar(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setTar(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "forpag":
-                        cliente.setforpag(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setforpag(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di1":
-                        cliente.setDi1(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setDi1(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di2":
-                        cliente.setDi2(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setDi2(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di3":
-                        cliente.setDi3(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setDi3(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "mnp":
-                        cliente.setMnp(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setMnp(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "m30":
                         cliente.setM30(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "vto":
-                        cliente.setVto(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setVto(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "inc":
-                        cliente.setInc(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setInc(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rie":
-                        cliente.setRie(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRie(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rut":
-                        cliente.setRut(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRut(formatUtils
+                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "age":
-                        cliente.setAge(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setAge(formatUtils
+                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nco":
-                        cliente.setNco(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setNco(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "alv":
                         cliente.setAlv(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -140,40 +159,50 @@ public class ClientesSwitch {
                         cliente.setMar(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "dt2":
-                        cliente.setDt2(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setDt2(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tia":
                         cliente.setTia(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fo2":
-                        cliente.setFo2(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setFo2(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "d1b":
-                        cliente.setD1B(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setD1B(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "d2b":
-                        cliente.setD2B(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setD2B(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "d3b":
-                        cliente.setD3B(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setD3B(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "mnb":
-                        cliente.setMnb(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setMnb(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "imp":
-                        cliente.setImp(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setImp(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tre":
-                        cliente.setTre(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setTre(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ret":
-                        cliente.setRet(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRet(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fgl":
                         cliente.setFgl(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ifg":
-                        cliente.setIfg(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setIfg(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "web":
                         cliente.setWeb(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -185,7 +214,8 @@ public class ClientesSwitch {
                         cliente.setFpd(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pais":
-                        cliente.setPais(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setPais(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ext":
                         cliente.setExt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -197,22 +227,28 @@ public class ClientesSwitch {
                         cliente.setOb2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "rediva1":
-                        cliente.setRediva1(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRediva1(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva2":
-                        cliente.setRediva2(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRediva2(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva3":
-                        cliente.setRediva3(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRediva3(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva4":
-                        cliente.setRediva4(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRediva4(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva5":
-                        cliente.setRediva5(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRediva5(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi0ped":
-                        cliente.setAvi0Ped(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setAvi0Ped(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1ped":
                         cliente.setAvi1Ped(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -221,7 +257,8 @@ public class ClientesSwitch {
                         cliente.setAvi2Ped(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "avi0alb":
-                        cliente.setAvi0Alb(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setAvi0Alb(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1alb":
                         cliente.setAvi1Alb(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -230,7 +267,8 @@ public class ClientesSwitch {
                         cliente.setAvi2Alb(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "avi0fac":
-                        cliente.setAvi0Fac(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setAvi0Fac(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1fac":
                         cliente.setAvi1Fac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -239,7 +277,8 @@ public class ClientesSwitch {
                         cliente.setAvi2Fac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "avi0rec":
-                        cliente.setAvi0Rec(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setAvi0Rec(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1rec":
                         cliente.setAvi1Rec(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -248,7 +287,8 @@ public class ClientesSwitch {
                         cliente.setAvi2Rec(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "avi0pre":
-                        cliente.setAvi0Pre(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setAvi0Pre(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1pre":
                         cliente.setAvi1Pre(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -272,13 +312,15 @@ public class ClientesSwitch {
                         cliente.setFcr_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "tip_crm":
-                        cliente.setTip_Crm(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setTip_Crm(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ftr_crm":
                         cliente.setFtr_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "tco_crm":
-                        cliente.setTco_Crm(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setTco_Crm(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ref_crm":
                         cliente.setRef_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -287,16 +329,19 @@ public class ClientesSwitch {
                         cliente.setVis_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pvi_crm":
-                        cliente.setPvi_Crm(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setPvi_Crm(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lla_crm":
                         cliente.setLla_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pll_crm":
-                        cliente.setPll_Crm(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setPll_Crm(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ru1_crm":
-                        cliente.setRu1_Crm(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setRu1_Crm(formatUtils
+                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ru2_crm":
                         cliente.setRu2_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -305,7 +350,8 @@ public class ClientesSwitch {
                         cliente.setRu3_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "sec_crm":
-                        cliente.setSec_Crm(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setSec_Crm(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dias_crm":
                         cliente.setDias_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -317,10 +363,12 @@ public class ClientesSwitch {
                         cliente.setFna_Crm(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "imprap":
-                        cliente.setImprap(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setImprap(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dtorap":
-                        cliente.setDtorap(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setDtorap(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tar_art":
                         cliente.setTar_Art(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -332,7 +380,8 @@ public class ClientesSwitch {
                         cliente.setEfactura(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "perrap":
-                        cliente.setPerrap(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setPerrap(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "facedir":
                         cliente.setFacedir(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -341,13 +390,15 @@ public class ClientesSwitch {
                         cliente.setFacepob(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "facenpro":
-                        cliente.setFacenpro(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setFacenpro(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "facepro":
                         cliente.setFacepro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "facepais":
-                        cliente.setFacepais(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setFacepais(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "facenom":
                         cliente.setFacenom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -401,7 +452,8 @@ public class ClientesSwitch {
                         cliente.setHistoria(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lopd_ori":
-                        cliente.setLopd_Ori(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setLopd_Ori(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_otr_o":
                         cliente.setLopd_Otr_O(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -422,13 +474,16 @@ public class ClientesSwitch {
                         cliente.setCln_Tarmar(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cln_idioma":
-                        cliente.setCln_Idioma(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setCln_Idioma(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "moneda":
-                        cliente.setMoneda(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setMoneda(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi0dep":
-                        cliente.setAvi0Dep(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setAvi0Dep(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi_dep":
                         cliente.setAvi_Dep(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -467,7 +522,8 @@ public class ClientesSwitch {
                         cliente.setWeb_Exepor(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "tip_rem":
-                        cliente.setTip_Rem(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        cliente.setTip_Rem(
+                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fec_man":
                         cliente.setFec_Man(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -498,8 +554,10 @@ public class ClientesSwitch {
                         break;
                 }
             }
-            System.out.println(cliente);
-            clientes.add(cliente);
+            //System.out.println(cliente);
+            clientes.add(cliente);         
         }
+        System.out.println("Clientes "+clientes.size());
+        lista.setLista(clientes);
     }
 }

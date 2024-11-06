@@ -9,6 +9,7 @@ import java.io.InputStream;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.formula.functions.T;
 
 import com.innovate.conversormaestro.model.*;
 import com.innovate.conversormaestro.datasource.ExcelSwitch.*;
@@ -18,6 +19,7 @@ public class ExcelController {
     private String PathSourceExcel;
     private ConnectionController connectionController;
     private ArrayList<Relacion> relaciones;
+    private String tablename;
 
     private static AgentesSwitch agentesSwitch;
     private static AlmacenesSwitch almacenesSwitch;
@@ -43,6 +45,8 @@ public class ExcelController {
     private static ProveedoresSwitch proveedoresSwitch;
     private static SubFamiliasSwitch subFamiliasSwitch;
 
+    private ArrayList<T> lista = new ArrayList<T>();
+
     public ExcelController() {
         connectionController = ConnectionController.getConectionController();
     }
@@ -57,6 +61,14 @@ public class ExcelController {
 
     public void setRelaciones(ArrayList<Relacion> relaciones) {
         this.relaciones = relaciones;
+    }
+
+    public String getTablename() {
+        return this.tablename;
+    }
+
+    public void setTablename(String tablename) {
+        this.tablename = tablename;
     }
 
     public String getPathSourceExcel() {
@@ -100,6 +112,11 @@ public class ExcelController {
             }
         }
         return result;
+    }
+
+    public void setLista(ArrayList<T> lista) {
+        this.lista = lista;
+        System.out.println(this.lista);
     }
 
     public void tableExcelDestination(String tablename) {

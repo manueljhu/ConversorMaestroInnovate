@@ -355,6 +355,19 @@ public class ConnectionController {
         return last_num;
     }
 
+    public void insertDataQuery(String query) {
+        Statement st = null;
+        try {
+            startConnectionDestination();
+            st = connectionDestination.createStatement();
+            st.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        closeConnectionDestination();
+    }
+
     public static ConnectionController getInstance() {
         return instance;
     }

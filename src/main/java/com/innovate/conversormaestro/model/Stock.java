@@ -84,7 +84,7 @@ public class Stock {
 
     @Override
     public String toString() {
-        return "Stock: cod=" + cod + ", exi=" + exi + ", ent=" + ent + ", sal=" + sal + ", ubi=" + ubi + ", ide=" + ide
-                + ", min=" + min + ", max=" + max + "";
+        return "INSERT INTO ALMAXX (cod,exi,ent,sal,ubi,ide,min,max) VALUES ('" + cod + "'," + exi + "," + ent + ","
+                + sal + ",'" + ubi + "'," + ide + "," + min + "," + max + ")";
     }
 }

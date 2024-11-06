@@ -163,7 +163,7 @@ public class RelacionCamposController implements Initializable {
             cboxEmptyDestination.setSelected(false);
             cboxEmptyDestination.setDisable(true);
         }
-        System.out.println(NameOption);
+        //System.out.println(NameOption);
     }
 
     @FXML
@@ -225,7 +225,7 @@ public class RelacionCamposController implements Initializable {
             alert.showAlert(AlertType.ERROR, "Error", "No se ha seleccionado ningún campo de origen");
         }
 
-        System.out.println("Index origen: " + sourceIndex + " Valor origen: " + sourceValue);
+        // System.out.println("Index origen: " + sourceIndex + " Valor origen: " + sourceValue);
     }
 
     @FXML
@@ -247,7 +247,7 @@ public class RelacionCamposController implements Initializable {
             alert.showAlert(AlertType.ERROR, "Error", "No se ha seleccionado ningún campo de destino");
         }
 
-        System.out.println("Index destino: " + sourceIndex + " Valor destino: " + sourceValue);
+        // System.out.println("Index destino: " + sourceIndex + " Valor destino: " + sourceValue);
     }
 
     @FXML
@@ -484,10 +484,44 @@ public class RelacionCamposController implements Initializable {
 
         excelController.setRelaciones(relaciones);
         excelController.tableExcelDestination(cbDestinationFields.getValue());
-        
-        /* for (int i = 0; i < relaciones.size(); i++) {
-            System.out.println(relaciones.get(i).getCampoOrigen());
-            System.out.println(relaciones.get(i).getCampoDestino());
-        } */
+    }
+
+    @FXML
+    private void switchToConversor() throws IOException {
+        if (lvRelationSourceFields.getItems().isEmpty() || lvRelationDestinationFields.getItems().isEmpty()) {
+            MyAlert alert = new MyAlert();
+            alert.showAlert(AlertType.ERROR, "Error", "No se han relacionado los campos de origen y destino");
+            return;
+        } else {
+            if (lvRelationSourceFields.getItems().size() != lvRelationDestinationFields.getItems().size()) {
+                MyAlert alert = new MyAlert();
+                alert.showAlert(AlertType.ERROR, "Error",
+                        "Las listas de campos de origen y destino no tienen la misma cantidad de elementos");
+                return;
+            } else {
+                Relacion relacion;
+                ArrayList<Relacion> relaciones = new ArrayList<Relacion>();
+
+                for (int i = 0; i < lvRelationSourceFields.getItems().size(); i++) {
+                    relacion = new Relacion();
+                    relacion.setCampoOrigen(lvRelationSourceFields.getItems().get(i));
+                    relacion.setCampoDestino(lvRelationDestinationFields.getItems().get(i));
+                    relaciones.add(relacion);
+                }
+
+                if (connectionController.getSourceTab().equals("SQL")) {
+                    //En proceso
+                } else if (connectionController.getSourceTab().equals("DBF")) {
+                    //En proceso
+                } else if (connectionController.getSourceTab().equals("Excel")) {
+                    excelController.setRelaciones(relaciones);
+                    
+                    excelController.setTablename(cbDestinationFields.getValue());
+                    excelController.tableExcelDestination(excelController.getTablename());
+                    App.setRoot("Conversor");
+                }
+                
+            }
+        }
     }
 }

@@ -1808,7 +1808,7 @@ public class Cliente {
     public String toString() {
         return "INSERT INTO CLIENT (cod,nom,sno,dir,pob,npro,pro,nif,te1,te2,fax,mov,per,car,ter,req,red,dto,com,fin,fac,tar,"
                 +
-                "for,di1,di2,di3,mnp,m30,vto,inc,rie,rut,age,nco,alv,fa1,fa2,tra,mar,dt2,tia,fo2,d1b,d2b,d3b,mnb,imp,tre,ret,fgl,ifg,web,"
+                "[for],di1,di2,di3,mnp,m30,vto,inc,rie,rut,age,nco,alv,fa1,fa2,tra,mar,dt2,tia,fo2,d1b,d2b,d3b,mnb,imp,tre,ret,fgl,ifg,web,"
                 +
                 "doc,fpd,pais,ext,ob1,ob2,rediva1,rediva2,rediva3,rediva4,rediva5,avi0ped,avi1ped,avi2ped,avi0alb,avi1alb,avi2alb,avi0fac,"
                 +
