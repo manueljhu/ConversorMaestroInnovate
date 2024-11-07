@@ -8,13 +8,14 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class AgentesSwitch {
+    private FinalList<Agente> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Agente> agentes;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void Agentes(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         agentes = new ArrayList<Agente>();
         Agente agente;
 
@@ -230,6 +231,7 @@ public class AgentesSwitch {
             System.out.println(agente);
             agentes.add(agente);
         }
+        lista.setLista(agentes);
     }
     
 }

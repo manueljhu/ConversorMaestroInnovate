@@ -27,7 +27,7 @@ public class Agente {
     public float lim = 0.000f;
     public float pais = 1;
     public int tia = 1;
-    public String alt;
+    public String alt = "NULL";
     public String fot = "";
     public String web = "";
     public String xxx = "";
@@ -498,6 +498,11 @@ public class Agente {
     }
 
     public void setAlt(String alt) {
+        if (alt != null ){
+            this.alt = "'"+alt+"'";
+        } else {
+            this.alt = "NULL";
+        }
         this.alt = alt;
     }
 
@@ -803,7 +808,7 @@ public class Agente {
                 + cod + "', '" + nom + "', '" + dir + "', '" + pob + "', " + npro + ", '" + pro + "', '" + nif + "', '"
                 + te1 + "', '" + te2 + "', '" + fax + "', '" + mov + "', '" + ob1 + "', '" + ob2 + "', '" + ob3 + "', '"
                 + rut + "', " + tip + ", " + com + ", " + co1 + ", " + co2 + ", " + co3 + ", " + co4 + ", " + co5 + ", "
-                + lim + ", " + pais + ", " + tia + ", '" + alt + "', '" + fot + "', '" + web + "', '" + xxx + "', '"
+                + lim + ", " + pais + ", " + tia + ", " + alt + ", '" + fot + "', '" + web + "', '" + xxx + "', '"
                 + rut_crm + "', " + vdi_crm + ", " + ldi_crm + ", '" + tcu_crm + "', '" + cud_crm + "', '" + est_crm
                 + "', '" + v01 + "', '" + v02 + "', '" + v03 + "', '" + v04 + "', '" + v05 + "', '" + v06 + "', '" + v07
                 + "', '" + v08 + "', '" + v09 + "', '" + v10 + "', '" + v11 + "', '" + v12 + "', '" + historia + "', "

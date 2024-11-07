@@ -2,7 +2,6 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
-import com.innovate.conversormaestro.model.Cliente;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.model.Stock;
 import com.innovate.conversormaestro.utils.ExcelUtils;

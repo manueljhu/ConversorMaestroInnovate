@@ -557,7 +557,6 @@ public class ClientesSwitch {
             //System.out.println(cliente);
             clientes.add(cliente);         
         }
-        System.out.println("Clientes "+clientes.size());
         lista.setLista(clientes);
     }
 }
