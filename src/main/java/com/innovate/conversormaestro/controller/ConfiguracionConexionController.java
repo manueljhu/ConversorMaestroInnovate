@@ -289,6 +289,11 @@ public class ConfiguracionConexionController implements Initializable {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DBF files (*.dbf)", "*.dbf");
         fileChooser.getExtensionFilters().add(extFilter);
 
+        File initialDirectory = new File("C:/Users/PC/Documents"); // Cambia esta ruta a la que desees
+        if (initialDirectory.exists()) {
+            fileChooser.setInitialDirectory(initialDirectory);
+        }
+
         Stage stage = (Stage) btPathSourceDBF.getScene().getWindow(); // Assuming btTestConnection is your button
         File file = fileChooser.showOpenDialog(stage);
 
@@ -304,11 +309,19 @@ public class ConfiguracionConexionController implements Initializable {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Excel files (*.xls)", "*.xls");
         fileChooser.getExtensionFilters().add(extFilter);
 
-        Stage stage = (Stage) btPathSourceDBF.getScene().getWindow(); // Assuming btTestConnection is your button
+        String route = "C:/Users/PC/Documents";
+        if (txPathSourceExcel.getText().isEmpty() == false) {
+            route = txPathSourceExcel.getText();
+        }
+        File initialDirectory = new File(route);
+        if (initialDirectory.exists()) {
+            fileChooser.setInitialDirectory(initialDirectory);
+        }
+
+        Stage stage = (Stage) btPathSourceExcel.getScene().getWindow(); // Assuming btTestConnection is your button
         File file = fileChooser.showOpenDialog(stage);
 
         txPathSourceExcel.setText(file.getAbsolutePath());
-
     }
 
     @FXML
@@ -356,12 +369,18 @@ public class ConfiguracionConexionController implements Initializable {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
-                setDestination();
-                connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
-                        EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
-                        WarehouseDestinationDestination);
-                connectionController.saveCredentialsOriginExcel(txPathSourceExcel.getText());
-                App.setRoot("RelacionCampos");
+                if (txPathSourceExcel.getText().endsWith(".xls") == false) {
+                    MyAlert alert = new MyAlert();
+                    alert.showAlert(AlertType.ERROR, "Next", "Please select a valid Excel file!");
+                    return;
+                } else {
+                    setDestination();
+                    connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
+                            EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
+                            WarehouseDestinationDestination);
+                    connectionController.saveCredentialsOriginExcel(txPathSourceExcel.getText());
+                    App.setRoot("RelacionCampos");
+                } 
             }
         }
     }

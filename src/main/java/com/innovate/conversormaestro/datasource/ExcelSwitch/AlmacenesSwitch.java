@@ -3,13 +3,12 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Almacen;
-import com.innovate.conversormaestro.model.Cliente;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class AlmacenesSwitch {
-    private FinalList<Cliente> lista;
+    private FinalList<Almacen> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Almacen> almacenes;
     private FormatUtils formatUtils = new FormatUtils();
@@ -44,6 +43,6 @@ public class AlmacenesSwitch {
             System.out.println(almacen);
             almacenes.add(almacen);
         }
-        
+        lista.setLista(almacenes);
     }
 }

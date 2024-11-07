@@ -2,11 +2,11 @@ package com.innovate.conversormaestro.model;
 
 public class Almacen {
 
-    private int id;
-    private String nom;
-    private String ser;
-    private String se2;
-    private String age;
+    private int id = 1;
+    public String nom = "";
+    public String ser = "";
+    public String se2 = "";
+    public String age = "";
 
     public int getId() {
         return id;
@@ -66,6 +66,6 @@ public class Almacen {
 
     @Override
     public String toString() {
-        return "UPDATE FROM ALMACE SET nom = '"+nom+"', ser = '"+ser+"', se2 = '"+se2+"', age = '"+age+"' WHERE id = "+id+";";
+        return "UPDATE ALMACE SET nom = '"+nom+"', ser = '"+ser+"', se2 = '"+se2+"', age = '"+age+"' WHERE id = "+id+";";
     }
 }

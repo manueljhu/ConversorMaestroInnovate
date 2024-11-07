@@ -9,18 +9,22 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ArticulosSwitch {
+    private FinalList<Articulo> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Articulo> articulos;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void Articulos(ArrayList<Relacion> relaciones) {
+        connectionController = ConnectionController.getConectionController();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         articulos = new ArrayList<Articulo>();
         Articulo articulo;
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
 
         for (int i = 1; i <= nFilas; i++) {
             articulo = new Articulo();
@@ -586,5 +590,6 @@ public class ArticulosSwitch {
             System.out.println(articulo);
             articulos.add(articulo);
         }
+        lista.setLista(articulos);
     }
 }

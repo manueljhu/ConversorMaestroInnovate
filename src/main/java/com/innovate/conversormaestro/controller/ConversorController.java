@@ -70,20 +70,6 @@ public class ConversorController<T> implements Initializable {
 
     @FXML
     private void convertButton() {
-        int nfilas = 0;
-
-        /*
-         * for (T t : lista) {
-         * System.out.println(t.toString());
-         * connectionController.insertDataQuery(t.toString());
-         * nfilas++;
-         * double progress = (double) nfilas / nfilasTotales;
-         * double finalProgress = progress * 100;
-         * System.out.println("Procesando " + nfilas + " de " + nfilasTotales +
-         * " filas");
-         * System.out.println("Progreso: " + finalProgress + "%");
-         * }
-         */
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {

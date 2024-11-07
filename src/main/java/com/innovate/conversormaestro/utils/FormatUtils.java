@@ -1,6 +1,5 @@
 package com.innovate.conversormaestro.utils;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
