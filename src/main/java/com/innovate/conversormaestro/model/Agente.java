@@ -503,7 +503,6 @@ public class Agente {
         } else {
             this.alt = "NULL";
         }
-        this.alt = alt;
     }
 
     public void setFot(String fot) {

@@ -1,18 +1,18 @@
 package com.innovate.conversormaestro.model;
 
 public class Banco {
-    private String cue;
-    private String des;
-    private float rie;
-    private String cta;
-    private String dir;
-    private String pob;
-    private int npro;
-    private String pro;
-    private String suf;
-    private String email;
-    private String iban;
-    private String swift;
+    private String cue = "";
+    private String des = "";
+    private float rie = 0.000F;
+    private String cta = "    /    /  /";
+    private String dir = "";
+    private String pob = "      -";
+    private int npro = 0;
+    private String pro = "";
+    private String suf = "";
+    private String email = "";
+    private String iban = "";
+    private String swift = "";
 
     public String getCue() {
         return this.cue;
@@ -152,7 +152,7 @@ public class Banco {
 
     @Override
     public String toString() {
-        return "INSERT INTO BANCO (cue,des,rie,cta,dir,pob,npro,pro,suf,email,iban,swift) VALUES "+
+        return "INSERT INTO BANCOS (cue,des,rie,cta,dir,pob,npro,pro,suf,email,iban,swift) VALUES "+
         "('"+cue+"','"+des+"',"+rie+",'"+cta+"','"+dir+"','"+pob+"',"+npro+",'"+pro+"','"+suf+"','"+email+"','"+iban+"','"+swift+"')";
     }
 }

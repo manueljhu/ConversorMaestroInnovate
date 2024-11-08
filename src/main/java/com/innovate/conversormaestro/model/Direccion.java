@@ -1,19 +1,19 @@
 package com.innovate.conversormaestro.model;
 
 public class Direccion {
-    private String cla;
-    private String cod;
-    private String den;
-    private String dir;
-    private String pob;
-    private int npro;
-    private String pro;
-    private float pais;
-    private String email;
-    private String rut;
-    private String tel;
-    private String hab;
-    private String per;
+    private String cla = "";
+    private String cod = "";
+    private String den = "";
+    private String dir = "";
+    private String pob = "";
+    private int npro = 0;
+    private String pro = "";
+    private float pais = 0;
+    private String email = "";
+    private String rut = "";
+    private String tel = "";
+    private String hab = "N";
+    private String per = "";
 
     public String getCla() {
         return this.cla;

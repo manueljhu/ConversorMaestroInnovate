@@ -9,16 +9,20 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class BancoEmpresaSwitch {
+    private FinalList<Banco> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private static ArrayList<Banco> bancoEmpresa;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void Bancos(ArrayList<Relacion> relaciones) {
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         bancoEmpresa = new ArrayList<Banco>();
         Banco banco;
 
@@ -66,8 +70,9 @@ public class BancoEmpresaSwitch {
                         break;
                 }
             }
-            System.out.println(banco);
+            //System.out.println(banco);
             bancoEmpresa.add(banco);
         }
+        lista.setLista(bancoEmpresa);
     }
 }

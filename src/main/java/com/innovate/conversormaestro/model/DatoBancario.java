@@ -1,25 +1,25 @@
 package com.innovate.conversormaestro.model;
 
 public class DatoBancario {
-    private String cla;
-    private String cod;
-    private String dir;
-    private String pob;
-    private int npro;
-    private String pro;
-    private float pais;
-    private String iban;
-    private String bic;
-    private String cu1;
-    private String cu2;
-    private String cu3;
-    private String cu4;
-    private String hab;
-    private String bban;
-    private String trem;
-    private String epri;
-    private String nman;
-    private String fman;
+    private String cla = "";
+    private String cod = "";
+    private String dir = "";
+    private String pob = "";
+    private int npro = 0;
+    private String pro = "";
+    private float pais = 0.00f;
+    private String iban = "";
+    private String bic = "";
+    private String cu1 = "";
+    private String cu2 = "";
+    private String cu3 = "";
+    private String cu4 = "";
+    private String hab = "";
+    private String bban = "";
+    private String trem = "";
+    private String epri = "";
+    private String nman = "";
+    private String fman = "";
 
     public String getCla() {
         return this.cla;
@@ -239,7 +239,7 @@ public class DatoBancario {
 
     @Override
     public String toString() {
-        return "INSERT INTO DATBAN cla,cod,dir,pob,npro,pro,pais,iban,bic,cu1,cu2,cu3,cu4,hab,bban,trem,epri,nman,fman VALUES "
+        return "INSERT INTO DATBAN (cla,cod,dir,pob,npro,pro,pais,iban,bic,cu1,cu2,cu3,cu4,hab,bban,trem,epri,nman,fman) VALUES "
                 +
                 "('" + cla + "','" + cod + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'"
                 + iban + "','" + bic + "','" + cu1 + "','" + cu2 + "','" + cu3 + "','" + cu4 + "','" + hab + "','"

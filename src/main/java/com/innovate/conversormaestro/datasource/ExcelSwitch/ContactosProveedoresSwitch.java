@@ -8,13 +8,14 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ContactosProveedoresSwitch {
+    private FinalList<Contacto> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Contacto> contactos;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void Contactos(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         contactos = new ArrayList<Contacto>();
         Contacto contacto;
 
@@ -68,8 +69,9 @@ public class ContactosProveedoresSwitch {
                         break;
                 }
             }
-            System.out.println(contacto);
+            //System.out.println(contacto);
             contactos.add(contacto);
         }
+        lista.setLista(contactos);
     }
 }

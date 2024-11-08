@@ -8,13 +8,14 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class DireccionesClientesSwitch {
+    private FinalList<Direccion> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Direccion> direcciones;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void DireccionesSwitch(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         direcciones = new ArrayList<Direccion>();
         Direccion direccion;
 
@@ -61,8 +62,9 @@ public class DireccionesClientesSwitch {
                         break;
                 }
             }
-            System.out.println(direccion);
+            //System.out.println(direccion);
             direcciones.add(direccion);
         }
+        lista.setLista(direcciones);
     }
 }

@@ -9,6 +9,7 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FacturasEmitidasSwitch {
+    private FinalList<FacturaEmitida> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FacturaEmitida> facturasEmitidas;
     private FormatUtils formatUtils = new FormatUtils();
@@ -20,7 +21,7 @@ public class FacturasEmitidasSwitch {
         group = connectionController.getGroupDigitsDestination();
         account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         facturasEmitidas = new ArrayList<FacturaEmitida>();
         FacturaEmitida facturaEmitida;
 
@@ -504,8 +505,9 @@ public class FacturasEmitidasSwitch {
                         break;
                 }
             }
-            System.out.println(facturaEmitida);
+            //System.out.println(facturaEmitida);
             facturasEmitidas.add(facturaEmitida);
         }
+        lista.setLista(facturasEmitidas);
     }
 }

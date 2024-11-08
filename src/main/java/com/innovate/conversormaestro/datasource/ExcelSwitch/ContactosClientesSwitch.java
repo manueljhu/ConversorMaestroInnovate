@@ -8,13 +8,14 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ContactosClientesSwitch {
+    private FinalList<Contacto> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Contacto> contactos;
     private FormatUtils formatUtils = new FormatUtils();
 
-    public void Contactos(ArrayList<Relacion> relaciones){
+    public void Contactos(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         contactos = new ArrayList<Contacto>();
         Contacto contacto;
 
@@ -22,9 +23,10 @@ public class ContactosClientesSwitch {
             contacto = new Contacto();
             for (int j = 0; j < relaciones.size(); j++) {
                 contacto.setCla("CL");
-                switch(relaciones.get(j).getCampoDestino()){
+                switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        contacto.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        contacto.setCod(formatUtils
+                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
                         contacto.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -54,7 +56,8 @@ public class ContactosClientesSwitch {
                         contacto.setCodcon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lopd_ori":
-                        contacto.setLopd_Ori(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        contacto.setLopd_Ori(
+                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_otr_o":
                         contacto.setLopd_Otr_O(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -67,8 +70,9 @@ public class ContactosClientesSwitch {
                         break;
                 }
             }
-            System.out.println(contacto);
+            //System.out.println(contacto);
             contactos.add(contacto);
         }
+        lista.setLista(contactos);
     }
 }

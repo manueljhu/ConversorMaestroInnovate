@@ -9,16 +9,20 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FamiliasSwitch {
+    private FinalList<Familia> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Familia> familias;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void Familias(ArrayList<Relacion> relaciones) {
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         familias = new ArrayList<Familia>();
         Familia familia;
 
@@ -26,6 +30,9 @@ public class FamiliasSwitch {
             familia = new Familia();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
+                    case "cod":
+                        familia.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        break;
                     case "nom":
                         familia.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
@@ -139,8 +146,9 @@ public class FamiliasSwitch {
                         break;
                 }
             }
-            System.out.println(familia);
+            //System.out.println(familia);
             familias.add(familia);
         }
+        lista.setLista(familias);
     }
 }
