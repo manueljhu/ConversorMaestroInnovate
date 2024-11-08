@@ -1,23 +1,26 @@
 package com.innovate.conversormaestro.model;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
+
 public class Apunte {
-    private String num;
-    private String fec;
-    private String cue;
-    private String con;
-    private String sig;
-    private String mar;
-    private String fac;
-    private String doc;
-    private String xxx;
-    private float impeu;
-    private String acl;
-    private String cen;
-    private String ren;
-    private float met;
-    private String apu_tipdoc;
-    private String apu_numdoc;
-    private int anno_efe;
+    private ConnectionController connectionController = ConnectionController.getConectionController();
+    private String num = "";
+    private String fec = "NULL";
+    private String cue = "";
+    private String con = "";
+    private String sig = "H";
+    private String mar = "";
+    private String fac = "";
+    private String doc = "000013";
+    private String xxx = "";
+    private float impeu = 1000;
+    private String acl = "";
+    private String cen = "000001002";
+    private String ren = "";
+    private float met = 0.000f;
+    private String apu_tipdoc = "";
+    private String apu_numdoc = "";
+    private int anno_efe = 0;
 
     public String getNum() {
         return this.num;
@@ -96,7 +99,11 @@ public class Apunte {
     }
 
     public void setFec(String fec) {
-        this.fec = fec;
+        if (fec != null ){
+            this.fec = "'"+fec+"'";
+        } else {
+            this.fec = "NULL";
+        }
     }
 
     public void setCue(String cue) {
@@ -209,8 +216,10 @@ public class Apunte {
 
     @Override
     public String toString() {
-        return "INSERT INTO APUNXX (num, fec, cue, con, sig, mar, fac, doc, xxx, impeu, acl, cen, ren, met, apu_tipdoc, "+
-        "apu_numdoc, anno_efe) VALUES ('"+num+"', '"+fec+"', '"+cue+"', '"+con+"', '"+sig+"', '"+mar+"', '"+fac+"', '"+doc+"', "+
+        String exercise = connectionController.getExerciseDestination();
+        exercise = exercise.substring(exercise.length()-2);
+        return "INSERT INTO APUN"+ exercise +"(num, fec, cue, con, sig, mar, fac, doc, xxx, impeu, acl, cen, ren, met, apu_tipdoc, "+
+        "apu_numdoc, anno_efe) VALUES ('"+num+"', "+fec+", '"+cue+"', '"+con+"', '"+sig+"', '"+mar+"', '"+fac+"', '"+doc+"', "+
         "'"+xxx+"', "+impeu+", '"+acl+"', '"+cen+"', '"+ren+"', "+met+", '"+apu_tipdoc+"', '"+apu_numdoc+"', "+anno_efe+");";
     }
 }

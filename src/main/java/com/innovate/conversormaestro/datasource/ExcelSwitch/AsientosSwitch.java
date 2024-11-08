@@ -9,16 +9,20 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class AsientosSwitch {
+    private FinalList<Apunte> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Apunte> asientos;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void Asientos(ArrayList<Relacion> relaciones) {
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         asientos = new ArrayList<Apunte>();
         Apunte asiento;
 
@@ -85,8 +89,9 @@ public class AsientosSwitch {
                         break;
                 }
             }
-            System.out.println(asiento);
+            //System.out.println(asiento);
             asientos.add(asiento);
         }
+        lista.setLista(asientos);
     }
 }

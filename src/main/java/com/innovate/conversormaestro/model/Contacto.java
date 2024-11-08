@@ -1,21 +1,21 @@
 package com.innovate.conversormaestro.model;
 
 public class Contacto {
-    private String cla;
-    private String cod;
-    private String nom;
-    private String car;
-    private String tel;
-    private String ext;
-    private String ob1;
-    private String ob2;
-    private String ob3;
-    private String email;
-    private String codcon;
-    private float lopd_ori;
-    private String lopd_otr_o;
-    private String lopd_ces;
-    private String lopd_otr_c;
+    private String cla = "";
+    private String cod = "";
+    private String nom = "";
+    private String car = "";
+    private String tel = "";
+    private String ext = "";
+    private String ob1 = "";
+    private String ob2 = "";
+    private String ob3 = "";
+    private String email = "";
+    private String codcon = "";
+    private float lopd_ori = 0;
+    private String lopd_otr_o = "";
+    private String lopd_ces = "";
+    private String lopd_otr_c = "";
 
     public String getCla() {
         return this.cla;

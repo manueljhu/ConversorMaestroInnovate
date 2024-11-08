@@ -8,13 +8,14 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class DatosBancariosProveedoresSwitch {
+    private FinalList<DatoBancario> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<DatoBancario> datosBancarios;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void DatosBancarios(ArrayList<Relacion> relaciones){
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         datosBancarios = new ArrayList<DatoBancario>();
         DatoBancario datoBancario;
 
@@ -79,8 +80,9 @@ public class DatosBancariosProveedoresSwitch {
                         break;
                 }
             }
-            System.out.println(datoBancario);
+            //System.out.println(datoBancario);
             datosBancarios.add(datoBancario);
         }
+        lista.setLista(datosBancarios);
     }
 }
