@@ -25,6 +25,9 @@ public class AlmacenesSwitch {
             almacen.setId(idalmacen);
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
+                    case "id":
+                        almacen.setId(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
                     case "nom":
                         almacen.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;

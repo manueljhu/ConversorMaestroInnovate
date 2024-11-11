@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Tables;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ConnectionController {
     private static ConnectionController instance = null;
@@ -256,8 +257,13 @@ public class ConnectionController {
     public ArrayList<String> getColumnDestination(String description) {
         String tablename = tables.get(getTableIndex(description)).getName();
         ArrayList<String> result = new ArrayList<String>();
-        String query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename
-                + "' AND COLUMN_NAME <> 'id'";
+        String query="";
+        if (tablename.equals("FORPAG") || tablename.equals("ALMACE")) {
+            query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename+ "'";
+        } else {
+            query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename
+            + "' AND COLUMN_NAME <> 'id'";
+        }
         java.sql.Statement st;
         try {
 
@@ -383,6 +389,30 @@ public class ConnectionController {
             e.printStackTrace();
         }
         if (excelController.getTablename() == "Formas de pago") {
+            closeConnectionGP();
+        } else {
+            closeConnectionDestination();
+        }
+    }
+
+    public void truncateDataTable(String tablename) {
+        Statement st = null;
+        FormatUtils formatUtils = new FormatUtils();
+        String query = formatUtils.tableQueryDestination(tablename);
+        try {
+            if (tablename.equals("Formas de pago")) {
+                startConnectionGP();
+                st = connectionGP.createStatement();
+            } else {
+                startConnectionDestination();
+                st = connectionDestination.createStatement();
+            }
+            st.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        if (tablename.equals("Formas de pago")) {
             closeConnectionGP();
         } else {
             closeConnectionDestination();

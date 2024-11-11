@@ -520,8 +520,11 @@ public class RelacionCamposController implements Initializable {
 
                     excelController.setTablename(cbDestinationFields.getValue());
                     excelController.tableExcelDestination(excelController.getTablename());
-                    App.setRoot("Conversor");
+                    
                 }
+                excelController.setTypeTransfer(NameOption);
+                excelController.setBeEmpty(cboxEmptyDestination.isSelected());
+                App.setRoot("Conversor");
 
             }
         }

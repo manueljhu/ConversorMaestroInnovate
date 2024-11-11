@@ -70,6 +70,10 @@ public class ConversorController<T> implements Initializable {
 
     @FXML
     private void convertButton() {
+        if (excelController.isBeEmpty()){
+            System.out.println(excelController.getTablename());
+            connectionController.truncateDataTable(excelController.getTablename());
+        }
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {

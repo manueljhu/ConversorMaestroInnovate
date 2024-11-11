@@ -20,6 +20,8 @@ public class ExcelController {
     private ConnectionController connectionController;
     private ArrayList<Relacion> relaciones;
     private String tablename;
+    private String typeTransfer;
+    private boolean beEmpty;
 
     private static AgentesSwitch agentesSwitch;
     private static AlmacenesSwitch almacenesSwitch;
@@ -77,6 +79,22 @@ public class ExcelController {
 
     public void setPathSourceExcel(String pathSourceExcel) {
         PathSourceExcel = pathSourceExcel;
+    }
+    
+    public String getTypeTransfer() {
+        return typeTransfer;
+    }
+
+    public void setTypeTransfer(String typeTransfer) {
+        this.typeTransfer = typeTransfer;
+    }
+
+    public boolean isBeEmpty() {
+        return beEmpty;
+    }
+
+    public void setBeEmpty(boolean beEmpty) {
+        this.beEmpty = beEmpty;
     }
 
     public ArrayList<String> getColumnOrigin() {

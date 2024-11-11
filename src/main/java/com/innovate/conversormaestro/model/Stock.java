@@ -1,6 +1,7 @@
 package com.innovate.conversormaestro.model;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.ExcelController;
 
 public class Stock {
     ConnectionController connectionController = ConnectionController.getConectionController();
@@ -86,10 +87,13 @@ public class Stock {
         this.max = max;
     }
 
-    public String toString(String type) {
-        if (type.equals("insert")) {
+    @Override
+    public String toString() {
+        ExcelController excelController = ExcelController.getExcelController();
+        String type = excelController.getTypeTransfer();
+        if (type.equals("Insert")) {
             return toInsert();
-        } else if (type.equals("update")) {
+        } else if (type.equals("Update")) {
             return toUpdate();
         } else {
             return "";

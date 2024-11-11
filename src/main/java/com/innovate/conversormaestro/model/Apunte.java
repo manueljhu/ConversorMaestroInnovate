@@ -1,6 +1,7 @@
 package com.innovate.conversormaestro.model;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.ExcelController;
 
 public class Apunte {
     private ConnectionController connectionController = ConnectionController.getConectionController();
@@ -214,10 +215,13 @@ public class Apunte {
         this.anno_efe = anno_efe;
     }
 
-    public String toString(String type) {
-        if (type.equals("insert")) {
+    @Override
+    public String toString() {
+        ExcelController excelController = ExcelController.getExcelController();
+        String type = excelController.getTypeTransfer();
+        if (type.equals("Insert")) {
             return toInsert();
-        } else if (type.equals("update")) {
+        } else if (type.equals("Update")) {
             return toUpdate();
         } else {
             return "";
