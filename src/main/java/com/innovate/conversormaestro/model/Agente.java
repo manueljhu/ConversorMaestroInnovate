@@ -1,5 +1,7 @@
 package com.innovate.conversormaestro.model;
 
+import com.innovate.conversormaestro.datasource.ExcelController;
+
 public class Agente {
 
     public String cod = "";
@@ -793,10 +795,13 @@ public class Agente {
         }
     }
 
-    public String toString(String type) {
-        if (type.equals("insert")) {
+    @Override
+    public String toString() {
+        ExcelController excelController = ExcelController.getExcelController();
+        String type = excelController.getTypeTransfer();
+        if (type.equals("Insert")) {
             return toInsert();
-        } else if (type.equals("update")) {
+        } else if (type.equals("Update")) {
             return toUpdate();
         } else {
             return "";
@@ -832,7 +837,7 @@ public class Agente {
                 + npro + ",pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='" + fax
                 + "',mov='" + mov + "',ob1='" + ob1 + "',ob2='" + ob2 + "',ob3='" + ob3 + "',rut='" + rut + "',tip="
                 + tip + ",com=" + com + ",co1=" + co1 + ",co2=" + co2 + ",co3=" + co3 + ",co4=" + co4 + ",co5=" + co5
-                + ",lim=" + lim + ",pais=" + pais + ",tia=" + tia + ",alt='" + alt + "',fot='" + fot + "',web='" + web
+                + ",lim=" + lim + ",pais=" + pais + ",tia=" + tia + ",alt=" + alt + ",fot='" + fot + "',web='" + web
                 + "',xxx='" + xxx + "',rut_crm='" + rut_crm + "',vdi_crm=" + vdi_crm + ",ldi_crm=" + ldi_crm
                 + ",tcu_crm='" + tcu_crm + "',cud_crm='" + cud_crm + "',est_crm='" + est_crm + "',v01='" + v01
                 + "',v02='" + v02 + "',v03='" + v03 + "',v04='" + v04 + "',v05='" + v05 + "',v06='" + v06 + "',v07='"

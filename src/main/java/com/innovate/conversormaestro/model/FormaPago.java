@@ -170,7 +170,8 @@ public class FormaPago {
         }
     }
 
-    public String toString(String type) {
+    @Override
+    public String toString() {
         return toUpdate();
     }
 

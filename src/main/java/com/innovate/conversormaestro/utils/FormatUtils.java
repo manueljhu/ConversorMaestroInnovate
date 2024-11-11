@@ -4,6 +4,29 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.AgentesSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.AlmacenesSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.ArticulosSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.AsientosSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.BancoEmpresaSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.ClientesSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.ContactosClientesSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.ContactosProveedoresSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.DatosBancariosClientesSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.DatosBancariosProveedoresSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.DireccionesClientesSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.DireccionesProveedoresSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.ExistenciasSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.FacturasEmitidasSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.FacturasRecibidasSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.FamiliasSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.FormasPagoSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.MarcasArticuloSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.PlanContableSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.PrevisionesCobroSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.PrevisionesPagoSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.ProveedoresSwitch;
+import com.innovate.conversormaestro.datasource.ExcelSwitch.SubFamiliasSwitch;
 
 import javafx.scene.control.Alert.AlertType;
 
@@ -319,7 +342,8 @@ public class FormatUtils {
     }
 
     public String formatEfectCon(String factura, String type, String source, int rowint) {
-        // System.out.println("Factura: " + factura + "Type: " + type + "Source: " + source + "rowint: " + rowint);
+        // System.out.println("Factura: " + factura + "Type: " + type + "Source: " +
+        // source + "rowint: " + rowint);
         String result = "0";
         List<Integer> temp = null;
         int pos = 1;
@@ -351,7 +375,7 @@ public class FormatUtils {
                         break;
                     }
                 }
-            } 
+            }
         }
 
         int rs = 0;
@@ -376,12 +400,90 @@ public class FormatUtils {
         return result;
     }
 
-    public int formatUpdate(String table){
+    public int formatUpdate(String table) {
         int result = 1;
         connectionController = ConnectionController.getConectionController();
         String query = "SELECT TOP 1 id AS LAST_NUM FROM " + table + " WHERE nom = ''";
         result = connectionController.getDataQuery(query);
         // System.out.println("RS: " + result);
+        return result;
+    }
+
+    public String tableQueryDestination(String tablename) {
+        String result = "";
+        switch (tablename) {
+            case "Agentes":
+                result = "TRUNCATE TABLE AGENTG";
+                break;
+            case "Almacenes":
+                result = "TRUNCATE TABLE ALMACE";
+                break;
+            case "Articulos":
+                result = "TRUNCATE TABLE ARTICU";
+                break;
+            case "Asientos":
+                String exercise = connectionController.getExerciseDestination();
+                exercise = exercise.substring(exercise.length() - 2);
+                result = "TRUNCATE TABLE APUN" + exercise;
+                break;
+            case "Bancos de la empresa":
+                result = "TRUNCATE TABLE BANCOS";
+                break;
+            case "Clientes":
+                result = "TRUNCATE TABLE CLIENT";
+                break;
+            case "Contactos de clientes":
+                result = "DELETE FROM CONTAC WHERE cla = 'CL'";
+                break;
+            case "Contactos de proveedores":
+                result = "DELETE FROM CONTAC WHERE cla = 'PR'";
+                break;
+            case "Datos bancarios clientes":
+                result = "DELETE FROM DATBAN WHERE cla = 'CL'";
+                break;
+            case "Datos bancarios proveedores":
+                result = "DELETE FROM DATBAN WHERE cla = 'PR'";
+                break;
+            case "Direcciones de clientes":
+                result = "DELETE FROM DIRECC WHERE cla = 'CL'";
+                break;
+            case "Direcciones de proveedores":
+                result = "DELETE FROM DIRECC WHERE cla = 'PR'";
+                break;
+            case "Existencias":
+                result = "TRUNCATE TABLE ALMA" + connectionController.getWarehouseDestination();
+                break;
+            case "Facturas emitidas":
+                result = "TRUNCATE TABLE FACEMI";
+                break;
+            case "Facturas recibidas":
+                result = "TRUNCATE TABLE FACREC";
+                break;
+            case "Familias":
+                result = "TRUNCATE TABLE FAMILI";
+                break;
+            case "Formas de pago":
+                result = "TRUNCATE TABLE FORPAG";
+                break;
+            case "Marcas articulo":
+                result = "TRUNCATE TABLE MARART";
+                break;
+            case "Plan contable":
+                result = "TRUNCATE TABLE CUENTA";
+                break;
+            case "Previsiones de cobro":
+                result = "TRUNCATE TABLE EFECTO WHERE tip = 'C'";
+                break;
+            case "Previsiones de pago":
+                result = "TRUNCATE TABLE EFECTO WHERE tip = 'P'";
+                break;
+            case "Proveedores":
+                result = "TRUNCATE TABLE PROVEE";
+                break;
+            case "Subfamilias":
+                result = "TRUNCATE TABLE SUBFAM";
+                break;
+        }
         return result;
     }
 }

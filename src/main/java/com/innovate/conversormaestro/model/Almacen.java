@@ -64,7 +64,8 @@ public class Almacen {
         }
     }
 
-    public String toString(String type) {
+    @Override
+    public String toString() {
         return toUpdate();
     }
 
