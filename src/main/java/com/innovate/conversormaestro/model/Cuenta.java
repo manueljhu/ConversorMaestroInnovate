@@ -598,8 +598,17 @@ public class Cuenta {
         }
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO CUENTA (cue,nom,nif,deb,hab,dir,pob,npro,pro,cont1,cont2,cont3,cont4,cont5,cons1,cons2,cons3,cons4,cons5,"
                 +
                 "cons6,cons7,cons8,cons9,cons10,pais,gru,nifr,tdoc,lopd_ori,lopd_otr_o,lopd_ces,lopd_otr_c,cue_apoyo,lap_den,lap_con,lap_cta,"
@@ -613,5 +622,20 @@ public class Cuenta {
                 + lap_Den + "','" + lap_Con + "','" + lap_Cta + "','" + ope_Tip + "','" + ope_Cla + "'," + ope_Pla
                 + ",'" + ope_Des + "','" + cta + "','" + suf + "','" + iban + "','" + swift + "','" + cri_Caja + "','"
                 + siidesfac + "','" + patron + "','" + patron_Cv + "')";
+    }
+
+    public String toUpdate() {
+        return "UPDATE CUENTA SET nom='" + nom + "',nif='" + nif + "',deb=" + deb + ",hab=" + hab
+                + ",dir='" + dir + "',pob='" + pob + "',npro=" + npro + ",pro='" + pro + "',cont1='" + cont1
+                + "',cont2='" + cont2 + "',cont3='" + cont3 + "',cont4='" + cont4 + "',cont5='" + cont5 + "',cons1='"
+                + cons1 + "',cons2='" + cons2 + "',cons3='" + cons3 + "',cons4='" + cons4 + "',cons5='" + cons5
+                + "',cons6='" + cons6 + "',cons7='" + cons7 + "',cons8='" + cons8 + "',cons9='" + cons9 + "',cons10='"
+                + cons10 + "',pais=" + pais + ",gru=" + gru + ",nifr='" + nifr + "',tdoc=" + tdoc + ",lopd_ori="
+                + lopd_Ori + ",lopd_otr_o='" + lopd_Otr_O + "',lopd_ces='" + lopd_Ces + "',lopd_otr_c='" + lopd_Otr_C
+                + "',cue_apoyo='" + cue_Apoyo + "',lap_den='" + lap_Den + "',lap_con='" + lap_Con + "',lap_cta='"
+                + lap_Cta + "',ope_tip='" + ope_Tip + "',ope_cla='" + ope_Cla + "',ope_pla=" + ope_Pla + ",ope_des='"
+                + ope_Des + "',cta='" + cta + "',suf='" + suf + "',iban='" + iban + "',swift='" + swift + "',cri_caja='"
+                + cri_Caja + "',siidesfac='" + siidesfac + "',patron='" + patron + "',patron_cv='" + patron_Cv
+                + "' WHERE cue='" + cue + "';";
     }
 }

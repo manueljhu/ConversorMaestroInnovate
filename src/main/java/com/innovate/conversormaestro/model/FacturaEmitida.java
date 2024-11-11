@@ -2,163 +2,163 @@ package com.innovate.conversormaestro.model;
 
 public class FacturaEmitida {
     private String num = "";
-    private String fea="NULL";
-    private String doc="";
-    private String fee="NULL";
-    private String gas="000001";
-    private String cue="";
-    private String li1="";
-    private String li2="";
-    private float dt1=0.00f;
-    private float dt2=0.00f;
-    private String fuc="NULL";
-    private String forpag="01";
-    private float fin=0.00f;
-    private String alm="01";
-    private String com="";
-    private String nom="";
-    private String nif="";
-    private float ba1eu=0.000f;
-    private float iv1eu=0.000f;
-    private float re1eu=0.000f;
-    private float ba2eu=0.000f;
-    private float iv2eu=0.000f;
-    private float re2eu=0.000f;
-    private float ba3eu=0.000f;
-    private float iv3eu=0.000f;
-    private float re3eu=0.000f;
-    private float ba4eu=0.000f;
-    private float iv4eu=0.000f;
-    private float re4eu=0.000f;
-    private float ba5eu=0.000f;
-    private float iv5eu=0.000f;
-    private float re5eu=0.000f;
-    private float exeeu=0.000f;
-    private float ulceu=0.000f;
-    private float toceu=0.000f;
-    private float enteu=0.000f;
-    private float imceu=0.000f;
-    private float imreu=0.000f;
-    private int tre=0;
-    private float pre=0.00f;
-    private float ireeu=0.000f;
-    private String den="";
-    private String rut="000001";
-    private String obr="";
-    private String ivainc="N";
-    private String tra="";
-    private float entped=0.000f;
-    private float impuesto=0.000f;
-    private String tip="D";
-    private String web="";
-    private String aut="";
-    private String comis="";
-    private int negativa=0;
-    private String fecope="NULL";
-    private String efacgen="";
-    private String efacenv="";
-    private String sno="";
-    private String dir="";
-    private String pob="      -";
-    private int npro=0;
-    private String pro="";
-    private float pais=0;
-    private String mod303="";
-    private String mod303a="";
-    private String mod303b="";
-    private String mod303c="";
-    private String mod347="";
-    private int usuario_bloqueo=0;
-    private String emi_deb_pag="D";
-    private String emi_incluir="N";
-    private String emi_antes_dto="N";
-    private String emi_iva_inc="N";
-    private int moneda=1;
-    private float cotiza=1.000000f;
-    private float basmon=0.000f;
-    private float totmon=0.000f;;
-    private float entmon=0.000f;;
-    private String obs_doc="";
-    private String recargo="N";
-    private String retgar="";
-    private float porretgar=0.00f;
-    private float impretgar=0.000f;;
-    private String tipretgar="";
-    private float suplidos=0.000000f;
-    private float iva1=0.00f;
-    private float iva2=0.00f;
-    private float iva3=0.00f;
-    private float iva4=0.00f;
-    private float iva5=0.00f;
-    private float rec1=0.00f;
-    private float rec2=0.00f;
-    private float rec3=0.00f;
-    private float rec4=0.00f;
-    private float rec5=0.00f;
-    private String tipivaok="S";
-    private String exento="N";
-    private String numtic="";
-    private String cri_caja="N";
-    private String ded_cie="";
-    private String cen_adm="";
-    private String siiest="";
-    private String siiact="";
-    private String siitipfra="";
-    private String siifraemi="";
-    private String siitiprec="";
-    private String siitipsuj="";
-    private String siitipnsu="";
-    private String siitipexe="";
-    private String siidesfra="";
-    private float siiimpnsu=0.000000f;
-    private float siiimptai=0.000000f;
-    private float siiimpexe=0.000000f;
-    private String siinifemi="";
-    private String siiemiter="";
-    private String siicupon="";
-    private String siivardes="";
-    private String siidatrec="";
-    private String siidatinm="";
-    private String siidatagr="";
-    private float siibasrec=0.000000f;
-    private float siicuorec=0.000000f;
-    private float siirecrec=0.000000f;
-    private float siibascos=0.000000f;
-    private float siitraiva=0.000000f;
-    private float siientexe=0.000000f;
-    private String siientcexe="";
-    private String siienttsuj="";
-    private float siientnsu=0.000000f;
-    private float siienttai=0.000000f;
-    private String siientdes="";
-    private float siiserexe=0.000000f;
-    private String siisercexe="";
-    private String siisertsuj="";
-    private float siisernsu=0.000000f;
-    private float siisertai=0.000000f;
-    private String siiserdes="";
-    private String siidatdes="";
-    private String siifraemi1="";
-    private String siifraemi2="";
-    private String siinumacu="";
-    private String siinumresf="";
-    private String siinemiter="";
-    private String siidesman="";
-    private String patron="";
-    private String siirefext="";
-    private String siinomensu="";
-    private String siinifensu="";
-    private String siidesnoid="";
-    private String siifraiden="";
-    private String siimergas="";
-    private String siidesexen="";
-    private String siimacro="";
-    private String siiregprev="";
-    private String siientdexe="";
-    private String siiserdexe="";
-    private String aeattipfac="";
-    private String aeattiping="";
-    private float aeatimpcon=0.000000f;
+    private String fea = "NULL";
+    private String doc = "";
+    private String fee = "NULL";
+    private String gas = "000001";
+    private String cue = "";
+    private String li1 = "";
+    private String li2 = "";
+    private float dt1 = 0.00f;
+    private float dt2 = 0.00f;
+    private String fuc = "NULL";
+    private String forpag = "01";
+    private float fin = 0.00f;
+    private String alm = "01";
+    private String com = "";
+    private String nom = "";
+    private String nif = "";
+    private float ba1eu = 0.000f;
+    private float iv1eu = 0.000f;
+    private float re1eu = 0.000f;
+    private float ba2eu = 0.000f;
+    private float iv2eu = 0.000f;
+    private float re2eu = 0.000f;
+    private float ba3eu = 0.000f;
+    private float iv3eu = 0.000f;
+    private float re3eu = 0.000f;
+    private float ba4eu = 0.000f;
+    private float iv4eu = 0.000f;
+    private float re4eu = 0.000f;
+    private float ba5eu = 0.000f;
+    private float iv5eu = 0.000f;
+    private float re5eu = 0.000f;
+    private float exeeu = 0.000f;
+    private float ulceu = 0.000f;
+    private float toceu = 0.000f;
+    private float enteu = 0.000f;
+    private float imceu = 0.000f;
+    private float imreu = 0.000f;
+    private int tre = 0;
+    private float pre = 0.00f;
+    private float ireeu = 0.000f;
+    private String den = "";
+    private String rut = "000001";
+    private String obr = "";
+    private String ivainc = "N";
+    private String tra = "";
+    private float entped = 0.000f;
+    private float impuesto = 0.000f;
+    private String tip = "D";
+    private String web = "";
+    private String aut = "";
+    private String comis = "";
+    private int negativa = 0;
+    private String fecope = "NULL";
+    private String efacgen = "";
+    private String efacenv = "";
+    private String sno = "";
+    private String dir = "";
+    private String pob = "      -";
+    private int npro = 0;
+    private String pro = "";
+    private float pais = 0;
+    private String mod303 = "";
+    private String mod303a = "";
+    private String mod303b = "";
+    private String mod303c = "";
+    private String mod347 = "";
+    private int usuario_bloqueo = 0;
+    private String emi_deb_pag = "D";
+    private String emi_incluir = "N";
+    private String emi_antes_dto = "N";
+    private String emi_iva_inc = "N";
+    private int moneda = 1;
+    private float cotiza = 1.000000f;
+    private float basmon = 0.000f;
+    private float totmon = 0.000f;;
+    private float entmon = 0.000f;;
+    private String obs_doc = "";
+    private String recargo = "N";
+    private String retgar = "";
+    private float porretgar = 0.00f;
+    private float impretgar = 0.000f;;
+    private String tipretgar = "";
+    private float suplidos = 0.000000f;
+    private float iva1 = 0.00f;
+    private float iva2 = 0.00f;
+    private float iva3 = 0.00f;
+    private float iva4 = 0.00f;
+    private float iva5 = 0.00f;
+    private float rec1 = 0.00f;
+    private float rec2 = 0.00f;
+    private float rec3 = 0.00f;
+    private float rec4 = 0.00f;
+    private float rec5 = 0.00f;
+    private String tipivaok = "S";
+    private String exento = "N";
+    private String numtic = "";
+    private String cri_caja = "N";
+    private String ded_cie = "";
+    private String cen_adm = "";
+    private String siiest = "";
+    private String siiact = "";
+    private String siitipfra = "";
+    private String siifraemi = "";
+    private String siitiprec = "";
+    private String siitipsuj = "";
+    private String siitipnsu = "";
+    private String siitipexe = "";
+    private String siidesfra = "";
+    private float siiimpnsu = 0.000000f;
+    private float siiimptai = 0.000000f;
+    private float siiimpexe = 0.000000f;
+    private String siinifemi = "";
+    private String siiemiter = "";
+    private String siicupon = "";
+    private String siivardes = "";
+    private String siidatrec = "";
+    private String siidatinm = "";
+    private String siidatagr = "";
+    private float siibasrec = 0.000000f;
+    private float siicuorec = 0.000000f;
+    private float siirecrec = 0.000000f;
+    private float siibascos = 0.000000f;
+    private float siitraiva = 0.000000f;
+    private float siientexe = 0.000000f;
+    private String siientcexe = "";
+    private String siienttsuj = "";
+    private float siientnsu = 0.000000f;
+    private float siienttai = 0.000000f;
+    private String siientdes = "";
+    private float siiserexe = 0.000000f;
+    private String siisercexe = "";
+    private String siisertsuj = "";
+    private float siisernsu = 0.000000f;
+    private float siisertai = 0.000000f;
+    private String siiserdes = "";
+    private String siidatdes = "";
+    private String siifraemi1 = "";
+    private String siifraemi2 = "";
+    private String siinumacu = "";
+    private String siinumresf = "";
+    private String siinemiter = "";
+    private String siidesman = "";
+    private String patron = "";
+    private String siirefext = "";
+    private String siinomensu = "";
+    private String siinifensu = "";
+    private String siidesnoid = "";
+    private String siifraiden = "";
+    private String siimergas = "";
+    private String siidesexen = "";
+    private String siimacro = "";
+    private String siiregprev = "";
+    private String siientdexe = "";
+    private String siiserdexe = "";
+    private String aeattipfac = "";
+    private String aeattiping = "";
+    private float aeatimpcon = 0.000000f;
 
     public String getNum() {
         return this.num;
@@ -801,8 +801,8 @@ public class FacturaEmitida {
     }
 
     public void setFea(String fea) {
-        if (fea != null ){
-            this.fea = "'"+fea+"'";
+        if (fea != null) {
+            this.fea = "'" + fea + "'";
         } else {
             this.fea = "NULL";
         }
@@ -817,8 +817,8 @@ public class FacturaEmitida {
     }
 
     public void setFee(String fee) {
-        if (fee != null ){
-            this.fee = "'"+fee+"'";
+        if (fee != null) {
+            this.fee = "'" + fee + "'";
         } else {
             this.fee = "NULL";
         }
@@ -865,8 +865,8 @@ public class FacturaEmitida {
     }
 
     public void setFuc(String fuc) {
-        if (fuc != null ){
-            this.fuc = "'"+fuc+"'";
+        if (fuc != null) {
+            this.fuc = "'" + fuc + "'";
         } else {
             this.fuc = "NULL";
         }
@@ -1097,8 +1097,8 @@ public class FacturaEmitida {
     }
 
     public void setFecope(String fecope) {
-        if (fecope != null ){
-            this.fecope = "'"+fecope+"'";
+        if (fecope != null) {
+            this.fecope = "'" + fecope + "'";
         } else {
             this.fecope = "NULL";
         }
@@ -1748,19 +1748,37 @@ public class FacturaEmitida {
         this.aeatimpcon = aeatimpcon;
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO FACEMI (num,fea,doc,fee,gas,cue,li1,li2,dt1,dt2,fuc,[for],fin,alm,com,nom,nif,ba1eu,iv1eu,re1eu,"
                 +
-                "ba2eu,iv2eu,re2eu,ba3eu,iv3eu,re3eu,ba4eu,iv4eu,re4eu,ba5eu,iv5eu,re5eu,exeeu,ulceu,toceu,enteu,imceu,imreu,"+
-                "tre,pre,ireeu,den,rut,obr,ivainc,tra,entped,impuesto,tip,web,aut,comis,negativa,fecope,efacgen,efacenv,sno,dir,"+
-                "pob,npro,pro,pais,mod303,mod303a,mod303b,mod303c,mod347,usuario_bloqueo,emi_deb_pag,emi_incluir,emi_antes_dto,"+
-                "emi_iva_inc,moneda,cotiza,basmon,totmon,entmon,obs_doc,recargo,retgar,porretgar,impretgar,tipretgar,suplidos,iva1,"+
-                "iva2,iva3,iva4,iva5,rec1,rec2,rec3,rec4,rec5,tipivaok,exento,numtic,cri_caja,ded_cie,cen_adm,siiest,siiact,siitipfra,"+
-                "siifraemi,siitiprec,siitipsuj,siitipnsu,siitipexe,siidesfra,siiimpnsu,siiimptai,siiimpexe,siinifemi,siiemiter,siicupon,"+
-                "siivardes,siidatrec,siidatinm,siidatagr,siibasrec,siicuorec,siirecrec,siibascos,siitraiva,siientexe,siientcexe,siienttsuj,"+
-                "siientnsu,siienttai,siientdes,siiserexe,siisercexe,siisertsuj,siisernsu,siisertai,siiserdes,siidatdes,siifraemi1,siifraemi2,"+
-                "siinumacu,siinumresf,siinemiter,siidesman,patron,siirefext,siinomensu,siinifensu,siidesnoid,siifraiden,siimergas,siidesexen,"+
+                "ba2eu,iv2eu,re2eu,ba3eu,iv3eu,re3eu,ba4eu,iv4eu,re4eu,ba5eu,iv5eu,re5eu,exeeu,ulceu,toceu,enteu,imceu,imreu,"
+                +
+                "tre,pre,ireeu,den,rut,obr,ivainc,tra,entped,impuesto,tip,web,aut,comis,negativa,fecope,efacgen,efacenv,sno,dir,"
+                +
+                "pob,npro,pro,pais,mod303,mod303a,mod303b,mod303c,mod347,usuario_bloqueo,emi_deb_pag,emi_incluir,emi_antes_dto,"
+                +
+                "emi_iva_inc,moneda,cotiza,basmon,totmon,entmon,obs_doc,recargo,retgar,porretgar,impretgar,tipretgar,suplidos,iva1,"
+                +
+                "iva2,iva3,iva4,iva5,rec1,rec2,rec3,rec4,rec5,tipivaok,exento,numtic,cri_caja,ded_cie,cen_adm,siiest,siiact,siitipfra,"
+                +
+                "siifraemi,siitiprec,siitipsuj,siitipnsu,siitipexe,siidesfra,siiimpnsu,siiimptai,siiimpexe,siinifemi,siiemiter,siicupon,"
+                +
+                "siivardes,siidatrec,siidatinm,siidatagr,siibasrec,siicuorec,siirecrec,siibascos,siitraiva,siientexe,siientcexe,siienttsuj,"
+                +
+                "siientnsu,siienttai,siientdes,siiserexe,siisercexe,siisertsuj,siisernsu,siisertai,siiserdes,siidatdes,siifraemi1,siifraemi2,"
+                +
+                "siinumacu,siinumresf,siinemiter,siidesman,patron,siirefext,siinomensu,siinifensu,siidesnoid,siifraiden,siimergas,siidesexen,"
+                +
                 "siimacro,siiregprev,siientdexe,siiserdexe,aeattipfac,aeattiping,aeatimpcon) VALUES ('"
                 + num + "'," + fea + ",'" + doc + "'," + fee + ",'" + gas + "','" + cue + "','" + li1 + "','" + li2
                 + "'," + dt1 + "," + dt2 + "," + fuc + ",'" + forpag + "'," + fin + ",'" + alm + "','" + com + "','"
@@ -1789,5 +1807,48 @@ public class FacturaEmitida {
                 + siinifensu + "','" + siidesnoid + "','" + siifraiden + "','" + siimergas + "','" + siidesexen + "','"
                 + siimacro + "','" + siiregprev + "','" + siientdexe + "','" + siiserdexe + "','" + aeattipfac + "','"
                 + aeattiping + "'," + aeatimpcon + ")";
+    }
+
+    public String toUpdate() {
+        return "UPDATE FACEMI SET fea='" + fea + "',doc='" + doc + "',fee='" + fee + "',gas='" + gas + "',cue='" + cue
+                + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2 + ",fuc='" + fuc + "',for='"
+                + forpag + "',fin=" + fin + ",alm='" + alm + "',com='" + com + "',nom='" + nom + "',nif='" + nif
+                + "',ba1eu=" + ba1eu + ",iv1eu=" + iv1eu + ",re1eu=" + re1eu + ",ba2eu=" + ba2eu + ",iv2eu=" + iv2eu
+                + ",re2eu=" + re2eu + ",ba3eu=" + ba3eu + ",iv3eu=" + iv3eu + ",re3eu=" + re3eu + ",ba4eu=" + ba4eu
+                + ",iv4eu=" + iv4eu + ",re4eu=" + re4eu + ",ba5eu=" + ba5eu + ",iv5eu=" + iv5eu + ",re5eu=" + re5eu
+                + ",exeeu=" + exeeu + ",ulceu=" + ulceu + ",toceu=" + toceu + ",enteu=" + enteu + ",imceu=" + imceu
+                + ",imreu=" + imreu + ",tre=" + tre + ",pre=" + pre + ",ireeu=" + ireeu + ",den='" + den + "',rut='"
+                + rut + "',obr='" + obr + "',ivainc='" + ivainc + "',tra='" + tra + "',entped=" + entped + ",impuesto="
+                + impuesto + ",tip='" + tip + "',web='" + web + "',aut='" + aut + "',comis='" + comis + "',negativa="
+                + negativa + ",fecope='" + fecope + "',efacgen='" + efacgen + "',efacenv='" + efacenv + "',sno='" + sno
+                + "',dir='" + dir + "',pob='" + pob + "',npro=" + npro + ",pro='" + pro + "',pais=" + pais + ",mod303='"
+                + mod303 + "',mod303a='" + mod303a + "',mod303b='" + mod303b + "',mod303c='" + mod303c + "',mod347='"
+                + mod347 + "',usuario_bloqueo=" + usuario_bloqueo + ",emi_deb_pag='" + emi_deb_pag + "',emi_incluir='"
+                + emi_incluir + "',emi_antes_dto='" + emi_antes_dto + "',emi_iva_inc='" + emi_iva_inc + "',moneda="
+                + moneda + ",cotiza=" + cotiza + ",basmon=" + basmon + ",totmon=" + totmon + ",entmon=" + entmon
+                + ",obs_doc='" + obs_doc + "',recargo='" + recargo + "',retgar='" + retgar + "',porretgar=" + porretgar
+                + ",impretgar=" + impretgar + ",tipretgar='" + tipretgar + "',suplidos=" + suplidos + ",iva1=" + iva1
+                + ",iva2=" + iva2 + ",iva3=" + iva3 + ",iva4=" + iva4 + ",iva5=" + iva5 + ",rec1=" + rec1 + ",rec2="
+                + rec2 + ",rec3=" + rec3 + ",rec4=" + rec4 + ",rec5=" + rec5 + ",tipivaok='" + tipivaok + "',exento='"
+                + exento + "',numtic='" + numtic + "',cri_caja='" + cri_caja + "',ded_cie='" + ded_cie + "',cen_adm='"
+                + cen_adm + "',siiest='" + siiest + "',siiact='" + siiact + "',siitipfra='" + siitipfra
+                + "',siifraemi='" + siifraemi + "',siitiprec='" + siitiprec + "',siitipsuj='" + siitipsuj
+                + "',siitipnsu='" + siitipnsu + "',siitipexe='" + siitipexe + "',siidesfra='" + siidesfra
+                + "',siiimpnsu=" + siiimpnsu + ",siiimptai=" + siiimptai + ",siiimpexe=" + siiimpexe + ",siinifemi='"
+                + siinifemi + "',siiemiter='" + siiemiter + "',siicupon='" + siicupon + "',siivardes='" + siivardes
+                + "',siidatrec='" + siidatrec + "',siidatinm='" + siidatinm + "',siidatagr='" + siidatagr
+                + "',siibasrec=" + siibasrec + ",siicuorec=" + siicuorec + ",siirecrec=" + siirecrec + ",siibascos="
+                + siibascos + ",siitraiva=" + siitraiva + ",siientexe=" + siientexe + ",siientcexe='" + siientcexe
+                + "',siienttsuj='" + siienttsuj + "',siientnsu=" + siientnsu + ",siienttai=" + siienttai
+                + ",siientdes='" + siientdes + "',siiserexe=" + siiserexe + ",siisercexe='" + siisercexe
+                + "',siisertsuj='" + siisertsuj + "',siisernsu=" + siisernsu + ",siisertai=" + siisertai
+                + ",siiserdes='" + siiserdes + "',siidatdes='" + siidatdes + "',siifraemi1='" + siifraemi1
+                + "',siifraemi2='" + siifraemi2 + "',siinumacu='" + siinumacu + "',siinumresf='" + siinumresf
+                + "',siinemiter='" + siinemiter + "',siidesman='" + siidesman + "',patron='" + patron + "',siirefext='"
+                + siirefext + "',siinomensu='" + siinomensu + "',siinifensu='" + siinifensu + "',siidesnoid='"
+                + siidesnoid + "',siifraiden='" + siifraiden + "',siimergas='" + siimergas + "',siidesexen='"
+                + siidesexen + "',siimacro='" + siimacro + "',siiregprev='" + siiregprev + "',siientdexe='" + siientdexe
+                + "',siiserdexe='" + siiserdexe + "',aeattipfac='" + aeattipfac + "',aeattiping='" + aeattiping
+                + "',aeatimpcon=" + aeatimpcon + " WHERE num='" + num + "';";
     }
 }

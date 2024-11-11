@@ -25,6 +25,7 @@ import javafx.beans.value.ChangeListener;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.ExcelController;
 import com.innovate.conversormaestro.utils.MyAlert;
 
 public class ConfiguracionConexionController implements Initializable {
@@ -122,6 +123,8 @@ public class ConfiguracionConexionController implements Initializable {
 
     private ConnectionController connectionController;
 
+    private ExcelController excelController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbAccountDigitsDestination.getItems().addAll("9", "10", "11", "12");
@@ -168,6 +171,7 @@ public class ConfiguracionConexionController implements Initializable {
          */
 
         connectionController = ConnectionController.getConectionController();
+        excelController = ExcelController.getExcelController();
 
         ActualTab = "SQL";
 
@@ -289,7 +293,16 @@ public class ConfiguracionConexionController implements Initializable {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DBF files (*.dbf)", "*.dbf");
         fileChooser.getExtensionFilters().add(extFilter);
 
-        File initialDirectory = new File("C:/Users/PC/Documents"); // Cambia esta ruta a la que desees
+        String route = "C:/Users/PC/Documents";
+        if (!txPathSourceDBF.getText().isEmpty()) {
+            if (txPathSourceDBF.getText().endsWith(".dbf")) {
+                route = txPathSourceDBF.getText().substring(0, txPathSourceDBF.getText().lastIndexOf("\\"));
+            } else {
+                route = txPathSourceDBF.getText();
+            }
+        }
+
+        File initialDirectory = new File(route);
         if (initialDirectory.exists()) {
             fileChooser.setInitialDirectory(initialDirectory);
         }
@@ -297,7 +310,11 @@ public class ConfiguracionConexionController implements Initializable {
         Stage stage = (Stage) btPathSourceDBF.getScene().getWindow(); // Assuming btTestConnection is your button
         File file = fileChooser.showOpenDialog(stage);
 
-        txPathSourceDBF.setText(file.getAbsolutePath());
+        if (file != null) {
+            txPathSourceDBF.setText(file.getAbsolutePath());
+        } else {
+            System.out.println("No file selected");
+        }
     }
 
     @FXML
@@ -310,8 +327,12 @@ public class ConfiguracionConexionController implements Initializable {
         fileChooser.getExtensionFilters().add(extFilter);
 
         String route = "C:/Users/PC/Documents";
-        if (txPathSourceExcel.getText().isEmpty() == false) {
-            route = txPathSourceExcel.getText();
+        if (!txPathSourceExcel.getText().isEmpty()) {
+            if (txPathSourceExcel.getText().endsWith(".xls")) {
+                route = txPathSourceExcel.getText().substring(0, txPathSourceExcel.getText().lastIndexOf("\\"));
+            } else {
+                route = txPathSourceExcel.getText();
+            }
         }
         File initialDirectory = new File(route);
         if (initialDirectory.exists()) {
@@ -321,7 +342,11 @@ public class ConfiguracionConexionController implements Initializable {
         Stage stage = (Stage) btPathSourceExcel.getScene().getWindow(); // Assuming btTestConnection is your button
         File file = fileChooser.showOpenDialog(stage);
 
-        txPathSourceExcel.setText(file.getAbsolutePath());
+        if (file != null) {
+            txPathSourceExcel.setText(file.getAbsolutePath());
+        } else {
+            System.out.println("No file selected");
+        }
     }
 
     @FXML
@@ -379,7 +404,12 @@ public class ConfiguracionConexionController implements Initializable {
                             EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
                             WarehouseDestinationDestination);
                     connectionController.saveCredentialsOriginExcel(txPathSourceExcel.getText());
-                    App.setRoot("RelacionCampos");
+                    if (excelController.getColumnOrigin().isEmpty()){
+                        MyAlert alert = new MyAlert();
+                        alert.showAlert(AlertType.ERROR, "Next", "This Excel file is empty!");
+                    } else {
+                        App.setRoot("RelacionCampos");
+                    }     
                 } 
             }
         }

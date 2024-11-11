@@ -163,7 +163,7 @@ public class RelacionCamposController implements Initializable {
             cboxEmptyDestination.setSelected(false);
             cboxEmptyDestination.setDisable(true);
         }
-        //System.out.println(NameOption);
+        // System.out.println(NameOption);
     }
 
     @FXML
@@ -225,7 +225,8 @@ public class RelacionCamposController implements Initializable {
             alert.showAlert(AlertType.ERROR, "Error", "No se ha seleccionado ningún campo de origen");
         }
 
-        // System.out.println("Index origen: " + sourceIndex + " Valor origen: " + sourceValue);
+        // System.out.println("Index origen: " + sourceIndex + " Valor origen: " +
+        // sourceValue);
     }
 
     @FXML
@@ -247,7 +248,8 @@ public class RelacionCamposController implements Initializable {
             alert.showAlert(AlertType.ERROR, "Error", "No se ha seleccionado ningún campo de destino");
         }
 
-        // System.out.println("Index destino: " + sourceIndex + " Valor destino: " + sourceValue);
+        // System.out.println("Index destino: " + sourceIndex + " Valor destino: " +
+        // sourceValue);
     }
 
     @FXML
@@ -510,17 +512,17 @@ public class RelacionCamposController implements Initializable {
                 }
 
                 if (connectionController.getSourceTab().equals("SQL")) {
-                    //En proceso
+                    // En proceso
                 } else if (connectionController.getSourceTab().equals("DBF")) {
-                    //En proceso
+                    // En proceso
                 } else if (connectionController.getSourceTab().equals("Excel")) {
                     excelController.setRelaciones(relaciones);
-                    
+
                     excelController.setTablename(cbDestinationFields.getValue());
                     excelController.tableExcelDestination(excelController.getTablename());
                     App.setRoot("Conversor");
                 }
-                
+
             }
         }
     }

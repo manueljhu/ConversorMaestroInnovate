@@ -150,9 +150,25 @@ public class Banco {
         }
     }
 
-    @Override
-    public String toString() {
-        return "INSERT INTO BANCOS (cue,des,rie,cta,dir,pob,npro,pro,suf,email,iban,swift) VALUES "+
-        "('"+cue+"','"+des+"',"+rie+",'"+cta+"','"+dir+"','"+pob+"',"+npro+",'"+pro+"','"+suf+"','"+email+"','"+iban+"','"+swift+"')";
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
+        return "INSERT INTO BANCOS (cue,des,rie,cta,dir,pob,npro,pro,suf,email,iban,swift) VALUES " +
+                "('" + cue + "','" + des + "'," + rie + ",'" + cta + "','" + dir + "','" + pob + "'," + npro + ",'"
+                + pro + "','" + suf + "','" + email + "','" + iban + "','" + swift + "')";
+    }
+
+    public String toUpdate() {
+        return "UPDATE BANCOS SET des='" + des + "',rie=" + rie + ",cta='" + cta + "',dir='" + dir
+                + "',pob='" + pob + "',npro=" + npro + ",pro='" + pro + "',suf='" + suf + "',email='" + email
+                + "',iban='" + iban + "',swift='" + swift + "' WHERE cue='" + cue + "';";
     }
 }

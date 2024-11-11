@@ -92,9 +92,13 @@ public class ExcelController {
 
             hssfRowCabecera = hssfSheet.getRow(0);
 
-            for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
-                /* System.out.println(hssfRowCabecera.getCell(c).getStringCellValue()); */
-                result.add(hssfRowCabecera.getCell(c).getStringCellValue());
+            if (hssfRowCabecera == null) {
+                System.out.println("No se encontró la cabecera de la hoja de cálculo");
+            } else {
+                for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
+                    /* System.out.println(hssfRowCabecera.getCell(c).getStringCellValue()); */
+                    result.add(hssfRowCabecera.getCell(c).getStringCellValue());
+                }
             }
             hssfWorkbook.close();
 

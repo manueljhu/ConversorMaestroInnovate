@@ -99,8 +99,8 @@ public class Apunte {
     }
 
     public void setFec(String fec) {
-        if (fec != null ){
-            this.fec = "'"+fec+"'";
+        if (fec != null) {
+            this.fec = "'" + fec + "'";
         } else {
             this.fec = "NULL";
         }
@@ -214,12 +214,33 @@ public class Apunte {
         this.anno_efe = anno_efe;
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         String exercise = connectionController.getExerciseDestination();
-        exercise = exercise.substring(exercise.length()-2);
-        return "INSERT INTO APUN"+ exercise +"(num, fec, cue, con, sig, mar, fac, doc, xxx, impeu, acl, cen, ren, met, apu_tipdoc, "+
-        "apu_numdoc, anno_efe) VALUES ('"+num+"', "+fec+", '"+cue+"', '"+con+"', '"+sig+"', '"+mar+"', '"+fac+"', '"+doc+"', "+
-        "'"+xxx+"', "+impeu+", '"+acl+"', '"+cen+"', '"+ren+"', "+met+", '"+apu_tipdoc+"', '"+apu_numdoc+"', "+anno_efe+");";
+        exercise = exercise.substring(exercise.length() - 2);
+        return "INSERT INTO APUN" + exercise
+                + "(num, fec, cue, con, sig, mar, fac, doc, xxx, impeu, acl, cen, ren, met, apu_tipdoc, " +
+                "apu_numdoc, anno_efe) VALUES ('" + num + "', " + fec + ", '" + cue + "', '" + con + "', '" + sig
+                + "', '" + mar + "', '" + fac + "', '" + doc + "', " +
+                "'" + xxx + "', " + impeu + ", '" + acl + "', '" + cen + "', '" + ren + "', " + met + ", '" + apu_tipdoc
+                + "', '" + apu_numdoc + "', " + anno_efe + ");";
+    }
+
+    public String toUpdate() {
+        String exercise = connectionController.getExerciseDestination();
+        exercise = exercise.substring(exercise.length() - 2);
+        return "UPDATE APUN" + exercise + " SET fec='" + fec + "',cue='" + cue + "',con='" + con
+                + "',sig='" + sig + "',mar='" + mar + "',fac='" + fac + "',doc='" + doc + "',xxx='" + xxx + "',impeu="
+                + impeu + ",acl='" + acl + "',cen='" + cen + "',ren='" + ren + "',met=" + met + ",apu_tipdoc='"
+                + apu_tipdoc + "',apu_numdoc='" + apu_numdoc + "',anno_efe=" + anno_efe + " WHERE num = '" + num + "';";
     }
 }

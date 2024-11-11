@@ -163,10 +163,25 @@ public class Direccion {
         }
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO DIRECC (cla,cod,den,dir,pob,npro,pro,pais,email,rut,tel,hab,per) VALUES ('" + cla + "','"
                 + cod + "','" + den + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'" + email
                 + "','" + rut + "','" + tel + "','" + hab + "','" + per + "')";
+    }
+
+    public String toUpdate() {
+        return "UPDATE DIRECC SET den='" + den + "',dir='" + dir + "',pob='" + pob
+                + "',npro=" + npro + ",pro='" + pro + "',pais=" + pais + ",email='" + email + "',rut='" + rut
+                + "',tel='" + tel + "',hab='" + hab + "',per='" + per + "' WHERE cla='" + cla + "' AND cod='" + cod + "';";
     }
 }

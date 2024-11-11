@@ -86,10 +86,25 @@ public class Stock {
         this.max = max;
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO ALMA" + connectionController.getWarehouseDestination()
                 + " (cod,exi,ent,sal,ubi,ide,min,max) VALUES ('" + cod + "'," + exi + "," + ent + ","
                 + sal + ",'" + ubi + "'," + ide + "," + min + "," + max + ")";
+    }
+
+    public String toUpdate() {
+        return "UPDATE ALMA" + connectionController.getWarehouseDestination() + "SET exi=" + exi + ",ent=" + ent
+                + ",sal=" + sal + ",ubi='" + ubi + "',ide=" + ide + ",min=" + min + ",max=" + max + " WHERE cod='" + cod
+                + "';";
     }
 }
