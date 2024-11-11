@@ -237,12 +237,28 @@ public class DatoBancario {
         this.fman = fman;
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO DATBAN (cla,cod,dir,pob,npro,pro,pais,iban,bic,cu1,cu2,cu3,cu4,hab,bban,trem,epri,nman,fman) VALUES "
                 +
                 "('" + cla + "','" + cod + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'"
                 + iban + "','" + bic + "','" + cu1 + "','" + cu2 + "','" + cu3 + "','" + cu4 + "','" + hab + "','"
                 + bban + "','" + trem + "','" + epri + "','" + nman + "','" + fman + "')";
+    }
+
+    public String toUpdate() {
+        return "UPDATE DATBAN SET dir='" + dir + "',pob='" + pob + "',npro=" + npro
+                + ",pro='" + pro + "',pais=" + pais + ",iban='" + iban + "',bic='" + bic + "',cu1='" + cu1 + "',cu2='"
+                + cu2 + "',cu3='" + cu3 + "',cu4='" + cu4 + "',hab='" + hab + "',bban='" + bban + "',trem='" + trem
+                + "',epri='" + epri + "',nman='" + nman + "',fman='" + fman + "' WHERE cla='" + cla + "' AND cod='" + cod + "';";
     }
 }

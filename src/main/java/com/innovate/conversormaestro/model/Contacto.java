@@ -193,12 +193,28 @@ public class Contacto {
         }
     }
 
-    @Override
-    public String toString() {
-        return "INSERT INTO CONTAC (cla,cod,nom,car,tel,ext,ob1,ob2,ob3,email,codcon,lopd_ori,lopd_otr_o,lopd_ces,lopd_otr_c) VALUES "+
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
+        return "INSERT INTO CONTAC (cla,cod,nom,car,tel,ext,ob1,ob2,ob3,email,codcon,lopd_ori,lopd_otr_o,lopd_ces,lopd_otr_c) VALUES "
+                +
                 "('" + cla + "','" + cod + "','" + nom + "','" + car + "','" + tel + "','" + ext + "','" + ob1 + "','"
                 + ob2 + "','" + ob3 + "','" + email + "','" + codcon + "'," + lopd_ori + ",'" + lopd_otr_o + "','"
                 + lopd_ces + "','" + lopd_otr_c + "')";
     }
 
+    public String toUpdate() {
+        return "UPDATE CONTACT SET nom='" + nom + "',car='" + car + "',tel='" + tel
+                + "',ext='" + ext + "',ob1='" + ob1 + "',ob2='" + ob2 + "',ob3='" + ob3 + "',email='" + email
+                + "',codcon='" + codcon + "',lopd_ori=" + lopd_ori + ",lopd_otr_o='" + lopd_otr_o + "',lopd_ces='"
+                + lopd_ces + "', lopd_otr_c='" + lopd_otr_c + "' WHERE cod='" + cod + "' AND cla='" + cla + "';";
+    }
 }

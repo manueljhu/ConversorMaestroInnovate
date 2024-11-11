@@ -2,165 +2,165 @@ package com.innovate.conversormaestro.model;
 
 public class Articulo {
     private String cod;
-    private String nom="";
-    private String fam="";
-    private String obs="";
-    private float min=0.000000f;
-    private float max=0.000000f;
-    private String med="";
-    private String uni="";
-    private String cla="";
-    private int iva=0;
-    private String ubi="";
-    private String rea="";
-    private String rep="";
-    private float cos=0.000000f;
-    private float pba=0.000000f;
-    private String dtocom1="P";
-    private String dtocom2="P";
-    private String dtoven1="P";
-    private String dtoven2="P";
-    private float dt1=0.00f;
-    private float dt2=0.00f;
-    private float dt3=0.00f;
-    private float dt4=0.00f;
-    private float dt5=0.00f;
-    private float co1=0.00f;
-    private float co2=0.00f;
-    private float co3=0.00f;
-    private float co4=0.00f;
-    private float co5=0.00f;
-    private float pmc=0.000000f;
-    private float upc=0.000000f;
-    private String ufc="NULL";
-    private String pro="";
-    private float pmv=0.000000f;
-    private float upv=0.000000f;
-    private String ufv="NULL";
-    private float exi=0.000000f;
-    private float vai=0.000f;
-    private float ent=0.000000f;
-    private float ptc=0.000f;
-    private float sal=0.000000f;
-    private float ptv=0.000f;
-    private float ma1=0.00f;
-    private float ma2=0.00f;
-    private float ma3=0.00f;
-    private float ma4=0.00f;
-    private float ma5=0.00f;
-    private float d01=0.00f;
-    private float d02=0.00f;
-    private float d03=0.00f;
-    private float d04=0.00f;
-    private float d05=0.00f;
-    private String cuc="6000000000";
-    private String cuv="7000000000";
-    private String bar="";
-    private float p21=0.000000f;
-    private float p22=0.000000f;
-    private float p23=0.000000f;
-    private float p24=0.000000f;
-    private float p25=0.000000f;
-    private int iv2=0;
-    private String ima="";
-    private String abr="";
-    private float coi=0.000000f;
-    private int di1=0;
-    private int di2=0;
-    private int sec=1;
-    private String tem="";
-    private float ide=0.000000f;
-    private String tra="N";
-    private String coe="N";
-    private String eim="";
-    private int gru=1;
-    private String pos="";
-    private String fot="";
-    private String trazab="N";
-    private String medida="N";
-    private int num_med=0;
-    private float med_1=0.000000f;
-    private float med_2=0.000000f;
-    private float med_3=0.000000f;
-    private float bultos=0.00f;
-    private float paquet=0.00f;
-    private String impues="N";
-    private String art_imp="";
-    private String sum_imp="N";
-    private float fac_can=0.000000f;
-    private float fac_imp=0.000000f;
-    private String fec_cre="NULL";
-    private String obsole="N";
-    private String per_com="S";
-    private String per_ven="S";
-    private float peso=0.000000f;
-    private float volumen=0.000000f;
-    private String men_sto="S";
-    private String con_sto="S";
-    private String marca1="N";
-    private String marca2="N";
-    private String ped_tex="N";
-    private String ped_cos="N";
-    private String env="N";
-    private String v01="";
-    private String v02="";
-    private String v03="";
-    private String v04="";
-    private String v05="";
-    private String v06="";
-    private String v07="";
-    private String v08="";
-    private String v09="";
-    private String v10="";
-    private String v11="";
-    private String v12="";
-    private String ctadevcom="6080000000";
-    private String ctadevven="7080000000";
-    private String ctadtocom="6000000000";
-    private String ctadtoven="7000000000";
-    private float meses=3;
-    private String imaweb="";
-    private String fabpro="";
-    private String fabtip="";
-    private String nse="N";
-    private String historia="";
-    private float art_minped=0.000000f;
-    private String art_subfam="";
-    private String art_marca="";
-    private String web_nov="N";
-    private String web_fealno="NULL";
-    private String web_des="N";
-    private float coefici=0.000000f;
-    private String web_sub="N";
-    private String web_actd="NULL";
-    private String web_acth="NULL";
-    private String divs1="";
-    private String divs2="";
-    private float web_cat1=0;
-    private float web_cat2=0;
-    private float web_cat3=0;
-    private String ntv="";
-    private String agr="S";
-    private String com="";
-    private String hor="N";
-    private float come=0;
-    private int tim=1;
-    private float dos=1.000000f;
-    private float num_pro=0;
-    private float num_com=0;
-    private String csi="";
-    private String inc_pre="";
-    private float inc_red=0.00f;
-    private float web_orcat1=0;
-    private float web_orcat2=0;
-    private float web_orcat3=0;
-    private String web_metat="";
-    private String web_metad="";
-    private String web_urla="";
-    private String web_h1="";
-    private String web_h2_1="";
-    private String web_h2_2="";
-    private String sincro="X";
+    private String nom = "";
+    private String fam = "";
+    private String obs = "";
+    private float min = 0.000000f;
+    private float max = 0.000000f;
+    private String med = "";
+    private String uni = "";
+    private String cla = "";
+    private int iva = 0;
+    private String ubi = "";
+    private String rea = "";
+    private String rep = "";
+    private float cos = 0.000000f;
+    private float pba = 0.000000f;
+    private String dtocom1 = "P";
+    private String dtocom2 = "P";
+    private String dtoven1 = "P";
+    private String dtoven2 = "P";
+    private float dt1 = 0.00f;
+    private float dt2 = 0.00f;
+    private float dt3 = 0.00f;
+    private float dt4 = 0.00f;
+    private float dt5 = 0.00f;
+    private float co1 = 0.00f;
+    private float co2 = 0.00f;
+    private float co3 = 0.00f;
+    private float co4 = 0.00f;
+    private float co5 = 0.00f;
+    private float pmc = 0.000000f;
+    private float upc = 0.000000f;
+    private String ufc = "NULL";
+    private String pro = "";
+    private float pmv = 0.000000f;
+    private float upv = 0.000000f;
+    private String ufv = "NULL";
+    private float exi = 0.000000f;
+    private float vai = 0.000f;
+    private float ent = 0.000000f;
+    private float ptc = 0.000f;
+    private float sal = 0.000000f;
+    private float ptv = 0.000f;
+    private float ma1 = 0.00f;
+    private float ma2 = 0.00f;
+    private float ma3 = 0.00f;
+    private float ma4 = 0.00f;
+    private float ma5 = 0.00f;
+    private float d01 = 0.00f;
+    private float d02 = 0.00f;
+    private float d03 = 0.00f;
+    private float d04 = 0.00f;
+    private float d05 = 0.00f;
+    private String cuc = "6000000000";
+    private String cuv = "7000000000";
+    private String bar = "";
+    private float p21 = 0.000000f;
+    private float p22 = 0.000000f;
+    private float p23 = 0.000000f;
+    private float p24 = 0.000000f;
+    private float p25 = 0.000000f;
+    private int iv2 = 0;
+    private String ima = "";
+    private String abr = "";
+    private float coi = 0.000000f;
+    private int di1 = 0;
+    private int di2 = 0;
+    private int sec = 1;
+    private String tem = "";
+    private float ide = 0.000000f;
+    private String tra = "N";
+    private String coe = "N";
+    private String eim = "";
+    private int gru = 1;
+    private String pos = "";
+    private String fot = "";
+    private String trazab = "N";
+    private String medida = "N";
+    private int num_med = 0;
+    private float med_1 = 0.000000f;
+    private float med_2 = 0.000000f;
+    private float med_3 = 0.000000f;
+    private float bultos = 0.00f;
+    private float paquet = 0.00f;
+    private String impues = "N";
+    private String art_imp = "";
+    private String sum_imp = "N";
+    private float fac_can = 0.000000f;
+    private float fac_imp = 0.000000f;
+    private String fec_cre = "NULL";
+    private String obsole = "N";
+    private String per_com = "S";
+    private String per_ven = "S";
+    private float peso = 0.000000f;
+    private float volumen = 0.000000f;
+    private String men_sto = "S";
+    private String con_sto = "S";
+    private String marca1 = "N";
+    private String marca2 = "N";
+    private String ped_tex = "N";
+    private String ped_cos = "N";
+    private String env = "N";
+    private String v01 = "";
+    private String v02 = "";
+    private String v03 = "";
+    private String v04 = "";
+    private String v05 = "";
+    private String v06 = "";
+    private String v07 = "";
+    private String v08 = "";
+    private String v09 = "";
+    private String v10 = "";
+    private String v11 = "";
+    private String v12 = "";
+    private String ctadevcom = "6080000000";
+    private String ctadevven = "7080000000";
+    private String ctadtocom = "6000000000";
+    private String ctadtoven = "7000000000";
+    private float meses = 3;
+    private String imaweb = "";
+    private String fabpro = "";
+    private String fabtip = "";
+    private String nse = "N";
+    private String historia = "";
+    private float art_minped = 0.000000f;
+    private String art_subfam = "";
+    private String art_marca = "";
+    private String web_nov = "N";
+    private String web_fealno = "NULL";
+    private String web_des = "N";
+    private float coefici = 0.000000f;
+    private String web_sub = "N";
+    private String web_actd = "NULL";
+    private String web_acth = "NULL";
+    private String divs1 = "";
+    private String divs2 = "";
+    private float web_cat1 = 0;
+    private float web_cat2 = 0;
+    private float web_cat3 = 0;
+    private String ntv = "";
+    private String agr = "S";
+    private String com = "";
+    private String hor = "N";
+    private float come = 0;
+    private int tim = 1;
+    private float dos = 1.000000f;
+    private float num_pro = 0;
+    private float num_com = 0;
+    private String csi = "";
+    private String inc_pre = "";
+    private float inc_red = 0.00f;
+    private float web_orcat1 = 0;
+    private float web_orcat2 = 0;
+    private float web_orcat3 = 0;
+    private String web_metat = "";
+    private String web_metad = "";
+    private String web_urla = "";
+    private String web_h1 = "";
+    private String web_h2_1 = "";
+    private String web_h2_2 = "";
+    private String sincro = "X";
 
     public String getCod() {
         return this.cod;
@@ -983,8 +983,8 @@ public class Articulo {
     }
 
     public void setUfc(String ufc) {
-        if (ufc != null){
-            this.ufc = "'"+ufc+"'";
+        if (ufc != null) {
+            this.ufc = "'" + ufc + "'";
         } else {
             this.ufc = "NULL";
         }
@@ -1007,8 +1007,8 @@ public class Articulo {
     }
 
     public void setUfv(String ufv) {
-        if (ufv != null){
-            this.ufv = "'"+ufv+"'";
+        if (ufv != null) {
+            this.ufv = "'" + ufv + "'";
         } else {
             this.ufv = "NULL";
         }
@@ -1287,8 +1287,8 @@ public class Articulo {
     }
 
     public void setFec_Cre(String fec_cre) {
-        if (fec_cre != null){
-            this.fec_cre = "'"+fec_cre+"'";
+        if (fec_cre != null) {
+            this.fec_cre = "'" + fec_cre + "'";
         } else {
             this.fec_cre = "NULL";
         }
@@ -1579,8 +1579,8 @@ public class Articulo {
     }
 
     public void setWeb_Fealno(String web_fealno) {
-        if (web_fealno != null){
-            this.web_fealno = "'"+web_fealno+"'";
+        if (web_fealno != null) {
+            this.web_fealno = "'" + web_fealno + "'";
         } else {
             this.web_fealno = "NULL";
         }
@@ -1607,16 +1607,16 @@ public class Articulo {
     }
 
     public void setWeb_Actd(String web_actd) {
-        if (web_actd != null){
-            this.web_actd = "'"+web_actd+"'";
+        if (web_actd != null) {
+            this.web_actd = "'" + web_actd + "'";
         } else {
             this.web_actd = "NULL";
         }
     }
 
     public void setWeb_Acth(String web_acth) {
-        if (web_acth != null){
-            this.web_acth = "'"+web_acth+"'";
+        if (web_acth != null) {
+            this.web_acth = "'" + web_acth + "'";
         } else {
             this.web_acth = "NULL";
         }
@@ -1782,8 +1782,17 @@ public class Articulo {
         }
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO ARTICU(cod, nom, fam, obs, min, max, med, uni, cla, iva, ubi, rea, rep, cos, pba, " +
                 "dtocom1, dtocom2, dtoven1, dtoven2, dt1, dt2, dt3, dt4, dt5, co1, co2, co3, co4, co5, pmc, upc, ufc, pro, "
                 +
@@ -1826,6 +1835,43 @@ public class Articulo {
                 + ",'" + csi + "','" + inc_pre + "'," + inc_red + "," + web_orcat1 + "," + web_orcat2 + "," + web_orcat3
                 + ",'" + web_metat + "','" + web_metad + "','" + web_urla + "','" + web_h1 + "','" + web_h2_1 + "','"
                 + web_h2_2 + "','" + sincro + "')";
+    }
+
+    public String toUpdate() {
+        return "UPDATE ARTICU SET nom='" + nom + "',fam='" + fam + "',obs='" + obs + "',min=" + min
+                + ",max=" + max + ",med='" + med + "',uni='" + uni + "',cla='" + cla + "',iva=" + iva + ",ubi='" + ubi
+                + "',rea='" + rea + "',rep='" + rep + "',cos=" + cos + ",pba=" + pba + ",dtocom1='" + dtocom1
+                + "',dtocom2='" + dtocom2 + "',dtoven1='" + dtoven1 + "',dtoven2='" + dtoven2 + "',dt1=" + dt1 + ",dt2="
+                + dt2 + ",dt3=" + dt3 + ",dt4=" + dt4 + ",dt5=" + dt5 + ",co1=" + co1 + ",co2=" + co2 + ",co3=" + co3
+                + ",co4=" + co4 + ",co5=" + co5 + ",pmc=" + pmc + ",upc=" + upc + ",ufc='" + ufc + "',pro='" + pro
+                + "',pmv=" + pmv + ",upv=" + upv + ",ufv='" + ufv + "',exi=" + exi + ",vai=" + vai + ",ent=" + ent
+                + ",ptc=" + ptc + ",sal=" + sal + ",ptv=" + ptv + ",ma1=" + ma1 + ",ma2=" + ma2 + ",ma3=" + ma3
+                + ",ma4=" + ma4 + ",ma5=" + ma5 + ",d01=" + d01 + ",d02=" + d02 + ",d03=" + d03 + ",d04=" + d04
+                + ",d05=" + d05 + ",cuc='" + cuc + "',cuv='" + cuv + "',bar='" + bar + "',p21=" + p21 + ",p22=" + p22
+                + ",p23=" + p23 + ",p24=" + p24 + ",p25=" + p25 + ",iv2=" + iv2 + ",ima='" + ima + "',abr='" + abr
+                + "',coi=" + coi + ",di1=" + di1 + ",di2=" + di2 + ",sec=" + sec + ",tem='" + tem + "',ide=" + ide
+                + ",tra='" + tra + "',coe='" + coe + "',eim='" + eim + "',gru=" + gru + ",pos='" + pos + "',fot='" + fot
+                + "',trazab='" + trazab + "',medida='" + medida + "',num_med=" + num_med + ",med_1=" + med_1 + ",med_2="
+                + med_2 + ",med_3=" + med_3 + ",bultos=" + bultos + ",paquet=" + paquet + ",impues='" + impues
+                + "',art_imp='" + art_imp + "',sum_imp='" + sum_imp + "',fac_can=" + fac_can + ",fac_imp=" + fac_imp
+                + ",fec_cre='" + fec_cre + "',obsole='" + obsole + "',per_com='" + per_com + "',per_ven='" + per_ven
+                + "',peso=" + peso + ",volumen=" + volumen + ",men_sto='" + men_sto + "',con_sto='" + con_sto
+                + "',marca1='" + marca1 + "',marca2='" + marca2 + "',ped_tex='" + ped_tex + "',ped_cos='" + ped_cos
+                + "',env='" + env + "',v01='" + v01 + "',v02='" + v02 + "',v03='" + v03 + "',v04='" + v04 + "',v05='"
+                + v05 + "',v06='" + v06 + "',v07='" + v07 + "',v08='" + v08 + "',v09='" + v09 + "',v10='" + v10
+                + "',v11='" + v11 + "',v12='" + v12 + "',ctadevcom='" + ctadevcom + "',ctadevven='" + ctadevven
+                + "',ctadtocom='" + ctadtocom + "',ctadtoven='" + ctadtoven + "',meses=" + meses + ",imaweb='" + imaweb
+                + "',fabpro='" + fabpro + "',fabtip='" + fabtip + "',nse='" + nse + "',historia='" + historia
+                + "',art_minped=" + art_minped + ",art_subfam='" + art_subfam + "',art_marca='" + art_marca
+                + "',web_nov='" + web_nov + "',web_fealno='" + web_fealno + "',web_des='" + web_des + "',coefici="
+                + coefici + ",web_sub='" + web_sub + "',web_actd='" + web_actd + "',web_acth='" + web_acth + "',divs1='"
+                + divs1 + "',divs2='" + divs2 + "',web_cat1=" + web_cat1 + ",web_cat2=" + web_cat2 + ",web_cat3="
+                + web_cat3 + ",ntv='" + ntv + "',agr='" + agr + "',com='" + com + "',hor='" + hor + "',come=" + come
+                + ",tim=" + tim + ",dos=" + dos + ",num_pro=" + num_pro + ",num_com=" + num_com + ",csi='" + csi
+                + "',inc_pre='" + inc_pre + "',inc_red=" + inc_red + ",web_orcat1=" + web_orcat1 + ",web_orcat2="
+                + web_orcat2 + ",web_orcat3=" + web_orcat3 + ",web_metat='" + web_metat + "',web_metad='" + web_metad
+                + "',web_urla='" + web_urla + "',web_h1='" + web_h1 + "',web_h2_1='" + web_h2_1 + "',web_h2_2='"
+                + web_h2_2 + "',sincro='" + sincro + "' WHERE  cod='" + cod + "';";
     }
 
 }

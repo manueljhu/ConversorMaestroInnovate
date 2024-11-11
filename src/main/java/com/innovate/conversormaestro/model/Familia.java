@@ -408,8 +408,17 @@ public class Familia {
         this.tipima = tipima;
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO FAMILI (cod,nom,cuc,cuv,co1,co2,co3,co4,co5,dtocom1,dtocom2,dtoven1,dtoven2,dt1,dt2,dt3," +
                 "dt4,dt5,d01,d02,d03,d04,d05,ma1,ma2,ma3,ma4,ma5,ima,fot,abr,pos,ctadevcom,ctadevven,ctadtocom,ctadtoven,"
                 +
@@ -421,5 +430,16 @@ public class Familia {
                 + "," + ma1 + "," + ma2 + "," + ma3 + "," + ma4 + "," + ma5 + ",'" + ima + "','" + fot + "','" + abr
                 + "','" + pos + "','" + ctadevcom + "','" + ctadevven + "','" + ctadtocom + "','" + ctadtoven + "','"
                 + historia + "'," + tipima + ")";
+    }
+
+    public String toUpdate() {
+        return "UPDATE FAMILI SET nom='" + nom + "',cuc='" + cuc + "',cuv='" + cuv + "',co1=" + co1
+                + ",co2=" + co2 + ",co3=" + co3 + ",co4=" + co4 + ",co5=" + co5 + ",dtocom1='" + dtocom1 + "',dtocom2='"
+                + dtocom2 + "',dtoven1='" + dtoven1 + "',dtoven2='" + dtoven2 + "',dt1=" + dt1 + ",dt2=" + dt2 + ",dt3="
+                + dt3 + ",dt4=" + dt4 + ",dt5=" + dt5 + ",d01=" + d01 + ",d02=" + d02 + ",d03=" + d03 + ",d04=" + d04
+                + ",d05=" + d05 + ",ma1=" + ma1 + ",ma2=" + ma2 + ",ma3=" + ma3 + ",ma4=" + ma4 + ",ma5=" + ma5
+                + ",ima='" + ima + "',fot='" + fot + "',abr='" + abr + "',pos='" + pos + "',ctadevcom='" + ctadevcom
+                + "',ctadevven='" + ctadevven + "',ctadtocom='" + ctadtocom + "',ctadtoven='" + ctadtoven
+                + "',historia='" + historia + "',tipima=" + tipima + " WHERE cod='" + cod + "';";
     }
 }

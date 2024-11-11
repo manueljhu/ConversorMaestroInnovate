@@ -170,10 +170,16 @@ public class FormaPago {
         }
     }
 
-    @Override
-    public String toString() {
-        return "UPDATE FORPAG SET nom = '"+nom+"', di1 = "+di1+", di2 = "+di2+", dir = "+dir+", npa = "+npa+", "+
-        "mes = '"+mes+"', vto = "+vto+", inc = "+inc+", cad = "+cad+", cob = '"+cob+"', car = "+car+", porcobdir = "+porcobdir+", "+
-        "inclib = '"+inclib+"', reppro = '"+reppro+"', cuecobdir = '"+cuecobdir+"' WHERE id = "+id;
+    public String toString(String type) {
+        return toUpdate();
+    }
+
+    public String toUpdate() {
+        return "UPDATE FORPAG SET nom = '" + nom + "', di1 = " + di1 + ", di2 = " + di2 + ", dir = " + dir + ", npa = "
+                + npa + ", " +
+                "mes = '" + mes + "', vto = " + vto + ", inc = " + inc + ", cad = " + cad + ", cob = '" + cob
+                + "', car = " + car + ", porcobdir = " + porcobdir + ", " +
+                "inclib = '" + inclib + "', reppro = '" + reppro + "', cuecobdir = '" + cuecobdir + "' WHERE id = "
+                + id;
     }
 }

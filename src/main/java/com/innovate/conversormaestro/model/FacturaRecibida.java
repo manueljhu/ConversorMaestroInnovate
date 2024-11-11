@@ -1,121 +1,121 @@
 package com.innovate.conversormaestro.model;
 
 public class FacturaRecibida {
-    private String num="";
-    private String fea="NULL";
-    private String doc="";
-    private String nuf="";
-    private String fee="NULL";
-    private String gas="01";
-    private String cue="";
-    private String li1="";
-    private String li2="";
-    private float dt1=0.00f;
-    private float dt2=0.00f;
-    private String fuc="NULL";
-    private String forpag="01";
-    private float fin=0.00f;
-    private String alm="01";
-    private String com="";
-    private String nom="";
-    private String nif="";
-    private String tra="";
-    private float ba1eu=0.000f;
-    private float iv1eu=0.000f;
-    private float re1eu=0.000f;
-    private float ba2eu=0.000f;
-    private float iv2eu=0.000f;
-    private float re2eu=0.000f;
-    private float ba3eu=0.000f;
-    private float iv3eu=0.000f;
-    private float re3eu=0.000f;
-    private float ba4eu=0.000f;
-    private float iv4eu=0.000f;
-    private float re4eu=0.000f;
-    private float ba5eu=0.000f;
-    private float iv5eu=0.000f;
-    private float re5eu=0.000f;
-    private float exeeu=0.000f;
-    private float ulceu=0.000f;
-    private float toceu=0.000f;
-    private float enteu=0.000f;
-    private float imceu=0.000f;
-    private float imreu=0.000f;
-    private int tre=0;
-    private float pre=0.00f;
-    private float ireeu=0.000f;
-    private String ivainc="N";
-    private float entped=0.000f;
-    private String tip="D";
-    private String aut="";
-    private int negativa=0;
-    private String fecope="NULL";
-    private String mod303="";
-    private String mod303a="";
-    private String mod303b="";
-    private String mod303c="";
-    private String mod347="";
-    private int usuario_bloqueo=0;
-    private String rec_deb_pag="D";
-    private String rec_incluir="N";
-    private String rec_antes_dto="N";
-    private String rec_iva_inc="N";
-    private int moneda=1;
-    private float cotiza=1.000000f;
-    private float basmon=0.000f;
-    private float totmon=0.000f;
-    private float entmon=0.000f;
-    private String obs_doc="";
-    private String recargo="N";
-    private int diasmax=0;
-    private String fecini="NULL";
-    private float suplidos=0.000000f;
-    private float iva1=0.00f;
-    private float iva2=0.00f;
-    private float iva3=0.00f;
-    private float iva4=0.00f;
-    private float iva5=0.00f;
-    private float rec1=0.00f;
-    private float rec2=0.00f;
-    private float rec3=0.00f;
-    private float rec4=0.00f;
-    private float rec5=0.00f;
-    private String tipivaok="s";
-    private String exento="N";
-    private String cri_caja="N";
-    private String ded_cie="";
-    private String siiest="";
-    private String siiact="";
-    private String siitipfra="";
-    private String siifrarec="";
-    private String siitiprec="";
-    private String siidesfra="";
-    private String siinifemi="";
-    private float siicuoded=0.000000f;
-    private String siifecper="NULL";
-    private String siidatrec="";
-    private String siidatagr="";
-    private float siibasrec=0.000000f;
-    private float siicuorec=0.000000f;
-    private float siirecrec=0.000000f;
-    private float siibascos=0.000000f;
-    private String siiiss="";
-    private String siidatdes="";
-    private String siifrarec1="";
-    private String siifrarec2="";
-    private String siinumacu="";
-    private String siinumresf="";
-    private String siidesman="";
-    private String patron="";
-    private String siirefext="";
-    private String siinomensu="";
-    private String siinifensu="";
-    private String siifraiden="";
-    private String siimacro="";
-    private String siiregprev="";
-    private String aeattipfac="";
-    private String aeattipgas="";
-    private float aeatimpcon=0.000000f;
+    private String num = "";
+    private String fea = "NULL";
+    private String doc = "";
+    private String nuf = "";
+    private String fee = "NULL";
+    private String gas = "01";
+    private String cue = "";
+    private String li1 = "";
+    private String li2 = "";
+    private float dt1 = 0.00f;
+    private float dt2 = 0.00f;
+    private String fuc = "NULL";
+    private String forpag = "01";
+    private float fin = 0.00f;
+    private String alm = "01";
+    private String com = "";
+    private String nom = "";
+    private String nif = "";
+    private String tra = "";
+    private float ba1eu = 0.000f;
+    private float iv1eu = 0.000f;
+    private float re1eu = 0.000f;
+    private float ba2eu = 0.000f;
+    private float iv2eu = 0.000f;
+    private float re2eu = 0.000f;
+    private float ba3eu = 0.000f;
+    private float iv3eu = 0.000f;
+    private float re3eu = 0.000f;
+    private float ba4eu = 0.000f;
+    private float iv4eu = 0.000f;
+    private float re4eu = 0.000f;
+    private float ba5eu = 0.000f;
+    private float iv5eu = 0.000f;
+    private float re5eu = 0.000f;
+    private float exeeu = 0.000f;
+    private float ulceu = 0.000f;
+    private float toceu = 0.000f;
+    private float enteu = 0.000f;
+    private float imceu = 0.000f;
+    private float imreu = 0.000f;
+    private int tre = 0;
+    private float pre = 0.00f;
+    private float ireeu = 0.000f;
+    private String ivainc = "N";
+    private float entped = 0.000f;
+    private String tip = "D";
+    private String aut = "";
+    private int negativa = 0;
+    private String fecope = "NULL";
+    private String mod303 = "";
+    private String mod303a = "";
+    private String mod303b = "";
+    private String mod303c = "";
+    private String mod347 = "";
+    private int usuario_bloqueo = 0;
+    private String rec_deb_pag = "D";
+    private String rec_incluir = "N";
+    private String rec_antes_dto = "N";
+    private String rec_iva_inc = "N";
+    private int moneda = 1;
+    private float cotiza = 1.000000f;
+    private float basmon = 0.000f;
+    private float totmon = 0.000f;
+    private float entmon = 0.000f;
+    private String obs_doc = "";
+    private String recargo = "N";
+    private int diasmax = 0;
+    private String fecini = "NULL";
+    private float suplidos = 0.000000f;
+    private float iva1 = 0.00f;
+    private float iva2 = 0.00f;
+    private float iva3 = 0.00f;
+    private float iva4 = 0.00f;
+    private float iva5 = 0.00f;
+    private float rec1 = 0.00f;
+    private float rec2 = 0.00f;
+    private float rec3 = 0.00f;
+    private float rec4 = 0.00f;
+    private float rec5 = 0.00f;
+    private String tipivaok = "s";
+    private String exento = "N";
+    private String cri_caja = "N";
+    private String ded_cie = "";
+    private String siiest = "";
+    private String siiact = "";
+    private String siitipfra = "";
+    private String siifrarec = "";
+    private String siitiprec = "";
+    private String siidesfra = "";
+    private String siinifemi = "";
+    private float siicuoded = 0.000000f;
+    private String siifecper = "NULL";
+    private String siidatrec = "";
+    private String siidatagr = "";
+    private float siibasrec = 0.000000f;
+    private float siicuorec = 0.000000f;
+    private float siirecrec = 0.000000f;
+    private float siibascos = 0.000000f;
+    private String siiiss = "";
+    private String siidatdes = "";
+    private String siifrarec1 = "";
+    private String siifrarec2 = "";
+    private String siinumacu = "";
+    private String siinumresf = "";
+    private String siidesman = "";
+    private String patron = "";
+    private String siirefext = "";
+    private String siinomensu = "";
+    private String siinifensu = "";
+    private String siifraiden = "";
+    private String siimacro = "";
+    private String siiregprev = "";
+    private String aeattipfac = "";
+    private String aeattipgas = "";
+    private float aeatimpcon = 0.000000f;
 
     public String getNum() {
         return this.num;
@@ -586,8 +586,8 @@ public class FacturaRecibida {
     }
 
     public void setFea(String fea) {
-        if (fea != null ){
-            this.fea = "'"+fea+"'";
+        if (fea != null) {
+            this.fea = "'" + fea + "'";
         } else {
             this.fea = "NULL";
         }
@@ -610,8 +610,8 @@ public class FacturaRecibida {
     }
 
     public void setFee(String fee) {
-        if (fee != null ){
-            this.fee = "'"+fee+"'";
+        if (fee != null) {
+            this.fee = "'" + fee + "'";
         } else {
             this.fee = "NULL";
         }
@@ -658,8 +658,8 @@ public class FacturaRecibida {
     }
 
     public void setFuc(String fuc) {
-        if (fuc != null ){
-            this.fuc = "'"+fuc+"'";
+        if (fuc != null) {
+            this.fuc = "'" + fuc + "'";
         } else {
             this.fuc = "NULL";
         }
@@ -846,8 +846,8 @@ public class FacturaRecibida {
     }
 
     public void setFecope(String fecope) {
-        if (fecope != null ){
-            this.fecope = "'"+fecope+"'";
+        if (fecope != null) {
+            this.fecope = "'" + fecope + "'";
         } else {
             this.fecope = "NULL";
         }
@@ -966,8 +966,8 @@ public class FacturaRecibida {
     }
 
     public void setFecini(String fecini) {
-        if (fecini != null ){
-            this.fecini = "'"+fecini+"'";
+        if (fecini != null) {
+            this.fecini = "'" + fecini + "'";
         } else {
             this.fecini = "NULL";
         }
@@ -1110,8 +1110,8 @@ public class FacturaRecibida {
     }
 
     public void setSiifecper(String siifecper) {
-        if (siifecper != null ){
-            this.siifecper = "'"+siifecper+"'";
+        if (siifecper != null) {
+            this.siifecper = "'" + siifecper + "'";
         } else {
             this.siifecper = "NULL";
         }
@@ -1261,8 +1261,17 @@ public class FacturaRecibida {
         this.aeatimpcon = aeatimpcon;
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        if (type.equals("insert")) {
+            return toInsert();
+        } else if (type.equals("update")) {
+            return toUpdate();
+        } else {
+            return "";
+        }
+    }
+
+    public String toInsert() {
         return "INSERT INTO FACREC (num,fea,doc,nuf,fee,gas,cue,li1,li2,dt1,dt2,fuc,[for],fin,alm,com,nom,nif,tra,ba1eu,iv1eu,"
                 +
                 "re1eu,ba2eu,iv2eu,re2eu,ba3eu,iv3eu,re3eu,ba4eu,iv4eu,re4eu,ba5eu,iv5eu,re5eu,exeeu,ulceu,toceu,enteu,imceu,imreu,tre,"
@@ -1299,4 +1308,36 @@ public class FacturaRecibida {
                 + siirefext + "','" + siinomensu + "','" + siinifensu + "','" + siifraiden + "','" + siimacro + "','"
                 + siiregprev + "','" + aeattipfac + "','" + aeattipgas + "'," + aeatimpcon + ")";
     }
+
+    public String toUpdate() {
+        return "UPDATE FACREC SET fea='" + fea + "',doc='" + doc + "',nuf='" + nuf + "',fee='" + fee
+                + "',gas='" + gas + "',cue='" + cue + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2
+                + ",fuc='" + fuc + "',for='" + forpag + "',fin=" + fin + ",alm='" + alm + "',com='" + com + "',nom='"
+                + nom + "',nif='" + nif + "',tra='" + tra + "',ba1eu=" + ba1eu + ",iv1eu=" + iv1eu + ",re1eu=" + re1eu
+                + ",ba2eu=" + ba2eu + ",iv2eu=" + iv2eu + ",re2eu=" + re2eu + ",ba3eu=" + ba3eu + ",iv3eu=" + iv3eu
+                + ",re3eu=" + re3eu + ",ba4eu=" + ba4eu + ",iv4eu=" + iv4eu + ",re4eu=" + re4eu + ",ba5eu=" + ba5eu
+                + ",iv5eu=" + iv5eu + ",re5eu=" + re5eu + ",exeeu=" + exeeu + ",ulceu=" + ulceu + ",toceu=" + toceu
+                + ",enteu=" + enteu + ",imceu=" + imceu + ",imreu=" + imreu + ",tre=" + tre + ",pre=" + pre + ",ireeu="
+                + ireeu + ",ivainc='" + ivainc + "',entped=" + entped + ",tip='" + tip + "',aut='" + aut + "',negativa="
+                + negativa + ",fecope='" + fecope + "',mod303='" + mod303 + "',mod303a='" + mod303a + "',mod303b='"
+                + mod303b + "',mod303c='" + mod303c + "',mod347='" + mod347 + "',usuario_bloqueo=" + usuario_bloqueo
+                + ",rec_deb_pag='" + rec_deb_pag + "',rec_incluir='" + rec_incluir + "',rec_antes_dto='" + rec_antes_dto
+                + "',rec_iva_inc='" + rec_iva_inc + "',moneda=" + moneda + ",cotiza=" + cotiza + ",basmon=" + basmon
+                + ",totmon=" + totmon + ",entmon=" + entmon + ",obs_doc='" + obs_doc + "',recargo='" + recargo
+                + "',diasmax=" + diasmax + ",fecini='" + fecini + "',suplidos=" + suplidos + ",iva1=" + iva1 + ",iva2="
+                + iva2 + ",iva3=" + iva3 + ",iva4=" + iva4 + ",iva5=" + iva5 + ",rec1=" + rec1 + ",rec2=" + rec2
+                + ",rec3=" + rec3 + ",rec4=" + rec4 + ",rec5=" + rec5 + ",tipivaok='" + tipivaok + "',exento='" + exento
+                + "',cri_caja='" + cri_caja + "',ded_cie='" + ded_cie + "',siiest='" + siiest + "',siiact='" + siiact
+                + "',siitipfra='" + siitipfra + "',siifrarec='" + siifrarec + "',siitiprec='" + siitiprec
+                + "',siidesfra='" + siidesfra + "',siinifemi='" + siinifemi + "',siicuoded=" + siicuoded
+                + ",siifecper='" + siifecper + "',siidatrec='" + siidatrec + "',siidatagr='" + siidatagr
+                + "',siibasrec=" + siibasrec + ",siicuorec=" + siicuorec + ",siirecrec=" + siirecrec + ",siibascos="
+                + siibascos + ",siiiss='" + siiiss + "',siidatdes='" + siidatdes + "',siifrarec1='" + siifrarec1
+                + "',siifrarec2='" + siifrarec2 + "',siinumacu='" + siinumacu + "',siinumresf='" + siinumresf
+                + "',siidesman='" + siidesman + "',patron='" + patron + "',siirefext='" + siirefext + "',siinomensu='"
+                + siinomensu + "',siinifensu='" + siinifensu + "',siifraiden='" + siifraiden + "',siimacro='" + siimacro
+                + "',siiregprev='" + siiregprev + "',aeattipfac='" + aeattipfac + "',aeattipgas='" + aeattipgas
+                + "',aeatimpcon=" + aeatimpcon + " WHERE num='" + num + "';";
+    }
+
 }

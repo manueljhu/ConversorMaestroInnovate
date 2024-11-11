@@ -64,8 +64,11 @@ public class Almacen {
         }
     }
 
-    @Override
-    public String toString() {
+    public String toString(String type) {
+        return toUpdate();
+    }
+
+    public String toUpdate() {
         return "UPDATE ALMACE SET nom = '"+nom+"', ser = '"+ser+"', se2 = '"+se2+"', age = '"+age+"' WHERE id = "+id+";";
     }
 }
