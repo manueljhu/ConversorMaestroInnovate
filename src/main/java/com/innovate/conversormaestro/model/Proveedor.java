@@ -85,9 +85,9 @@ public class Proveedor {
     public String avi_Rec = "";
     public String actividad = "";
     public String contrato = "";
-    public String fec_Eval;
+    public String fec_Eval = "NULL";
     public String res_Eval = "N";
-    public String fec_Apro;
+    public String fec_Apro = "NULL";
     public float nota_Eval = 0;
     public String product1 = "";
     public String product2 = "";
@@ -1049,7 +1049,11 @@ public class Proveedor {
     }
 
     public void setFec_Eval(String fec_eval) {
-        this.fec_Eval = fec_eval;
+        if (fec_eval != null ){
+            this.fec_Eval = "'"+fec_eval+"'";
+          } else {
+            this.fec_Eval = "NULL";
+          }
     }
 
     public void setRes_Eval(String res_eval) {
@@ -1061,7 +1065,11 @@ public class Proveedor {
     }
 
     public void setFec_Apro(String fec_apro) {
-        this.fec_Apro = fec_apro;
+        if (fec_apro != null ){
+            this.fec_Apro = "'"+fec_apro+"'";
+          } else {
+            this.fec_Apro = "NULL";
+          }
     }
 
     public void setNota_Eval(float nota_eval) {
@@ -1142,7 +1150,7 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return "INSERT INTO PROVEE (cod,nom,dir,npro,pob,pro,nif,te1,te2,fax,mov,ter,per,car,for,dto,red,por,poa,ctg," +
+        return "INSERT INTO PROVEE (cod,nom,dir,npro,pob,pro,nif,te1,te2,fax,mov,ter,per,car,[for],dto,red,por,poa,ctg," +
                 "mar,dt2,di1,di2,di3,mnp,tia,tre,ret,ob1,ob2,ob3,web,ext,rediva1,rediva2,rediva3,rediva4,rediva5,avi0ped,avi1ped,"
                 +
                 "avi2ped,avi0alb,avi1alb,avi2alb,avi0fac,avi1fac,avi2fac,avi0rec,avi1rec,avi2rec,ivainc,fot,doc,pais,xxx,imprap,"
@@ -1164,9 +1172,9 @@ public class Proveedor {
                 + v04 + "','" + v05 + "','" + v06 + "','" + v07 + "','" + v08 + "','" + v09 + "','" + v10 + "','" + v11
                 + "','" + v12 + "','" + historia + "'," + lopd_ori + ",'" + lopd_Otr_O + "','" + lopd_Ces + "','"
                 + lopd_Otr_C + "'," + pro_idioma + "," + moneda + ",'" + avi_Ped + "','" + avi_Alb + "','" + avi_Fac
-                + "','" + avi_Rec + "','" + actividad + "','" + contrato + "','" + fec_Eval + "','" + res_Eval + "','"
-                + fec_Apro + "'," + nota_Eval + ",'" + product1 + "','" + product2 + "','" + obs_Cal + "','" + cer_Cal
+                + "','" + avi_Rec + "','" + actividad + "','" + contrato + "'," + fec_Eval + ",'" + res_Eval + "',"
+                + fec_Apro + "," + nota_Eval + ",'" + product1 + "','" + product2 + "','" + obs_Cal + "','" + cer_Cal
                 + "','" + cer_Med + "','" + cer_Pre + "'," + perval + "," + diasmax + ",'" + autof + "'," + tip_Rem
                 + ",'" + cri_Caja + "')";
     }
-}
+} 

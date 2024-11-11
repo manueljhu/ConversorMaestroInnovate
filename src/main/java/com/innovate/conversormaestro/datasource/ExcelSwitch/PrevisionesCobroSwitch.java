@@ -9,6 +9,7 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class PrevisionesCobroSwitch {
+    private FinalList<Efecto> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Efecto> previsionescobros;
     private FormatUtils formatUtils = new FormatUtils();
@@ -21,7 +22,7 @@ public class PrevisionesCobroSwitch {
         group = connectionController.getGroupDigitsDestination();
         account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         previsionescobros = new ArrayList<Efecto>();
         Efecto previsionescobro;
 
@@ -152,8 +153,9 @@ public class PrevisionesCobroSwitch {
                         break;
                 }
             }
-            System.out.println(previsionescobro);
+            //System.out.println(previsionescobro);
             previsionescobros.add(previsionescobro);
         }
+        lista.setLista(previsionescobros);
     }
 }

@@ -1,47 +1,47 @@
 package com.innovate.conversormaestro.model;
 
 public class Efecto {
-    private String num;
-    private String fec;
-    private String cue;
-    private String con;
-    private String tip;
-    private String ban;
-    private String vto;
-    private String fac;
-    private String rem;
-    private String fre;
-    private String fpa;
-    private String dev;
-    private String xx1;
-    private String xx2;
-    private String xx3;
-    private float impeu;
-    private float pageu;
-    private int car;
-    private float imprem;
-    private String cueapu;
-    private float impdev;
-    private float impgas;
-    private String rie;
-    private String rut;
-    private String cu1;
-    private String cu2;
-    private String cu3;
-    private String cu4;
-    private float serie;
-    private String impreso;
-    private String efe_tipagr;
-    private String efe_docagr;
-    private String efe_nefagr;
-    private String efe_genagr;
-    private String efe_ren;
-    private String numefedev;
-    private int moneda;
-    private float cotiza;
-    private float impmon;
-    private int diasmax;
-    private String fecini;
+    private String num = "";
+    private String fec = "";
+    private String cue = "";
+    private String con = "";
+    private String tip = "";
+    private String ban = "";
+    private String vto = "";
+    private String fac = "";
+    private String rem = "";
+    private String fre = "NULL";
+    private String fpa = "NULL";
+    private String dev = "";
+    private String xx1 = "";
+    private String xx2 = "";
+    private String xx3 = "";
+    private float impeu = 0.000f;
+    private float pageu = 0.000f;
+    private int car = 0;
+    private float imprem = 0.000f;
+    private String cueapu = "";
+    private float impdev = 0.000f;
+    private float impgas = 0.000f;
+    private String rie = "";
+    private String rut = "000001";
+    private String cu1 = "0000";
+    private String cu2 = "0000";
+    private String cu3 = "00";
+    private String cu4 = "0000000000";
+    private float serie = 0;
+    private String impreso = "";
+    private String efe_tipagr = "";
+    private String efe_docagr = "";
+    private String efe_nefagr = "";
+    private String efe_genagr = "";
+    private String efe_ren = "";
+    private String numefedev = "";
+    private int moneda = 1;
+    private float cotiza = 1.000000f;
+    private float impmon = 0.000f;
+    private int diasmax = 0;
+    private String fecini = "NULL";
 
     public String getNum() {
         return this.num;
@@ -272,11 +272,19 @@ public class Efecto {
     }
 
     public void setFre(String fre) {
-        this.fre = fre;
+        if (fre != null) {
+            this.fre = "'" + fre + "'";
+        } else {
+            this.fre = "NULL";
+        }
     }
 
     public void setFpa(String fpa) {
-        this.fpa = fpa;
+        if (fpa != null) {
+            this.fpa = "'" + fpa + "'";
+        } else {
+            this.fpa = "NULL";
+        }
     }
 
     public void setDev(String dev) {
@@ -468,7 +476,11 @@ public class Efecto {
     }
 
     public void setFecini(String fecini) {
-        this.fecini = fecini;
+        if (fecini != null) {
+            this.fecini = "'" + fecini + "'";
+        } else {
+            this.fecini = "NULL";
+        }
     }
 
     @Override
@@ -478,8 +490,12 @@ public class Efecto {
                 "impdev,impgas,rie,rut,cu1,cu2,cu3,cu4,serie,impreso,efe_tipagr,efe_docagr,efe_nefagr,efe_genagr,efe_ren,numefedev,"
                 +
                 "moneda,cotiza,impmon,diasmax,fecini) VALUES" +
-                "('" + cu1 + "','" + cu2 + "','" + cu3 + "','" + cu4 + "'," + serie + ",'" + impreso + "','"
-                + efe_tipagr + "','" + efe_docagr + "','" + efe_nefagr + "','" + efe_genagr + "','" + efe_ren + "','"
-                + numefedev + "'," + moneda + "," + cotiza + "," + impmon + "," + diasmax + ",'" + fecini + "',)";
+                "('" + num + "','" + fec + "','" + cue + "','" + con + "','" + tip + "','" + ban + "','" + vto + "','"
+                + fac + "','" + rem + "'," + fre + "," + fpa + ",'" + dev + "','" + xx1 + "','" + xx2 + "','" + xx3 + "'," 
+                + impeu + "," + pageu + "," + car + "," + imprem + ",'" + cueapu + "'," + impdev + "," + impgas + ",'" +
+                rie + "','" + rut + "','" + cu1 + "','" + cu2 + "','" + cu3 + "','" + cu4 + "'," + serie + ",'"
+                + impreso + "','" + efe_tipagr + "','" + efe_docagr
+                + "','" + efe_nefagr + "','" + efe_genagr + "','" + efe_ren + "','" + numefedev + "'," + moneda + ","
+                + cotiza + "," + impmon + "," + diasmax + "," + fecini + ")";
     }
 }

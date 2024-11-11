@@ -587,7 +587,7 @@ public class ArticulosSwitch {
                         break;
                 }
             }
-            System.out.println(articulo);
+            //System.out.println(articulo);
             articulos.add(articulo);
         }
         lista.setLista(articulos);

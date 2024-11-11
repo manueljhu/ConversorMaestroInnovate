@@ -612,6 +612,6 @@ public class Cuenta {
                 + "," + lopd_Ori + ",'" + lopd_Otr_O + "','" + lopd_Ces + "','" + lopd_Otr_C + "','" + cue_Apoyo + "','"
                 + lap_Den + "','" + lap_Con + "','" + lap_Cta + "','" + ope_Tip + "','" + ope_Cla + "'," + ope_Pla
                 + ",'" + ope_Des + "','" + cta + "','" + suf + "','" + iban + "','" + swift + "','" + cri_Caja + "','"
-                + siidesfac + "','" + patron + "','" + patron_Cv + "',)";
+                + siidesfac + "','" + patron + "','" + patron_Cv + "')";
     }
 }

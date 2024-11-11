@@ -1,43 +1,43 @@
 package com.innovate.conversormaestro.model;
 
 public class MarcasArticulo {
-    private String cod;
-    private String nom;
-    private String cuc;
-    private String cuv;
-    private float co1;
-    private float co2;
-    private float co3;
-    private float co4;
-    private float co5;
-    private String dtocom1;
-    private String dtocom2;
-    private String dtoven1;
-    private String dtoven2;
-    private float dt1;
-    private float dt2;
-    private float dt3;
-    private float dt4;
-    private float dt5;
-    private float d01;
-    private float d02;
-    private float d03;
-    private float d04;
-    private float d05;
-    private float ma1;
-    private float ma2;
-    private float ma3;
-    private float ma4;
-    private float ma5;
-    private String ima;
-    private String fot;
-    private String abr;
-    private String pos;
-    private String ctadevcom;
-    private String ctadevven;
-    private String ctadtocom;
-    private String ctadtoven;
-    private String historia;
+    private String cod = "";
+    private String nom = "";
+    private String cuc = "";
+    private String cuv = "";
+    private float co1 = 0.00f;
+    private float co2 = 0.00f;
+    private float co3 = 0.00f;
+    private float co4 = 0.00f;
+    private float co5 = 0.00f;
+    private String dtocom1 = "P";
+    private String dtocom2 = "P";
+    private String dtoven1 = "P";
+    private String dtoven2 = "P";
+    private float dt1 = 0.00f;
+    private float dt2 = 0.00f;
+    private float dt3 = 0.00f;
+    private float dt4 = 0.00f;
+    private float dt5 = 0.00f;
+    private float d01 = 0.00f;
+    private float d02 = 0.00f;
+    private float d03 = 0.00f;
+    private float d04 = 0.00f;
+    private float d05 = 0.00f;
+    private float ma1 = 0.00f;
+    private float ma2 = 0.00f;
+    private float ma3 = 0.00f;
+    private float ma4 = 0.00f;
+    private float ma5 = 0.00f;
+    private String ima = "123.BMP";
+    private String fot = "";
+    private String abr = "";
+    private String pos = "";
+    private String ctadevcom = "6080000000";
+    private String ctadevven = "7080000000";
+    private String ctadtocom = "6000000000";
+    private String ctadtoven = "7000000000";
+    private String historia = "";
 
     public String getCod() {
         return this.cod;
@@ -410,6 +410,6 @@ public class MarcasArticulo {
                 + dt2 + "," + dt3 + "," + dt4 + "," + dt5 + "," + d01 + "," + d02 + "," + d03 + "," + d04 + "," + d05
                 + "," + ma1 + "," + ma2 + "," + ma3 + "," + ma4 + "," + ma5 + ",'" + ima + "','" + fot + "','" + abr
                 + "','" + pos + "','" + ctadevcom + "','" + ctadevven + "','" + ctadtocom + "','" + ctadtoven + "','"
-                + historia + "',)";
+                + historia + "')";
     }
 }

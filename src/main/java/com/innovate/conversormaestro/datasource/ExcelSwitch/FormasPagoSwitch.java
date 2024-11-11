@@ -8,13 +8,14 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FormasPagoSwitch {
+    private FinalList<FormaPago> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FormaPago> formasPago;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void FormasPago(ArrayList<Relacion> relaciones) {
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         formasPago = new ArrayList<FormaPago>();
         FormaPago formaPago;
         int idforpag = formatUtils.formatUpdate("FORPAG");
@@ -71,8 +72,9 @@ public class FormasPagoSwitch {
                 }
             }
             idforpag++;
-            System.out.println(formaPago);
+            //System.out.println(formaPago);
             formasPago.add(formaPago);
         }
+        lista.setLista(formasPago);
     }   
 }

@@ -9,16 +9,20 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class MarcasArticuloSwitch {
+    private FinalList<MarcasArticulo> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<MarcasArticulo> marcasArticulos;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void MarcasArticulos(ArrayList<Relacion> relaciones){
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         marcasArticulos = new ArrayList<MarcasArticulo>();
         MarcasArticulo marcasArticulo;
 
@@ -139,8 +143,9 @@ public class MarcasArticuloSwitch {
                         break;
                 }
             }
-            System.out.println(marcasArticulo);
+            //System.out.println(marcasArticulo);
             marcasArticulos.add(marcasArticulo);
         }
+        lista.setLista(marcasArticulos);
     }
 }

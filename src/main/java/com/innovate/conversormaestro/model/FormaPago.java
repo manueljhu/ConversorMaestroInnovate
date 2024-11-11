@@ -2,21 +2,21 @@ package com.innovate.conversormaestro.model;
 
 public class FormaPago {
     private int id;
-    private String nom;
-    private int di1;
-    private int di2;
-    private int dir;
-    private int npa;
-    private String mes;
-    private int vto;
-    private float inc;
-    private float cad;
-    private String cob;
-    private int car;
-    private float porcobdir;
-    private String inclib;
-    private String reppro;
-    private String cuecobdir;
+    private String nom = "";
+    private int di1 = 0;
+    private int di2 = 0;
+    private int dir = 0;
+    private int npa = 0;
+    private String mes = "S";
+    private int vto = 1;
+    private float inc = 0;
+    private float cad = 0;
+    private String cob = "N";
+    private int car = 0;
+    private float porcobdir = 100.00f;
+    private String inclib = "N";
+    private String reppro = "S";
+    private String cuecobdir = "";
 
     public int getId() {
         return id;
@@ -172,7 +172,7 @@ public class FormaPago {
 
     @Override
     public String toString() {
-        return "UPDATE FROM FORPAG SET nom = '"+nom+"', di1 = "+di1+", di2 = "+di2+", dir = "+dir+", npa = "+npa+", "+
+        return "UPDATE FORPAG SET nom = '"+nom+"', di1 = "+di1+", di2 = "+di2+", dir = "+dir+", npa = "+npa+", "+
         "mes = '"+mes+"', vto = "+vto+", inc = "+inc+", cad = "+cad+", cob = '"+cob+"', car = "+car+", porcobdir = "+porcobdir+", "+
         "inclib = '"+inclib+"', reppro = '"+reppro+"', cuecobdir = '"+cuecobdir+"' WHERE id = "+id;
     }
