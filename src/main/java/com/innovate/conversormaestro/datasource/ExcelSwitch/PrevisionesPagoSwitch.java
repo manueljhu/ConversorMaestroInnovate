@@ -9,16 +9,20 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class PrevisionesPagoSwitch {
+    private FinalList<Efecto> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Efecto> previsionespagos;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void PrevisionesPago(ArrayList<Relacion> relaciones) {
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         previsionespagos = new ArrayList<Efecto>();
         Efecto previsionespago;
 
@@ -169,8 +173,9 @@ public class PrevisionesPagoSwitch {
                         break;
                 }
             }
-            System.out.println(previsionespago);
+            //System.out.println(previsionespago);
             previsionespagos.add(previsionespago);
         }
+        lista.setLista(previsionespagos);
     }
 }

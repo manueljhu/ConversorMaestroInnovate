@@ -376,7 +376,7 @@ public class FacturasRecibidasSwitch {
                         break;
                 }
             }
-            System.out.println(facturaRecibida);
+            //System.out.println(facturaRecibida);
             facturasRecibidas.add(facturaRecibida);
         }
         lista.setLista(facturasRecibidas);

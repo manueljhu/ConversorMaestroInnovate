@@ -40,7 +40,7 @@ public class AlmacenesSwitch {
                 }
             }
             idalmacen++;
-            System.out.println(almacen);
+            //System.out.println(almacen);
             almacenes.add(almacen);
         }
         lista.setLista(almacenes);

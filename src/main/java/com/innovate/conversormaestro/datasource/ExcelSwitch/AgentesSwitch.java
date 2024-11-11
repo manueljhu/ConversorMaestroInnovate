@@ -228,7 +228,7 @@ public class AgentesSwitch {
                         break;
                 }
             }
-            System.out.println(agente);
+            //System.out.println(agente);
             agentes.add(agente);
         }
         lista.setLista(agentes);

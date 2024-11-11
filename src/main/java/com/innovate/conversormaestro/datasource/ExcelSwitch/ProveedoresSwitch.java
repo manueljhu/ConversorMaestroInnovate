@@ -9,16 +9,20 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ProveedoresSwitch {
+    private FinalList<Proveedor> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Proveedor> proveedores;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void Proveedores(ArrayList<Relacion> relaciones){
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         proveedores = new ArrayList<Proveedor>();
         Proveedor proveedor;
 
@@ -325,8 +329,9 @@ public class ProveedoresSwitch {
                         break;
                 }
             }
-            System.out.println(proveedor);
+            //System.out.println(proveedor);
             proveedores.add(proveedor);
         }
+        lista.setLista(proveedores);
     }
 }

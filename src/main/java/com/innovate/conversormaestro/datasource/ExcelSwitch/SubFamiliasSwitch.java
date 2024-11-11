@@ -9,16 +9,20 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class SubFamiliasSwitch {
+    private FinalList<Subfamilia> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Subfamilia> subfamilias = new ArrayList<>();
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
-    String group = connectionController.getGroupDigitsDestination();
-    String account = connectionController.getAccountDigitsDestination();
+    String group;
+    String account;
 
     public void Subfamilias(ArrayList<Relacion> relaciones) {
+        connectionController = ConnectionController.getConectionController();
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         subfamilias = new ArrayList<>();
         Subfamilia subfamilia;
 
@@ -142,8 +146,9 @@ public class SubFamiliasSwitch {
                         break;
                 }
             }
-            System.out.println(subfamilia);
+            //System.out.println(subfamilia);
             subfamilias.add(subfamilia);
         }
+        lista.setLista(subfamilias);
     }
 }

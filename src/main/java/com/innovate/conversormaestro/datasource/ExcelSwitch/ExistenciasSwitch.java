@@ -47,7 +47,7 @@ public class ExistenciasSwitch {
                         break;
                 }
             }
-            System.out.println(existencia);
+            //System.out.println(existencia);
             existencias.add(existencia);
         }
         lista.setLista(existencias);

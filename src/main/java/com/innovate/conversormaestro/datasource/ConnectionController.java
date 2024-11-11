@@ -11,6 +11,7 @@ import com.innovate.conversormaestro.model.Tables;
 
 public class ConnectionController {
     private static ConnectionController instance = null;
+    private ExcelController excelController;
     private Connection connectionDestination = null;
     private Connection connectionGP = null;
     private String SourceTab;
@@ -336,12 +337,18 @@ public class ConnectionController {
     }
 
     public int getDataQuery(String query) {
+        excelController = ExcelController.getExcelController();
         ResultSet rs = null;
         Statement st = null;
         int last_num = 0;
         try {
-            startConnectionDestination();
-            st = connectionDestination.createStatement();
+            if (excelController.getTablename() == "Formas de pago") {
+                startConnectionGP();
+                st = connectionGP.createStatement();
+            } else {
+                startConnectionDestination();
+                st = connectionDestination.createStatement();
+            }
             rs = st.executeQuery(query);
             while (rs.next()) {
                 int temp = rs.getInt("LAST_NUM");
@@ -351,21 +358,35 @@ public class ConnectionController {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-        closeConnectionDestination();
+        if (excelController.getTablename() == "Formas de pago") {
+            closeConnectionGP();
+        } else {
+            closeConnectionDestination();
+        }
         return last_num;
     }
 
     public void insertDataQuery(String query) {
+        excelController = ExcelController.getExcelController();
         Statement st = null;
         try {
-            startConnectionDestination();
-            st = connectionDestination.createStatement();
+            if (excelController.getTablename() == "Formas de pago") {
+                startConnectionGP();
+                st = connectionGP.createStatement();
+            } else {
+                startConnectionDestination();
+                st = connectionDestination.createStatement();
+            }
             st.executeUpdate(query);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-        closeConnectionDestination();
+        if (excelController.getTablename() == "Formas de pago") {
+            closeConnectionGP();
+        } else {
+            closeConnectionDestination();
+        }
     }
 
     public static ConnectionController getInstance() {

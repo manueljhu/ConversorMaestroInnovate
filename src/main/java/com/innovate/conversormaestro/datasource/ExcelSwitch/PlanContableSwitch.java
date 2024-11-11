@@ -9,6 +9,7 @@ import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class PlanContableSwitch {
+    private FinalList<Cuenta> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<Cuenta> planesContables;
     private FormatUtils formatUtils = new FormatUtils();
@@ -20,14 +21,13 @@ public class PlanContableSwitch {
         group = connectionController.getGroupDigitsDestination();
         account = connectionController.getAccountDigitsDestination();
         int nFilas = excelUtils.devuelveNFilasExcel();
-
+        lista = FinalList.getFinalList();
         planesContables = new ArrayList<Cuenta>();
         Cuenta planContable;
 
-        for (int i = 1; i <= nFilas + 1; i++) {
+        for (int i = 1; i <= nFilas; i++) {
             planContable = new Cuenta();
             for (int j = 0; j < relaciones.size(); j++) {
-                System.out.println("Campo origen: " + relaciones.get(j).getCampoOrigen());
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cue":
                         planContable.setCue(formatUtils.formatDigitPlanCon(group, account, excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
@@ -175,8 +175,9 @@ public class PlanContableSwitch {
                         break;
                 }
             }
-            System.out.println(planContable);
+            //System.out.println(planContable);
             planesContables.add(planContable);
         }
+        lista.setLista(planesContables);
     }
 }
