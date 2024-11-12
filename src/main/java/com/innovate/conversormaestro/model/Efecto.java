@@ -516,13 +516,13 @@ public class Efecto {
 
     public String toUpdate() {
         return "UPDATE EFECTO SET fec='" + fec + "',cue='" + cue + "',con='" + con + "',tip='" + tip
-                + "',ban='" + ban + "',vto='" + vto + "',fac='" + fac + "',rem='" + rem + "',fre='" + fre + "',fpa='"
-                + fpa + "',dev='" + dev + "',xx1='" + xx1 + "',xx2='" + xx2 + "',xx3='" + xx3 + "',impeu=" + impeu
+                + "',ban='" + ban + "',vto='" + vto + "',fac='" + fac + "',rem='" + rem + "',fre=" + fre + ",fpa="
+                + fpa + ",dev='" + dev + "',xx1='" + xx1 + "',xx2='" + xx2 + "',xx3='" + xx3 + "',impeu=" + impeu
                 + ",pageu=" + pageu + ",car=" + car + ",imprem=" + imprem + ",cueapu='" + cueapu + "',impdev=" + impdev
                 + ",impgas=" + impgas + ",rie='" + rie + "',rut='" + rut + "',cu1='" + cu1 + "',cu2='" + cu2 + "',cu3='"
                 + cu3 + "',cu4='" + cu4 + "',serie=" + serie + ",impreso='" + impreso + "',efe_tipagr='" + efe_tipagr
                 + "',efe_docagr='" + efe_docagr + "',efe_nefagr='" + efe_nefagr + "',efe_genagr='" + efe_genagr
                 + "',efe_ren='" + efe_ren + "',numefedev='" + numefedev + "',moneda=" + moneda + ",cotiza=" + cotiza
-                + ",impmon=" + impmon + ",diasmax=" + diasmax + ",fecini='" + fecini + "' WHERE num='" + num + "';";
+                + ",impmon=" + impmon + ",diasmax=" + diasmax + ",fecini=" + fecini + " WHERE num='" + num + "';";
     }
 }

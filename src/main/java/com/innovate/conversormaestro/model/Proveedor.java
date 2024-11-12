@@ -1196,7 +1196,7 @@ public class Proveedor {
     public String toUpdate() {
         return "UPDATE PROVEE SET nom='" + nom + "',dir='" + dir + "',npro=" + npro + ",pob='" + pob
                 + "',pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='" + fax + "',mov='"
-                + mov + "',ter='" + ter + "',per='" + per + "',car='" + car + "',for=" + forpag + ",dto=" + dto
+                + mov + "',ter='" + ter + "',per='" + per + "',car='" + car + "',[for]=" + forpag + ",dto=" + dto
                 + ",red='" + red + "',por='" + por + "',poa='" + poa + "',ctg='" + ctg + "',mar='" + mar + "',dt2="
                 + dt2 + ",di1=" + di1 + ",di2=" + di2 + ",di3=" + di3 + ",mnp=" + mnp + ",tia='" + tia + "',tre=" + tre
                 + ",ret=" + ret + ",ob1='" + ob1 + "',ob2='" + ob2 + "',ob3='" + ob3 + "',web='" + web + "',ext='" + ext
@@ -1211,8 +1211,8 @@ public class Proveedor {
                 + "',historia='" + historia + "',lopd_ori=" + lopd_ori + ",lopd_otr_o='" + lopd_Otr_O + "',lopd_ces='"
                 + lopd_Ces + "',lopd_otr_c='" + lopd_Otr_C + "',pro_idioma=" + pro_idioma + ",moneda=" + moneda
                 + ",avi_ped='" + avi_Ped + "',avi_alb='" + avi_Alb + "',avi_fac='" + avi_Fac + "',avi_rec='" + avi_Rec
-                + "',actividad='" + actividad + "',contrato='" + contrato + "',fec_eval='" + fec_Eval + "',res_eval='"
-                + res_Eval + "',fec_apro='" + fec_Apro + "',nota_eval=" + nota_Eval + ",product1='" + product1
+                + "',actividad='" + actividad + "',contrato='" + contrato + "',fec_eval=" + fec_Eval + ",res_eval='"
+                + res_Eval + "',fec_apro=" + fec_Apro + ",nota_eval=" + nota_Eval + ",product1='" + product1
                 + "',product2='" + product2 + "',obs_cal='" + obs_Cal + "',cer_cal='" + cer_Cal + "',cer_med='"
                 + cer_Med + "',cer_pre='" + cer_Pre + "',perval=" + perval + ",diasmax=" + diasmax + ",autof='" + autof
                 + "',tip_rem=" + tip_Rem + ",cri_caja='" + cri_Caja + "' WHERE cod='" + cod + "';";
