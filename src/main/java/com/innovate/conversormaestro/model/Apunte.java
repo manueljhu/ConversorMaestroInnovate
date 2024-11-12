@@ -242,7 +242,7 @@ public class Apunte {
     public String toUpdate() {
         String exercise = connectionController.getExerciseDestination();
         exercise = exercise.substring(exercise.length() - 2);
-        return "UPDATE APUN" + exercise + " SET fec='" + fec + "',cue='" + cue + "',con='" + con
+        return "UPDATE APUN" + exercise + " SET fec=" + fec + ",cue='" + cue + "',con='" + con
                 + "',sig='" + sig + "',mar='" + mar + "',fac='" + fac + "',doc='" + doc + "',xxx='" + xxx + "',impeu="
                 + impeu + ",acl='" + acl + "',cen='" + cen + "',ren='" + ren + "',met=" + met + ",apu_tipdoc='"
                 + apu_tipdoc + "',apu_numdoc='" + apu_numdoc + "',anno_efe=" + anno_efe + " WHERE num = '" + num + "';";

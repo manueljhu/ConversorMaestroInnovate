@@ -2,9 +2,11 @@ package com.innovate.conversormaestro.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
@@ -13,11 +15,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.ExcelController;
 import com.innovate.conversormaestro.datasource.ExcelSwitch.FinalList;
+import com.innovate.conversormaestro.utils.MyAlert;
 
 public class ConversorController<T> implements Initializable {
 
@@ -28,6 +33,7 @@ public class ConversorController<T> implements Initializable {
     private int nTraspasos = 0;
     private ArrayList<T> lista = new ArrayList<T>();
     int nfilasTotales = 0;
+    private StringBuilder logBuilder = new StringBuilder();
 
     @FXML
     private ProgressBar progressBar = new ProgressBar();
@@ -47,12 +53,12 @@ public class ConversorController<T> implements Initializable {
         excelController = ExcelController.getExcelController();
         finalList = FinalList.getFinalList();
         txtArea.setEditable(false);
-        txtArea.setDisable(true);
         lista = finalList.getLista();
         nfilasTotales = lista.size();
         txtLabel.setText("Procesando 0 de " + nfilasTotales + " filas");
         txtLabel.textProperty().bind(progressMessage);
         txtArea.textProperty().bind(detailMessage);
+        txtArea.setWrapText(true);
     }
 
     public static <T> ConversorController<T> getConversorController() {
@@ -70,34 +76,76 @@ public class ConversorController<T> implements Initializable {
 
     @FXML
     private void convertButton() {
-        if (excelController.isBeEmpty()){
+        if (excelController.isBeEmpty()) {
             System.out.println(excelController.getTablename());
             connectionController.truncateDataTable(excelController.getTablename());
         }
-        Task<Void> task = new Task<Void>() {
+
+        Task<Boolean> task = new Task<Boolean>() {
             @Override
-            protected Void call() throws Exception {
+            protected Boolean call() throws Exception {
+                boolean result = true;
                 int nfilas = 0;
                 int nfilasTotales = lista.size();
                 for (T t : lista) {
                     System.out.println(t.toString());
-                    connectionController.insertDataQuery(t.toString());
+                    boolean insertResult = true;
+                    insertResult = connectionController.insertDataQuery(t.toString());
                     nfilas++;
                     double progress = (double) nfilas / nfilasTotales;
                     updateProgress(progress, 1.0);
                     updateMessage("Procesando " + nfilas + " de " + nfilasTotales + " filas");
-                    detailMessage.set("Detalle: " + t.toString());
+                    appendLog("Detalle: " + t.toString());
                     System.out.println("Procesando " + nfilas + " de " + nfilasTotales + " filas");
                     System.out.println("Progreso: " + (progress * 100) + "%");
+                    if (!insertResult) {
+                        appendLog(connectionController.getError());
+                        result = false;
+
+                    }
+                    appendLog("Procesando " + nfilas + " de " + nfilasTotales + " filas");
+                    appendLog("Progreso: " + (progress * 100) + "%");
+                    appendLog(
+                            "--------------------------------------------------------------------------------------------------------------------------------------------------------");
+                    if (!insertResult) {
+                        break;
+                    }
                 }
-                return null;
+                return result;
             }
         };
 
+        task.setOnSucceeded(event -> {
+            boolean result = task.getValue();
+            MyAlert myAlert = new MyAlert();
+            if (result) {
+                myAlert.showAlert(AlertType.INFORMATION, "Datos insertados correctamente",
+                        "Datos insertados correctamente en la base de datos");
+            } else {
+                myAlert.showAlert(AlertType.ERROR, "Error al insertar datos",
+                        "Error al insertar datos en la base de datos");
+            }
+        });
+
+        task.setOnFailed(event -> {
+            Throwable exception = task.getException();
+            exception.printStackTrace();
+            MyAlert myAlert = new MyAlert();
+            myAlert.showAlert(AlertType.ERROR, "Error en la tarea",
+                    "Se produjo un error durante la ejecución de la tarea: " + exception.getMessage());
+        });
+
         progressBar.progressProperty().bind(task.progressProperty());
         progressMessage.bind(task.messageProperty());
-        
-        new Thread(task).start();
+
+        Thread t = new Thread(task);
+        t.start();
+
+    }
+
+    private void appendLog(String message) {
+        logBuilder.append(message).append("\n\n");
+        Platform.runLater(() -> detailMessage.set(logBuilder.toString()));
     }
 
     public void setnTraspasos(int nTraspasos) {

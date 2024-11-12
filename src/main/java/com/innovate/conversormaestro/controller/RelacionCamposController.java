@@ -99,6 +99,7 @@ public class RelacionCamposController implements Initializable {
     String NameOption;
     File fileDBF;
     File fileExcel;
+    
 
     @SuppressWarnings("null")
     @Override
@@ -131,9 +132,30 @@ public class RelacionCamposController implements Initializable {
             fillListSource();
         } else if (connectionController.getSourceTab().equals("Excel")) {
             excelController = ExcelController.getExcelController();
-            fileExcel = new File(excelController.getPathSourceExcel());
             cbSourceFields.setDisable(true);
-            fillListSource();
+            fileExcel = new File(excelController.getPathSourceExcel());
+            boolean firstTime = connectionController.isFirstTime();
+            if (!firstTime) {
+                if (excelController.getRelaciones() != null) {
+                    btnDestinationtoRelation.setDisable(false);
+                    btnOrigintoRelation.setDisable(false);
+                    lvSourceFields.getItems().addAll(excelController.getColumnOrigin());
+                    cbDestinationFields.setValue(excelController.getTablename());
+                    lvDestinationFields.getItems()
+                    .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
+                    for (int i = 0; i < excelController.getRelaciones().size(); i++) {
+                        System.out.println(excelController.getRelaciones().get(i).getCampoOrigen());
+                        lvRelationSourceFields.getItems().add(excelController.getRelaciones().get(i).getCampoOrigen());
+                        System.out.println(excelController.getRelaciones().get(i).getCampoDestino());
+                        lvRelationDestinationFields.getItems().add(excelController.getRelaciones().get(i).getCampoDestino());
+                    }
+                    
+                }
+            } else {
+                fileExcel = new File(excelController.getPathSourceExcel());
+                fillListSource();
+                connectionController.setFirstTime(false);
+            }   
         }
 
         fillComboDestination();
@@ -520,7 +542,7 @@ public class RelacionCamposController implements Initializable {
 
                     excelController.setTablename(cbDestinationFields.getValue());
                     excelController.tableExcelDestination(excelController.getTablename());
-                    
+
                 }
                 excelController.setTypeTransfer(NameOption);
                 excelController.setBeEmpty(cboxEmptyDestination.isSelected());

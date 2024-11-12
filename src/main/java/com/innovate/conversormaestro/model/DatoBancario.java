@@ -1,8 +1,10 @@
 package com.innovate.conversormaestro.model;
 
 import com.innovate.conversormaestro.datasource.ExcelController;
+import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class DatoBancario {
+    FormatUtils formatUtils = new FormatUtils();
     private String cla = "";
     private String cod = "";
     private String dir = "";
@@ -264,6 +266,6 @@ public class DatoBancario {
         return "UPDATE DATBAN SET dir='" + dir + "',pob='" + pob + "',npro=" + npro
                 + ",pro='" + pro + "',pais=" + pais + ",iban='" + iban + "',bic='" + bic + "',cu1='" + cu1 + "',cu2='"
                 + cu2 + "',cu3='" + cu3 + "',cu4='" + cu4 + "',hab='" + hab + "',bban='" + bban + "',trem='" + trem
-                + "',epri='" + epri + "',nman='" + nman + "',fman='" + fman + "' WHERE cla='" + cla + "' AND cod='" + cod + "';";
+                + "',epri='" + epri + "',nman='" + nman + "',fman='" + fman + "' WHERE cla='" + cla + "' AND cod='" + formatUtils.format6digits(cod) + "';";
     }
 }

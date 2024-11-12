@@ -61,6 +61,10 @@ public class ExcelController {
         return excelController;
     }
 
+    public ArrayList<Relacion> getRelaciones() {
+        return relaciones;
+    }
+
     public void setRelaciones(ArrayList<Relacion> relaciones) {
         this.relaciones = relaciones;
     }

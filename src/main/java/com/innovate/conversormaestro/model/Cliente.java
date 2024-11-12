@@ -1885,7 +1885,7 @@ public class Cliente {
                 + "',npro=" + npro + ",pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='"
                 + fax + "',mov='" + mov + "',per='" + per + "',car='" + car + "',ter='" + ter + "',req='" + req
                 + "',red='" + red + "',dto=" + dto + ",com=" + com + ",fin=" + fin + ",fac=" + fac + ",tar=" + tar
-                + ",for=" + forpag + ",di1=" + di1 + ",di2=" + di2 + ",di3=" + di3 + ",mnp=" + mnp + ",m30='" + m30
+                + ",[for]=" + forpag + ",di1=" + di1 + ",di2=" + di2 + ",di3=" + di3 + ",mnp=" + mnp + ",m30='" + m30
                 + "',vto=" + vto + ",inc=" + inc + ",rie=" + rie + ",rut='" + rut + "',age='" + age + "',nco=" + nco
                 + ",alv='" + alv + "',fa1='" + fa1 + "',fa2='" + fa2 + "',tra='" + tra + "',mar='" + mar + "',dt2="
                 + dt2 + ",tia='" + tia + "',fo2=" + fo2 + ",d1b=" + d1b + ",d2b=" + d2b + ",d3b=" + d3b + ",mnb=" + mnb
@@ -1896,11 +1896,11 @@ public class Cliente {
                 + "',avi0alb=" + avi0alb + ",avi1alb='" + avi1alb + "',avi2alb='" + avi2alb + "',avi0fac=" + avi0fac
                 + ",avi1fac='" + avi1fac + "',avi2fac='" + avi2fac + "',avi0rec=" + avi0rec + ",avi1rec='" + avi1rec
                 + "',avi2rec='" + avi2rec + "',avi0pre=" + avi0pre + ",avi1pre='" + avi1pre + "',avi2pre='" + avi2pre
-                + "',ivainc='" + ivainc + "',fot='" + fot + "',env='" + env + "',xxx='" + xxx + "',fcr_crm='" + fcr_crm
-                + "',tip_crm=" + tip_crm + ",ftr_crm='" + ftr_crm + "',tco_crm=" + tco_crm + ",ref_crm='" + ref_crm
+                + "',ivainc='" + ivainc + "',fot='" + fot + "',env='" + env + "',xxx='" + xxx + "',fcr_crm=" + fcr_crm
+                + ",tip_crm=" + tip_crm + ",ftr_crm=" + ftr_crm + ",tco_crm=" + tco_crm + ",ref_crm='" + ref_crm
                 + "',vis_crm='" + vis_crm + "',pvi_crm=" + pvi_crm + ",lla_crm='" + lla_crm + "',pll_crm=" + pll_crm
                 + ",ru1_crm='" + ru1_crm + "',ru2_crm='" + ru2_crm + "',ru3_crm='" + ru3_crm + "',sec_crm=" + sec_crm
-                + ",dias_crm='" + dias_crm + "',tpl_crm='" + tpl_crm + "',fna_crm='" + fna_crm + "',imprap=" + imprap
+                + ",dias_crm='" + dias_crm + "',tpl_crm='" + tpl_crm + "',fna_crm=" + fna_crm + ",imprap=" + imprap
                 + ",dtorap=" + dtorap + ",tar_art='" + tar_art + "',tar_fam='" + tar_fam + "',efactura='" + efactura
                 + "',perrap=" + perrap + ",facedir='" + facedir + "',facepob='" + facepob + "',facenpro=" + facenpro
                 + ",facepro='" + facepro + "',facepais=" + facepais + ",facenom='" + facenom + "',faceape1='" + faceape1
@@ -1913,7 +1913,7 @@ public class Cliente {
                 + avi_dep + "',avi_ped='" + avi_ped + "',avi_pre='" + avi_pre + "',avi_alb='" + avi_alb + "',avi_fac='"
                 + avi_fac + "',avi_rec='" + avi_rec + "',web_acc='" + web_acc + "',web_psw='" + web_psw + "',obs_doc='"
                 + obs_doc + "',actividad='" + actividad + "',emailweb='" + emailweb + "',web_exepor='" + web_exepor
-                + "',tip_rem=" + tip_rem + ",fec_man='" + fec_man + "',cri_caja='" + cri_caja + "',facemed='" + facemed
+                + "',tip_rem=" + tip_rem + ",fec_man=" + fec_man + ",cri_caja='" + cri_caja + "',facemed='" + facemed
                 + "',faceiban='" + faceiban + "',facever='" + facever + "',facepol='" + facepol + "',por_efac='"
                 + por_efac + "',web_codact='" + web_codact + "',sincro='" + sincro + "' WHERE cod='" + cod + "';";
     }
