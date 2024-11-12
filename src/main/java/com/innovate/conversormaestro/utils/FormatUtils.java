@@ -410,13 +410,14 @@ public class FormatUtils {
     }
 
     public String tableQueryDestination(String tablename) {
+        connectionController = ConnectionController.getConectionController();
         String result = "";
         switch (tablename) {
             case "Agentes":
                 result = "TRUNCATE TABLE AGENTG";
                 break;
             case "Almacenes":
-                result = "TRUNCATE TABLE ALMACE";
+                result = "UPDATE ALMACE SET nom = '', ser = '', se2 = '', age = ''";
                 break;
             case "Articulos":
                 result = "TRUNCATE TABLE ARTICU";
@@ -424,7 +425,9 @@ public class FormatUtils {
             case "Asientos":
                 String exercise = connectionController.getExerciseDestination();
                 exercise = exercise.substring(exercise.length() - 2);
+                System.out.println("Exercise: " + exercise);
                 result = "TRUNCATE TABLE APUN" + exercise;
+                System.out.println("Result: " + result);
                 break;
             case "Bancos de la empresa":
                 result = "TRUNCATE TABLE BANCOS";
@@ -463,7 +466,8 @@ public class FormatUtils {
                 result = "TRUNCATE TABLE FAMILI";
                 break;
             case "Formas de pago":
-                result = "TRUNCATE TABLE FORPAG";
+                result = "UPDATE FORPAG SET nom = '', di1 = 0, di2 = 0, dir = 0, npa = 0, mes = 'S', vto = 1, inc = 0, cad = 0, " +
+                 "cob = 'N', car = 0, porcobdir = 100.00, inclib = 'N', reppro = 'S', cuecobdir = '' FROM FORPAG WHERE id > 7";
                 break;
             case "Marcas articulo":
                 result = "TRUNCATE TABLE MARART";

@@ -172,7 +172,7 @@ public class ConfiguracionConexionController implements Initializable {
 
         connectionController = ConnectionController.getConectionController();
         excelController = ExcelController.getExcelController();
-
+        connectionController.setFirstTime(true);
         ActualTab = "SQL";
 
         tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {

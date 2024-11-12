@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Tables;
 import com.innovate.conversormaestro.utils.FormatUtils;
+import com.innovate.conversormaestro.utils.MyAlert;
+
+import javafx.scene.control.Alert.AlertType;
 
 public class ConnectionController {
     private static ConnectionController instance = null;
@@ -41,6 +44,9 @@ public class ConnectionController {
     private String PathSourceExcel;
 
     ArrayList<Tables> tables;
+
+    private boolean firstTime;
+    private String error;
 
     private ConnectionController() {
         tables = new ArrayList<Tables>();
@@ -372,7 +378,8 @@ public class ConnectionController {
         return last_num;
     }
 
-    public void insertDataQuery(String query) {
+    public boolean insertDataQuery(String query) {
+        boolean result = true;
         excelController = ExcelController.getExcelController();
         Statement st = null;
         try {
@@ -386,13 +393,16 @@ public class ConnectionController {
             st.executeUpdate(query);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
+            /* e.printStackTrace(); */
+            result = false;
+            setError(e.getMessage());
         }
         if (excelController.getTablename() == "Formas de pago") {
             closeConnectionGP();
         } else {
             closeConnectionDestination();
         }
+        return result;
     }
 
     public void truncateDataTable(String tablename) {
@@ -554,4 +564,22 @@ public class ConnectionController {
     public void setSourceTab(String sourceTab) {
         SourceTab = sourceTab;
     }
+
+    public boolean isFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(boolean firstTime) {
+        this.firstTime = firstTime;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    
 }

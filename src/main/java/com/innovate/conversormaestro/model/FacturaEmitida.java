@@ -1815,8 +1815,8 @@ public class FacturaEmitida {
     }
 
     public String toUpdate() {
-        return "UPDATE FACEMI SET fea='" + fea + "',doc='" + doc + "',fee='" + fee + "',gas='" + gas + "',cue='" + cue
-                + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2 + ",fuc='" + fuc + "',for='"
+        return "UPDATE FACEMI SET fea=" + fea + ",doc='" + doc + "',fee=" + fee + ",gas='" + gas + "',cue='" + cue
+                + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2 + ",fuc=" + fuc + ",[for]='"
                 + forpag + "',fin=" + fin + ",alm='" + alm + "',com='" + com + "',nom='" + nom + "',nif='" + nif
                 + "',ba1eu=" + ba1eu + ",iv1eu=" + iv1eu + ",re1eu=" + re1eu + ",ba2eu=" + ba2eu + ",iv2eu=" + iv2eu
                 + ",re2eu=" + re2eu + ",ba3eu=" + ba3eu + ",iv3eu=" + iv3eu + ",re3eu=" + re3eu + ",ba4eu=" + ba4eu
@@ -1825,7 +1825,7 @@ public class FacturaEmitida {
                 + ",imreu=" + imreu + ",tre=" + tre + ",pre=" + pre + ",ireeu=" + ireeu + ",den='" + den + "',rut='"
                 + rut + "',obr='" + obr + "',ivainc='" + ivainc + "',tra='" + tra + "',entped=" + entped + ",impuesto="
                 + impuesto + ",tip='" + tip + "',web='" + web + "',aut='" + aut + "',comis='" + comis + "',negativa="
-                + negativa + ",fecope='" + fecope + "',efacgen='" + efacgen + "',efacenv='" + efacenv + "',sno='" + sno
+                + negativa + ",fecope=" + fecope + ",efacgen='" + efacgen + "',efacenv='" + efacenv + "',sno='" + sno
                 + "',dir='" + dir + "',pob='" + pob + "',npro=" + npro + ",pro='" + pro + "',pais=" + pais + ",mod303='"
                 + mod303 + "',mod303a='" + mod303a + "',mod303b='" + mod303b + "',mod303c='" + mod303c + "',mod347='"
                 + mod347 + "',usuario_bloqueo=" + usuario_bloqueo + ",emi_deb_pag='" + emi_deb_pag + "',emi_incluir='"

@@ -217,7 +217,7 @@ public class Contacto {
     }
 
     public String toUpdate() {
-        return "UPDATE CONTACT SET nom='" + nom + "',car='" + car + "',tel='" + tel
+        return "UPDATE CONTAC SET nom='" + nom + "',car='" + car + "',tel='" + tel
                 + "',ext='" + ext + "',ob1='" + ob1 + "',ob2='" + ob2 + "',ob3='" + ob3 + "',email='" + email
                 + "',codcon='" + codcon + "',lopd_ori=" + lopd_ori + ",lopd_otr_o='" + lopd_otr_o + "',lopd_ces='"
                 + lopd_ces + "', lopd_otr_c='" + lopd_otr_c + "' WHERE cod='" + cod + "' AND cla='" + cla + "';";
