@@ -149,7 +149,7 @@ public class RelacionCamposController implements Initializable {
                         System.out.println(excelController.getRelaciones().get(i).getCampoDestino());
                         lvRelationDestinationFields.getItems().add(excelController.getRelaciones().get(i).getCampoDestino());
                     }
-                    
+                    cboxEmptyDestination.setSelected(excelController.isBeEmpty());
                 }
             } else {
                 fileExcel = new File(excelController.getPathSourceExcel());
@@ -523,6 +523,7 @@ public class RelacionCamposController implements Initializable {
                         "Las listas de campos de origen y destino no tienen la misma cantidad de elementos");
                 return;
             } else {
+                excelController.setBeEmpty(cboxEmptyDestination.isSelected());
                 Relacion relacion;
                 ArrayList<Relacion> relaciones = new ArrayList<Relacion>();
 
@@ -545,7 +546,7 @@ public class RelacionCamposController implements Initializable {
 
                 }
                 excelController.setTypeTransfer(NameOption);
-                excelController.setBeEmpty(cboxEmptyDestination.isSelected());
+                
                 App.setRoot("Conversor");
 
             }

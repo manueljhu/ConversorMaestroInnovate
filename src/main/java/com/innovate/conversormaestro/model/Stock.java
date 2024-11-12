@@ -107,7 +107,7 @@ public class Stock {
     }
 
     public String toUpdate() {
-        return "UPDATE ALMA" + connectionController.getWarehouseDestination() + "SET exi=" + exi + ",ent=" + ent
+        return "UPDATE ALMA" + connectionController.getWarehouseDestination() + " SET exi=" + exi + ",ent=" + ent
                 + ",sal=" + sal + ",ubi='" + ubi + "',ide=" + ide + ",min=" + min + ",max=" + max + " WHERE cod='" + cod
                 + "';";
     }

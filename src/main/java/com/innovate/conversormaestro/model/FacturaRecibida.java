@@ -1315,27 +1315,27 @@ public class FacturaRecibida {
     }
 
     public String toUpdate() {
-        return "UPDATE FACREC SET fea='" + fea + "',doc='" + doc + "',nuf='" + nuf + "',fee='" + fee
-                + "',gas='" + gas + "',cue='" + cue + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2
-                + ",fuc='" + fuc + "',for='" + forpag + "',fin=" + fin + ",alm='" + alm + "',com='" + com + "',nom='"
+        return "UPDATE FACREC SET fea=" + fea + ",doc='" + doc + "',nuf='" + nuf + "',fee=" + fee
+                + ",gas='" + gas + "',cue='" + cue + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2
+                + ",fuc=" + fuc + ",[for]='" + forpag + "',fin=" + fin + ",alm='" + alm + "',com='" + com + "',nom='"
                 + nom + "',nif='" + nif + "',tra='" + tra + "',ba1eu=" + ba1eu + ",iv1eu=" + iv1eu + ",re1eu=" + re1eu
                 + ",ba2eu=" + ba2eu + ",iv2eu=" + iv2eu + ",re2eu=" + re2eu + ",ba3eu=" + ba3eu + ",iv3eu=" + iv3eu
                 + ",re3eu=" + re3eu + ",ba4eu=" + ba4eu + ",iv4eu=" + iv4eu + ",re4eu=" + re4eu + ",ba5eu=" + ba5eu
                 + ",iv5eu=" + iv5eu + ",re5eu=" + re5eu + ",exeeu=" + exeeu + ",ulceu=" + ulceu + ",toceu=" + toceu
                 + ",enteu=" + enteu + ",imceu=" + imceu + ",imreu=" + imreu + ",tre=" + tre + ",pre=" + pre + ",ireeu="
                 + ireeu + ",ivainc='" + ivainc + "',entped=" + entped + ",tip='" + tip + "',aut='" + aut + "',negativa="
-                + negativa + ",fecope='" + fecope + "',mod303='" + mod303 + "',mod303a='" + mod303a + "',mod303b='"
+                + negativa + ",fecope=" + fecope + ",mod303='" + mod303 + "',mod303a='" + mod303a + "',mod303b='"
                 + mod303b + "',mod303c='" + mod303c + "',mod347='" + mod347 + "',usuario_bloqueo=" + usuario_bloqueo
                 + ",rec_deb_pag='" + rec_deb_pag + "',rec_incluir='" + rec_incluir + "',rec_antes_dto='" + rec_antes_dto
                 + "',rec_iva_inc='" + rec_iva_inc + "',moneda=" + moneda + ",cotiza=" + cotiza + ",basmon=" + basmon
                 + ",totmon=" + totmon + ",entmon=" + entmon + ",obs_doc='" + obs_doc + "',recargo='" + recargo
-                + "',diasmax=" + diasmax + ",fecini='" + fecini + "',suplidos=" + suplidos + ",iva1=" + iva1 + ",iva2="
+                + "',diasmax=" + diasmax + ",fecini=" + fecini + ",suplidos=" + suplidos + ",iva1=" + iva1 + ",iva2="
                 + iva2 + ",iva3=" + iva3 + ",iva4=" + iva4 + ",iva5=" + iva5 + ",rec1=" + rec1 + ",rec2=" + rec2
                 + ",rec3=" + rec3 + ",rec4=" + rec4 + ",rec5=" + rec5 + ",tipivaok='" + tipivaok + "',exento='" + exento
                 + "',cri_caja='" + cri_caja + "',ded_cie='" + ded_cie + "',siiest='" + siiest + "',siiact='" + siiact
                 + "',siitipfra='" + siitipfra + "',siifrarec='" + siifrarec + "',siitiprec='" + siitiprec
                 + "',siidesfra='" + siidesfra + "',siinifemi='" + siinifemi + "',siicuoded=" + siicuoded
-                + ",siifecper='" + siifecper + "',siidatrec='" + siidatrec + "',siidatagr='" + siidatagr
+                + ",siifecper=" + siifecper + ",siidatrec='" + siidatrec + "',siidatagr='" + siidatagr
                 + "',siibasrec=" + siibasrec + ",siicuorec=" + siicuorec + ",siirecrec=" + siirecrec + ",siibascos="
                 + siibascos + ",siiiss='" + siiiss + "',siidatdes='" + siidatdes + "',siifrarec1='" + siifrarec1
                 + "',siifrarec2='" + siifrarec2 + "',siinumacu='" + siinumacu + "',siinumresf='" + siinumresf

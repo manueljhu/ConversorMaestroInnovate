@@ -476,10 +476,10 @@ public class FormatUtils {
                 result = "TRUNCATE TABLE CUENTA";
                 break;
             case "Previsiones de cobro":
-                result = "TRUNCATE TABLE EFECTO WHERE tip = 'C'";
+                result = "DELETE FROM EFECTO WHERE tip = 'C'";
                 break;
             case "Previsiones de pago":
-                result = "TRUNCATE TABLE EFECTO WHERE tip = 'P'";
+                result = "DELETE FROM EFECTO WHERE tip = 'P'";
                 break;
             case "Proveedores":
                 result = "TRUNCATE TABLE PROVEE";

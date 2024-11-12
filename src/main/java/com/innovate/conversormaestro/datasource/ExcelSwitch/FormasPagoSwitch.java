@@ -2,12 +2,14 @@ package com.innovate.conversormaestro.datasource.ExcelSwitch;
 
 import java.util.ArrayList;
 
+import com.innovate.conversormaestro.datasource.ExcelController;
 import com.innovate.conversormaestro.model.FormaPago;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.ExcelUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class FormasPagoSwitch {
+    private ExcelController excelController = ExcelController.getExcelController();
     private FinalList<FormaPago> lista;
     private ExcelUtils excelUtils = new ExcelUtils();
     private ArrayList<FormaPago> formasPago;
@@ -19,11 +21,19 @@ public class FormasPagoSwitch {
         formasPago = new ArrayList<FormaPago>();
         FormaPago formaPago;
         int idforpag = formatUtils.formatUpdate("FORPAG");
+
+        if (excelController.isBeEmpty()){
+            idforpag = 1;
+        }
+
         for (int i = 1; i <= nFilas; i++) {
             formaPago = new FormaPago();
             formaPago.setId(idforpag);
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
+                    case "id":
+                        formaPago.setId(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        break;
                     case "nom":
                         formaPago.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
