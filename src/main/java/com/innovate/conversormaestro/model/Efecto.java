@@ -274,18 +274,18 @@ public class Efecto {
     }
 
     public void setFre(String fre) {
-        if (fre != null) {
-            this.fre = "'" + fre + "'";
-        } else {
+        if (fre == null || fre.equals("NULL")) {
             this.fre = "NULL";
+        } else {
+            this.fre = "'" + fre + "'";
         }
     }
 
     public void setFpa(String fpa) {
-        if (fpa != null) {
-            this.fpa = "'" + fpa + "'";
-        } else {
+        if (fpa == null || fpa.equals("NULL")) {
             this.fpa = "NULL";
+        } else {
+            this.fpa = "'" + fpa + "'";
         }
     }
 
@@ -478,10 +478,10 @@ public class Efecto {
     }
 
     public void setFecini(String fecini) {
-        if (fecini != null) {
-            this.fecini = "'" + fecini + "'";
-        } else {
+        if (fecini == null || fecini.equals("NULL")) {
             this.fecini = "NULL";
+        } else {
+            this.fecini = "'" + fecini + "'";
         }
     }
 

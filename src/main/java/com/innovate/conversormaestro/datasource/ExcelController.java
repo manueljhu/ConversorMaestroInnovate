@@ -142,7 +142,6 @@ public class ExcelController {
 
     public void setLista(ArrayList<T> lista) {
         this.lista = lista;
-        System.out.println(this.lista);
     }
 
     public void tableExcelDestination(String tablename) {

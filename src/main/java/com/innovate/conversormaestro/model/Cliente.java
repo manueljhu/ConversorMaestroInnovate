@@ -85,9 +85,9 @@ public class Cliente {
     private String fot = "";
     private String env = "N";
     private String xxx = "";
-    private String fcr_crm = null;
+    private String fcr_crm = "NULL";
     private float tip_crm = 1;
-    private String ftr_crm = null;
+    private String ftr_crm = "NULL";
     private float tco_crm = 0;
     private String ref_crm = "";
     private String vis_crm = "S";
@@ -100,7 +100,7 @@ public class Cliente {
     private float sec_crm = 0;
     private String dias_crm = "SSSSS";
     private String tpl_crm = "N";
-    private String fna_crm;
+    private String fna_crm = "NULL";
     private float imprap = 0.000F;
     private float dtorap = 0.00F;
     private String tar_art = "";
@@ -152,7 +152,7 @@ public class Cliente {
     private String emailweb = "";
     private String web_exepor = "N";
     private int tip_rem = 2;
-    private String fec_man;
+    private String fec_man = "NULL";
     private String cri_caja = "S";
     private String facemed = "";
     private String faceiban = "";
@@ -1307,10 +1307,10 @@ public class Cliente {
     }
 
     public void setFcr_Crm(String fcr_crm) {
-        if (fcr_crm != null) {
-            this.fcr_crm = "'" + fcr_crm + "'";
-        } else {
+        if (fcr_crm == null || fcr_crm.equals("NULL")) {
             this.fcr_crm = "NULL";
+        } else {
+            this.fcr_crm = "'" + fcr_crm + "'";
         }
     }
 
@@ -1319,10 +1319,10 @@ public class Cliente {
     }
 
     public void setFtr_Crm(String ftr_crm) {
-        if (ftr_crm != null) {
-            this.ftr_crm = "'" + ftr_crm + "'";
-        } else {
+        if (ftr_crm == null || ftr_crm.equals("NULL")) {
             this.ftr_crm = "NULL";
+        } else {
+            this.ftr_crm = "'" + ftr_crm + "'";
         }
     }
 
@@ -1407,10 +1407,10 @@ public class Cliente {
     }
 
     public void setFna_Crm(String fna_crm) {
-        if (fna_crm == null) {
-            this.fna_crm = "'" + fna_crm + "'";
-        } else {
+        if (fna_crm == null || fna_crm.equals("NULL")) {
             this.fna_crm = "NULL";
+        } else {
+            this.fna_crm = "'" + fna_crm + "'";
         }
     }
 
@@ -1751,10 +1751,10 @@ public class Cliente {
     }
 
     public void setFec_Man(String fec_man) {
-        if (fec_man == null) {
-            this.fec_man = "'" + fec_man + "'";
-        } else {
+        if (fec_man == null || fec_man.equals("NULL")) {
             this.fec_man = "NULL";
+        } else {
+            this.fec_man = "'" + fec_man + "'";
         }
     }
 

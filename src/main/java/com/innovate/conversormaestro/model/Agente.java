@@ -500,10 +500,10 @@ public class Agente {
     }
 
     public void setAlt(String alt) {
-        if (alt != null) {
-            this.alt = "'" + alt + "'";
-        } else {
+        if (alt == null || alt.equals("NULL")) {
             this.alt = "NULL";
+        } else {
+            this.alt = "'" + alt + "'";
         }
     }
 

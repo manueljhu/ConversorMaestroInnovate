@@ -4,29 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.AgentesSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.AlmacenesSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.ArticulosSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.AsientosSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.BancoEmpresaSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.ClientesSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.ContactosClientesSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.ContactosProveedoresSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.DatosBancariosClientesSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.DatosBancariosProveedoresSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.DireccionesClientesSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.DireccionesProveedoresSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.ExistenciasSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.FacturasEmitidasSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.FacturasRecibidasSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.FamiliasSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.FormasPagoSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.MarcasArticuloSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.PlanContableSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.PrevisionesCobroSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.PrevisionesPagoSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.ProveedoresSwitch;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.SubFamiliasSwitch;
 
 import javafx.scene.control.Alert.AlertType;
 
@@ -342,8 +319,8 @@ public class FormatUtils {
     }
 
     public String formatEfectCon(String factura, String type, String source, int rowint) {
-        // System.out.println("Factura: " + factura + "Type: " + type + "Source: " +
-        // source + "rowint: " + rowint);
+        System.out.println("Factura: " + factura + ", Type: " + type + ", Source: " +
+        source + ", rowint: " + rowint);
         String result = "0";
         List<Integer> temp = null;
         int pos = 1;
@@ -358,7 +335,7 @@ public class FormatUtils {
             case "Excel":
                 ExcelUtils excelUtils = new ExcelUtils();
                 temp = excelUtils.buscarDatosIgualesEnColumna("fac", factura);
-                // System.out.println("Fac: " + temp);
+                System.out.println("Fac: " + temp);
                 break;
             default:
                 break;

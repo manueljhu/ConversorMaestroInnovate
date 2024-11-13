@@ -554,6 +554,7 @@ public class ClientesSwitch {
                         break;
                 }
             }
+            System.out.println("----------------------------------------------");
             //System.out.println(cliente);
             clientes.add(cliente);         
         }
