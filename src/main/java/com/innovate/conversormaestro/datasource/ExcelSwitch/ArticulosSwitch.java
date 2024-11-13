@@ -43,12 +43,10 @@ public class ArticulosSwitch {
                         articulo.setObs(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "min":
-                        articulo.setMin(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        articulo.setMin(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "max":
-                        articulo.setMax(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        articulo.setMax(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "med":
                         articulo.setMed(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -338,30 +336,30 @@ public class ArticulosSwitch {
                     case "impues":
                         articulo.setImpues(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "art_Imp":
+                    case "art_imp":
                         articulo.setArt_Imp(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "sum_Imp":
+                    case "sum_imp":
                         articulo.setSum_Imp(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "fac_Can":
+                    case "fac_can":
                         articulo.setFac_Can(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "fac_Imp":
+                    case "fac_imp":
                         articulo.setFac_Imp(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "fec_Cre":
+                    case "fec_cre":
                         articulo.setFec_Cre(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "obsole":
                         articulo.setObsole(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "per_Com":
+                    case "per_com":
                         articulo.setPer_Com(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "per_Ven":
+                    case "per_ven":
                         articulo.setPer_Ven(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "peso":
@@ -372,10 +370,10 @@ public class ArticulosSwitch {
                         articulo.setVolumen(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "men_Sto":
+                    case "men_sto":
                         articulo.setMen_Sto(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "con_Sto":
+                    case "con_sto":
                         articulo.setCon_Sto(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "marca1":
@@ -384,10 +382,10 @@ public class ArticulosSwitch {
                     case "marca2":
                         articulo.setMarca2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "ped_Tex":
+                    case "ped_tex":
                         articulo.setPed_Tex(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "ped_Cos":
+                    case "ped_cos":
                         articulo.setPed_Cos(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "env":
@@ -430,16 +428,20 @@ public class ArticulosSwitch {
                         articulo.setV12(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ctadevcom":
-                        articulo.setCtadevcom(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        articulo.setCtadevcom(formatUtils.formatDigitGroupAccount(group, account,
+                                excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadevven":
-                        articulo.setCtadevven(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        articulo.setCtadevven(formatUtils.formatDigitGroupAccount(group, account,
+                                excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadtocom":
-                        articulo.setCtadtocom(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        articulo.setCtadtocom(formatUtils.formatDigitGroupAccount(group, account,
+                                excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctadtoven":
-                        articulo.setCtadtoven(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        articulo.setCtadtoven(formatUtils.formatDigitGroupAccount(group, account,
+                                excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "meses":
                         articulo.setMeses(
@@ -460,36 +462,36 @@ public class ArticulosSwitch {
                     case "historia":
                         articulo.setHistoria(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "art_Minped":
+                    case "art_minped":
                         articulo.setArt_Minped(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "art_Subfam":
+                    case "art_subfam":
                         articulo.setArt_Subfam(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "art_Marca":
+                    case "art_marca":
                         articulo.setArt_Marca(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Nov":
+                    case "web_nov":
                         articulo.setWeb_Nov(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Fealno":
+                    case "web_fealno":
                         articulo.setWeb_Fealno(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Des":
+                    case "web_des":
                         articulo.setWeb_Des(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "coefici":
                         articulo.setCoefici(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "web_Sub":
+                    case "web_sub":
                         articulo.setWeb_Sub(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Actd":
+                    case "web_actd":
                         articulo.setWeb_Actd(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Acth":
+                    case "web_acth":
                         articulo.setWeb_Acth(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "divs1":
@@ -498,15 +500,15 @@ public class ArticulosSwitch {
                     case "divs2":
                         articulo.setDivs2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Cat1":
+                    case "web_cat1":
                         articulo.setWeb_Cat1(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "web_Cat2":
+                    case "web_cat2":
                         articulo.setWeb_Cat2(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "web_Cat3":
+                    case "web_cat3":
                         articulo.setWeb_Cat3(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
@@ -534,52 +536,52 @@ public class ArticulosSwitch {
                         articulo.setDos(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "num_Pro":
+                    case "num_pro":
                         articulo.setNum_Pro(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "num_Com":
+                    case "num_com":
                         articulo.setNum_Com(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "csi":
                         articulo.setCsi(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "inc_Pre":
+                    case "inc_pre":
                         articulo.setInc_Pre(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "inc_Red":
+                    case "inc_red":
                         articulo.setInc_Red(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "web_Orcat1":
+                    case "web_orcat1":
                         articulo.setWeb_Orcat1(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "web_Orcat2":
+                    case "web_orcat2":
                         articulo.setWeb_Orcat2(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "web_Orcat3":
+                    case "web_orcat3":
                         articulo.setWeb_Orcat3(
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
-                    case "web_Metat":
+                    case "web_metat":
                         articulo.setWeb_Metat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Metad":
+                    case "web_metad":
                         articulo.setWeb_Metad(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_Urla":
+                    case "web_urla":
                         articulo.setWeb_Urla(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_H1":
+                    case "web_h1":
                         articulo.setWeb_H1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_H2_1":
+                    case "web_h2_1":
                         articulo.setWeb_H2_1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "web_H2_2":
+                    case "web_h2_2":
                         articulo.setWeb_H2_2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "sincro":
@@ -587,7 +589,7 @@ public class ArticulosSwitch {
                         break;
                 }
             }
-            //System.out.println(articulo);
+            // System.out.println(articulo);
             articulos.add(articulo);
         }
         lista.setLista(articulos);

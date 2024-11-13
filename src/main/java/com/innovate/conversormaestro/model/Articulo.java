@@ -985,10 +985,10 @@ public class Articulo {
     }
 
     public void setUfc(String ufc) {
-        if (ufc != null) {
-            this.ufc = "'" + ufc + "'";
-        } else {
+        if (ufc == null || ufc.equals("NULL")) {
             this.ufc = "NULL";
+        } else {
+            this.ufc = "'" + ufc + "'";
         }
     }
 
@@ -1009,10 +1009,10 @@ public class Articulo {
     }
 
     public void setUfv(String ufv) {
-        if (ufv != null) {
-            this.ufv = "'" + ufv + "'";
-        } else {
+        if (ufv == null || ufv.equals("NULL")) {
             this.ufv = "NULL";
+        } else {
+            this.ufv = "'" + ufv + "'";
         }
     }
 
@@ -1289,10 +1289,10 @@ public class Articulo {
     }
 
     public void setFec_Cre(String fec_cre) {
-        if (fec_cre != null) {
-            this.fec_cre = "'" + fec_cre + "'";
-        } else {
+        if (fec_cre == null || fec_cre.equals("NULL")) {
             this.fec_cre = "NULL";
+        } else {
+            this.fec_cre = "'" + fec_cre + "'";
         }
     }
 
@@ -1581,10 +1581,10 @@ public class Articulo {
     }
 
     public void setWeb_Fealno(String web_fealno) {
-        if (web_fealno != null) {
-            this.web_fealno = "'" + web_fealno + "'";
-        } else {
+        if (web_fealno == null || web_fealno.equals("NULL")) {
             this.web_fealno = "NULL";
+        } else {
+            this.web_fealno = "'" + web_fealno + "'";
         }
     }
 
@@ -1609,18 +1609,18 @@ public class Articulo {
     }
 
     public void setWeb_Actd(String web_actd) {
-        if (web_actd != null) {
-            this.web_actd = "'" + web_actd + "'";
-        } else {
+        if (web_actd == null || web_actd.equals("NULL")) {
             this.web_actd = "NULL";
+        } else {
+            this.web_actd = "'" + web_actd + "'";
         }
     }
 
     public void setWeb_Acth(String web_acth) {
-        if (web_acth != null) {
-            this.web_acth = "'" + web_acth + "'";
-        } else {
+        if (web_acth == null || web_acth.equals("NULL")) {
             this.web_acth = "NULL";
+        } else {
+            this.web_acth = "'" + web_acth + "'";
         }
     }
 

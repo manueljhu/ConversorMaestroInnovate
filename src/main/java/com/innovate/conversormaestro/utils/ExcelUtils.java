@@ -4,13 +4,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.DateUtil;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
 
@@ -60,14 +64,21 @@ public class ExcelUtils {
 
             hssfRowCabecera = hssfSheet.getRow(0);
             hssfRow = hssfSheet.getRow(fila);
+            DataFormatter dataFormatter = new DataFormatter();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
             for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
                 if (hssfRowCabecera.getCell(c).getStringCellValue().equals(columna)) {
                     //System.out.println(hssfRowCabecera.getCell(c).getStringCellValue().equals(columna));
                     if (hssfRow.getCell(c) != null) {
-                        hssfRow.getCell(c).setCellType(CellType.STRING);
-                        //System.out.println(hssfRow.getCell(c).getStringCellValue());
-                        result = hssfRow.getCell(c).getStringCellValue();
+                        HSSFCell cell = hssfRow.getCell(c);
+                        if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
+                            result = dateFormat.format(cell.getDateCellValue());
+                        } else {
+                            result = dataFormatter.formatCellValue(cell);
+                        }
                     }
+                    System.out.println("Columna: " + columna + " Valor: " + result);
                 }
             }
             hssfWorkbook.close();

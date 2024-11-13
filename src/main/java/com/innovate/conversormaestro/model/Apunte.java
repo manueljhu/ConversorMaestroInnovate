@@ -100,10 +100,10 @@ public class Apunte {
     }
 
     public void setFec(String fec) {
-        if (fec != null) {
-            this.fec = "'" + fec + "'";
-        } else {
+        if (fec == null || fec.equals("NULL")) {
             this.fec = "NULL";
+        } else {
+            this.fec = "'" + fec + "'";
         }
     }
 

@@ -1051,10 +1051,10 @@ public class Proveedor {
     }
 
     public void setFec_Eval(String fec_eval) {
-        if (fec_eval != null) {
-            this.fec_Eval = "'" + fec_eval + "'";
-        } else {
+        if (fec_eval == null || fec_eval.equals("NULL")) {
             this.fec_Eval = "NULL";
+        } else {
+            this.fec_Eval = "'" + fec_eval + "'";
         }
     }
 
@@ -1067,10 +1067,10 @@ public class Proveedor {
     }
 
     public void setFec_Apro(String fec_apro) {
-        if (fec_apro != null) {
-            this.fec_Apro = "'" + fec_apro + "'";
-        } else {
+        if (fec_apro == null || fec_apro.equals("NULL")) {
             this.fec_Apro = "NULL";
+        } else {
+            this.fec_Apro = "'" + fec_apro + "'";
         }
     }
 

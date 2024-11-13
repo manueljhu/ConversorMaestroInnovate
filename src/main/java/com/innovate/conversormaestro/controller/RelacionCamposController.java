@@ -62,6 +62,9 @@ public class RelacionCamposController implements Initializable {
     private Button btnOrigintoRelation = new Button();
 
     @FXML
+    private Button btnOrigintoRelation2 = new Button();
+
+    @FXML
     private TitledPane tpSourceColumn = new TitledPane();
 
     @FXML
@@ -78,6 +81,9 @@ public class RelacionCamposController implements Initializable {
 
     @FXML
     private Button btnDestinationtoRelation = new Button();
+
+    @FXML
+    private Button btnDestinationtoRelation2 = new Button();
 
     @FXML
     private TitledPane tpDestinationColumn = new TitledPane();
@@ -115,7 +121,9 @@ public class RelacionCamposController implements Initializable {
         tpSourceColumn.setCollapsible(false);
         tpDestinationColumn.setCollapsible(false);
         btnOrigintoRelation.setDisable(true);
+        btnOrigintoRelation2.setDisable(true);
         btnDestinationtoRelation.setDisable(true);
+        btnDestinationtoRelation2.setDisable(true);
         cboxEmptyDestination.setSelected(false);
 
         rbInsert.setToggleGroup(group);
@@ -138,15 +146,15 @@ public class RelacionCamposController implements Initializable {
             if (!firstTime) {
                 if (excelController.getRelaciones() != null) {
                     btnDestinationtoRelation.setDisable(false);
+                    btnDestinationtoRelation2.setDisable(false);
                     btnOrigintoRelation.setDisable(false);
+                    btnOrigintoRelation2.setDisable(false);
                     lvSourceFields.getItems().addAll(excelController.getColumnOrigin());
                     cbDestinationFields.setValue(excelController.getTablename());
                     lvDestinationFields.getItems()
                     .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
                     for (int i = 0; i < excelController.getRelaciones().size(); i++) {
-                        System.out.println(excelController.getRelaciones().get(i).getCampoOrigen());
                         lvRelationSourceFields.getItems().add(excelController.getRelaciones().get(i).getCampoOrigen());
-                        System.out.println(excelController.getRelaciones().get(i).getCampoDestino());
                         lvRelationDestinationFields.getItems().add(excelController.getRelaciones().get(i).getCampoDestino());
                     }
                     cboxEmptyDestination.setSelected(excelController.isBeEmpty());
@@ -183,6 +191,7 @@ public class RelacionCamposController implements Initializable {
         } else if (rbUpdate.isSelected()) {
             NameOption = "Update";
             cboxEmptyDestination.setSelected(false);
+            excelController.setBeEmpty(cboxEmptyDestination.isSelected());
             cboxEmptyDestination.setDisable(true);
         }
         // System.out.println(NameOption);
@@ -204,6 +213,7 @@ public class RelacionCamposController implements Initializable {
 
     private void fillListSource() {
         btnOrigintoRelation.setDisable(false);
+        btnOrigintoRelation2.setDisable(false);
         lvRelationSourceFields.getItems().clear();
         lvSourceFields.getItems().clear();
         if (connectionController.getSourceTab().equals("SQL")) {
@@ -222,6 +232,7 @@ public class RelacionCamposController implements Initializable {
 
     private void fillListDestination() {
         btnDestinationtoRelation.setDisable(false);
+        btnDestinationtoRelation2.setDisable(false);
         lvRelationDestinationFields.getItems().clear();
         lvDestinationFields.getItems().clear();
         lvDestinationFields.getItems()
@@ -252,6 +263,12 @@ public class RelacionCamposController implements Initializable {
     }
 
     @FXML
+    private void relateAllFieldsFromSource(){
+        lvRelationSourceFields.getItems().clear();
+        lvRelationSourceFields.getItems().addAll(lvSourceFields.getItems());
+    }
+
+    @FXML
     private void relateFieldsFromDestination() {
         int sourceIndex = lvDestinationFields.getSelectionModel().getSelectedIndex();
         String sourceValue = lvDestinationFields.getSelectionModel().getSelectedItem();
@@ -272,6 +289,12 @@ public class RelacionCamposController implements Initializable {
 
         // System.out.println("Index destino: " + sourceIndex + " Valor destino: " +
         // sourceValue);
+    }
+
+    @FXML
+    private void relateAllFieldsFromDestination(){
+        lvRelationDestinationFields.getItems().clear();
+        lvRelationDestinationFields.getItems().addAll(lvDestinationFields.getItems());
     }
 
     @FXML

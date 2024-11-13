@@ -803,10 +803,10 @@ public class FacturaEmitida {
     }
 
     public void setFea(String fea) {
-        if (fea != null) {
-            this.fea = "'" + fea + "'";
-        } else {
+        if (fea == null || fea.equals("NULL")) {
             this.fea = "NULL";
+        } else {
+            this.fea = "'" + fea + "'";
         }
     }
 
@@ -819,10 +819,10 @@ public class FacturaEmitida {
     }
 
     public void setFee(String fee) {
-        if (fee != null) {
-            this.fee = "'" + fee + "'";
-        } else {
+        if (fee == null || fee.equals("NULL")) {
             this.fee = "NULL";
+        } else {
+            this.fee = "'" + fee + "'";
         }
     }
 
@@ -867,10 +867,10 @@ public class FacturaEmitida {
     }
 
     public void setFuc(String fuc) {
-        if (fuc != null) {
-            this.fuc = "'" + fuc + "'";
-        } else {
+        if (fuc == null || fuc.equals("NULL")) {
             this.fuc = "NULL";
+        } else {
+            this.fuc = "'" + fuc + "'";
         }
     }
 
@@ -1099,10 +1099,10 @@ public class FacturaEmitida {
     }
 
     public void setFecope(String fecope) {
-        if (fecope != null) {
-            this.fecope = "'" + fecope + "'";
-        } else {
+        if (fecope == null || fecope.equals("NULL")) {
             this.fecope = "NULL";
+        } else {
+            this.fecope = "'" + fecope + "'";
         }
     }
 

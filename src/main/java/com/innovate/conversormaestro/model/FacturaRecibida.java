@@ -588,10 +588,10 @@ public class FacturaRecibida {
     }
 
     public void setFea(String fea) {
-        if (fea != null) {
-            this.fea = "'" + fea + "'";
-        } else {
+        if (fea == null || fea.equals("NULL")) {
             this.fea = "NULL";
+        } else {
+            this.fea = "'" + fea + "'";
         }
     }
 
@@ -612,10 +612,10 @@ public class FacturaRecibida {
     }
 
     public void setFee(String fee) {
-        if (fee != null) {
-            this.fee = "'" + fee + "'";
-        } else {
+        if (fee == null || fee.equals("NULL")) {
             this.fee = "NULL";
+        } else {
+            this.fee = "'" + fee + "'";
         }
     }
 
@@ -660,10 +660,10 @@ public class FacturaRecibida {
     }
 
     public void setFuc(String fuc) {
-        if (fuc != null) {
-            this.fuc = "'" + fuc + "'";
-        } else {
+        if (fuc == null || fuc.equals("NULL")) {
             this.fuc = "NULL";
+        } else {
+            this.fuc = "'" + fuc + "'";
         }
     }
 
@@ -848,10 +848,10 @@ public class FacturaRecibida {
     }
 
     public void setFecope(String fecope) {
-        if (fecope != null) {
-            this.fecope = "'" + fecope + "'";
-        } else {
+        if (fecope == null || fecope.equals("NULL")) {
             this.fecope = "NULL";
+        } else {
+            this.fecope = "'" + fecope + "'";
         }
     }
 
@@ -968,10 +968,10 @@ public class FacturaRecibida {
     }
 
     public void setFecini(String fecini) {
-        if (fecini != null) {
-            this.fecini = "'" + fecini + "'";
-        } else {
+        if (fecini == null || fecini.equals("NULL")) {
             this.fecini = "NULL";
+        } else {
+            this.fecini = "'" + fecini + "'";
         }
     }
 
@@ -1112,10 +1112,10 @@ public class FacturaRecibida {
     }
 
     public void setSiifecper(String siifecper) {
-        if (siifecper != null) {
-            this.siifecper = "'" + siifecper + "'";
-        } else {
+        if (siifecper == null || siifecper.equals("NULL")) {
             this.siifecper = "NULL";
+        } else {
+            this.siifecper = "'" + siifecper + "'";
         }
     }
 

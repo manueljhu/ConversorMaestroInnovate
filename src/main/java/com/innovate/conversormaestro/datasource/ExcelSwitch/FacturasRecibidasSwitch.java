@@ -65,7 +65,7 @@ public class FacturasRecibidasSwitch {
                     case "fuc":
                         facturaRecibida.setFuc(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
-                    case "forpag":
+                    case "for":
                         facturaRecibida.setforpag(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fin":

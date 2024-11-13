@@ -23,7 +23,7 @@ public class DatoBancario {
     private String trem = "";
     private String epri = "";
     private String nman = "";
-    private String fman = "";
+    private String fman = "NULL";
 
     public String getCla() {
         return this.cla;
@@ -238,7 +238,11 @@ public class DatoBancario {
     }
 
     public void setFman(String fman) {
-        this.fman = fman;
+        if (fman == null || fman.equals("NULL")) {
+            this.fman = "NULL";
+        } else {
+            this.fman = "'" + fman + "'";
+        }
     }
 
     @Override
@@ -259,13 +263,13 @@ public class DatoBancario {
                 +
                 "('" + cla + "','" + cod + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'"
                 + iban + "','" + bic + "','" + cu1 + "','" + cu2 + "','" + cu3 + "','" + cu4 + "','" + hab + "','"
-                + bban + "','" + trem + "','" + epri + "','" + nman + "','" + fman + "')";
+                + bban + "','" + trem + "','" + epri + "','" + nman + "'," + fman + ")";
     }
 
     public String toUpdate() {
         return "UPDATE DATBAN SET dir='" + dir + "',pob='" + pob + "',npro=" + npro
                 + ",pro='" + pro + "',pais=" + pais + ",iban='" + iban + "',bic='" + bic + "',cu1='" + cu1 + "',cu2='"
                 + cu2 + "',cu3='" + cu3 + "',cu4='" + cu4 + "',hab='" + hab + "',bban='" + bban + "',trem='" + trem
-                + "',epri='" + epri + "',nman='" + nman + "',fman='" + fman + "' WHERE cla='" + cla + "' AND cod='" + formatUtils.format6digits(cod) + "';";
+                + "',epri='" + epri + "',nman='" + nman + "',fman=" + fman + " WHERE cla='" + cla + "' AND cod='" + formatUtils.format6digits(cod) + "';";
     }
 }
