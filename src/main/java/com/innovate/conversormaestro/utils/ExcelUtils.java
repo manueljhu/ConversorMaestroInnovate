@@ -74,6 +74,11 @@ public class ExcelUtils {
                         HSSFCell cell = hssfRow.getCell(c);
                         if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
                             result = dateFormat.format(cell.getDateCellValue());
+                        } else if (cell.getCellType() == CellType.NUMERIC) {
+                            result = dataFormatter.formatCellValue(cell);
+                            if (result.contains(",")){
+                                result = result.replace(",", ".");
+                            }
                         } else {
                             result = dataFormatter.formatCellValue(cell);
                         }

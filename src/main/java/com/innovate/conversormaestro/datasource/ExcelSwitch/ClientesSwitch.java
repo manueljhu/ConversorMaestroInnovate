@@ -132,12 +132,22 @@ public class ClientesSwitch {
                                 Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rut":
-                        cliente.setRut(formatUtils
-                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        if (excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()).isEmpty()) {
+                            cliente.setRut("");
+                        } else {
+                            cliente.setRut(formatUtils
+                                    .format6digits(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        }
                         break;
                     case "age":
-                        cliente.setAge(formatUtils
-                                .format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        if (excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()).isEmpty()) {
+                            cliente.setRut("");
+                        } else {
+                            cliente.setAge(formatUtils
+                                    .format6digits(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        }
                         break;
                     case "nco":
                         cliente.setNco(
@@ -555,8 +565,8 @@ public class ClientesSwitch {
                 }
             }
             System.out.println("----------------------------------------------");
-            //System.out.println(cliente);
-            clientes.add(cliente);         
+            // System.out.println(cliente);
+            clientes.add(cliente);
         }
         lista.setLista(clientes);
     }

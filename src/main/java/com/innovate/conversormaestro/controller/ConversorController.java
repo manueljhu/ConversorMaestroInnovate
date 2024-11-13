@@ -93,6 +93,7 @@ public class ConversorController<T> implements Initializable {
                     insertResult = connectionController.insertDataQuery(t.toString());
                     nfilas++;
                     double progress = (double) nfilas / nfilasTotales;
+                    int progressPercentage = (int) Math.round(progress * 100);
                     updateProgress(progress, 1.0);
                     updateMessage("Procesando " + nfilas + " de " + nfilasTotales + " filas");
                     appendLog("Detalle: " + t.toString());
@@ -104,7 +105,7 @@ public class ConversorController<T> implements Initializable {
 
                     }
                     appendLog("Procesando " + nfilas + " de " + nfilasTotales + " filas");
-                    appendLog("Progreso: " + (progress * 100) + "%");
+                    appendLog("Progreso: " + progressPercentage + "%");
                     appendLog(
                             "--------------------------------------------------------------------------------------------------------------------------------------------------------");
                     if (!insertResult) {
@@ -145,7 +146,10 @@ public class ConversorController<T> implements Initializable {
 
     private void appendLog(String message) {
         logBuilder.append(message).append("\n\n");
-        Platform.runLater(() -> detailMessage.set(logBuilder.toString()));
+        Platform.runLater(() -> {
+            detailMessage.set(logBuilder.toString());
+            txtArea.setScrollTop(Double.MAX_VALUE);
+        });
     }
 
     public void setnTraspasos(int nTraspasos) {

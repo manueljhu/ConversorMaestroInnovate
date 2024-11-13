@@ -565,7 +565,13 @@ public class RelacionCamposController implements Initializable {
                     excelController.setRelaciones(relaciones);
 
                     excelController.setTablename(cbDestinationFields.getValue());
-                    excelController.tableExcelDestination(excelController.getTablename());
+                    try {
+                        excelController.tableExcelDestination(excelController.getTablename());
+                    } catch (Exception e) {
+                        MyAlert alert = new MyAlert();
+                        alert.showAlert(AlertType.ERROR, "Error al pasar datos", e.getMessage());
+                    }
+                    
 
                 }
                 excelController.setTypeTransfer(NameOption);
