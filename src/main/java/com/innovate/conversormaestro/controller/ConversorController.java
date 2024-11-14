@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.ExcelController;
-import com.innovate.conversormaestro.datasource.ExcelSwitch.FinalList;
+import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.utils.MyAlert;
 
 public class ConversorController<T> implements Initializable {

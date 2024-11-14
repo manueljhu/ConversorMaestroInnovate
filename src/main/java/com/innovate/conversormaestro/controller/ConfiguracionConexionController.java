@@ -159,6 +159,7 @@ public class ConfiguracionConexionController implements Initializable {
             txPasswordSource.setText(properties.getProperty("password.source"));
             txDataBaseSource.setText(properties.getProperty("database.source"));
 
+            txPathSourceDBF.setText(properties.getProperty("path.source.dbf"));
             txPathSourceExcel.setText(properties.getProperty("path.source.excel"));
 
         } catch (IOException ex) {

@@ -23,29 +23,29 @@ public class ExcelController {
     private String typeTransfer;
     private boolean beEmpty;
 
-    private static AgentesSwitch agentesSwitch;
-    private static AlmacenesSwitch almacenesSwitch;
-    private static ArticulosSwitch articulosSwitch;
-    private static AsientosSwitch asientosSwitch;
-    private static BancoEmpresaSwitch bancoEmpresaSwitch;
-    private static ClientesSwitch clientesSwitch;
-    private static ContactosClientesSwitch contactosClientesSwitch;
-    private static ContactosProveedoresSwitch contactosProveedoresSwitch;
-    private static DatosBancariosClientesSwitch datosBancariosClientesSwitch;
-    private static DatosBancariosProveedoresSwitch datosBancariosProveedoresSwitch;
-    private static DireccionesClientesSwitch direccionesClientesSwitch;
-    private static DireccionesProveedoresSwitch direccionesProveedoresSwitch;
-    private static ExistenciasSwitch existenciasSwitch;
-    private static FacturasEmitidasSwitch facturasEmitidasSwitch;
-    private static FacturasRecibidasSwitch facturasRecibidasSwitch;
-    private static FamiliasSwitch familiasSwitch;
-    private static FormasPagoSwitch formasPagoSwitch;
-    private static MarcasArticuloSwitch marcasArticuloSwitch;
-    private static PlanContableSwitch planContableSwitch;
-    private static PrevisionesCobroSwitch previsionesCobroSwitch;
-    private static PrevisionesPagoSwitch previsionesPagoSwitch;
-    private static ProveedoresSwitch proveedoresSwitch;
-    private static SubFamiliasSwitch subFamiliasSwitch;
+    private static AgentesExcelSwitch agentesSwitch;
+    private static AlmacenesExcelSwitch almacenesSwitch;
+    private static ArticulosExcelSwitch articulosSwitch;
+    private static AsientosExcelSwitch asientosSwitch;
+    private static BancoEmpresaExcelSwitch bancoEmpresaSwitch;
+    private static ClientesExcelSwitch clientesSwitch;
+    private static ContactosClientesExcelSwitch contactosClientesSwitch;
+    private static ContactosProveedoresExcelSwitch contactosProveedoresSwitch;
+    private static DatosBancariosClientesExcelSwitch datosBancariosClientesSwitch;
+    private static DatosBancariosProveedoresExcelSwitch datosBancariosProveedoresSwitch;
+    private static DireccionesClientesExcelSwitch direccionesClientesSwitch;
+    private static DireccionesProveedoresExcelSwitch direccionesProveedoresSwitch;
+    private static ExistenciasExcelSwitch existenciasSwitch;
+    private static FacturasEmitidasExcelSwitch facturasEmitidasSwitch;
+    private static FacturasRecibidasExcelSwitch facturasRecibidasSwitch;
+    private static FamiliasExcelSwitch familiasSwitch;
+    private static FormasPagoExcelSwitch formasPagoSwitch;
+    private static MarcasArticuloExcelSwitch marcasArticuloSwitch;
+    private static PlanContableExcelSwitch planContableSwitch;
+    private static PrevisionesCobroExcelSwitch previsionesCobroSwitch;
+    private static PrevisionesPagoExcelSwitch previsionesPagoSwitch;
+    private static ProveedoresExcelSwitch proveedoresSwitch;
+    private static SubFamiliasExcelSwitch subFamiliasSwitch;
 
     private ArrayList<T> lista = new ArrayList<T>();
 
@@ -147,96 +147,96 @@ public class ExcelController {
     public void tableExcelDestination(String tablename) {
         switch (tablename) {
             case "Agentes":
-                agentesSwitch = new AgentesSwitch();
+                agentesSwitch = new AgentesExcelSwitch();
                 agentesSwitch.Agentes(this.relaciones);
                 break;
             case "Almacenes":
-                almacenesSwitch = new AlmacenesSwitch();
+                almacenesSwitch = new AlmacenesExcelSwitch();
                 almacenesSwitch.Almacenes(this.relaciones);
                 break;
             case "Articulos":
-                articulosSwitch = new ArticulosSwitch();
+                articulosSwitch = new ArticulosExcelSwitch();
                 articulosSwitch.Articulos(this.relaciones);
                 break;
             case "Asientos":
-                asientosSwitch = new AsientosSwitch();
+                asientosSwitch = new AsientosExcelSwitch();
                 asientosSwitch.Asientos(this.relaciones);
                 break;
             case "Bancos de la empresa":
-                bancoEmpresaSwitch = new BancoEmpresaSwitch();
+                bancoEmpresaSwitch = new BancoEmpresaExcelSwitch();
                 bancoEmpresaSwitch.Bancos(this.relaciones);
                 break;
             case "Clientes":
-                clientesSwitch = new ClientesSwitch();
+                clientesSwitch = new ClientesExcelSwitch();
                 clientesSwitch.Clientes(this.relaciones);
                 break;
             case "Contactos de clientes":
-                contactosClientesSwitch = new ContactosClientesSwitch();
+                contactosClientesSwitch = new ContactosClientesExcelSwitch();
                 contactosClientesSwitch.Contactos(this.relaciones);
                 break;
             case "Contactos de proveedores":
-                contactosProveedoresSwitch = new ContactosProveedoresSwitch();
+                contactosProveedoresSwitch = new ContactosProveedoresExcelSwitch();
                 contactosProveedoresSwitch.Contactos(this.relaciones);
                 break;
             case "Datos bancarios clientes":
-                datosBancariosClientesSwitch = new DatosBancariosClientesSwitch();
+                datosBancariosClientesSwitch = new DatosBancariosClientesExcelSwitch();
                 datosBancariosClientesSwitch.DatosBancarios(this.relaciones);
                 break;
             case "Datos bancarios proveedores":
-                datosBancariosProveedoresSwitch = new DatosBancariosProveedoresSwitch();
+                datosBancariosProveedoresSwitch = new DatosBancariosProveedoresExcelSwitch();
                 datosBancariosProveedoresSwitch.DatosBancarios(this.relaciones);
                 break;
             case "Direcciones de clientes":
-                direccionesClientesSwitch = new DireccionesClientesSwitch();
+                direccionesClientesSwitch = new DireccionesClientesExcelSwitch();
                 direccionesClientesSwitch.DireccionesSwitch(this.relaciones);
                 break;
             case "Direcciones de proveedores":
-                direccionesProveedoresSwitch = new DireccionesProveedoresSwitch();
+                direccionesProveedoresSwitch = new DireccionesProveedoresExcelSwitch();
                 direccionesProveedoresSwitch.DireccionesSwitch(this.relaciones);
                 break;
             case "Existencias":
-                existenciasSwitch = new ExistenciasSwitch();
+                existenciasSwitch = new ExistenciasExcelSwitch();
                 existenciasSwitch.Existencias(this.relaciones);
                 break;
             case "Facturas emitidas":
-                facturasEmitidasSwitch = new FacturasEmitidasSwitch();
+                facturasEmitidasSwitch = new FacturasEmitidasExcelSwitch();
                 facturasEmitidasSwitch.FacturasEmitidas(this.relaciones);
                 break;
             case "Facturas recibidas":
-                facturasRecibidasSwitch = new FacturasRecibidasSwitch();
+                facturasRecibidasSwitch = new FacturasRecibidasExcelSwitch();
                 facturasRecibidasSwitch.FacturasRecibidas(this.relaciones);
                 break;
             case "Familias":
-                familiasSwitch = new FamiliasSwitch();
+                familiasSwitch = new FamiliasExcelSwitch();
                 familiasSwitch.Familias(this.relaciones);
                 break;
             case "Formas de pago":
-                formasPagoSwitch = new FormasPagoSwitch();
+                formasPagoSwitch = new FormasPagoExcelSwitch();
                 formasPagoSwitch.FormasPago(this.relaciones);
                 break;
             case "Marcas articulo":
-                marcasArticuloSwitch = new MarcasArticuloSwitch();
+                marcasArticuloSwitch = new MarcasArticuloExcelSwitch();
                 marcasArticuloSwitch.MarcasArticulos(this.relaciones);
                 break;
             case "Plan contable":
-                planContableSwitch = new PlanContableSwitch();
+                planContableSwitch = new PlanContableExcelSwitch();
                 planContableSwitch.PlanesContables(this.relaciones);
                 break;
             case "Previsiones de cobro":
-                previsionesCobroSwitch = new PrevisionesCobroSwitch();
+                previsionesCobroSwitch = new PrevisionesCobroExcelSwitch();
                 System.out.println("Previsiones de cobro");
                 previsionesCobroSwitch.PrevisionesCobro(this.relaciones);
                 break;
             case "Previsiones de pago":
-                previsionesPagoSwitch = new PrevisionesPagoSwitch();
+                previsionesPagoSwitch = new PrevisionesPagoExcelSwitch();
                 previsionesPagoSwitch.PrevisionesPago(this.relaciones);
                 break;
             case "Proveedores":
-                proveedoresSwitch = new ProveedoresSwitch();
+                proveedoresSwitch = new ProveedoresExcelSwitch();
                 proveedoresSwitch.Proveedores(this.relaciones);
                 break;
             case "Subfamilias":
-                subFamiliasSwitch = new SubFamiliasSwitch();
+                subFamiliasSwitch = new SubFamiliasExcelSwitch();
                 subFamiliasSwitch.Subfamilias(this.relaciones);
                 break;
         }
