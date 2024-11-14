@@ -181,6 +181,38 @@ public class RelacionCamposController implements Initializable {
         });
 
         NameOption = "Insert";
+
+        lvRelationSourceFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lvRelationDestinationFields.getSelectionModel().clearSelection();
+                lvSourceFields.getSelectionModel().clearSelection();
+                lvDestinationFields.getSelectionModel().clearSelection();
+            }
+        });
+        
+        lvRelationDestinationFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lvRelationSourceFields.getSelectionModel().clearSelection();
+                lvSourceFields.getSelectionModel().clearSelection();
+                lvDestinationFields.getSelectionModel().clearSelection();
+            }
+        });
+        
+        lvSourceFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lvRelationSourceFields.getSelectionModel().clearSelection();
+                lvRelationDestinationFields.getSelectionModel().clearSelection();
+                lvDestinationFields.getSelectionModel().clearSelection();
+            }
+        });
+        
+        lvDestinationFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lvRelationSourceFields.getSelectionModel().clearSelection();
+                lvRelationDestinationFields.getSelectionModel().clearSelection();
+                lvSourceFields.getSelectionModel().clearSelection();
+            }
+        });
     }
 
     @FXML
@@ -298,17 +330,33 @@ public class RelacionCamposController implements Initializable {
     }
 
     @FXML
+    private void deleteField(){
+        if (lvRelationSourceFields.getSelectionModel().getSelectedIndex() != -1) {
+            lvRelationSourceFields.getItems().remove(lvRelationSourceFields.getSelectionModel().getSelectedIndex());
+        } else if (lvRelationDestinationFields.getSelectionModel().getSelectedIndex() != -1) {
+            lvRelationDestinationFields.getItems().remove(lvRelationDestinationFields.getSelectionModel().getSelectedIndex());
+        } else {
+            MyAlert alert = new MyAlert();
+            alert.showAlert(AlertType.ERROR, "Error", "No se ha seleccionado ningún campo para eliminar");
+        }
+    }
+
+    @FXML
     private void deleteRelation() {
         int indexSource = lvRelationSourceFields.getSelectionModel().getSelectedIndex();
         int indexDestination = lvRelationDestinationFields.getSelectionModel().getSelectedIndex();
 
         if (indexSource != -1) {
             lvRelationSourceFields.getItems().remove(indexSource);
-            lvRelationDestinationFields.getItems().remove(indexSource);
+            if (indexSource < lvRelationDestinationFields.getItems().size()) {
+                lvRelationDestinationFields.getItems().remove(indexSource);
+            }
             lvRelationSourceFields.getSelectionModel().clearSelection();
         } else if (indexDestination != -1) {
             lvRelationDestinationFields.getItems().remove(indexDestination);
-            lvRelationSourceFields.getItems().remove(indexDestination);
+            if (indexDestination < lvRelationSourceFields.getItems().size()) {
+                lvRelationSourceFields.getItems().remove(indexDestination);
+            }
             lvRelationDestinationFields.getSelectionModel().clearSelection();
         } else {
             MyAlert alert = new MyAlert();
