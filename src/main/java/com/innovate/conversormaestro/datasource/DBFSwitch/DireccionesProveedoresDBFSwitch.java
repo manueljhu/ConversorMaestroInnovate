@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.Direccion;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
-import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.DBFUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class DireccionesProveedoresDBFSwitch {
     private FinalList<Direccion> lista;
-    private ExcelUtils excelUtils = new ExcelUtils();
+    private DBFUtils DBFUtils = new DBFUtils();
     private ArrayList<Direccion> direcciones;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void DireccionesSwitch(ArrayList<Relacion> relaciones){
-        int nFilas = excelUtils.devuelveNFilasExcel();
+        int nFilas = DBFUtils.devuelveNFilasDBF();
         lista = FinalList.getFinalList();
         direcciones = new ArrayList<Direccion>();
         Direccion direccion;
@@ -26,40 +26,40 @@ public class DireccionesProveedoresDBFSwitch {
                 direccion.setCla("PR");
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cod":
-                        direccion.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        direccion.setCod(formatUtils.format6digits(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "den":
-                        direccion.setDen(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setDen(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "dir":
-                        direccion.setDir(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setDir(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pob":
-                        direccion.setPob(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setPob(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "npro":
-                        direccion.setNpro(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        direccion.setNpro(Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pro":
-                        direccion.setPro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setPro(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pais":
-                        direccion.setPais(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        direccion.setPais(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "email":
-                        direccion.setEmail(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setEmail(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "rut":
-                        direccion.setRut(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        direccion.setRut(formatUtils.format6digits(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tel":
-                        direccion.setTel(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setTel(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "hab":
-                        direccion.setHab(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setHab(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "per":
-                        direccion.setPer(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        direccion.setPer(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                 }
             }

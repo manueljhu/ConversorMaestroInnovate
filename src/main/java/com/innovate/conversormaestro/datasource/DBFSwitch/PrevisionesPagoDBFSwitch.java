@@ -6,12 +6,12 @@ import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Efecto;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
-import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.DBFUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class PrevisionesPagoDBFSwitch {
     private FinalList<Efecto> lista;
-    private ExcelUtils excelUtils = new ExcelUtils();
+    private DBFUtils DBFUtils = new DBFUtils();
     private ArrayList<Efecto> previsionespagos;
     private FormatUtils formatUtils = new FormatUtils();
     private ConnectionController connectionController;
@@ -22,7 +22,7 @@ public class PrevisionesPagoDBFSwitch {
         connectionController = ConnectionController.getConectionController();
         group = connectionController.getGroupDigitsDestination();
         account = connectionController.getAccountDigitsDestination();
-        int nFilas = excelUtils.devuelveNFilasExcel();
+        int nFilas = DBFUtils.devuelveNFilasDBF();
         lista = FinalList.getFinalList();
         previsionespagos = new ArrayList<Efecto>();
         Efecto previsionespago;
@@ -33,144 +33,144 @@ public class PrevisionesPagoDBFSwitch {
                 previsionespago.setTip("P");
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "num":
-                        previsionespago.setNum(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        previsionespago.setNum(formatUtils.format6digits(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fec":
-                        previsionespago.setFec(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setFec(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cue":
-                        previsionespago.setCue(formatUtils.formatDigitGroupAccount(group, account,excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        previsionespago.setCue(formatUtils.formatDigitGroupAccount(group, account,DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "con":
-                        previsionespago.setCon(formatUtils.formatEfectCon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "R", "Excel", i));
+                        previsionespago.setCon(formatUtils.formatEfectCon(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "R", "DBF", i));
                         break;
                     case "ban":
-                        previsionespago.setBan(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setBan(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "vto":
-                        previsionespago.setVto(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setVto(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fac":
-                        previsionespago.setFac(formatUtils.formatEfectFac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "R"));
+                        previsionespago.setFac(formatUtils.formatEfectFac(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()), "R"));
                         break;
                     case "rem":
-                        previsionespago.setRem(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setRem(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fre":
-                        previsionespago.setFre(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setFre(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fpa":
-                        previsionespago.setFpa(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setFpa(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "dev":
-                        previsionespago.setDev(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setDev(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "xx1":
-                        previsionespago.setXx1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setXx1(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "xx2":
-                        previsionespago.setXx2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setXx2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "xx3":
-                        previsionespago.setXx3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setXx3(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "impeu":
                         previsionespago.setImpeu(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pageu":
                         previsionespago.setPageu(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "car":
                         previsionespago.setCar(
-                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "imprem":
                         previsionespago.setImprem(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cueapu":
                         previsionespago
-                                .setCueapu(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setCueapu(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "impdev":
                         previsionespago.setImpdev(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "impgas":
                         previsionespago.setImpgas(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rie":
-                        previsionespago.setRie(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setRie(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "rut":
-                        previsionespago.setRut(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setRut(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu1":
-                        previsionespago.setCu1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setCu1(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu2":
-                        previsionespago.setCu2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setCu2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu3":
-                        previsionespago.setCu3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setCu3(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu4":
-                        previsionespago.setCu4(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        previsionespago.setCu4(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "serie":
                         previsionespago.setSerie(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "impreso":
                         previsionespago
-                                .setImpreso(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setImpreso(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "efe_tipagr":
                         previsionespago
-                                .setEfe_Tipagr(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setEfe_Tipagr(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "efe_docagr":
                         previsionespago
-                                .setEfe_Docagr(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setEfe_Docagr(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "efe_nefagr":
                         previsionespago
-                                .setEfe_Nefagr(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setEfe_Nefagr(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "efe_genagr":
                         previsionespago
-                                .setEfe_Genagr(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setEfe_Genagr(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "efe_ren":
                         previsionespago
-                                .setEfe_Ren(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setEfe_Ren(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "numefedev":
                         previsionespago
-                                .setNumefedev(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setNumefedev(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "moneda":
                         previsionespago.setMoneda(
-                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cotiza":
                         previsionespago.setCotiza(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "impmon":
                         previsionespago.setImpmon(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "diasmax":
                         previsionespago.setDiasmax(
-                                Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fecini":
                         previsionespago
-                                .setFecini(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                                .setFecini(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                 }
             }

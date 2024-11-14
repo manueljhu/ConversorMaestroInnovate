@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.model.Stock;
-import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.DBFUtils;
 
 public class ExistenciasDBFSwitch {
     private FinalList<Stock> lista;
-    private ExcelUtils excelUtils = new ExcelUtils();
+    private DBFUtils DBFUtils = new DBFUtils();
     private ArrayList<Stock> existencias;
 
     public void Existencias(ArrayList<Relacion> relaciones) {
-        int nFilas = excelUtils.devuelveNFilasExcel();
+        int nFilas = DBFUtils.devuelveNFilasDBF();
         lista = FinalList.getFinalList();
         existencias = new ArrayList<Stock>();
         Stock existencia;
@@ -23,28 +23,28 @@ public class ExistenciasDBFSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cod":
-                        existencia.setCod(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        existencia.setCod(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "exi":
-                        existencia.setExi(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setExi(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ent":
-                        existencia.setEnt(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setEnt(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "sal":
-                        existencia.setSal(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setSal(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ubi":
-                        existencia.setUbi(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        existencia.setUbi(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ide":
-                        existencia.setIde(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setIde(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "min":
-                        existencia.setMin(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setMin(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "max":
-                        existencia.setMax(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setMax(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                 }
             }

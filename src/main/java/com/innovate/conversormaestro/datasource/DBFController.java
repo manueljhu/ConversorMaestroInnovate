@@ -2,13 +2,12 @@ package com.innovate.conversormaestro.datasource;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import org.apache.poi.ss.formula.functions.T;
 
-import com.innovate.conversormaestro.model.Relacion;
 import com.linuxense.javadbf.DBFException;
 import com.linuxense.javadbf.DBFField;
 import com.linuxense.javadbf.DBFReader;
@@ -52,7 +51,6 @@ public class DBFController {
 
 	private ArrayList<T> lista = new ArrayList<T>();
 
-
 	public DBFController() {
 		connectionController = ConnectionController.getConectionController();
 	}
@@ -81,6 +79,10 @@ public class DBFController {
 		this.tablename = tablename;
 	}
 
+	public String getPathSourceDBF() {
+		return PathSourceDBF;
+	}
+
 	public void setPathSourceDBF(String pathSourceDBF) {
 		PathSourceDBF = pathSourceDBF;
 	}
@@ -101,28 +103,6 @@ public class DBFController {
 		this.beEmpty = beEmpty;
 	}
 
-	public void readDBFFile() {
-		DBFReader reader = null;
-		try {
-			reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);
-
-			int numberOfFields = reader.getFieldCount();
-
-			for (int i = 0; i < numberOfFields; i++) {
-				DBFField field = reader.getField(i);
-				System.out.println(field.getName());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			DBFUtils.close(reader);
-		}
-	}
-
-	public String getPathSourceDBF() {
-		return PathSourceDBF;
-	}
-
 	public ArrayList<String> getColumnOrigin() {
 		ArrayList<String> result = new ArrayList<String>();
 
@@ -137,15 +117,24 @@ public class DBFController {
 				DBFField field = reader.getField(i);
 				result.add(field.getName());
 			}
+		} catch (FileNotFoundException fileNotFoundException) {
+			System.out.println("The file was not found " + fileNotFoundException );
 		} catch (DBFException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Error reading the file " + e);
 		} finally {
-			DBFUtils.close(reader);
+			try {
+				DBFUtils.close(reader);
+			} catch (DBFException e) {
+				System.out.println("Error closing the file " + e);
+			}
+			
 		}
 		return result;
 	}
+
+	public void setLista(ArrayList<T> lista) {
+        this.lista = lista;
+    }
 
 	public void tableDBFDestination(String tablename) {
         switch (tablename) {

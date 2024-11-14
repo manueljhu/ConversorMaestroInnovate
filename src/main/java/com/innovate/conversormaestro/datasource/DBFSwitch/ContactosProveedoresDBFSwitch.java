@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.Contacto;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
-import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.DBFUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ContactosProveedoresDBFSwitch {
     private FinalList<Contacto> lista;
-    private ExcelUtils excelUtils = new ExcelUtils();
+    private DBFUtils DBFUtils = new DBFUtils();
     private ArrayList<Contacto> contactos;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void Contactos(ArrayList<Relacion> relaciones) {
-        int nFilas = excelUtils.devuelveNFilasExcel();
+        int nFilas = DBFUtils.devuelveNFilasDBF();
         lista = FinalList.getFinalList();
         contactos = new ArrayList<Contacto>();
         Contacto contacto;
@@ -26,47 +26,47 @@ public class ContactosProveedoresDBFSwitch {
                 contacto.setCla("PR");
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        contacto.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        contacto.setCod(formatUtils.format6digits(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
-                        contacto.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setNom(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "car":
-                        contacto.setCar(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setCar(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "tel":
-                        contacto.setTel(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setTel(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ext":
-                        contacto.setExt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setExt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ob1":
-                        contacto.setOb1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setOb1(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ob2":
-                        contacto.setOb2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setOb2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ob3":
-                        contacto.setOb3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setOb3(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "email":
-                        contacto.setEmail(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setEmail(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "codcon":
-                        contacto.setCodcon(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setCodcon(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lopd_ori":
                         contacto.setLopd_Ori(
-                                Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_otr_o":
-                        contacto.setLopd_Otr_O(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setLopd_Otr_O(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lopd_ces":
-                        contacto.setLopd_Ces(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setLopd_Ces(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lopd_otr_c":
-                        contacto.setLopd_Otr_C(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        contacto.setLopd_Otr_C(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                 }
             }

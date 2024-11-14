@@ -6,12 +6,12 @@ import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.model.Cuenta;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
-import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.DBFUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class PlanContableDBFSwitch {
     private FinalList<Cuenta> lista;
-    private ExcelUtils excelUtils = new ExcelUtils();
+    private DBFUtils DBFUtils = new DBFUtils();
     private ArrayList<Cuenta> planesContables;
     private FormatUtils formatUtils = new FormatUtils();
     String group;
@@ -21,7 +21,7 @@ public class PlanContableDBFSwitch {
         ConnectionController connectionController = ConnectionController.getConectionController(); 
         group = connectionController.getGroupDigitsDestination();
         account = connectionController.getAccountDigitsDestination();
-        int nFilas = excelUtils.devuelveNFilasExcel();
+        int nFilas = DBFUtils.devuelveNFilasDBF();
         lista = FinalList.getFinalList();
         planesContables = new ArrayList<Cuenta>();
         Cuenta planContable;
@@ -31,148 +31,148 @@ public class PlanContableDBFSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cue":
-                        planContable.setCue(formatUtils.formatDigitPlanCon(group, account, excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setCue(formatUtils.formatDigitPlanCon(group, account, DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
-                        planContable.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setNom(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "nif":
-                        planContable.setNif(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setNif(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "deb":
-                        planContable.setDeb(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setDeb(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "hab":
-                        planContable.setHab(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setHab(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dir":
-                        planContable.setDir(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setDir(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pob":
-                        planContable.setPob(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setPob(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "npro":
-                        planContable.setNpro(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setNpro(Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pro":
-                        planContable.setPro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setPro(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cont1":
-                        planContable.setCont1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCont1(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cont2":
-                        planContable.setCont2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCont2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cont3":
-                        planContable.setCont3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCont3(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cont4":
-                        planContable.setCont4(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCont4(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cont5":
-                        planContable.setCont5(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCont5(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons1":
-                        planContable.setCons1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons1(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons2":
-                        planContable.setCons2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons3":
-                        planContable.setCons3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons3(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons4":
-                        planContable.setCons4(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons4(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons5":
-                        planContable.setCons5(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons5(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons6":
-                        planContable.setCons6(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons6(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons7":
-                        planContable.setCons7(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons7(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons8":
-                        planContable.setCons8(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons8(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons9":
-                        planContable.setCons9(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons9(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cons10":
-                        planContable.setCons10(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCons10(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pais":
-                        planContable.setPais(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setPais(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "gru":
-                        planContable.setGru(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setGru(Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nifr":
-                        planContable.setNifr(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setNifr(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "tdoc":
-                        planContable.setTdoc(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setTdoc(Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_Ori":
-                        planContable.setLopd_Ori(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setLopd_Ori(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_Otr_O":
-                        planContable.setLopd_Otr_O(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setLopd_Otr_O(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lopd_Ces":
-                        planContable.setLopd_Ces(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setLopd_Ces(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lopd_Otr_C":
-                        planContable.setLopd_Otr_C(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setLopd_Otr_C(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cue_Apoyo":
-                        planContable.setCue_Apoyo(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCue_Apoyo(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lap_Den":
-                        planContable.setLap_Den(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setLap_Den(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lap_Con":
-                        planContable.setLap_Con(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setLap_Con(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "lap_Cta":
-                        planContable.setLap_Cta(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setLap_Cta(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ope_Tip":
-                        planContable.setOpe_Tip(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setOpe_Tip(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ope_Cla":
-                        planContable.setOpe_Cla(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setOpe_Cla(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ope_Pla":
-                        planContable.setOpe_Pla(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        planContable.setOpe_Pla(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ope_Des":
-                        planContable.setOpe_Des(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setOpe_Des(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cta":
-                        planContable.setCta(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCta(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "suf":
-                        planContable.setSuf(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setSuf(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "iban":
-                        planContable.setIban(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setIban(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "swift":
-                        planContable.setSwift(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setSwift(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cri_Caja":
-                        planContable.setCri_Caja(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setCri_Caja(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "siidesfac":
-                        planContable.setSiidesfac(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setSiidesfac(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "patron":
-                        planContable.setPatron(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setPatron(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "patron_Cv":
-                        planContable.setPatron_Cv(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        planContable.setPatron_Cv(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                 }
             }
