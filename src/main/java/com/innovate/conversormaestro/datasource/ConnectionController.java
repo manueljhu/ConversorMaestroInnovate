@@ -202,6 +202,8 @@ public class ConnectionController {
     }
 
     public void saveCredentialsOriginDBF(String PathO) {
+        DBFController dbfController = DBFController.getDBFController();
+        dbfController.setPathSourceDBF(PathO);
         PathSourceDBF = PathO;
         SourceTab = "DBF";
 

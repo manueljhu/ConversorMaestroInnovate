@@ -81,9 +81,8 @@
                               <Font size="15.0" />
                            </font>
                         </RadioButton>
-                        <Button layoutX="147.5" layoutY="35.0" mnemonicParsing="false" onAction="#deleteField" prefHeight="25.0" prefWidth="105.0" text="Borrar campo" />
-                        <Button layoutX="295.0" layoutY="35.0" mnemonicParsing="false" onAction="#emptyAllRelation" prefHeight="25.0" prefWidth="105.0" text="Vaciar relaciones" />
-                        <Button layoutY="35.0" mnemonicParsing="false" onAction="#deleteRelation" prefHeight="25.0" prefWidth="105.0" text="Borrar relacion" />
+                        <Button layoutX="54.0" layoutY="35.0" mnemonicParsing="false" onAction="#deleteRelation" text="Borrar relacion" />
+                        <Button layoutX="248.0" layoutY="35.0" mnemonicParsing="false" onAction="#emptyAllRelation" text="Vaciar relaciones" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="450.0" prefWidth="250.0">

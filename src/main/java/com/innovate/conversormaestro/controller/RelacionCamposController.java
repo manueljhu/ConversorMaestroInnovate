@@ -34,7 +34,7 @@ public class RelacionCamposController implements Initializable {
 
     private ConnectionController connectionController;
     private SQLController sqlController;
-    private DBFController dbfController;
+    private DBFController dbfController = new DBFController();
     private ExcelController excelController = new ExcelController();
     @FXML
     private MenuItem miSave = new MenuItem();
@@ -134,9 +134,9 @@ public class RelacionCamposController implements Initializable {
             fillComboSource();
         } else if (connectionController.getSourceTab().equals("DBF")) {
             dbfController = DBFController.getDBFController();
+            cbSourceFields.setDisable(true);
             fileDBF = new File(dbfController.getPathSourceDBF());
             lblServerSource.setText(fileDBF.getName());
-            cbSourceFields.setDisable(true);
             fillListSource();
         } else if (connectionController.getSourceTab().equals("Excel")) {
             excelController = ExcelController.getExcelController();
