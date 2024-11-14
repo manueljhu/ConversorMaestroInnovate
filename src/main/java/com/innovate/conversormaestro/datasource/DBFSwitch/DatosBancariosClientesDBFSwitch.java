@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import com.innovate.conversormaestro.model.DatoBancario;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
-import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.DBFUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class DatosBancariosClientesDBFSwitch {
     private FinalList<DatoBancario> lista;
-    private ExcelUtils excelUtils = new ExcelUtils();
+    private DBFUtils DBFUtils = new DBFUtils();
     private ArrayList<DatoBancario> datosBancarios;
     private FormatUtils formatUtils = new FormatUtils();
 
     public void DatosBancarios(ArrayList<Relacion> relaciones){
-        int nFilas = excelUtils.devuelveNFilasExcel();
+        int nFilas = DBFUtils.devuelveNFilasDBF();
         lista = FinalList.getFinalList();
         datosBancarios = new ArrayList<DatoBancario>();
         DatoBancario datoBancario;
@@ -26,58 +26,58 @@ public class DatosBancariosClientesDBFSwitch {
                 datoBancario.setCla("CL");
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cod":
-                        datoBancario.setCod(formatUtils.format6digits(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        datoBancario.setCod(formatUtils.format6digits(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dir":
-                        datoBancario.setDir(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setDir(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pob":
-                        datoBancario.setPob(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setPob(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "npro":
-                        datoBancario.setNpro(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        datoBancario.setNpro(Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pro":
-                        datoBancario.setPro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setPro(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "pais":
-                        datoBancario.setPais(Float.parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        datoBancario.setPais(Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "iban":
-                        datoBancario.setIban(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setIban(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "bic":
-                        datoBancario.setBic(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setBic(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu1":
-                        datoBancario.setCu1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setCu1(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu2":
-                        datoBancario.setCu2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setCu2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu3":
-                        datoBancario.setCu3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setCu3(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "cu4":
-                        datoBancario.setCu4(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setCu4(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "hab":
-                        datoBancario.setHab(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setHab(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "bban":
-                        datoBancario.setBban(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setBban(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "trem":
-                        datoBancario.setTrem(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setTrem(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "epri":
-                        datoBancario.setEpri(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setEpri(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "nman":
-                        datoBancario.setNman(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setNman(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "fman":
-                        datoBancario.setFman(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        datoBancario.setFman(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                 }
             }

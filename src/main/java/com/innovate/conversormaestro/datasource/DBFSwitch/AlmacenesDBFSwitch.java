@@ -2,29 +2,29 @@ package com.innovate.conversormaestro.datasource.DBFSwitch;
 
 import java.util.ArrayList;
 
-import com.innovate.conversormaestro.datasource.ExcelController;
+import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.model.Almacen;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
-import com.innovate.conversormaestro.utils.ExcelUtils;
+import com.innovate.conversormaestro.utils.DBFUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class AlmacenesDBFSwitch {
     private FinalList<Almacen> lista;
-    private ExcelUtils excelUtils = new ExcelUtils();
+    private DBFUtils DBFUtils = new DBFUtils();
     private ArrayList<Almacen> almacenes;
     private FormatUtils formatUtils = new FormatUtils();
-    private ExcelController excelController;
+    private DBFController dbfController;
 
     public void Almacenes(ArrayList<Relacion> relaciones) {
-        excelController = ExcelController.getExcelController();
-        int nFilas = excelUtils.devuelveNFilasExcel();
+        dbfController = DBFController.getDBFController();
+        int nFilas = DBFUtils.devuelveNFilasDBF();
         lista = FinalList.getFinalList();
         almacenes = new ArrayList<Almacen>();
         Almacen almacen;
         int idalmacen = formatUtils.formatUpdate("ALMACE");
         
-        if (excelController.isBeEmpty()){
+        if (dbfController.isBeEmpty()){
             idalmacen = 1;
         }
         
@@ -34,19 +34,19 @@ public class AlmacenesDBFSwitch {
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "id":
-                        almacen.setId(Integer.parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        almacen.setId(Integer.parseInt(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
-                        almacen.setNom(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        almacen.setNom(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "ser":
-                        almacen.setSer(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        almacen.setSer(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "se2":
-                        almacen.setSe2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        almacen.setSe2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "age":
-                        almacen.setAge(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        almacen.setAge(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                 }
             }

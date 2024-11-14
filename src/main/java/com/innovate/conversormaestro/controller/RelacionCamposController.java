@@ -128,7 +128,7 @@ public class RelacionCamposController implements Initializable {
 
         rbInsert.setToggleGroup(group);
         rbUpdate.setToggleGroup(group);
-
+        boolean firstTime;
         if (connectionController.getSourceTab().equals("SQL")) {
             sqlController = SQLController.getSQLController();
             fillComboSource();
@@ -136,13 +136,33 @@ public class RelacionCamposController implements Initializable {
             dbfController = DBFController.getDBFController();
             cbSourceFields.setDisable(true);
             fileDBF = new File(dbfController.getPathSourceDBF());
-            lblServerSource.setText(fileDBF.getName());
-            fillListSource();
+            firstTime = connectionController.isFirstTime();
+            if (!firstTime){
+                if (dbfController.getRelaciones() != null) {
+                    btnDestinationtoRelation.setDisable(false);
+                    btnDestinationtoRelation2.setDisable(false);
+                    btnOrigintoRelation.setDisable(false);
+                    btnOrigintoRelation2.setDisable(false);
+                    lvSourceFields.getItems().addAll(dbfController.getColumnOrigin());
+                    cbDestinationFields.setValue(dbfController.getTablename());
+                    lvDestinationFields.getItems()
+                    .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
+                    for (int i = 0; i < dbfController.getRelaciones().size(); i++) {
+                        lvRelationSourceFields.getItems().add(dbfController.getRelaciones().get(i).getCampoOrigen());
+                        lvRelationDestinationFields.getItems().add(dbfController.getRelaciones().get(i).getCampoDestino());
+                    }
+                    cboxEmptyDestination.setSelected(dbfController.isBeEmpty());
+                }
+            } else {
+                fileDBF = new File(dbfController.getPathSourceDBF());
+                fillListSource();
+                connectionController.setFirstTime(false);
+            }
         } else if (connectionController.getSourceTab().equals("Excel")) {
             excelController = ExcelController.getExcelController();
             cbSourceFields.setDisable(true);
             fileExcel = new File(excelController.getPathSourceExcel());
-            boolean firstTime = connectionController.isFirstTime();
+            firstTime = connectionController.isFirstTime();
             if (!firstTime) {
                 if (excelController.getRelaciones() != null) {
                     btnDestinationtoRelation.setDisable(false);
@@ -232,11 +252,6 @@ public class RelacionCamposController implements Initializable {
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("ConfiguracionConexion");
-    }
-
-    @FXML
-    private void readDBF() {
-        dbfController.readDBFFile();
     }
 
     private void fillComboSource() {
@@ -608,7 +623,21 @@ public class RelacionCamposController implements Initializable {
                 if (connectionController.getSourceTab().equals("SQL")) {
                     // En proceso
                 } else if (connectionController.getSourceTab().equals("DBF")) {
-                    // En proceso
+                    dbfController.setRelaciones(relaciones);
+                    
+                    for (int i = 0; i < dbfController.getRelaciones().size(); i++) {
+                        System.out.println(dbfController.getRelaciones().get(i).getCampoOrigen());
+                        System.out.println(dbfController.getRelaciones().get(i).getCampoDestino());
+                    }
+                    
+                    dbfController.setTablename(cbDestinationFields.getValue());
+                    try {
+                        dbfController.tableDBFDestination(dbfController.getTablename());
+                    } catch (Exception e) {
+                        MyAlert alert = new MyAlert();
+                        alert.showAlert(AlertType.ERROR, "Error al pasar datos", e.getMessage());
+                    }
+                    dbfController.setTypeTransfer(NameOption);
                 } else if (connectionController.getSourceTab().equals("Excel")) {
                     excelController.setRelaciones(relaciones);
 
@@ -619,13 +648,10 @@ public class RelacionCamposController implements Initializable {
                         MyAlert alert = new MyAlert();
                         alert.showAlert(AlertType.ERROR, "Error al pasar datos", e.getMessage());
                     }
-                    
-
+                    excelController.setTypeTransfer(NameOption);
                 }
-                excelController.setTypeTransfer(NameOption);
                 
                 App.setRoot("Conversor");
-
             }
         }
     }

@@ -55,6 +55,8 @@ public class ExcelUtils {
     public String devuelveValorCelda(int fila, String columna) {
         String result = "";
         InputStream excelStream = null;
+        connectionController = ConnectionController.getConectionController();
+        PathSourceExcel = connectionController.getPathSourceExcel();
         try {
             excelStream = new FileInputStream(PathSourceExcel);
             HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream);
@@ -104,7 +106,8 @@ public class ExcelUtils {
     public List<Integer> buscarDatosIgualesEnColumna(String columna, String dato) {
         List<Integer> filasConDato = new ArrayList<>();
         InputStream excelStream = null;
-        PathSourceExcel = "C:\\Users\\PC\\Documents\\previsiones_cobro.xls";
+        connectionController = ConnectionController.getConectionController();
+        PathSourceExcel = connectionController.getPathSourceExcel();
         try {
             excelStream = new FileInputStream(PathSourceExcel);
             HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream);
@@ -121,6 +124,7 @@ public class ExcelUtils {
 
             if (columnaIndex == -1) {
                 System.out.println("Columna no encontrada");
+                hssfWorkbook.close();
                 return filasConDato;
             }
 
