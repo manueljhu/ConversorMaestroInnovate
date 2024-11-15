@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.ExcelController;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.utils.MyAlert;
@@ -28,6 +29,7 @@ public class ConversorController<T> implements Initializable {
 
     private static ConversorController<?> conversorController;
     private ConnectionController connectionController;
+    private DBFController dbfController = DBFController.getDBFController();
     private ExcelController excelController;
     private FinalList<T> finalList;
     private int nTraspasos = 0;
@@ -50,7 +52,14 @@ public class ConversorController<T> implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         connectionController = ConnectionController.getConectionController();
-        excelController = ExcelController.getExcelController();
+        if (connectionController.getSourceTab().equals("SQL")) {
+
+        } else if (connectionController.getSourceTab().equals("DBF")) {
+            dbfController = DBFController.getDBFController();
+        } else if (connectionController.getSourceTab().equals("EXCEL")) {
+            excelController = ExcelController.getExcelController();
+        }
+        
         finalList = FinalList.getFinalList();
         txtArea.setEditable(false);
         lista = finalList.getLista();
@@ -76,10 +85,20 @@ public class ConversorController<T> implements Initializable {
 
     @FXML
     private void convertButton() {
-        if (excelController.isBeEmpty()) {
-            System.out.println(excelController.getTablename());
-            connectionController.truncateDataTable(excelController.getTablename());
+        if (connectionController.getSourceTab().equals("SQL")) {
+        
+        } else if (connectionController.getSourceTab().equals("DBF")) {
+            if (dbfController.isBeEmpty()) {
+                System.out.println(dbfController.getTablename());
+                connectionController.truncateDataTable(dbfController.getTablename());
+            }
+        } else if (connectionController.getSourceTab().equals("EXCEL")) {
+            if (excelController.isBeEmpty()) {
+                System.out.println(excelController.getTablename());
+                connectionController.truncateDataTable(excelController.getTablename());
+            }
         }
+        
 
         Task<Boolean> task = new Task<Boolean>() {
             @Override

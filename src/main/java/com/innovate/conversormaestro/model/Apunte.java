@@ -1,6 +1,7 @@
 package com.innovate.conversormaestro.model;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.ExcelController;
 
 public class Apunte {
@@ -12,11 +13,11 @@ public class Apunte {
     private String sig = "H";
     private String mar = "";
     private String fac = "";
-    private String doc = "000013";
+    private String doc = "";
     private String xxx = "";
-    private float impeu = 1000;
+    private float impeu = 0;
     private String acl = "";
-    private String cen = "000001002";
+    private String cen = "";
     private String ren = "";
     private float met = 0.000f;
     private String apu_tipdoc = "";
@@ -217,8 +218,18 @@ public class Apunte {
 
     @Override
     public String toString() {
-        ExcelController excelController = ExcelController.getExcelController();
-        String type = excelController.getTypeTransfer();
+        String type = "";
+        ConnectionController connectionController = ConnectionController.getConectionController();
+        if (connectionController.getSourceTab().equals("SQL")) {
+            
+        } else if (connectionController.getSourceTab().equals("DBF")) {
+            DBFController dbfController = DBFController.getDBFController();
+            type = dbfController.getTypeTransfer();
+        } else if (connectionController.getSourceTab().equals("EXCEL")) {
+            ExcelController excelController = ExcelController.getExcelController();
+            type = excelController.getTypeTransfer();
+        }
+        
         if (type.equals("Insert")) {
             return toInsert();
         } else if (type.equals("Update")) {

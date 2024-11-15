@@ -84,7 +84,7 @@ public class ExcelController {
     public void setPathSourceExcel(String pathSourceExcel) {
         PathSourceExcel = pathSourceExcel;
     }
-    
+
     public String getTypeTransfer() {
         return typeTransfer;
     }
