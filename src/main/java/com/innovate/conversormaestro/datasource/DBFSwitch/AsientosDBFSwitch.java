@@ -36,7 +36,7 @@ public class AsientosDBFSwitch {
                                 .format6digits(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fec":
-                        asiento.setFec(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        asiento.setFec(formatUtils.formatDateDBF(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cue":
                         asiento.setCue(formatUtils.formatDigitGroupAccount(group, account,
@@ -62,8 +62,10 @@ public class AsientosDBFSwitch {
                         asiento.setXxx(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                         break;
                     case "impeu":
-                        asiento.setImpeu(
-                                Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        float temp = Float.parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        if (temp != 0) {
+                            asiento.setImpeu(temp);
+                        } 
                         break;
                     case "acl":
                         asiento.setAcl(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
@@ -90,7 +92,8 @@ public class AsientosDBFSwitch {
                         break;
                 }
             }
-            System.out.println(asiento);
+            System.out.println("Fila: " + i);
+            //System.out.println(asiento);
             asientos.add(asiento);
         }
         lista.setLista(asientos);

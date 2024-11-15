@@ -1,6 +1,11 @@
 package com.innovate.conversormaestro.utils;
 
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
@@ -15,6 +20,7 @@ public class FormatUtils {
 
     public String format6digits(String value) {
         String result = "";
+        value = formatToDBF(value);
         if (value.length() < 6) {
             int dif = 6 - value.length();
             for (int i = 0; i < dif; i++) {
@@ -31,11 +37,46 @@ public class FormatUtils {
         return result;
     }
 
+    public String formatToDBF(String value) {
+        if (value.contains(".")) {
+            int index = value.indexOf(".");
+            value = value.substring(0, index);
+        }
+
+        return value;
+    }
+
+    public String formatDateDBF(String value) {
+        try {
+            // Definir los formatos de entrada
+            DateTimeFormatter formatoDeEntrada1 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+            DateTimeFormatter formatoDeEntrada2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            // Intentar analizar con el primer formato
+            try {
+                ZonedDateTime zonedDateTime = ZonedDateTime.parse(value, formatoDeEntrada1);
+                LocalDate localDate = zonedDateTime.toLocalDate();
+                DateTimeFormatter formatoDeSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String dateString = localDate.format(formatoDeSalida);
+                System.out.println(dateString);
+                return dateString;
+            } catch (DateTimeParseException e) {
+                // Si falla, intentar analizar con el segundo formato
+                LocalDate localDate = LocalDate.parse(value, formatoDeEntrada2);
+                return value; // No cambiar nada si ya está en el formato "dd/MM/yyyy"
+            }
+        } catch (DateTimeParseException e) {
+            System.err.println("Error parsing date: " + e.getMessage());
+            return null;
+        }
+    }
+
     public String formatDigitGroupAccount(String group, String account, String value) {
         String result = "";
         int groupInt = Integer.parseInt(group);
         int accountInt = Integer.parseInt(account);
         // System.out.println("Value" + value.length());
+        value = formatToDBF(value);
         if (accountInt == value.length()) {
             result = value;
         } else if (accountInt > value.length()) {
@@ -320,7 +361,7 @@ public class FormatUtils {
 
     public String formatEfectCon(String factura, String type, String source, int rowint) {
         System.out.println("Factura: " + factura + ", Type: " + type + ", Source: " +
-        source + ", rowint: " + rowint);
+                source + ", rowint: " + rowint);
         String result = "0";
         List<Integer> temp = null;
         int pos = 1;
@@ -443,8 +484,9 @@ public class FormatUtils {
                 result = "TRUNCATE TABLE FAMILI";
                 break;
             case "Formas de pago":
-                result = "UPDATE FORPAG SET nom = '', di1 = 0, di2 = 0, dir = 0, npa = 0, mes = 'S', vto = 1, inc = 0, cad = 0, " +
-                 "cob = 'N', car = 0, porcobdir = 100.00, inclib = 'N', reppro = 'S', cuecobdir = '' FROM FORPAG WHERE id > 7";
+                result = "UPDATE FORPAG SET nom = '', di1 = 0, di2 = 0, dir = 0, npa = 0, mes = 'S', vto = 1, inc = 0, cad = 0, "
+                        +
+                        "cob = 'N', car = 0, porcobdir = 100.00, inclib = 'N', reppro = 'S', cuecobdir = '' FROM FORPAG WHERE id > 7";
                 break;
             case "Marcas articulo":
                 result = "TRUNCATE TABLE MARART";

@@ -1,5 +1,7 @@
 package com.innovate.conversormaestro.model;
 
+import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.ExcelController;
 
 public class Agente {
@@ -797,8 +799,18 @@ public class Agente {
 
     @Override
     public String toString() {
-        ExcelController excelController = ExcelController.getExcelController();
-        String type = excelController.getTypeTransfer();
+        String type = "";
+        ConnectionController connectionController = ConnectionController.getConectionController();
+        if (connectionController.getSourceTab().equals("SQL")) {
+            
+        } else if (connectionController.getSourceTab().equals("DBF")) {
+            DBFController dbfController = DBFController.getDBFController();
+            type = dbfController.getTypeTransfer();
+        } else if (connectionController.getSourceTab().equals("EXCEL")) {
+            ExcelController excelController = ExcelController.getExcelController();
+            type = excelController.getTypeTransfer();
+        } 
+        
         if (type.equals("Insert")) {
             return toInsert();
         } else if (type.equals("Update")) {

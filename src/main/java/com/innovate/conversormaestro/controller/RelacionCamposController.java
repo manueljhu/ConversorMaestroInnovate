@@ -609,7 +609,7 @@ public class RelacionCamposController implements Initializable {
                         "Las listas de campos de origen y destino no tienen la misma cantidad de elementos");
                 return;
             } else {
-                excelController.setBeEmpty(cboxEmptyDestination.isSelected());
+                
                 Relacion relacion;
                 ArrayList<Relacion> relaciones = new ArrayList<Relacion>();
 
@@ -623,24 +623,25 @@ public class RelacionCamposController implements Initializable {
                 if (connectionController.getSourceTab().equals("SQL")) {
                     // En proceso
                 } else if (connectionController.getSourceTab().equals("DBF")) {
+                    dbfController.setBeEmpty(cboxEmptyDestination.isSelected());
                     dbfController.setRelaciones(relaciones);
                     
                     for (int i = 0; i < dbfController.getRelaciones().size(); i++) {
                         System.out.println(dbfController.getRelaciones().get(i).getCampoOrigen());
                         System.out.println(dbfController.getRelaciones().get(i).getCampoDestino());
                     }
-                    
+                    dbfController.setTypeTransfer(NameOption);
                     dbfController.setTablename(cbDestinationFields.getValue());
                     try {
                         dbfController.tableDBFDestination(dbfController.getTablename());
                     } catch (Exception e) {
                         MyAlert alert = new MyAlert();
                         alert.showAlert(AlertType.ERROR, "Error al pasar datos", e.getMessage());
-                    }
-                    dbfController.setTypeTransfer(NameOption);
+                    } 
                 } else if (connectionController.getSourceTab().equals("Excel")) {
+                    excelController.setBeEmpty(cboxEmptyDestination.isSelected());
                     excelController.setRelaciones(relaciones);
-
+                    excelController.setTypeTransfer(NameOption);
                     excelController.setTablename(cbDestinationFields.getValue());
                     try {
                         excelController.tableExcelDestination(excelController.getTablename());
@@ -648,7 +649,6 @@ public class RelacionCamposController implements Initializable {
                         MyAlert alert = new MyAlert();
                         alert.showAlert(AlertType.ERROR, "Error al pasar datos", e.getMessage());
                     }
-                    excelController.setTypeTransfer(NameOption);
                 }
                 
                 App.setRoot("Conversor");
