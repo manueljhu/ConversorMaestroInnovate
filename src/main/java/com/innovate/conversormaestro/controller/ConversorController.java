@@ -56,7 +56,7 @@ public class ConversorController<T> implements Initializable {
 
         } else if (connectionController.getSourceTab().equals("DBF")) {
             dbfController = DBFController.getDBFController();
-        } else if (connectionController.getSourceTab().equals("EXCEL")) {
+        } else if (connectionController.getSourceTab().equals("Excel")) {
             excelController = ExcelController.getExcelController();
         }
         
@@ -92,7 +92,7 @@ public class ConversorController<T> implements Initializable {
                 System.out.println(dbfController.getTablename());
                 connectionController.truncateDataTable(dbfController.getTablename());
             }
-        } else if (connectionController.getSourceTab().equals("EXCEL")) {
+        } else if (connectionController.getSourceTab().equals("Excel")) {
             if (excelController.isBeEmpty()) {
                 System.out.println(excelController.getTablename());
                 connectionController.truncateDataTable(excelController.getTablename());

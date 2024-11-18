@@ -19,11 +19,14 @@ import com.innovate.conversormaestro.datasource.DBFSwitch.*;
 public class DBFController {
 	private static DBFController dbfController;
 	private String PathSourceDBF;
+    private boolean MultipleFiles;
+    private ArrayList<String> MultiplePathSourceDBF;
 	private ConnectionController connectionController;
 	private ArrayList<Relacion> relaciones;
 	private String tablename;
 	private String typeTransfer;
 	private boolean beEmpty;
+    
 
 	private static AgentesDBFSwitch agentesSwitch;
     private static AlmacenesDBFSwitch almacenesSwitch;
@@ -87,7 +90,23 @@ public class DBFController {
 		PathSourceDBF = pathSourceDBF;
 	}
 
-	public String getTypeTransfer() {
+	public boolean isMultipleFiles() {
+        return MultipleFiles;
+    }
+
+    public void setMultipleFiles(boolean multipleFiles) {
+        MultipleFiles = multipleFiles;
+    }
+
+    public ArrayList<String> getMultiplePathSourceDBF() {
+        return MultiplePathSourceDBF;
+    }
+
+    public void setMultiplePathSourceDBF(ArrayList<String> multiplePathSourceDBF) {
+        MultiplePathSourceDBF = multiplePathSourceDBF;
+    }
+
+    public String getTypeTransfer() {
 		return typeTransfer;
 	}
 

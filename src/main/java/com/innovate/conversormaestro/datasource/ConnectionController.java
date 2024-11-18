@@ -265,12 +265,12 @@ public class ConnectionController {
     public ArrayList<String> getColumnDestination(String description) {
         String tablename = tables.get(getTableIndex(description)).getName();
         ArrayList<String> result = new ArrayList<String>();
-        String query="";
+        String query = "";
         if (tablename.equals("FORPAG") || tablename.equals("ALMACE")) {
-            query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename+ "'";
+            query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename + "'";
         } else {
             query = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + tablename
-            + "' AND COLUMN_NAME <> 'id'";
+                    + "' AND COLUMN_NAME <> 'id'";
         }
         java.sql.Statement st;
         try {
@@ -582,6 +582,4 @@ public class ConnectionController {
     public void setError(String error) {
         this.error = error;
     }
-
-    
 }
