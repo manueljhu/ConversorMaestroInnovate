@@ -47,3 +47,4 @@ Thumbs.db
 # Archivos de configuración y credenciales
 /src/main/resources/config.properties
 /src/main/java/com/innovate/conversormaestro/Maintesting.java
+/src/main/java/com/innovate/conversormaestro/MainTest.java
