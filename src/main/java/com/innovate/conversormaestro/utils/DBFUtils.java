@@ -56,47 +56,20 @@ public class DBFUtils {
         Table table = new Table(file);
         try {
             table.open(IfNonExistent.ERROR);
-        } catch (CorruptedTableException | IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        List<Field> fields = table.getFields();
-        int columnIndex = -1;
-
-        // Encontrar el índice de la columna
-        for (int i = 0; i < fields.size(); i++) {
-            if (fields.get(i).getName().equalsIgnoreCase(columna)) {
-                columnIndex = i;
-                break;
-            }
-        }
-
-        if (columnIndex == -1) {
-            throw new IllegalArgumentException("Columna no encontrada: " + columna);
-        }
-
-        Iterator<Record> it = table.recordIterator();
-        int currentRow = 0;
-
-        // Recorrer las filas hasta encontrar la fila especificada
-        while (it.hasNext()) {
-            Record record = it.next();
-            if (currentRow == fila) {
-                Field field = fields.get(columnIndex);
-                Object value = record.getTypedValue(field.getName());
+            Record record = table.getRecordAt(fila);
+            Object value = record.getTypedValue(columna);
                 result = value != null ? value.toString().trim() : "NULL";
-                //System.out.println("Columna: " + columna + " Fila: " + fila + " Tipo: " + field.getType() + " Valor: " + result);
-                break;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                table.close();
+            } catch (IOException ex) {
+                System.out.println("Error: " + ex);
             }
-            currentRow++;
         }
 
-        try {
-            table.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         return result;
     }
 
