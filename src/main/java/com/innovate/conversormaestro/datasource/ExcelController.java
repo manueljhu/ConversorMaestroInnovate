@@ -9,15 +9,13 @@ import java.io.InputStream;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.formula.functions.T;
 
 import com.innovate.conversormaestro.model.*;
 import com.innovate.conversormaestro.datasource.ExcelSwitch.*;
 
 public class ExcelController {
     private static ExcelController excelController;
-    private String PathSourceExcel;
-    private ConnectionController connectionController;
+    private String PathSourceExcel;;
     private ArrayList<Relacion> relaciones;
     private String tablename;
     private String typeTransfer;
@@ -47,10 +45,7 @@ public class ExcelController {
     private static ProveedoresExcelSwitch proveedoresSwitch;
     private static SubFamiliasExcelSwitch subFamiliasSwitch;
 
-    private ArrayList<T> lista = new ArrayList<T>();
-
     public ExcelController() {
-        connectionController = ConnectionController.getConectionController();
     }
 
     public static ExcelController getExcelController() {
@@ -138,10 +133,6 @@ public class ExcelController {
             }
         }
         return result;
-    }
-
-    public void setLista(ArrayList<T> lista) {
-        this.lista = lista;
     }
 
     public void tableExcelDestination(String tablename) {

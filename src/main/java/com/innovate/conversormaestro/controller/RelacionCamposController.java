@@ -306,7 +306,6 @@ public class RelacionCamposController implements Initializable {
 
     @FXML
     private void relateFieldsFromSource() {
-        int sourceIndex = lvSourceFields.getSelectionModel().getSelectedIndex();
         String sourceValue = lvSourceFields.getSelectionModel().getSelectedItem();
 
         if (sourceValue != null) {
@@ -335,7 +334,6 @@ public class RelacionCamposController implements Initializable {
 
     @FXML
     private void relateFieldsFromDestination() {
-        int sourceIndex = lvDestinationFields.getSelectionModel().getSelectedIndex();
         String sourceValue = lvDestinationFields.getSelectionModel().getSelectedItem();
 
         if (sourceValue != null) {
@@ -484,7 +482,7 @@ public class RelacionCamposController implements Initializable {
             ini.store();
 
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
     }
 
@@ -688,7 +686,6 @@ public class RelacionCamposController implements Initializable {
                     @Override
                     protected void succeeded() {
                         super.succeeded();
-                        // Ocultar el ProgressIndicator cuando la tarea termine
                         piProgress.setVisible(false);
                         try {
                             App.setRoot("Conversor");
@@ -710,7 +707,6 @@ public class RelacionCamposController implements Initializable {
                     }
                 };
 
-                // Ejecutar la tarea en un nuevo hilo
                 new Thread(task).start();
             }
         }
