@@ -27,7 +27,7 @@ public class FormasPagoDBFSwitch {
             idforpag = 1;
         }
 
-        for (int i = 1; i <= nFilas; i++) {
+        for (int i = 0; i < nFilas; i++) {
             formaPago = new FormaPago();
             formaPago.setId(idforpag);
             for (int j = 0; j < relaciones.size(); j++) {

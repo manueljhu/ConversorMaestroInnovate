@@ -27,7 +27,7 @@ public class PrevisionesPagoDBFSwitch {
         previsionespagos = new ArrayList<Efecto>();
         Efecto previsionespago;
 
-        for (int i = 1; i <= nFilas; i++) {
+        for (int i = 0; i < nFilas; i++) {
             previsionespago = new Efecto();
             for (int j = 0; j < relaciones.size(); j++) {
                 previsionespago.setTip("P");

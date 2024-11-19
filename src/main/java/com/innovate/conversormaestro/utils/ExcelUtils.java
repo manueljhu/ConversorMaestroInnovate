@@ -54,51 +54,54 @@ public class ExcelUtils {
 
     public String devuelveValorCelda(int fila, String columna) {
         String result = "";
-        InputStream excelStream = null;
         connectionController = ConnectionController.getConectionController();
         PathSourceExcel = connectionController.getPathSourceExcel();
-        try {
-            excelStream = new FileInputStream(PathSourceExcel);
-            HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream);
+    
+        // Usamos try-with-resources para asegurarnos de cerrar el flujo y el archivo
+        try (InputStream excelStream = new FileInputStream(PathSourceExcel);
+             HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream)) {
+    
             HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
-            HSSFRow hssfRowCabecera;
-            HSSFRow hssfRow;
-
-            hssfRowCabecera = hssfSheet.getRow(0);
-            hssfRow = hssfSheet.getRow(fila);
+            HSSFRow hssfRowCabecera = hssfSheet.getRow(0);
+            HSSFRow hssfRow = hssfSheet.getRow(fila);
+    
+            if (hssfRowCabecera == null || hssfRow == null) {
+                throw new IllegalArgumentException("Fila o cabecera no encontrada.");
+            }
+    
             DataFormatter dataFormatter = new DataFormatter();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
+            
+            // Encontramos el índice de la columna en la cabecera
+            int columnIndex = -1;
             for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
-                if (hssfRowCabecera.getCell(c).getStringCellValue().equals(columna)) {
-                    //System.out.println(hssfRowCabecera.getCell(c).getStringCellValue().equals(columna));
-                    if (hssfRow.getCell(c) != null) {
-                        HSSFCell cell = hssfRow.getCell(c);
-                        if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
-                            result = dateFormat.format(cell.getDateCellValue());
-                        } else if (cell.getCellType() == CellType.NUMERIC) {
-                            result = dataFormatter.formatCellValue(cell);
-                            if (result.contains(",")){
-                                result = result.replace(",", ".");
-                            }
-                        } else {
-                            result = dataFormatter.formatCellValue(cell);
-                        }
-                    }
-                    //System.out.println("Columna: " + columna + " Valor: " + result);
+                if (hssfRowCabecera.getCell(c).getStringCellValue().equalsIgnoreCase(columna)) {
+                    columnIndex = c;
+                    break;
                 }
             }
-            hssfWorkbook.close();
-        } catch (FileNotFoundException fileNotFoundException) {
-            System.out.println("Error al leer el fichero excel");
-        } catch (IOException ex) {
-            System.out.println("Error al leer el fichero excel");
-        } finally {
-            try {
-                excelStream.close();
-            } catch (IOException ex) {
-                System.out.println("Error al leer el fichero excel");
+    
+            if (columnIndex == -1) {
+                throw new IllegalArgumentException("Columna no encontrada: " + columna);
             }
+    
+            HSSFCell cell = hssfRow.getCell(columnIndex);
+            if (cell != null) {
+                if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
+                    result = dateFormat.format(cell.getDateCellValue());
+                } else if (cell.getCellType() == CellType.NUMERIC) {
+                    result = dataFormatter.formatCellValue(cell).replace(",", ".");
+                } else {
+                    result = dataFormatter.formatCellValue(cell);
+                }
+            }
+    
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: Archivo Excel no encontrado en la ruta especificada.");
+        } catch (IOException e) {
+            System.out.println("Error: No se pudo leer el archivo Excel.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return result;
     }

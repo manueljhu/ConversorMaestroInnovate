@@ -20,8 +20,7 @@ public class AgentesDBFSwitch {
         agentes = new ArrayList<Agente>();
         Agente agente;
 
-        for(int i = 1;i<=nFilas;i++)
-        {
+        for(int i = 0; i < nFilas; i++) {
             agente = new Agente();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {

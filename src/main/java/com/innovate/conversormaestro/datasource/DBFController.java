@@ -24,7 +24,7 @@ public class DBFController {
 	private String tablename;
 	private String typeTransfer;
 	private boolean beEmpty;
-
+    
 	private static AgentesDBFSwitch agentesSwitch;
     private static AlmacenesDBFSwitch almacenesSwitch;
     private static ArticulosDBFSwitch articulosSwitch;
@@ -87,7 +87,7 @@ public class DBFController {
 		PathSourceDBF = pathSourceDBF;
 	}
 
-	public String getTypeTransfer() {
+    public String getTypeTransfer() {
 		return typeTransfer;
 	}
 

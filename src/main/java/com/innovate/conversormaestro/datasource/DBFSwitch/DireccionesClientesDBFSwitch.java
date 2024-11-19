@@ -20,7 +20,7 @@ public class DireccionesClientesDBFSwitch {
         direcciones = new ArrayList<Direccion>();
         Direccion direccion;
 
-        for (int i = 1; i <= nFilas; i++) {
+        for (int i = 0; i < nFilas; i++) {
             direccion = new Direccion();
             for (int j = 0; j < relaciones.size(); j++) {
                 direccion.setCla("CL");
