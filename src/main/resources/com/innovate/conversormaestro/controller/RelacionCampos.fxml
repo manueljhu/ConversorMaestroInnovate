@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TitledPane?>
@@ -40,7 +41,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#switchToPrimary" text="&lt;-" />
+            <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#switchToPrimary" text="&lt;-" />
          </children>
       </AnchorPane>
       <Separator prefHeight="8.0" prefWidth="900.0" />
@@ -117,10 +118,16 @@
             </Label>
             <ComboBox fx:id="cbSourceFields" layoutX="10.0" layoutY="35.0" prefHeight="25.0" prefWidth="170.0" />
          </children></AnchorPane>
-      <AnchorPane prefHeight="55.0" prefWidth="900.0">
+      <AnchorPane prefHeight="50.0" prefWidth="900.0">
          <children>
             <Separator prefHeight="8.0" prefWidth="900.0" />
-              <Button fx:id="secondaryButton" layoutX="418.0" layoutY="10.0" onAction="#switchToConversor" text="Convertir" />
+              <Button fx:id="btnSwitchToConversor" layoutX="418.0" layoutY="12.0" onAction="#switchToConversor" text="Convertir" />
+            <Label fx:id="txRelations" layoutX="697.0" layoutY="14.0" text="Creando Relaciones">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ProgressIndicator fx:id="piProgress" layoutX="849.0" layoutY="5.0" maxWidth="40.0" prefHeight="40.0" progress="0.0" />
          </children>
       </AnchorPane>
     </children>
