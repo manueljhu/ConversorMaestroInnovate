@@ -14,6 +14,7 @@ import com.innovate.conversormaestro.datasource.SQLController;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.MyAlert;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
@@ -23,6 +24,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
@@ -101,11 +103,19 @@ public class RelacionCamposController implements Initializable {
     @FXML
     private CheckBox cboxEmptyDestination;
 
+    @FXML
+    private Button btnSwitchToConversor = new Button();
+
+    @FXML
+    private Label txRelations = new Label();
+
+    @FXML
+    private ProgressIndicator piProgress = new ProgressIndicator();
+
     ToggleGroup group = new ToggleGroup();
     String NameOption;
     File fileDBF;
     File fileExcel;
-    
 
     @SuppressWarnings("null")
     @Override
@@ -125,6 +135,10 @@ public class RelacionCamposController implements Initializable {
         btnDestinationtoRelation.setDisable(true);
         btnDestinationtoRelation2.setDisable(true);
         cboxEmptyDestination.setSelected(false);
+        txRelations.setVisible(false);
+        piProgress.setVisible(false);
+        piProgress.setProgress(-1.0);
+        /* piProgress.setStyle("percentage: -fx-opacity: 0;"); */
 
         rbInsert.setToggleGroup(group);
         rbUpdate.setToggleGroup(group);
@@ -137,7 +151,7 @@ public class RelacionCamposController implements Initializable {
             cbSourceFields.setDisable(true);
             fileDBF = new File(dbfController.getPathSourceDBF());
             firstTime = connectionController.isFirstTime();
-            if (!firstTime){
+            if (!firstTime) {
                 if (dbfController.getRelaciones() != null) {
                     btnDestinationtoRelation.setDisable(false);
                     btnDestinationtoRelation2.setDisable(false);
@@ -146,10 +160,11 @@ public class RelacionCamposController implements Initializable {
                     lvSourceFields.getItems().addAll(dbfController.getColumnOrigin());
                     cbDestinationFields.setValue(dbfController.getTablename());
                     lvDestinationFields.getItems()
-                    .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
+                            .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
                     for (int i = 0; i < dbfController.getRelaciones().size(); i++) {
                         lvRelationSourceFields.getItems().add(dbfController.getRelaciones().get(i).getCampoOrigen());
-                        lvRelationDestinationFields.getItems().add(dbfController.getRelaciones().get(i).getCampoDestino());
+                        lvRelationDestinationFields.getItems()
+                                .add(dbfController.getRelaciones().get(i).getCampoDestino());
                     }
                     cboxEmptyDestination.setSelected(dbfController.isBeEmpty());
                 }
@@ -172,10 +187,11 @@ public class RelacionCamposController implements Initializable {
                     lvSourceFields.getItems().addAll(excelController.getColumnOrigin());
                     cbDestinationFields.setValue(excelController.getTablename());
                     lvDestinationFields.getItems()
-                    .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
+                            .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
                     for (int i = 0; i < excelController.getRelaciones().size(); i++) {
                         lvRelationSourceFields.getItems().add(excelController.getRelaciones().get(i).getCampoOrigen());
-                        lvRelationDestinationFields.getItems().add(excelController.getRelaciones().get(i).getCampoDestino());
+                        lvRelationDestinationFields.getItems()
+                                .add(excelController.getRelaciones().get(i).getCampoDestino());
                     }
                     cboxEmptyDestination.setSelected(excelController.isBeEmpty());
                 }
@@ -183,7 +199,7 @@ public class RelacionCamposController implements Initializable {
                 fileExcel = new File(excelController.getPathSourceExcel());
                 fillListSource();
                 connectionController.setFirstTime(false);
-            }   
+            }
         }
 
         fillComboDestination();
@@ -202,22 +218,24 @@ public class RelacionCamposController implements Initializable {
 
         NameOption = "Insert";
 
-        lvRelationSourceFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                lvRelationDestinationFields.getSelectionModel().clearSelection();
-                lvSourceFields.getSelectionModel().clearSelection();
-                lvDestinationFields.getSelectionModel().clearSelection();
-            }
-        });
-        
-        lvRelationDestinationFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                lvRelationSourceFields.getSelectionModel().clearSelection();
-                lvSourceFields.getSelectionModel().clearSelection();
-                lvDestinationFields.getSelectionModel().clearSelection();
-            }
-        });
-        
+        lvRelationSourceFields.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        lvRelationDestinationFields.getSelectionModel().clearSelection();
+                        lvSourceFields.getSelectionModel().clearSelection();
+                        lvDestinationFields.getSelectionModel().clearSelection();
+                    }
+                });
+
+        lvRelationDestinationFields.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        lvRelationSourceFields.getSelectionModel().clearSelection();
+                        lvSourceFields.getSelectionModel().clearSelection();
+                        lvDestinationFields.getSelectionModel().clearSelection();
+                    }
+                });
+
         lvSourceFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 lvRelationSourceFields.getSelectionModel().clearSelection();
@@ -225,7 +243,7 @@ public class RelacionCamposController implements Initializable {
                 lvDestinationFields.getSelectionModel().clearSelection();
             }
         });
-        
+
         lvDestinationFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 lvRelationSourceFields.getSelectionModel().clearSelection();
@@ -310,7 +328,7 @@ public class RelacionCamposController implements Initializable {
     }
 
     @FXML
-    private void relateAllFieldsFromSource(){
+    private void relateAllFieldsFromSource() {
         lvRelationSourceFields.getItems().clear();
         lvRelationSourceFields.getItems().addAll(lvSourceFields.getItems());
     }
@@ -339,17 +357,18 @@ public class RelacionCamposController implements Initializable {
     }
 
     @FXML
-    private void relateAllFieldsFromDestination(){
+    private void relateAllFieldsFromDestination() {
         lvRelationDestinationFields.getItems().clear();
         lvRelationDestinationFields.getItems().addAll(lvDestinationFields.getItems());
     }
 
     @FXML
-    private void deleteField(){
+    private void deleteField() {
         if (lvRelationSourceFields.getSelectionModel().getSelectedIndex() != -1) {
             lvRelationSourceFields.getItems().remove(lvRelationSourceFields.getSelectionModel().getSelectedIndex());
         } else if (lvRelationDestinationFields.getSelectionModel().getSelectedIndex() != -1) {
-            lvRelationDestinationFields.getItems().remove(lvRelationDestinationFields.getSelectionModel().getSelectedIndex());
+            lvRelationDestinationFields.getItems()
+                    .remove(lvRelationDestinationFields.getSelectionModel().getSelectedIndex());
         } else {
             MyAlert alert = new MyAlert();
             alert.showAlert(AlertType.ERROR, "Error", "No se ha seleccionado ningún campo para eliminar");
@@ -400,6 +419,11 @@ public class RelacionCamposController implements Initializable {
         }
         try {
             FileChooser fileChooser = new FileChooser();
+            String route = "C:/Users/PC/Documents";
+            File initialDirectory = new File(route);
+            if (initialDirectory.exists()) {
+                fileChooser.setInitialDirectory(initialDirectory);
+            }
             fileChooser.setTitle("Save File");
 
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All files (*.crin)", "*.crin");
@@ -474,6 +498,12 @@ public class RelacionCamposController implements Initializable {
             FileChooser.ExtensionFilter extFilter2 = new FileChooser.ExtensionFilter("All files (*.*)", "*.*");
             fileChooser.getExtensionFilters().addAll(extFilter, extFilter2);
 
+            String route = "C:/Users/PC/Documents";
+            File initialDirectory = new File(route);
+            if (initialDirectory.exists()) {
+                fileChooser.setInitialDirectory(initialDirectory);
+            }
+            
             Stage stage = (Stage) title.getScene().getWindow();
             File iniFile = fileChooser.showOpenDialog(stage);
 
@@ -598,60 +628,90 @@ public class RelacionCamposController implements Initializable {
 
     @FXML
     private void switchToConversor() throws IOException {
+        btnSwitchToConversor.setDisable(true);
         if (lvRelationSourceFields.getItems().isEmpty() || lvRelationDestinationFields.getItems().isEmpty()) {
             MyAlert alert = new MyAlert();
             alert.showAlert(AlertType.ERROR, "Error", "No se han relacionado los campos de origen y destino");
+            btnSwitchToConversor.setDisable(false);
+            txRelations.setVisible(false);
+            piProgress.setVisible(false);
             return;
         } else {
             if (lvRelationSourceFields.getItems().size() != lvRelationDestinationFields.getItems().size()) {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Error",
                         "Las listas de campos de origen y destino no tienen la misma cantidad de elementos");
+                btnSwitchToConversor.setDisable(false);
+                txRelations.setVisible(false);
+                piProgress.setVisible(false);
                 return;
             } else {
-                
-                Relacion relacion;
-                ArrayList<Relacion> relaciones = new ArrayList<Relacion>();
+                piProgress.setVisible(true);
+                txRelations.setVisible(true);
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        Relacion relacion;
+                        ArrayList<Relacion> relaciones = new ArrayList<Relacion>();
 
-                for (int i = 0; i < lvRelationSourceFields.getItems().size(); i++) {
-                    relacion = new Relacion();
-                    relacion.setCampoOrigen(lvRelationSourceFields.getItems().get(i));
-                    relacion.setCampoDestino(lvRelationDestinationFields.getItems().get(i));
-                    relaciones.add(relacion);
-                }
+                        for (int i = 0; i < lvRelationSourceFields.getItems().size(); i++) {
+                            relacion = new Relacion();
+                            relacion.setCampoOrigen(lvRelationSourceFields.getItems().get(i));
+                            relacion.setCampoDestino(lvRelationDestinationFields.getItems().get(i));
+                            relaciones.add(relacion);
+                        }
 
-                if (connectionController.getSourceTab().equals("SQL")) {
-                    // En proceso
-                } else if (connectionController.getSourceTab().equals("DBF")) {
-                    dbfController.setBeEmpty(cboxEmptyDestination.isSelected());
-                    dbfController.setRelaciones(relaciones);
-                    
-                    for (int i = 0; i < dbfController.getRelaciones().size(); i++) {
-                        System.out.println(dbfController.getRelaciones().get(i).getCampoOrigen());
-                        System.out.println(dbfController.getRelaciones().get(i).getCampoDestino());
+                        if (connectionController.getSourceTab().equals("SQL")) {
+                            // En proceso
+                        } else if (connectionController.getSourceTab().equals("DBF")) {
+                            dbfController.setBeEmpty(cboxEmptyDestination.isSelected());
+                            dbfController.setRelaciones(relaciones);
+
+                            for (int i = 0; i < dbfController.getRelaciones().size(); i++) {
+                                System.out.println(dbfController.getRelaciones().get(i).getCampoOrigen());
+                                System.out.println(dbfController.getRelaciones().get(i).getCampoDestino());
+                            }
+                            dbfController.setTypeTransfer(NameOption);
+                            dbfController.setTablename(cbDestinationFields.getValue());
+                            dbfController.tableDBFDestination(dbfController.getTablename());
+                        } else if (connectionController.getSourceTab().equals("Excel")) {
+                            excelController.setBeEmpty(cboxEmptyDestination.isSelected());
+                            excelController.setRelaciones(relaciones);
+                            excelController.setTypeTransfer(NameOption);
+                            excelController.setTablename(cbDestinationFields.getValue());
+                            excelController.tableExcelDestination(excelController.getTablename());
+                        }
+
+                        return null;
                     }
-                    dbfController.setTypeTransfer(NameOption);
-                    dbfController.setTablename(cbDestinationFields.getValue());
-                    try {
-                        dbfController.tableDBFDestination(dbfController.getTablename());
-                    } catch (Exception e) {
-                        MyAlert alert = new MyAlert();
-                        alert.showAlert(AlertType.ERROR, "Error al pasar datos", e.getMessage());
-                    } 
-                } else if (connectionController.getSourceTab().equals("Excel")) {
-                    excelController.setBeEmpty(cboxEmptyDestination.isSelected());
-                    excelController.setRelaciones(relaciones);
-                    excelController.setTypeTransfer(NameOption);
-                    excelController.setTablename(cbDestinationFields.getValue());
-                    try {
-                        excelController.tableExcelDestination(excelController.getTablename());
-                    } catch (Exception e) {
-                        MyAlert alert = new MyAlert();
-                        alert.showAlert(AlertType.ERROR, "Error al pasar datos", e.getMessage());
+
+                    @Override
+                    protected void succeeded() {
+                        super.succeeded();
+                        // Ocultar el ProgressIndicator cuando la tarea termine
+                        piProgress.setVisible(false);
+                        try {
+                            App.setRoot("Conversor");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                
-                App.setRoot("Conversor");
+
+                    @Override
+                    protected void failed() {
+                        super.failed();
+                        // Ocultar el ProgressIndicator si la tarea falla
+                        piProgress.setVisible(false);
+                        txRelations.setVisible(false);
+                        MyAlert alert = new MyAlert();
+                        alert.showAlert(AlertType.ERROR, "Error al pasar datos", getException().getMessage());
+                        btnSwitchToConversor.setDisable(false);
+                        txRelations.setVisible(false);
+                    }
+                };
+
+                // Ejecutar la tarea en un nuevo hilo
+                new Thread(task).start();
             }
         }
     }

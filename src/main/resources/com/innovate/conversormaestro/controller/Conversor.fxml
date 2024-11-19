@@ -20,7 +20,7 @@
             </Label>
             <ProgressBar fx:id="progressBar" layoutX="10.0" layoutY="60.0" prefHeight="30.0" prefWidth="880.0" progress="0.0" />
             <Button layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToSecondary" text="&lt;-" />
-            <Label fx:id="txtLabel" layoutX="702.0" layoutY="20.0" text="Traspaso de Datos">
+            <Label fx:id="txtLabel" layoutX="670.0" layoutY="20.0" text="Traspaso de Datos">
                <font>
                   <Font size="15.0" />
                </font>

@@ -296,7 +296,7 @@ public class ConfiguracionConexionController implements Initializable {
 
         String route = "C:/Users/PC/Documents";
         if (!txPathSourceDBF.getText().isEmpty()) {
-            if (txPathSourceDBF.getText().endsWith(".dbf")) {
+            if (txPathSourceDBF.getText().endsWith(".dbf") || txPathSourceDBF.getText().endsWith(".DBF")) {
                 route = txPathSourceDBF.getText().substring(0, txPathSourceDBF.getText().lastIndexOf("\\"));
             } else {
                 route = txPathSourceDBF.getText();
@@ -340,7 +340,7 @@ public class ConfiguracionConexionController implements Initializable {
             fileChooser.setInitialDirectory(initialDirectory);
         }
 
-        Stage stage = (Stage) btPathSourceExcel.getScene().getWindow(); // Assuming btTestConnection is your button
+        Stage stage = (Stage) btPathSourceExcel.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
 
         if (file != null) {
@@ -380,12 +380,20 @@ public class ConfiguracionConexionController implements Initializable {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
-                setDestination();
-                connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
-                        EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
-                        WarehouseDestinationDestination);
-                connectionController.saveCredentialsOriginDBF(txPathSourceDBF.getText());
-                App.setRoot("RelacionCampos");
+                if (txPathSourceDBF.getText().endsWith(".dbf") == false && txPathSourceDBF.getText().endsWith(".DBF") == false) {
+                    MyAlert alert = new MyAlert();
+                    alert.showAlert(AlertType.ERROR, "Next", "Please select a valid DBF file!");
+                    return;
+                } else {
+                    setDestination();
+                    connectionController.saveCredentialsDestination(ServerDestination, UserDestination,
+                            PasswordDestination,
+                            EnterpriseDestination, ExerciseDestination, AccountDigitsDestination,
+                            GroupDigitsDestination,
+                            WarehouseDestinationDestination);
+                    connectionController.saveCredentialsOriginDBF(txPathSourceDBF.getText());
+                    App.setRoot("RelacionCampos");
+                }
             }
         } else if (ActualTab.equals("Excel")) {
             if (txServerDestination.getText().isEmpty() || txUserDestination.getText().isEmpty()
@@ -401,17 +409,19 @@ public class ConfiguracionConexionController implements Initializable {
                     return;
                 } else {
                     setDestination();
-                    connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
-                            EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
+                    connectionController.saveCredentialsDestination(ServerDestination, UserDestination,
+                            PasswordDestination,
+                            EnterpriseDestination, ExerciseDestination, AccountDigitsDestination,
+                            GroupDigitsDestination,
                             WarehouseDestinationDestination);
                     connectionController.saveCredentialsOriginExcel(txPathSourceExcel.getText());
-                    if (excelController.getColumnOrigin().isEmpty()){
+                    if (excelController.getColumnOrigin().isEmpty()) {
                         MyAlert alert = new MyAlert();
                         alert.showAlert(AlertType.ERROR, "Next", "This Excel file is empty!");
                     } else {
                         App.setRoot("RelacionCampos");
-                    }     
-                } 
+                    }
+                }
             }
         }
     }
