@@ -9,6 +9,7 @@ public class FinalList<T> {
     private FinalList() {
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> FinalList<T> getFinalList() {
         if (finalList == null) {
             finalList = new FinalList<>();

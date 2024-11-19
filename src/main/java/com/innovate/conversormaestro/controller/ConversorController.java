@@ -2,7 +2,6 @@ package com.innovate.conversormaestro.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -16,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
 
 import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
@@ -32,7 +30,6 @@ public class ConversorController<T> implements Initializable {
     private DBFController dbfController = DBFController.getDBFController();
     private ExcelController excelController;
     private FinalList<T> finalList;
-    private int nTraspasos = 0;
     private ArrayList<T> lista = new ArrayList<T>();
     int nfilasTotales = 0;
     private StringBuilder logBuilder = new StringBuilder();
@@ -70,6 +67,7 @@ public class ConversorController<T> implements Initializable {
         txtArea.setWrapText(true);
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> ConversorController<T> getConversorController() {
         if (conversorController == null) {
             conversorController = new ConversorController<>();
@@ -168,10 +166,6 @@ public class ConversorController<T> implements Initializable {
             detailMessage.set(logBuilder.toString());
             txtArea.setScrollTop(Double.MAX_VALUE);
         });
-    }
-
-    public void setnTraspasos(int nTraspasos) {
-        this.nTraspasos = nTraspasos;
     }
 
 }

@@ -6,8 +6,6 @@ import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-import org.apache.poi.ss.formula.functions.T;
-
 import com.linuxense.javadbf.DBFException;
 import com.linuxense.javadbf.DBFField;
 import com.linuxense.javadbf.DBFReader;
@@ -17,15 +15,14 @@ import com.innovate.conversormaestro.model.*;
 import com.innovate.conversormaestro.datasource.DBFSwitch.*;
 
 public class DBFController {
-	private static DBFController dbfController;
-	private String PathSourceDBF;
-	private ConnectionController connectionController;
-	private ArrayList<Relacion> relaciones;
-	private String tablename;
-	private String typeTransfer;
-	private boolean beEmpty;
-    
-	private static AgentesDBFSwitch agentesSwitch;
+    private static DBFController dbfController;
+    private String PathSourceDBF;
+    private ArrayList<Relacion> relaciones;
+    private String tablename;
+    private String typeTransfer;
+    private boolean beEmpty;
+
+    private static AgentesDBFSwitch agentesSwitch;
     private static AlmacenesDBFSwitch almacenesSwitch;
     private static ArticulosDBFSwitch articulosSwitch;
     private static AsientosDBFSwitch asientosSwitch;
@@ -49,94 +46,87 @@ public class DBFController {
     private static ProveedoresDBFSwitch proveedoresSwitch;
     private static SubFamiliasDBFSwitch subFamiliasSwitch;
 
-	private ArrayList<T> lista = new ArrayList<T>();
-
-	public DBFController() {
-		connectionController = ConnectionController.getConectionController();
-	}
-
-	public static DBFController getDBFController() {
-		if (dbfController == null) {
-			dbfController = new DBFController();
-		}
-
-		return dbfController;
-	}
-
-	public ArrayList<Relacion> getRelaciones() {
-		return relaciones;
-	}
-
-	public void setRelaciones(ArrayList<Relacion> relaciones) {
-		this.relaciones = relaciones;
-	}
-
-	public String getTablename() {
-		return tablename;
-	}
-
-	public void setTablename(String tablename) {
-		this.tablename = tablename;
-	}
-
-	public String getPathSourceDBF() {
-		return PathSourceDBF;
-	}
-
-	public void setPathSourceDBF(String pathSourceDBF) {
-		PathSourceDBF = pathSourceDBF;
-	}
-
-    public String getTypeTransfer() {
-		return typeTransfer;
-	}
-
-	public void setTypeTransfer(String typeTransfer) {
-		this.typeTransfer = typeTransfer;
-	}
-
-	public boolean isBeEmpty() {
-		return beEmpty;
-	}
-
-	public void setBeEmpty(boolean beEmpty) {
-		this.beEmpty = beEmpty;
-	}
-
-	public ArrayList<String> getColumnOrigin() {
-		ArrayList<String> result = new ArrayList<String>();
-
-		DBFReader reader = null;
-
-		try {
-			reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);
-
-			int numberOfFields = reader.getFieldCount();
-
-			for (int i = 0; i < numberOfFields; i++) {
-				DBFField field = reader.getField(i);
-				result.add(field.getName());
-			}
-		} catch (FileNotFoundException fileNotFoundException) {
-			System.out.println("The file was not found " + fileNotFoundException );
-		} catch (DBFException e) {
-			System.out.println("Error reading the file " + e);
-		} finally {
-			try {
-				DBFUtils.close(reader);
-			} catch (DBFException e) {
-				System.out.println("Error closing the file " + e);
-			}
-			
-		}
-		return result;
-	}
-
-	public void setLista(ArrayList<T> lista) {
-        this.lista = lista;
+    public DBFController() {
     }
 
-	public void tableDBFDestination(String tablename) {
+    public static DBFController getDBFController() {
+        if (dbfController == null) {
+            dbfController = new DBFController();
+        }
+
+        return dbfController;
+    }
+
+    public ArrayList<Relacion> getRelaciones() {
+        return relaciones;
+    }
+
+    public void setRelaciones(ArrayList<Relacion> relaciones) {
+        this.relaciones = relaciones;
+    }
+
+    public String getTablename() {
+        return tablename;
+    }
+
+    public void setTablename(String tablename) {
+        this.tablename = tablename;
+    }
+
+    public String getPathSourceDBF() {
+        return PathSourceDBF;
+    }
+
+    public void setPathSourceDBF(String pathSourceDBF) {
+        PathSourceDBF = pathSourceDBF;
+    }
+
+    public String getTypeTransfer() {
+        return typeTransfer;
+    }
+
+    public void setTypeTransfer(String typeTransfer) {
+        this.typeTransfer = typeTransfer;
+    }
+
+    public boolean isBeEmpty() {
+        return beEmpty;
+    }
+
+    public void setBeEmpty(boolean beEmpty) {
+        this.beEmpty = beEmpty;
+    }
+
+    public ArrayList<String> getColumnOrigin() {
+        ArrayList<String> result = new ArrayList<String>();
+
+        DBFReader reader = null;
+
+        try {
+            reader = new DBFReader(new FileInputStream(new File(PathSourceDBF)), StandardCharsets.UTF_8);
+
+            int numberOfFields = reader.getFieldCount();
+
+            for (int i = 0; i < numberOfFields; i++) {
+                DBFField field = reader.getField(i);
+                result.add(field.getName());
+            }
+        } catch (FileNotFoundException fileNotFoundException) {
+            System.out.println("The file was not found " + fileNotFoundException);
+        } catch (DBFException e) {
+            System.out.println("Error reading the file " + e);
+        } finally {
+            try {
+                DBFUtils.close(reader);
+            } catch (DBFException e) {
+                System.out.println("Error closing the file " + e);
+            }
+
+        }
+        return result;
+    }
+
+    public void tableDBFDestination(String tablename) {
         switch (tablename) {
             case "Agentes":
                 agentesSwitch = new AgentesDBFSwitch();

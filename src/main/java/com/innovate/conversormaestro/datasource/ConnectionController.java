@@ -9,9 +9,6 @@ import java.util.ArrayList;
 
 import com.innovate.conversormaestro.model.Tables;
 import com.innovate.conversormaestro.utils.FormatUtils;
-import com.innovate.conversormaestro.utils.MyAlert;
-
-import javafx.scene.control.Alert.AlertType;
 
 public class ConnectionController {
     private static ConnectionController instance = null;
