@@ -121,7 +121,6 @@ public class ConversorController<T> implements Initializable {
                     if (!insertResult) {
                         appendLog(connectionController.getError());
                         result = false;
-
                     }
                     appendLog("Procesando " + nfilas + " de " + nfilasTotales + " filas");
                     appendLog("Progreso: " + progressPercentage + "%");

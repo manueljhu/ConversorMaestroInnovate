@@ -806,10 +806,10 @@ public class Agente {
         } else if (connectionController.getSourceTab().equals("DBF")) {
             DBFController dbfController = DBFController.getDBFController();
             type = dbfController.getTypeTransfer();
-        } else if (connectionController.getSourceTab().equals("EXCEL")) {
+        } else if (connectionController.getSourceTab().equals("Excel")) {
             ExcelController excelController = ExcelController.getExcelController();
             type = excelController.getTypeTransfer();
-        } 
+        }
         
         if (type.equals("Insert")) {
             return toInsert();

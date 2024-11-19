@@ -18,7 +18,7 @@ public class ExistenciasDBFSwitch {
         existencias = new ArrayList<Stock>();
         Stock existencia;
 
-        for (int i = 1; i <= nFilas; i++) {
+        for (int i = 0; i < nFilas; i++) {
             existencia = new Stock();
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
