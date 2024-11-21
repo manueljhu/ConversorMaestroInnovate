@@ -3,6 +3,7 @@ package com.innovate.conversormaestro.model;
 import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.ExcelController;
+import com.innovate.conversormaestro.datasource.SQLController;
 
 public class Familia {
     private String cod = "";
@@ -417,7 +418,8 @@ public class Familia {
         String type = "";
         ConnectionController connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
-            
+            SQLController sqlController = SQLController.getSQLController();
+            type = sqlController.getTypeTransfer();
         } else if (connectionController.getSourceTab().equals("DBF")) {
             DBFController dbfController = DBFController.getDBFController();
             type = dbfController.getTypeTransfer();

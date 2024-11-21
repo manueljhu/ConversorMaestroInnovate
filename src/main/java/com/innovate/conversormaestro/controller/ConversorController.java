@@ -20,6 +20,7 @@ import com.innovate.conversormaestro.App;
 import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.ExcelController;
+import com.innovate.conversormaestro.datasource.SQLController;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.utils.MyAlert;
 
@@ -27,7 +28,8 @@ public class ConversorController<T> implements Initializable {
 
     private static ConversorController<?> conversorController;
     private ConnectionController connectionController;
-    private DBFController dbfController = DBFController.getDBFController();
+    private SQLController sqlController;
+    private DBFController dbfController;
     private ExcelController excelController;
     private FinalList<T> finalList;
     private ArrayList<T> lista = new ArrayList<T>();
@@ -50,7 +52,7 @@ public class ConversorController<T> implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
-
+            sqlController = SQLController.getSQLController();
         } else if (connectionController.getSourceTab().equals("DBF")) {
             dbfController = DBFController.getDBFController();
         } else if (connectionController.getSourceTab().equals("Excel")) {
@@ -84,7 +86,10 @@ public class ConversorController<T> implements Initializable {
     @FXML
     private void convertButton() {
         if (connectionController.getSourceTab().equals("SQL")) {
-        
+            if (sqlController.isBeEmpty()) {
+                System.out.println(sqlController.getTablename());
+                connectionController.truncateDataTable(sqlController.getTablename());
+            }
         } else if (connectionController.getSourceTab().equals("DBF")) {
             if (dbfController.isBeEmpty()) {
                 System.out.println(dbfController.getTablename());

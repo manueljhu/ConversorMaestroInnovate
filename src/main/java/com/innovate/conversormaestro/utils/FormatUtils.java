@@ -63,7 +63,9 @@ public class FormatUtils {
             } catch (DateTimeParseException e) {
                 // Si falla, intentar analizar con el segundo formato
                 LocalDate localDate = LocalDate.parse(value, formatoDeEntrada2);
-                System.out.println(localDate);
+                if (localDate == null) {
+                    System.out.println(localDate);
+                }
                 return value; // No cambiar nada si ya está en el formato "dd/MM/yyyy"
             }
         } catch (DateTimeParseException e) {

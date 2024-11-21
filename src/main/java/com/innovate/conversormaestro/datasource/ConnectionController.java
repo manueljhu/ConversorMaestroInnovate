@@ -6,12 +6,16 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 import com.innovate.conversormaestro.model.Tables;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ConnectionController {
     private static ConnectionController instance = null;
+    private SQLController sqlController;
+    private DBFController dbfController;
     private ExcelController excelController;
     private Connection connectionDestination = null;
     private Connection connectionGP = null;
@@ -237,6 +241,26 @@ public class ConnectionController {
         tables.get(12).setName("ALMA" + WarehouseDestination);
     }
 
+    public void startConnectionOrigin() {
+        String Servercon = getServerSource();
+        String[] ServerElements;
+        Servercon = Servercon.replace("\\", "%");
+        ServerElements = Servercon.split("%");
+        String ServerIP = ServerElements[0];
+        String ServerInstance = ServerElements[1];
+
+        String URLConection = "jdbc:jtds:sqlserver://" + ServerIP + ";instance=" + ServerInstance + ";DatabaseName="
+                + getDataBaseSource();
+
+        try {
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+            connectionDestination = DriverManager.getConnection(URLConection, getUserSource(), getPasswordSource());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     // Method to start the connection to the destination database
     public void startConnectionDestination() {
         String Servercon = getServerDestination();
@@ -329,6 +353,15 @@ public class ConnectionController {
         return index;
     }
 
+    public void closeConnectionOrigin() {
+        try {
+            connectionDestination.close();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     public void closeConnectionDestination() {
         try {
             connectionDestination.close();
@@ -348,12 +381,23 @@ public class ConnectionController {
     }
 
     public int getDataQuery(String query) {
-        excelController = ExcelController.getExcelController();
+        String tablename = "";
+        if (SourceTab == "SQL") {
+            sqlController = SQLController.getSQLController();
+            tablename = sqlController.getTablename();
+        } else if (SourceTab == "DBF") {
+            dbfController = DBFController.getDBFController();
+            tablename = dbfController.getTablename();
+        } else if (SourceTab == "Excel") {
+            excelController = ExcelController.getExcelController();
+            tablename = excelController.getTablename();
+        }
+
         ResultSet rs = null;
         Statement st = null;
         int last_num = 0;
         try {
-            if (excelController.getTablename() == "Formas de pago") {
+            if (tablename == "Formas de pago") {
                 startConnectionGP();
                 st = connectionGP.createStatement();
             } else {
@@ -369,7 +413,7 @@ public class ConnectionController {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-        if (excelController.getTablename() == "Formas de pago") {
+        if (tablename == "Formas de pago") {
             closeConnectionGP();
         } else {
             closeConnectionDestination();
@@ -379,10 +423,20 @@ public class ConnectionController {
 
     public boolean insertDataQuery(String query) {
         boolean result = true;
-        excelController = ExcelController.getExcelController();
+        String tablename = "";
+        if (SourceTab == "SQL") {
+            sqlController = SQLController.getSQLController();
+            tablename = sqlController.getTablename();
+        } else if (SourceTab == "DBF") {
+            dbfController = DBFController.getDBFController();
+            tablename = dbfController.getTablename();
+        } else if (SourceTab == "Excel") {
+            excelController = ExcelController.getExcelController();
+            tablename = excelController.getTablename();
+        }
         Statement st = null;
         try {
-            if (excelController.getTablename() == "Formas de pago") {
+            if (tablename == "Formas de pago") {
                 startConnectionGP();
                 st = connectionGP.createStatement();
             } else {
@@ -396,7 +450,7 @@ public class ConnectionController {
             result = false;
             setError(e.getMessage());
         }
-        if (excelController.getTablename() == "Formas de pago") {
+        if (tablename == "Formas de pago") {
             closeConnectionGP();
         } else {
             closeConnectionDestination();
@@ -426,6 +480,62 @@ public class ConnectionController {
         } else {
             closeConnectionDestination();
         }
+    }
+
+    public int getNRows(String query) {
+        int result = 0;
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            startConnectionOrigin();
+            st = connectionDestination.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                result = rs.getInt("total_filas");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        closeConnectionOrigin();
+        return result;
+    }
+
+    public List<Hashtable<String, Object>> getDataOrigin(String query) {
+        List<Hashtable<String, Object>> result = new ArrayList<>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            startConnectionOrigin();
+            st = connectionDestination.createStatement();
+            rs = st.executeQuery(query);
+            int columnCount = rs.getMetaData().getColumnCount();
+            while (rs.next()) {
+                Hashtable<String, Object> row = new Hashtable<>();
+                for (int i = 1; i <= columnCount; i++) {
+                    if (rs.getObject(i) == null) {
+                        row.put(rs.getMetaData().getColumnName(i), "NULL");
+                    } else {
+                        row.put(rs.getMetaData().getColumnName(i), rs.getObject(i));
+                    }
+                }
+                result.add(row);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            closeConnectionOrigin();
+            try {
+                if (rs != null)
+                    rs.close();
+                if (st != null)
+                    st.close();
+            } catch (Exception e) {
+                System.out.println("Error closing resources: " + e.getMessage());
+            }
+        }
+        return result;
     }
 
     public static ConnectionController getInstance() {

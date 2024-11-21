@@ -1,54 +1,66 @@
 package com.innovate.conversormaestro.datasource.SQLSwitch;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
+import com.innovate.conversormaestro.datasource.SQLController;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.model.Stock;
 import com.innovate.conversormaestro.utils.SQLUtils;
 
 public class ExistenciasSQLSwitch {
+    private SQLController sqlController;
     private FinalList<Stock> lista;
-    private SQLUtils SQLUtils = new SQLUtils();
     private ArrayList<Stock> existencias;
+    private List<Hashtable<String, Object>> listaObjetos;
+    private SQLUtils SQLUtils = new SQLUtils();
+
 
     public void Existencias(ArrayList<Relacion> relaciones) {
-        int nFilas = SQLUtils.devuelveNFilasSQL();
+        sqlController = SQLController.getSQLController();
         lista = FinalList.getFinalList();
         existencias = new ArrayList<Stock>();
         Stock existencia;
+        listaObjetos = null;
+        listaObjetos = SQLUtils.devuelveListaObjetos(relaciones, sqlController.getTablenameOrigin());
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 0; i < listaObjetos.size(); i++) {
             existencia = new Stock();
+            Hashtable<String, Object> hashtable = new Hashtable<String, Object>();
+            hashtable = listaObjetos.get(i);
             for (int j = 0; j < relaciones.size(); j++) {
                 switch(relaciones.get(j).getCampoDestino()){
                     case "cod":
-                        existencia.setCod(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        existencia.setCod(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "exi":
-                        existencia.setExi(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setExi(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ent":
-                        existencia.setEnt(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setEnt(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "sal":
-                        existencia.setSal(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setSal(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ubi":
-                        existencia.setUbi(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        existencia.setUbi(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ide":
-                        existencia.setIde(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setIde(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "min":
-                        existencia.setMin(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setMin(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "max":
-                        existencia.setMax(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        existencia.setMax(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                 }
             }
-            //System.out.println(existencia);
+            /* System.out.println("Fila: " + i);
+            System.out.println(existencia);
+            System.out.println("----------------------------------------------------------"); */
             existencias.add(existencia);
         }
         lista.setLista(existencias);

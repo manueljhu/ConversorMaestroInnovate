@@ -1,6 +1,8 @@
 package com.innovate.conversormaestro.datasource.SQLSwitch;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 import com.innovate.conversormaestro.datasource.SQLController;
 import com.innovate.conversormaestro.model.FinalList;
@@ -12,79 +14,85 @@ import com.innovate.conversormaestro.utils.FormatUtils;
 public class FormasPagoSQLSwitch {
     private SQLController sqlController;
     private FinalList<FormaPago> lista;
-    private SQLUtils SQLUtils = new SQLUtils();
     private ArrayList<FormaPago> formasPago;
+    private List<Hashtable<String, Object>> listaObjetos;
+    private SQLUtils SQLUtils = new SQLUtils();
     private FormatUtils formatUtils = new FormatUtils();
 
     public void FormasPago(ArrayList<Relacion> relaciones) {
         sqlController = SQLController.getSQLController();
-        int nFilas = SQLUtils.devuelveNFilasSQL();
         lista = FinalList.getFinalList();
         formasPago = new ArrayList<FormaPago>();
         FormaPago formaPago;
         int idforpag = formatUtils.formatUpdate("FORPAG");
+        listaObjetos = null;
+        listaObjetos = SQLUtils.devuelveListaObjetos(relaciones, sqlController.getTablenameOrigin());
 
         if (sqlController.isBeEmpty()){
             idforpag = 1;
         }
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 0; i < listaObjetos.size(); i++) {
             formaPago = new FormaPago();
             formaPago.setId(idforpag);
+            Hashtable<String, Object> hashtable = new Hashtable<String, Object>();
+            hashtable = listaObjetos.get(i);
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "id":
-                        formaPago.setId(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setId(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nom":
-                        formaPago.setNom(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        formaPago.setNom(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di1":
-                        formaPago.setDi1(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setDi1(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di2":
-                        formaPago.setDi2(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setDi2(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dir":
-                        formaPago.setDir(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setDir(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "npa":
-                        formaPago.setNpa(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setNpa(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "mes":
-                        formaPago.setMes(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        formaPago.setMes(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "vto":
-                        formaPago.setVto(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setVto(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "inc":
-                        formaPago.setInc(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setInc(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cad":
-                        formaPago.setCad(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setCad(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cob":
-                        formaPago.setCob(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        formaPago.setCob(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "car":
-                        formaPago.setCar(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setCar(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "porcobdir":
-                        formaPago.setPorcobdir(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        formaPago.setPorcobdir(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "inclib":
-                        formaPago.setInclib(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        formaPago.setInclib(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "reppro":
-                        formaPago.setReppro(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        formaPago.setReppro(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cuecobdir":
-                        formaPago.setCuecobdir(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        formaPago.setCuecobdir(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                 }
             }
+            /* System.out.println("Fila: " + i);
+            System.out.println(formaPago);
+            System.out.println("----------------------------------------------------------"); */
             idforpag++;
-            //System.out.println(formaPago);
             formasPago.add(formaPago);
         }
         lista.setLista(formasPago);
