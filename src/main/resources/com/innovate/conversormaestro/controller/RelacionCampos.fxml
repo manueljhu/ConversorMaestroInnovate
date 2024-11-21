@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TitledPane?>
@@ -120,7 +121,13 @@
       <AnchorPane prefHeight="55.0" prefWidth="900.0">
          <children>
             <Separator prefHeight="8.0" prefWidth="900.0" />
-              <Button fx:id="secondaryButton" layoutX="418.0" layoutY="10.0" onAction="#switchToConversor" text="Convertir" />
+              <Button fx:id="btnSwitchToConversor" layoutX="418.0" layoutY="10.0" onAction="#switchToConversor" text="Convertir" />
+            <ProgressIndicator fx:id="piProgress" layoutX="848.0" layoutY="4.0" prefHeight="40.0" prefWidth="40.0" progress="0.0" />
+            <Label fx:id="txRelations" layoutX="677.0" layoutY="13.0" text="Generando Relaciones">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
     </children>
