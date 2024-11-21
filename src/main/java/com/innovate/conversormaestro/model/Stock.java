@@ -3,6 +3,7 @@ package com.innovate.conversormaestro.model;
 import com.innovate.conversormaestro.datasource.ConnectionController;
 import com.innovate.conversormaestro.datasource.DBFController;
 import com.innovate.conversormaestro.datasource.ExcelController;
+import com.innovate.conversormaestro.datasource.SQLController;
 
 public class Stock {
     ConnectionController connectionController = ConnectionController.getConectionController();
@@ -93,7 +94,8 @@ public class Stock {
         String type = "";
         ConnectionController connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
-            
+            SQLController sqlController = SQLController.getSQLController();
+            type = sqlController.getTypeTransfer();
         } else if (connectionController.getSourceTab().equals("DBF")) {
             DBFController dbfController = DBFController.getDBFController();
             type = dbfController.getTypeTransfer();

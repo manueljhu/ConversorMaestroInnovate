@@ -1,8 +1,11 @@
 package com.innovate.conversormaestro.datasource.SQLSwitch;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 import com.innovate.conversormaestro.datasource.ConnectionController;
+import com.innovate.conversormaestro.datasource.SQLController;
 import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Proveedor;
 import com.innovate.conversormaestro.model.Relacion;
@@ -10,327 +13,335 @@ import com.innovate.conversormaestro.utils.SQLUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
 
 public class ProveedoresSQLSwitch {
-    private FinalList<Proveedor> lista;
-    private SQLUtils SQLUtils = new SQLUtils();
-    private ArrayList<Proveedor> proveedores;
-    private FormatUtils formatUtils = new FormatUtils();
+    private SQLController sqlController;
     private ConnectionController connectionController;
+    private FinalList<Proveedor> lista;
+    private ArrayList<Proveedor> proveedores;
+    private List<Hashtable<String, Object>> listaObjetos;
+    private SQLUtils SQLUtils = new SQLUtils();
+    private FormatUtils formatUtils = new FormatUtils();
     String group;
     String account;
 
     public void Proveedores(ArrayList<Relacion> relaciones){
+        sqlController = SQLController.getSQLController();
         connectionController = ConnectionController.getConectionController();
-        group = connectionController.getGroupDigitsDestination();
-        account = connectionController.getAccountDigitsDestination();
-        int nFilas = SQLUtils.devuelveNFilasSQL();
         lista = FinalList.getFinalList();
         proveedores = new ArrayList<Proveedor>();
         Proveedor proveedor;
+        group = connectionController.getGroupDigitsDestination();
+        account = connectionController.getAccountDigitsDestination();
+        listaObjetos = null;
+        listaObjetos = SQLUtils.devuelveListaObjetos(relaciones, sqlController.getTablenameOrigin());
 
-        for (int i = 0; i < nFilas; i++) {
+        for (int i = 0; i < listaObjetos.size(); i++) {
             proveedor = new Proveedor();
+            Hashtable<String, Object> hashtable = new Hashtable<String, Object>();
+            hashtable = listaObjetos.get(i);
             for (int j = 0; j < relaciones.size(); j++) {
                 switch (relaciones.get(j).getCampoDestino()) {
                     case "cod":
-                        proveedor.setCod(formatUtils.format6digits(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setCod(formatUtils.format6digits(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
                         break;
                     case "nom":
-                        proveedor.setNom(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setNom(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dir":
-                        proveedor.setDir(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setDir(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "npro":
-                        proveedor.setNpro(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setNpro(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pob":
-                        proveedor.setPob(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setPob(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pro":
-                        proveedor.setPro(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setPro(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nif":
-                        proveedor.setNif(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setNif(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "te1":
-                        proveedor.setTe1(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setTe1(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "te2":
-                        proveedor.setTe2(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setTe2(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fax":
-                        proveedor.setFax(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setFax(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "mov":
-                        proveedor.setMov(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setMov(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ter":
-                        proveedor.setTer(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setTer(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "per":
-                        proveedor.setPer(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setPer(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "car":
-                        proveedor.setCar(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setCar(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "forpag":
-                        proveedor.setForpag(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setForpag(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dto":
-                        proveedor.setDto(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setDto(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "red":
-                        proveedor.setRed(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setRed(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "por":
-                        proveedor.setPor(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setPor(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "poa":
-                        proveedor.setPoa(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setPoa(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ctg":
-                        proveedor.setCtg(formatUtils.formatDigitGroupAccount(group, account,SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setCtg(formatUtils.formatDigitGroupAccount(group, account,SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
                         break;
                     case "mar":
-                        proveedor.setMar(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setMar(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dt2":
-                        proveedor.setDt2(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setDt2(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di1":
-                        proveedor.setDi1(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setDi1(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di2":
-                        proveedor.setDi2(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setDi2(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "di3":
-                        proveedor.setDi3(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setDi3(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "mnp":
-                        proveedor.setMnp(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setMnp(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tia":
-                        proveedor.setTia(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setTia(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tre":
-                        proveedor.setTre(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setTre(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ret":
-                        proveedor.setRet(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setRet(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ob1":
-                        proveedor.setOb1(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setOb1(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ob2":
-                        proveedor.setOb2(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setOb2(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ob3":
-                        proveedor.setOb3(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setOb3(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "web":
-                        proveedor.setWeb(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setWeb(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ext":
-                        proveedor.setExt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setExt(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva1":
-                        proveedor.setRediva1(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setRediva1(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva2":
-                        proveedor.setRediva2(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setRediva2(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva3":
-                        proveedor.setRediva3(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setRediva3(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva4":
-                        proveedor.setRediva4(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setRediva4(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "rediva5":
-                        proveedor.setRediva5(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setRediva5(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi0ped":
-                        proveedor.setAvi0Ped(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setAvi0Ped(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1ped":
-                        proveedor.setAvi1Ped(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi1Ped(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi2ped":
-                        proveedor.setAvi2Ped(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi2Ped(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi0alb":
-                        proveedor.setAvi0Alb(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setAvi0Alb(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1alb":
-                        proveedor.setAvi1Alb(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi1Alb(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi2alb":
-                        proveedor.setAvi2Alb(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi2Alb(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi0fac":
-                        proveedor.setAvi0Fac(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setAvi0Fac(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1fac":
-                        proveedor.setAvi1Fac(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi1Fac(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi2fac":
-                        proveedor.setAvi2Fac(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi2Fac(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi0rec":
-                        proveedor.setAvi0Rec(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setAvi0Rec(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi1rec":
-                        proveedor.setAvi1Rec(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi1Rec(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi2rec":
-                        proveedor.setAvi2Rec(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi2Rec(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "ivainc":
-                        proveedor.setIvainc(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setIvainc(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fot":
-                        proveedor.setFot(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setFot(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "doc":
-                        proveedor.setDoc(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setDoc(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pais":
-                        proveedor.setPais(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setPais(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "xxx":
-                        proveedor.setXxx(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setXxx(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "imprap":
-                        proveedor.setImprap(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setImprap(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "dtorap":
-                        proveedor.setDtorap(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setDtorap(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "perrap":
-                        proveedor.setPerrap(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setPerrap(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v01":
-                        proveedor.setV01(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV01(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v02":
-                        proveedor.setV02(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV02(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v03":
-                        proveedor.setV03(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV03(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v04":
-                        proveedor.setV04(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV04(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v05":
-                        proveedor.setV05(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV05(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v06":
-                        proveedor.setV06(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV06(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v07":
-                        proveedor.setV07(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV07(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v08":
-                        proveedor.setV08(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV08(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v09":
-                        proveedor.setV09(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV09(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v10":
-                        proveedor.setV10(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV10(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v11":
-                        proveedor.setV11(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV11(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "v12":
-                        proveedor.setV12(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setV12(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "historia":
-                        proveedor.setHistoria(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setHistoria(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_ori":
-                        proveedor.setLopd_Ori(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setLopd_Ori(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_Otr_O":
-                        proveedor.setLopd_Otr_O(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setLopd_Otr_O(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_Ces":
-                        proveedor.setLopd_Ces(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setLopd_Ces(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "lopd_Otr_C":
-                        proveedor.setLopd_Otr_C(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setLopd_Otr_C(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "pro_idioma":
-                        proveedor.setPro_Idioma(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setPro_Idioma(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "moneda":
-                        proveedor.setMoneda(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setMoneda(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi_Ped":
-                        proveedor.setAvi_Ped(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi_Ped(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi_Alb":
-                        proveedor.setAvi_Alb(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi_Alb(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi_Fac":
-                        proveedor.setAvi_Fac(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi_Fac(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "avi_Rec":
-                        proveedor.setAvi_Rec(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAvi_Rec(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "actividad":
-                        proveedor.setActividad(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setActividad(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "contrato":
-                        proveedor.setContrato(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setContrato(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fec_Eval":
-                        proveedor.setFec_Eval(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setFec_Eval(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "res_Eval":
-                        proveedor.setRes_Eval(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setRes_Eval(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "fec_Apro":
-                        proveedor.setFec_Apro(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setFec_Apro(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "nota_Eval":
-                        proveedor.setNota_Eval(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setNota_Eval(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "product1":
-                        proveedor.setProduct1(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setProduct1(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "product2":
-                        proveedor.setProduct2(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setProduct2(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "obs_Cal":
-                        proveedor.setObs_Cal(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setObs_Cal(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cer_Cal":
-                        proveedor.setCer_Cal(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setCer_Cal(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cer_Med":
-                        proveedor.setCer_Med(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setCer_Med(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cer_Pre":
-                        proveedor.setCer_Pre(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setCer_Pre(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "perval":
-                        proveedor.setPerval(Float.parseFloat(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setPerval(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "diasmax":
-                        proveedor.setDiasmax(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setDiasmax(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "autof":
-                        proveedor.setAutof(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setAutof(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "tip_Rem":
-                        proveedor.setTip_Rem(Integer.parseInt(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                        proveedor.setTip_Rem(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                     case "cri_Caja":
-                        proveedor.setCri_Caja(SQLUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                        proveedor.setCri_Caja(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                         break;
                 }
             }
-            //System.out.println(proveedor);
+            /* System.out.println("Fila: " + i);
+            System.out.println(proveedor);
+            System.out.println("----------------------------------------------------------"); */
             proveedores.add(proveedor);
         }
         lista.setLista(proveedores);

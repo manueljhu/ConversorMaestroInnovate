@@ -35,7 +35,7 @@ import org.ini4j.Wini;
 public class RelacionCamposController implements Initializable {
 
     private ConnectionController connectionController;
-    private SQLController sqlController;
+    private SQLController sqlController = new SQLController();
     private DBFController dbfController = new DBFController();
     private ExcelController excelController = new ExcelController();
     @FXML
@@ -145,7 +145,30 @@ public class RelacionCamposController implements Initializable {
         boolean firstTime;
         if (connectionController.getSourceTab().equals("SQL")) {
             sqlController = SQLController.getSQLController();
-            fillComboSource();
+            firstTime = connectionController.isFirstTime();
+            if (!firstTime) {
+                if (sqlController.getRelaciones() != null) {
+                    btnDestinationtoRelation.setDisable(false);
+                    btnDestinationtoRelation2.setDisable(false);
+                    btnOrigintoRelation.setDisable(false);
+                    btnOrigintoRelation2.setDisable(false);
+                    fillComboSource();
+                    cbSourceFields.setValue(sqlController.getTablenameOrigin());
+                    lvSourceFields.getItems().addAll(sqlController.getColumnOrigin(cbSourceFields.getValue()));
+                    cbDestinationFields.setValue(sqlController.getTablename());
+                    lvDestinationFields.getItems()
+                            .addAll(connectionController.getColumnDestination(cbDestinationFields.getValue()));
+                    for (int i = 0; i < sqlController.getRelaciones().size(); i++) {
+                        lvRelationSourceFields.getItems().add(sqlController.getRelaciones().get(i).getCampoOrigen());
+                        lvRelationDestinationFields.getItems()
+                                .add(sqlController.getRelaciones().get(i).getCampoDestino());
+                    }
+                    cboxEmptyDestination.setSelected(sqlController.isBeEmpty());
+                }
+            } else {
+                fillComboSource();
+                connectionController.setFirstTime(false);
+            }
         } else if (connectionController.getSourceTab().equals("DBF")) {
             dbfController = DBFController.getDBFController();
             cbSourceFields.setDisable(true);
@@ -660,7 +683,17 @@ public class RelacionCamposController implements Initializable {
                         }
 
                         if (connectionController.getSourceTab().equals("SQL")) {
-                            // En proceso
+                            sqlController.setBeEmpty(cboxEmptyDestination.isSelected());
+                            sqlController.setRelaciones(relaciones);
+                            for (int i = 0; i < sqlController.getRelaciones().size(); i++) {
+                                System.out.println(sqlController.getRelaciones().get(i).getCampoOrigen());
+                                System.out.println(sqlController.getRelaciones().get(i).getCampoDestino());
+                            }
+                            sqlController.setTypeTransfer(NameOption);
+                            System.out.println(cbSourceFields.getValue());
+                            sqlController.setTablenameOrigin(cbSourceFields.getValue());
+                            sqlController.setTablename(cbDestinationFields.getValue());
+                            sqlController.tableSQLDestination(sqlController.getTablename());
                         } else if (connectionController.getSourceTab().equals("DBF")) {
                             dbfController.setBeEmpty(cboxEmptyDestination.isSelected());
                             dbfController.setRelaciones(relaciones);

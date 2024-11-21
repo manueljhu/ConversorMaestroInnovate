@@ -12,6 +12,7 @@ public class SQLController {
     private ConnectionController connectionController;
     private ArrayList<Relacion> relaciones;
     private String tablename;
+    private String tablenameOrigin;
 	private String typeTransfer;
 	private boolean beEmpty;
 
@@ -65,6 +66,14 @@ public class SQLController {
 	public void setTablename(String tablename) {
 		this.tablename = tablename;
 	}
+
+    public String getTablenameOrigin() {
+        return tablenameOrigin;
+    }
+
+    public void setTablenameOrigin(String tablenameOrigin) {
+        this.tablenameOrigin = tablenameOrigin;
+    }
 
     Connection connectionOrigin = null;
 
