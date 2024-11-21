@@ -107,12 +107,21 @@ public class ConversorController<T> implements Initializable {
             @Override
             protected Boolean call() throws Exception {
                 boolean result = true;
+                int cont = 0;
                 int nfilas = 0;
                 int nfilasTotales = lista.size();
                 for (T t : lista) {
+                    if (cont == 100) {
+                        cont = 0;
+                        Platform.runLater(() -> {
+                            logBuilder.setLength(0);
+                            detailMessage.set("");
+                        });
+                    }
                     System.out.println(t.toString());
                     boolean insertResult = true;
                     insertResult = connectionController.insertDataQuery(t.toString());
+                    cont++;
                     nfilas++;
                     double progress = (double) nfilas / nfilasTotales;
                     int progressPercentage = (int) Math.round(progress * 100);
