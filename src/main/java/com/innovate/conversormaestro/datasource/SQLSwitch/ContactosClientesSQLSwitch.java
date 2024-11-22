@@ -10,6 +10,7 @@ import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.SQLUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
+import com.innovate.conversormaestro.utils.LogUtils;
 
 public class ContactosClientesSQLSwitch {
     private SQLController sqlController;
@@ -18,6 +19,8 @@ public class ContactosClientesSQLSwitch {
     private List<Hashtable<String, Object>> listaObjetos;
     private SQLUtils SQLUtils = new SQLUtils();
     private FormatUtils formatUtils = new FormatUtils();
+    private int nErrors;
+    private boolean newConvert;
 
     public void Contactos(ArrayList<Relacion> relaciones) {
         sqlController = SQLController.getSQLController();
@@ -26,6 +29,8 @@ public class ContactosClientesSQLSwitch {
         Contacto contacto;
         listaObjetos = null;
         listaObjetos = SQLUtils.devuelveListaObjetos(relaciones, sqlController.getTablenameOrigin());
+        nErrors = 0;
+        newConvert = true;
 
         for (int i = 0; i < listaObjetos.size(); i++) {
             contacto = new Contacto();
@@ -33,50 +38,67 @@ public class ContactosClientesSQLSwitch {
             hashtable = listaObjetos.get(i);
             for (int j = 0; j < relaciones.size(); j++) {
                 contacto.setCla("CL");
-                switch (relaciones.get(j).getCampoDestino()) {
-                    case "cod":
-                        contacto.setCod(formatUtils
-                                .format6digits(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
-                        break;
-                    case "nom":
-                        contacto.setNom(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "car":
-                        contacto.setCar(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "tel":
-                        contacto.setTel(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "ext":
-                        contacto.setExt(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "ob1":
-                        contacto.setOb1(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "ob2":
-                        contacto.setOb2(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "ob3":
-                        contacto.setOb3(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "email":
-                        contacto.setEmail(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "codcon":
-                        contacto.setCodcon(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "lopd_ori":
-                        contacto.setLopd_Ori(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "lopd_otr_o":
-                        contacto.setLopd_Otr_O(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "lopd_ces":
-                        contacto.setLopd_Ces(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "lopd_otr_c":
-                        contacto.setLopd_Otr_C(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
+                try {
+                    switch (relaciones.get(j).getCampoDestino()) {
+                        case "cod":
+                            contacto.setCod(formatUtils
+                                    .format6digits(SQLUtils
+                                            .devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
+                            break;
+                        case "nom":
+                            contacto.setNom(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "car":
+                            contacto.setCar(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tel":
+                            contacto.setTel(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "ext":
+                            contacto.setExt(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "ob1":
+                            contacto.setOb1(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "ob2":
+                            contacto.setOb2(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "ob3":
+                            contacto.setOb3(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "email":
+                            contacto.setEmail(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "codcon":
+                            contacto.setCodcon(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "lopd_ori":
+                            contacto.setLopd_Ori(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "lopd_otr_o":
+                            contacto.setLopd_Otr_O(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "lopd_ces":
+                            contacto.setLopd_Ces(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "lopd_otr_c":
+                            contacto.setLopd_Otr_C(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                    }
+                } catch (Exception e) {
+                    nErrors++;
+                    sqlController.setnErrors(nErrors);
+                    String mensaje = "Error en la fila " + i + " columna " + relaciones.get(j).getCampoOrigen() + ": "
+                            + e.getMessage();
+                    LogUtils logUtils = new LogUtils();
+                    logUtils.WriteLog(mensaje, newConvert);
+                    newConvert = false;
                 }
             }
             /* System.out.println("Fila: " + i);

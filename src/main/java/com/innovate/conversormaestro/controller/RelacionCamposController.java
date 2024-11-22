@@ -728,8 +728,13 @@ public class RelacionCamposController implements Initializable {
                     protected void succeeded() {
                         super.succeeded();
                         piProgress.setVisible(false);
-                        if (connectionController.getSourceTab().equals("SQL")) {
 
+                        if (connectionController.getSourceTab().equals("SQL")) {
+                            if (sqlController.getnErrors() > 0) {
+                                MyAlert alert = new MyAlert();
+                                alert.showAlert(AlertType.INFORMATION, "Proceso finalizado con posibles errores",
+                                        "Se han encontrado " + sqlController.getnErrors() + " errores en la conversión de datos. Por favor, revise el archivo de log.");
+                            }
                         } else if (connectionController.getSourceTab().equals("DBF")) {
                             if (dbfController.getnErrors() > 0) {
                                 MyAlert alert = new MyAlert();

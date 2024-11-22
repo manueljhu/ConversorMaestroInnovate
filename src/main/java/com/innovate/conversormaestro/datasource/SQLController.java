@@ -16,6 +16,10 @@ public class SQLController {
 	private String typeTransfer;
 	private boolean beEmpty;
 
+    private int actualRow;
+    private String actualColumn;
+    private int nErrors;
+
     private static AgentesSQLSwitch agentesSwitch;
     private static AlmacenesSQLSwitch almacenesSwitch;
     private static ArticulosSQLSwitch articulosSwitch;
@@ -93,6 +97,29 @@ public class SQLController {
 		this.beEmpty = beEmpty;
 	}
 
+    public int getActualRow() {
+        return actualRow;
+    }
+
+    public void setActualRow(int actualRow) {
+        this.actualRow = actualRow;
+    }
+
+    public String getActualColumn() {
+        return actualColumn;
+    }
+
+    public void setActualColumn(String actualColumn) {
+        this.actualColumn = actualColumn;
+    }
+
+    public int getnErrors() {
+        return nErrors;
+    }
+
+    public void setnErrors(int nErrors) {
+        this.nErrors = nErrors;
+    }
 
     // Method to start the connection to the source database
     private void startConnectionOrigin() {
