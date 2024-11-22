@@ -11,6 +11,7 @@ import com.innovate.conversormaestro.model.FinalList;
 import com.innovate.conversormaestro.model.Relacion;
 import com.innovate.conversormaestro.utils.SQLUtils;
 import com.innovate.conversormaestro.utils.FormatUtils;
+import com.innovate.conversormaestro.utils.LogUtils;
 
 public class AsientosSQLSwitch {
     private SQLController sqlController;
@@ -20,9 +21,10 @@ public class AsientosSQLSwitch {
     private List<Hashtable<String, Object>> listaObjetos;
     private SQLUtils SQLUtils = new SQLUtils();
     private FormatUtils formatUtils = new FormatUtils();
-
-    String group;
-    String account;
+    private String group;
+    private String account;
+    private int nErrors;
+    private boolean newConvert;
 
     public void Asientos(ArrayList<Relacion> relaciones) {
         sqlController = SQLController.getSQLController();
@@ -34,71 +36,86 @@ public class AsientosSQLSwitch {
         account = connectionController.getAccountDigitsDestination();
         listaObjetos = null;
         listaObjetos = SQLUtils.devuelveListaObjetos(relaciones, sqlController.getTablenameOrigin());
+        nErrors = 0;
+        newConvert = true;
 
         for (int i = 0; i < listaObjetos.size(); i++) {
             asiento = new Apunte();
             Hashtable<String, Object> hashtable = new Hashtable<String, Object>();
             hashtable = listaObjetos.get(i);
             for (int j = 0; j < relaciones.size(); j++) {
-                switch (relaciones.get(j).getCampoDestino()) {
-                    case "num":
-                        asiento.setNum(formatUtils.format6digits(
+                try {
+                    switch (relaciones.get(j).getCampoDestino()) {
+                        case "num":
+                            asiento.setNum(formatUtils.format6digits(
                                     SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
-                        break;
-                    case "fec":
-                        asiento.setFec(formatUtils.formatDateDBF(
-                                SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
-                        break;
-                    case "cue":
-                        asiento.setCue(formatUtils.formatDigitGroupAccount(group, account,
-                                SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
-                        break;
-                    case "con":
-                        asiento.setCon(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "sig":
-                        asiento.setSig(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "mar":
-                        asiento.setMar(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "fac":
-                        asiento.setFac(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "doc":
-                        asiento.setDoc(formatUtils.format6digits(
+                            break;
+                        case "fec":
+                            asiento.setFec(formatUtils.formatDateDBF(
                                     SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
-                        break;
-                    case "xxx":
-                        asiento.setXxx(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "impeu":
-                        float temp = SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen()));
-                        if (temp != 0) {
-                            asiento.setImpeu(temp);
-                        }
-                        break;
-                    case "acl":
-                        asiento.setAcl(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "cen":
-                        asiento.setCen(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "ren":
-                        asiento.setRen(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "met":
-                        asiento.setMet(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "apu_tipdoc":
-                        asiento.setApu_Tipdoc(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "apu_numdoc":
-                        asiento.setApu_Numdoc(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
-                    case "anno_efe":
-                        asiento.setAnno_Efe(SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
-                        break;
+                            break;
+                        case "cue":
+                            asiento.setCue(formatUtils.formatDigitGroupAccount(group, account,
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
+                            break;
+                        case "con":
+                            asiento.setCon(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "sig":
+                            asiento.setSig(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "mar":
+                            asiento.setMar(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "fac":
+                            asiento.setFac(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "doc":
+                            asiento.setDoc(formatUtils.format6digits(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen()))));
+                            break;
+                        case "xxx":
+                            asiento.setXxx(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "impeu":
+                            float temp = SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen()));
+                            if (temp != 0) {
+                                asiento.setImpeu(temp);
+                            }
+                            break;
+                        case "acl":
+                            asiento.setAcl(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cen":
+                            asiento.setCen(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "ren":
+                            asiento.setRen(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "met":
+                            asiento.setMet(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "apu_tipdoc":
+                            asiento.setApu_Tipdoc(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "apu_numdoc":
+                            asiento.setApu_Numdoc(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "anno_efe":
+                            asiento.setAnno_Efe(
+                                    SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                    }
+                } catch (Exception e) {
+                    nErrors++;
+                    sqlController.setnErrors(nErrors);
+                    String mensaje = "Error en la fila " + i + " columna " + relaciones.get(j).getCampoOrigen() + ": "
+                            + e.getMessage();
+                    LogUtils logUtils = new LogUtils();
+                    logUtils.WriteLog(mensaje, newConvert);
+                    newConvert = false;
                 }
             }
             /* System.out.println("Fila: " + i);
