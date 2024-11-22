@@ -117,6 +117,8 @@ public class FormatUtils {
                 alert.showAlert(AlertType.ERROR, "Error en el formato de la cuenta",
                         "La cuenta no cumple con el formato requerido");
             }
+        } else {
+            result = "";
         }
         // System.out.println("Result: " + result);
         return result;

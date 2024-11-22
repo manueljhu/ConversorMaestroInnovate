@@ -11,6 +11,7 @@ import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
@@ -35,6 +36,8 @@ public class ConversorController<T> implements Initializable {
     private ArrayList<T> lista = new ArrayList<T>();
     int nfilasTotales = 0;
     private StringBuilder logBuilder = new StringBuilder();
+    private Task<Boolean> task;
+    boolean isCancelled = false;
 
     @FXML
     private ProgressBar progressBar = new ProgressBar();
@@ -44,6 +47,12 @@ public class ConversorController<T> implements Initializable {
 
     @FXML
     private Label txtLabel = new Label();
+
+    @FXML
+    private Button btnConvertir = new Button();
+
+    @FXML
+    private Button btnFinalizar = new Button();
 
     private StringProperty progressMessage = new SimpleStringProperty();
     private StringProperty detailMessage = new SimpleStringProperty();
@@ -58,7 +67,7 @@ public class ConversorController<T> implements Initializable {
         } else if (connectionController.getSourceTab().equals("Excel")) {
             excelController = ExcelController.getExcelController();
         }
-        
+
         finalList = FinalList.getFinalList();
         txtArea.setEditable(false);
         lista = finalList.getLista();
@@ -67,6 +76,9 @@ public class ConversorController<T> implements Initializable {
         txtLabel.textProperty().bind(progressMessage);
         txtArea.textProperty().bind(detailMessage);
         txtArea.setWrapText(true);
+        btnConvertir.setText("Convertir");
+        btnFinalizar.setDisable(true);
+        btnFinalizar.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -85,93 +97,120 @@ public class ConversorController<T> implements Initializable {
 
     @FXML
     private void convertButton() {
-        if (connectionController.getSourceTab().equals("SQL")) {
-            if (sqlController.isBeEmpty()) {
-                System.out.println(sqlController.getTablename());
-                connectionController.truncateDataTable(sqlController.getTablename());
+        if (btnConvertir.getText().equals("Cancelar")) {
+            if (task != null) {
+                task.cancel();
             }
-        } else if (connectionController.getSourceTab().equals("DBF")) {
-            if (dbfController.isBeEmpty()) {
-                System.out.println(dbfController.getTablename());
-                connectionController.truncateDataTable(dbfController.getTablename());
+            isCancelled = true;
+            btnConvertir.setText("Convertir");
+        } else if (btnConvertir.getText().equals("Convertir")) {
+            isCancelled = false;
+            btnConvertir.setText("Cancelar");
+            if (connectionController.getSourceTab().equals("SQL")) {
+                if (sqlController.isBeEmpty()) {
+                    System.out.println(sqlController.getTablename());
+                    connectionController.truncateDataTable(sqlController.getTablename());
+                }
+            } else if (connectionController.getSourceTab().equals("DBF")) {
+                if (dbfController.isBeEmpty()) {
+                    System.out.println(dbfController.getTablename());
+                    connectionController.truncateDataTable(dbfController.getTablename());
+                }
+            } else if (connectionController.getSourceTab().equals("Excel")) {
+                if (excelController.isBeEmpty()) {
+                    System.out.println(excelController.getTablename());
+                    connectionController.truncateDataTable(excelController.getTablename());
+                }
             }
-        } else if (connectionController.getSourceTab().equals("Excel")) {
-            if (excelController.isBeEmpty()) {
-                System.out.println(excelController.getTablename());
-                connectionController.truncateDataTable(excelController.getTablename());
-            }
-        }
-        
 
-        Task<Boolean> task = new Task<Boolean>() {
-            @Override
-            protected Boolean call() throws Exception {
-                boolean result = true;
-                int cont = 0;
-                int nfilas = 0;
-                int nfilasTotales = lista.size();
-                for (T t : lista) {
-                    if (cont == 100) {
-                        cont = 0;
-                        Platform.runLater(() -> {
-                            logBuilder.setLength(0);
-                            detailMessage.set("");
-                        });
+            Task<Boolean> task = new Task<Boolean>() {
+                @Override
+                protected Boolean call() throws Exception {
+
+                    boolean result = true;
+                    int cont = 0;
+                    int nfilas = 0;
+                    int nfilasTotales = lista.size();
+                    for (T t : lista) {
+                        if (isCancelled() || isCancelled) {
+                            updateMessage("Tarea cancelada");
+                            return false;
+                        }
+                        if (cont == 100) {
+                            cont = 0;
+                            Platform.runLater(() -> {
+                                logBuilder.setLength(0);
+                                detailMessage.set("");
+                            });
+                        }
+                        System.out.println(t.toString());
+                        boolean insertResult = true;
+                        insertResult = connectionController.insertDataQuery(t.toString());
+                        cont++;
+                        nfilas++;
+                        double progress = (double) nfilas / nfilasTotales;
+                        int progressPercentage = (int) Math.round(progress * 100);
+                        updateProgress(progress, 1.0);
+                        updateMessage("Procesando " + nfilas + " de " + nfilasTotales + " filas");
+                        appendLog("Detalle: " + t.toString());
+                        System.out.println("Procesando " + nfilas + " de " + nfilasTotales + " filas");
+                        System.out.println("Progreso: " + (progress * 100) + "%");
+                        if (!insertResult) {
+                            appendLog(connectionController.getError());
+                            result = false;
+                        }
+                        appendLog("Procesando " + nfilas + " de " + nfilasTotales + " filas");
+                        appendLog("Progreso: " + progressPercentage + "%");
+                        appendLog(
+                                "--------------------------------------------------------------------------------------------------------------------------------------------------------");
+                        if (!insertResult) {
+                            break;
+                        }
                     }
-                    System.out.println(t.toString());
-                    boolean insertResult = true;
-                    insertResult = connectionController.insertDataQuery(t.toString());
-                    cont++;
-                    nfilas++;
-                    double progress = (double) nfilas / nfilasTotales;
-                    int progressPercentage = (int) Math.round(progress * 100);
-                    updateProgress(progress, 1.0);
-                    updateMessage("Procesando " + nfilas + " de " + nfilasTotales + " filas");
-                    appendLog("Detalle: " + t.toString());
-                    System.out.println("Procesando " + nfilas + " de " + nfilasTotales + " filas");
-                    System.out.println("Progreso: " + (progress * 100) + "%");
-                    if (!insertResult) {
-                        appendLog(connectionController.getError());
-                        result = false;
-                    }
-                    appendLog("Procesando " + nfilas + " de " + nfilasTotales + " filas");
-                    appendLog("Progreso: " + progressPercentage + "%");
-                    appendLog(
-                            "--------------------------------------------------------------------------------------------------------------------------------------------------------");
-                    if (!insertResult) {
-                        break;
+                    return result;
+                }
+            };
+
+            task.setOnSucceeded(event -> {
+                boolean result = task.getValue();
+                MyAlert myAlert = new MyAlert();
+                if (result) {
+                    myAlert.showAlert(AlertType.INFORMATION, "Datos insertados correctamente",
+                            "Datos insertados correctamente en la base de datos");
+                    btnConvertir.setDisable(true);
+                    btnConvertir.setVisible(false);
+                    btnFinalizar.setDisable(false);
+                    btnFinalizar.setVisible(true);
+                } else {
+                    if (isCancelled) {
+                        myAlert.showAlert(AlertType.INFORMATION, "Tarea cancelada",
+                                "La tarea de conversión de datos ha sido cancelada");
+                    } else {
+                        myAlert.showAlert(AlertType.ERROR, "Error al insertar datos",
+                                "Error al insertar datos en la base de datos");
                     }
                 }
-                return result;
-            }
-        };
+            });
 
-        task.setOnSucceeded(event -> {
-            boolean result = task.getValue();
-            MyAlert myAlert = new MyAlert();
-            if (result) {
-                myAlert.showAlert(AlertType.INFORMATION, "Datos insertados correctamente",
-                        "Datos insertados correctamente en la base de datos");
-            } else {
-                myAlert.showAlert(AlertType.ERROR, "Error al insertar datos",
-                        "Error al insertar datos en la base de datos");
-            }
-        });
+            task.setOnFailed(event -> {
+                Throwable exception = task.getException();
+                exception.printStackTrace();
+                MyAlert myAlert = new MyAlert();
+                if (isCancelled) {
+                    myAlert.showAlert(AlertType.INFORMATION, "Tarea cancelada",
+                            "La tarea de conversión de datos ha sido cancelada");
+                } else {
+                    myAlert.showAlert(AlertType.ERROR, "Error en la tarea",
+                            "Se produjo un error durante la ejecución de la tarea: " + exception.getMessage());
+                }
+            });
 
-        task.setOnFailed(event -> {
-            Throwable exception = task.getException();
-            exception.printStackTrace();
-            MyAlert myAlert = new MyAlert();
-            myAlert.showAlert(AlertType.ERROR, "Error en la tarea",
-                    "Se produjo un error durante la ejecución de la tarea: " + exception.getMessage());
-        });
+            progressBar.progressProperty().bind(task.progressProperty());
+            progressMessage.bind(task.messageProperty());
 
-        progressBar.progressProperty().bind(task.progressProperty());
-        progressMessage.bind(task.messageProperty());
-
-        Thread t = new Thread(task);
-        t.start();
-
+            Thread t = new Thread(task);
+            t.start();
+        }
     }
 
     private void appendLog(String message) {
@@ -180,6 +219,11 @@ public class ConversorController<T> implements Initializable {
             detailMessage.set(logBuilder.toString());
             txtArea.setScrollTop(Double.MAX_VALUE);
         });
+    }
+
+    @FXML
+    private void convertFinished() throws IOException {
+        App.setRoot("ConfiguracionConexion");
     }
 
 }
