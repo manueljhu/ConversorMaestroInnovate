@@ -41,7 +41,8 @@
       <AnchorPane prefHeight="55.0" prefWidth="900.0">
          <children>
             <Separator prefHeight="8.0" prefWidth="900.0" />
-            <Button layoutX="418.0" layoutY="15.0" onAction="#convertButton" text="Convertir" />
+            <Button fx:id="btnConvertir" layoutX="418.0" layoutY="15.0" onAction="#convertButton" text="Convertir" />
+            <Button fx:id="btnFinalizar" layoutX="418.0" layoutY="15.0" onAction="#convertFinished" prefWidth="65.0" text="Finalizar" />
          </children>
       </AnchorPane>
    </children>

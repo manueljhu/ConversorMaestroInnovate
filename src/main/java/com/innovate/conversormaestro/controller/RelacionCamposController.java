@@ -469,6 +469,10 @@ public class RelacionCamposController implements Initializable {
             Stage stage = (Stage) title.getScene().getWindow();
             File iniFile = fileChooser.showSaveDialog(stage);
 
+            if (iniFile == null) {
+                return;
+            }
+
             Wini ini;
             if (!iniFile.exists()) {
                 iniFile.createNewFile();
@@ -524,9 +528,13 @@ public class RelacionCamposController implements Initializable {
             if (initialDirectory.exists()) {
                 fileChooser.setInitialDirectory(initialDirectory);
             }
-            
+
             Stage stage = (Stage) title.getScene().getWindow();
             File iniFile = fileChooser.showOpenDialog(stage);
+
+            if (iniFile == null) {
+                return;
+            }
 
             Wini ini = new Wini(iniFile);
 
@@ -720,7 +728,19 @@ public class RelacionCamposController implements Initializable {
                     protected void succeeded() {
                         super.succeeded();
                         piProgress.setVisible(false);
+                        if (connectionController.getSourceTab().equals("SQL")) {
+
+                        } else if (connectionController.getSourceTab().equals("DBF")) {
+
+                        } else if (connectionController.getSourceTab().equals("Excel")) {
+                            if (excelController.getnErrors() > 0) {
+                                MyAlert alert = new MyAlert();
+                                alert.showAlert(AlertType.INFORMATION, "Proceso finalizado con posibles errores",
+                                        "Se han encontrado " + excelController.getnErrors() + " errores en la conversión de datos. Por favor, revise el archivo de log.");
+                            }
+                        }
                         try {
+
                             App.setRoot("Conversor");
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -734,7 +754,10 @@ public class RelacionCamposController implements Initializable {
                         piProgress.setVisible(false);
                         txRelations.setVisible(false);
                         MyAlert alert = new MyAlert();
-                        alert.showAlert(AlertType.ERROR, "Error al pasar datos", getException().getMessage());
+                        alert.showAlert(AlertType.ERROR, "Error al pasar datos",
+                                "Error en la fila " + (excelController.getActualRow() + 1) + ", en la columna "
+                                        + excelController.getActualColumn() + ".\nError:"
+                                        + getException().getMessage());
                         btnSwitchToConversor.setDisable(false);
                         txRelations.setVisible(false);
                     }

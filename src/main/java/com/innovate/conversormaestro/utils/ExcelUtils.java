@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -21,6 +23,31 @@ import com.innovate.conversormaestro.datasource.ConnectionController;
 public class ExcelUtils {
     private String PathSourceExcel;
     private ConnectionController connectionController;
+    private HSSFWorkbook hssfWorkbook;
+    private HSSFSheet hssfSheet;
+    private Map<String, Integer> columnIndices;
+
+    public ExcelUtils() {
+        connectionController = ConnectionController.getConectionController();
+        PathSourceExcel = connectionController.getPathSourceExcel();
+        columnIndices = new HashMap<>();
+
+        try (InputStream excelStream = new FileInputStream(PathSourceExcel)) {
+            hssfWorkbook = new HSSFWorkbook(excelStream);
+            hssfSheet = hssfWorkbook.getSheetAt(0);
+            HSSFRow hssfRowCabecera = hssfSheet.getRow(0);
+
+            if (hssfRowCabecera == null) {
+                throw new IllegalArgumentException("Cabecera no encontrada.");
+            }
+
+            for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
+                columnIndices.put(hssfRowCabecera.getCell(c).getStringCellValue().toLowerCase(), c);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo Excel: " + e.getMessage());
+        }
+    }
 
     public int devuelveNFilasExcel() {
         connectionController = ConnectionController.getConectionController();
@@ -54,39 +81,24 @@ public class ExcelUtils {
 
     public String devuelveValorCelda(int fila, String columna) {
         String result = "";
-        connectionController = ConnectionController.getConectionController();
-        PathSourceExcel = connectionController.getPathSourceExcel();
-    
-        // Usamos try-with-resources para asegurarnos de cerrar el flujo y el archivo
-        try (InputStream excelStream = new FileInputStream(PathSourceExcel);
-             HSSFWorkbook hssfWorkbook = new HSSFWorkbook(excelStream)) {
-    
-            HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
-            HSSFRow hssfRowCabecera = hssfSheet.getRow(0);
+        try {
             HSSFRow hssfRow = hssfSheet.getRow(fila);
-    
-            if (hssfRowCabecera == null || hssfRow == null) {
-                throw new IllegalArgumentException("Fila o cabecera no encontrada.");
+
+            if (hssfRow == null) {
+                throw new IllegalArgumentException("Fila no encontrada: " + fila);
             }
-    
-            DataFormatter dataFormatter = new DataFormatter();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            
-            // Encontramos el índice de la columna en la cabecera
-            int columnIndex = -1;
-            for (int c = 0; c < hssfRowCabecera.getLastCellNum(); c++) {
-                if (hssfRowCabecera.getCell(c).getStringCellValue().equalsIgnoreCase(columna)) {
-                    columnIndex = c;
-                    break;
-                }
-            }
-    
-            if (columnIndex == -1) {
+
+            Integer columnIndex = columnIndices.get(columna.toLowerCase());
+
+            if (columnIndex == null) {
                 throw new IllegalArgumentException("Columna no encontrada: " + columna);
             }
-    
+
             HSSFCell cell = hssfRow.getCell(columnIndex);
             if (cell != null) {
+                DataFormatter dataFormatter = new DataFormatter();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
                 if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
                     result = dateFormat.format(cell.getDateCellValue());
                 } else if (cell.getCellType() == CellType.NUMERIC) {
@@ -94,12 +106,9 @@ public class ExcelUtils {
                 } else {
                     result = dataFormatter.formatCellValue(cell);
                 }
+            } else {
+                result = "";
             }
-    
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: Archivo Excel no encontrado en la ruta especificada.");
-        } catch (IOException e) {
-            System.out.println("Error: No se pudo leer el archivo Excel.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }

@@ -21,6 +21,10 @@ public class ExcelController {
     private String typeTransfer;
     private boolean beEmpty;
 
+    private int actualRow;
+    private String actualColumn;
+    private int nErrors;
+
     private static AgentesExcelSwitch agentesSwitch;
     private static AlmacenesExcelSwitch almacenesSwitch;
     private static ArticulosExcelSwitch articulosSwitch;
@@ -94,6 +98,30 @@ public class ExcelController {
 
     public void setBeEmpty(boolean beEmpty) {
         this.beEmpty = beEmpty;
+    }
+
+    public int getActualRow() {
+        return actualRow;
+    }
+
+    public void setActualRow(int actualRow) {
+        this.actualRow = actualRow;
+    }
+
+    public String getActualColumn() {
+        return actualColumn;
+    }
+
+    public void setActualColumn(String actualColumn) {
+        this.actualColumn = actualColumn;
+    }
+
+    public int getnErrors() {
+        return nErrors;
+    }
+
+    public void setnErrors(int nErrors) {
+        this.nErrors = nErrors;
     }
 
     public ArrayList<String> getColumnOrigin() {
