@@ -731,6 +731,11 @@ public class RelacionCamposController implements Initializable {
                         if (connectionController.getSourceTab().equals("SQL")) {
 
                         } else if (connectionController.getSourceTab().equals("DBF")) {
+                            if (dbfController.getnErrors() > 0) {
+                                MyAlert alert = new MyAlert();
+                                alert.showAlert(AlertType.INFORMATION, "Proceso finalizado con posibles errores",
+                                        "Se han encontrado " + dbfController.getnErrors() + " errores en la conversión de datos. Por favor, revise el archivo de log.");
+                            }
 
                         } else if (connectionController.getSourceTab().equals("Excel")) {
                             if (excelController.getnErrors() > 0) {
@@ -739,6 +744,7 @@ public class RelacionCamposController implements Initializable {
                                         "Se han encontrado " + excelController.getnErrors() + " errores en la conversión de datos. Por favor, revise el archivo de log.");
                             }
                         }
+                        
                         try {
 
                             App.setRoot("Conversor");
