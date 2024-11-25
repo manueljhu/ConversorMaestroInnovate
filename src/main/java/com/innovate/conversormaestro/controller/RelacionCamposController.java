@@ -245,7 +245,6 @@ public class RelacionCamposController implements Initializable {
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         lvRelationDestinationFields.getSelectionModel().clearSelection();
-                        lvSourceFields.getSelectionModel().clearSelection();
                         lvDestinationFields.getSelectionModel().clearSelection();
                     }
                 });
@@ -255,13 +254,11 @@ public class RelacionCamposController implements Initializable {
                     if (newValue != null) {
                         lvRelationSourceFields.getSelectionModel().clearSelection();
                         lvSourceFields.getSelectionModel().clearSelection();
-                        lvDestinationFields.getSelectionModel().clearSelection();
                     }
                 });
 
         lvSourceFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                lvRelationSourceFields.getSelectionModel().clearSelection();
                 lvRelationDestinationFields.getSelectionModel().clearSelection();
                 lvDestinationFields.getSelectionModel().clearSelection();
             }
@@ -270,7 +267,6 @@ public class RelacionCamposController implements Initializable {
         lvDestinationFields.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 lvRelationSourceFields.getSelectionModel().clearSelection();
-                lvRelationDestinationFields.getSelectionModel().clearSelection();
                 lvSourceFields.getSelectionModel().clearSelection();
             }
         });

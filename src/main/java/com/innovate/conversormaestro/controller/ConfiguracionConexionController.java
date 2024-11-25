@@ -180,7 +180,7 @@ public class ConfiguracionConexionController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
                 if (newTab != null) {
-                    System.out.println("Selected Tab: " + newTab.getText());
+                    //System.out.println("Selected Tab: " + newTab.getText());
                 }
                 ActualTab = newTab.getText();
             }
@@ -282,7 +282,7 @@ public class ConfiguracionConexionController implements Initializable {
         } else if (rbViewsSource.isSelected()) {
             NameOption = "Views";
         }
-        System.out.println(NameOption);
+        //System.out.println(NameOption);
     }
 
     @FXML
