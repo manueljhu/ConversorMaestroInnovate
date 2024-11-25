@@ -99,6 +99,7 @@ public class ContactosProveedoresSQLSwitch {
                     logUtils.WriteLog(mensaje, newConvert);
                     newConvert = false;
                 }
+                sqlController.setnErrors(nErrors);
             }
             /* System.out.println("Fila: " + i);
             System.out.println(contacto);

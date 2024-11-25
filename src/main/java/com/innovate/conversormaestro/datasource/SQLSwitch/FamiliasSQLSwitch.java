@@ -182,6 +182,7 @@ public class FamiliasSQLSwitch {
                     logUtils.WriteLog(mensaje, newConvert);
                     newConvert = false;
                 }
+                sqlController.setnErrors(nErrors);
             }
             /* System.out.println("Fila: " + i);
             System.out.println(familia);
