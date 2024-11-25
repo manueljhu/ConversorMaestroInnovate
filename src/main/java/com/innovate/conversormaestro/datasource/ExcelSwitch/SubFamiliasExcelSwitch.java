@@ -189,6 +189,7 @@ public class SubFamiliasExcelSwitch {
                     logUtils.WriteLog(mensaje, newConvert);
                     newConvert = false;
                 }
+                excelController.setnErrors(nErrors);
             }
             /* System.out.println("Fila: " + i);
             System.out.println();

@@ -41,6 +41,8 @@ public class BancoEmpresaExcelSwitch {
                 try {
                     switch (relaciones.get(j).getCampoDestino()) {
                         case "cue":
+                        System.out.println("Cue: " + formatUtils.formatDigitGroupAccount(group, account,
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                             banco.setCue(formatUtils.formatDigitGroupAccount(group, account,
                                     excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                             break;
@@ -91,6 +93,7 @@ public class BancoEmpresaExcelSwitch {
                     logUtils.WriteLog(mensaje, newConvert);
                     newConvert = false;
                 }
+                excelController.setnErrors(nErrors);
             }
             /* System.out.println("Fila: " + i);
             System.out.println(banco);

@@ -84,6 +84,7 @@ public class DireccionesProveedoresDBFSwitch {
                     logUtils.WriteLog(mensaje, newConvert);
                     newConvert = false;
                 }
+                dbfController.setnErrors(nErrors);
             }
             /* System.out.println("Fila: " + i);
             System.out.println(direccion);
