@@ -10,6 +10,9 @@ import java.io.IOException;
 
 /** 
  * JavaFX App
+ * Authors 
+ *  - Manuel José Hidalgo Urbano (manueljhu)
+ *  - Juan María Castillo Giménez (juanmacasgim)
  */
 public class App extends Application {
 
