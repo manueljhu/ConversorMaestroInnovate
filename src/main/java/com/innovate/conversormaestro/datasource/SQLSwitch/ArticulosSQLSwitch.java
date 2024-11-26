@@ -602,6 +602,200 @@ public class ArticulosSQLSwitch {
                             articulo.setSincro(
                                     SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "cer_ret":
+                            articulo.setCer_Ret(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_prebas":
+                            articulo.setCer_Prebas(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_toxico":
+                            articulo.setCer_Toxico(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_numreg":
+                            articulo.setCer_Numreg(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_feccad":
+                            articulo.setCer_Feccad(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_cattox":
+                            articulo.setCer_Cattox(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_numonu":
+                            articulo.setCer_Numonu(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_compon":
+                            articulo.setCer_Compon(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fictec":
+                            articulo.setCer_Fictec(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fer":
+                            articulo.setCer_Fer(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_tipabo":
+                            articulo.setCer_Tipabo(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_riqnpk":
+                            articulo.setCer_Riqnpk(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_ffiseg":
+                            articulo.setCer_Ffiseg(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_dosmax":
+                            articulo.setCer_Dosmax(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_plaseg":
+                            articulo.setCer_Plaseg(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_exe_lq":
+                            articulo.setCer_Exe_Lq(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_catemb":
+                            articulo.setCer_Catemb(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_clase":
+                            articulo.setCer_Clase(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_coertc":
+                            articulo.setCer_Coertc(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_tipfer":
+                            articulo.setCer_Tipfer(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_tipest":
+                            articulo.setCer_Tipest(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_nitro":
+                            articulo.setCer_Nitro(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_precur":
+                            articulo.setCer_Precur(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_comp":
+                            articulo.setCer_Comp(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_concen":
+                            articulo.setCer_Concen(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_cas":
+                            articulo.setCer_Cas(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_uso":
+                            articulo.setCer_Uso(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_pelma":
+                            articulo.setCer_Pelma(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_imppar":
+                            articulo.setCer_Imppar(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_dencom":
+                            articulo.setCer_Dencom(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_aspafi":
+                            articulo.setCer_Aspafi(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_sigfit":
+                            articulo.setCer_Sigfit(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        
+                        case "dis_cai":
+                            articulo.setDis_Cai(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cae":
+                            articulo.setDis_Cae(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cas":
+                            articulo.setDis_Cas(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pii":
+                            articulo.setDis_Pii(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pie":
+                            articulo.setDis_Pie(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pis":
+                            articulo.setDis_Pis(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_tar":
+                            articulo.setDis_Tar(
+                                    SQLUtils.devuelveInteger(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_tva":
+                            articulo.setDis_Tva(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pva":
+                            articulo.setDis_Pva(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_vpa":
+                            articulo.setDis_Vpa(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_vca":
+                            articulo.setDis_Vca(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pun":
+                            articulo.setDis_Pun(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_utr":
+                            articulo.setDis_Utr(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_env":
+                            articulo.setDis_Env(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_uniimp":
+                            articulo.setDis_Uniimp(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_uniped":
+                            articulo.setDis_Uniped(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

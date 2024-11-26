@@ -165,6 +165,14 @@ public class FacturaEmitida {
     private String aeattiping = "";
     private float aeatimpcon = 0.000000f;
 
+    private String cer_cul = "";
+    private String cer_var = "";
+
+    private String tal_mat = "";
+    private float tal_franquicia = 0.000000f;
+    private String tal_orden = "";
+    private float tal_klm = 0.000000f;
+
     public String getNum() {
         return this.num;
     }
@@ -795,6 +803,30 @@ public class FacturaEmitida {
 
     public float getAeatimpcon() {
         return this.aeatimpcon;
+    }
+
+    public String getCer_cul() {
+        return cer_cul;
+    }
+
+    public String getCer_var() {
+        return cer_var;
+    }
+
+    public String getTal_mat() {
+        return tal_mat;
+    }
+
+    public float getTal_franquicia() {
+        return tal_franquicia;
+    }
+
+    public String getTal_orden() {
+        return tal_orden;
+    }
+
+    public float getTal_klm() {
+        return tal_klm;
     }
 
     public void setNum(String num) {
@@ -1753,9 +1785,50 @@ public class FacturaEmitida {
         this.aeatimpcon = aeatimpcon;
     }
 
+    public void setCer_Cul(String cer_cul) {
+        if (cer_cul.length() > 3) {
+            this.cer_cul = cer_cul.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_cul = cer_cul.replace("'", "");
+        }
+    }
+
+    public void setCer_Var(String cer_var) {
+        if (cer_var.length() > 3) {
+            this.cer_var = cer_var.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_var = cer_var.replace("'", "");
+        }
+    }
+
+    public void setTal_Mat(String tal_mat) {
+        if (tal_mat.length() > 10) {
+            this.tal_mat = tal_mat.trim().substring(0, 10).replace("'", "");
+        } else {
+            this.tal_mat = tal_mat.replace("'", "");
+        }
+    }
+
+    public void setTal_Franquicia(float tal_franquicia) {
+        this.tal_franquicia = tal_franquicia;
+    }
+
+    public void setTal_Orden(String tal_orden) {
+        if (tal_orden.length() > 9) {
+            this.tal_orden = tal_orden.trim().substring(0, 9).replace("'", "");
+        } else {
+            this.tal_orden = tal_orden.replace("'", "");
+        }
+    }
+
+    public void setTal_Klm(float tal_klm) {
+        this.tal_klm = tal_klm;
+    }
+
     @Override
     public String toString() {
         String type = "";
+        String GPVersion = "";
         ConnectionController connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
             SQLController sqlController = SQLController.getSQLController();
@@ -1767,11 +1840,26 @@ public class FacturaEmitida {
             ExcelController excelController = ExcelController.getExcelController();
             type = excelController.getTypeTransfer();
         }
-        
+
+        GPVersion = connectionController.getGPVersionDestination();
+
         if (type.equals("Insert")) {
-            return toInsert();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toInsertFit();
+            } else if (GPVersion.equals("Talleres")) {
+                return toInsertTall();
+            } else {
+                return toInsert();
+            }
+            
         } else if (type.equals("Update")) {
-            return toUpdate();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toUpdateFit();
+            } else if (GPVersion.equals("Talleres")) {
+                return toUpdateTall();
+            } else {
+                return toUpdate();
+            }
         } else {
             return "";
         }
@@ -1828,6 +1916,111 @@ public class FacturaEmitida {
                 + aeattiping + "'," + aeatimpcon + ")";
     }
 
+    public String toInsertFit() {
+        return "INSERT INTO FACEMI (num,fea,doc,fee,gas,cue,li1,li2,dt1,dt2,fuc,[for],fin,alm,com,nom,nif,ba1eu,iv1eu,re1eu,"
+                +
+                "ba2eu,iv2eu,re2eu,ba3eu,iv3eu,re3eu,ba4eu,iv4eu,re4eu,ba5eu,iv5eu,re5eu,exeeu,ulceu,toceu,enteu,imceu,imreu,"
+                +
+                "tre,pre,ireeu,den,rut,obr,ivainc,tra,entped,impuesto,tip,web,aut,comis,negativa,fecope,efacgen,efacenv,sno,dir,"
+                +
+                "pob,npro,pro,pais,mod303,mod303a,mod303b,mod303c,mod347,usuario_bloqueo,emi_deb_pag,emi_incluir,emi_antes_dto,"
+                +
+                "emi_iva_inc,moneda,cotiza,basmon,totmon,entmon,obs_doc,recargo,retgar,porretgar,impretgar,tipretgar,suplidos,iva1,"
+                +
+                "iva2,iva3,iva4,iva5,rec1,rec2,rec3,rec4,rec5,tipivaok,exento,numtic,cri_caja,ded_cie,cen_adm,siiest,siiact,siitipfra,"
+                +
+                "siifraemi,siitiprec,siitipsuj,siitipnsu,siitipexe,siidesfra,siiimpnsu,siiimptai,siiimpexe,siinifemi,siiemiter,siicupon,"
+                +
+                "siivardes,siidatrec,siidatinm,siidatagr,siibasrec,siicuorec,siirecrec,siibascos,siitraiva,siientexe,siientcexe,siienttsuj,"
+                +
+                "siientnsu,siienttai,siientdes,siiserexe,siisercexe,siisertsuj,siisernsu,siisertai,siiserdes,siidatdes,siifraemi1,siifraemi2,"
+                +
+                "siinumacu,siinumresf,siinemiter,siidesman,patron,siirefext,siinomensu,siinifensu,siidesnoid,siifraiden,siimergas,siidesexen,"
+                +
+                "siimacro,siiregprev,siientdexe,siiserdexe,aeattipfac,aeattiping,aeatimpcon,cer_cul,cer_var) VALUES ('"
+                + num + "'," + fea + ",'" + doc + "'," + fee + ",'" + gas + "','" + cue + "','" + li1 + "','" + li2
+                + "'," + dt1 + "," + dt2 + "," + fuc + ",'" + forpag + "'," + fin + ",'" + alm + "','" + com + "','"
+                + nom + "','" + nif + "'," + ba1eu + "," + iv1eu + "," + re1eu + "," + ba2eu + "," + iv2eu + "," + re2eu
+                + "," + ba3eu + "," + iv3eu + "," + re3eu + "," + ba4eu + "," + iv4eu + "," + re4eu + "," + ba5eu + ","
+                + iv5eu + "," + re5eu + "," + exeeu + "," + ulceu + "," + toceu + "," + enteu + "," + imceu + ","
+                + imreu + "," + tre + "," + pre + "," + ireeu + ",'" + den + "','" + rut + "','" + obr + "','" + ivainc
+                + "','" + tra + "'," + entped + "," + impuesto + ",'" + tip + "','" + web + "','" + aut + "','" + comis
+                + "'," + negativa + "," + fecope + ",'" + efacgen + "','" + efacenv + "','" + sno + "','" + dir
+                + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'" + mod303 + "','" + mod303a + "','"
+                + mod303b + "','" + mod303c + "','" + mod347 + "'," + usuario_bloqueo + ",'" + emi_deb_pag + "','"
+                + emi_incluir + "','" + emi_antes_dto + "','" + emi_iva_inc + "'," + moneda + "," + cotiza + ","
+                + basmon + "," + totmon + "," + entmon + ",'" + obs_doc + "','" + recargo + "','" + retgar + "',"
+                + porretgar + "," + impretgar + ",'" + tipretgar + "'," + suplidos + "," + iva1 + "," + iva2 + ","
+                + iva3 + "," + iva4 + "," + iva5 + "," + rec1 + "," + rec2 + "," + rec3 + "," + rec4 + "," + rec5 + ",'"
+                + tipivaok + "','" + exento + "','" + numtic + "','" + cri_caja + "','" + ded_cie + "','" + cen_adm
+                + "','" + siiest + "','" + siiact + "','" + siitipfra + "','" + siifraemi + "','" + siitiprec + "','"
+                + siitipsuj + "','" + siitipnsu + "','" + siitipexe + "','" + siidesfra + "'," + siiimpnsu + ","
+                + siiimptai + "," + siiimpexe + ",'" + siinifemi + "','" + siiemiter + "','" + siicupon + "','"
+                + siivardes + "','" + siidatrec + "','" + siidatinm + "','" + siidatagr + "'," + siibasrec + ","
+                + siicuorec + "," + siirecrec + "," + siibascos + "," + siitraiva + "," + siientexe + ",'" + siientcexe
+                + "','" + siienttsuj + "'," + siientnsu + "," + siienttai + ",'" + siientdes + "'," + siiserexe + ",'"
+                + siisercexe + "','" + siisertsuj + "'," + siisernsu + "," + siisertai + ",'" + siiserdes + "','"
+                + siidatdes + "','" + siifraemi1 + "','" + siifraemi2 + "','" + siinumacu + "','" + siinumresf + "','"
+                + siinemiter + "','" + siidesman + "','" + patron + "','" + siirefext + "','" + siinomensu + "','"
+                + siinifensu + "','" + siidesnoid + "','" + siifraiden + "','" + siimergas + "','" + siidesexen + "','"
+                + siimacro + "','" + siiregprev + "','" + siientdexe + "','" + siiserdexe + "','" + aeattipfac + "','"
+                + aeattiping + "'," + aeatimpcon + ",'" + cer_cul + "','" + cer_var + "')";
+    }
+
+    public String toInsertTall() {
+        return "INSERT INTO FACEMI (num,fea,doc,fee,gas,cue,li1,li2,dt1,dt2,fuc,[for],fin,alm,com,nom,nif,ba1eu,iv1eu,re1eu,"
+                +
+                "ba2eu,iv2eu,re2eu,ba3eu,iv3eu,re3eu,ba4eu,iv4eu,re4eu,ba5eu,iv5eu,re5eu,exeeu,ulceu,toceu,enteu,imceu,imreu,"
+                +
+                "tre,pre,ireeu,den,rut,obr,ivainc,tra,entped,impuesto,tip,web,aut,comis,negativa,fecope,efacgen,efacenv,sno,dir,"
+                +
+                "pob,npro,pro,pais,mod303,mod303a,mod303b,mod303c,mod347,usuario_bloqueo,emi_deb_pag,emi_incluir,emi_antes_dto,"
+                +
+                "emi_iva_inc,moneda,cotiza,basmon,totmon,entmon,obs_doc,recargo,retgar,porretgar,impretgar,tipretgar,suplidos,iva1,"
+                +
+                "iva2,iva3,iva4,iva5,rec1,rec2,rec3,rec4,rec5,tipivaok,exento,numtic,cri_caja,ded_cie,cen_adm,siiest,siiact,siitipfra,"
+                +
+                "siifraemi,siitiprec,siitipsuj,siitipnsu,siitipexe,siidesfra,siiimpnsu,siiimptai,siiimpexe,siinifemi,siiemiter,siicupon,"
+                +
+                "siivardes,siidatrec,siidatinm,siidatagr,siibasrec,siicuorec,siirecrec,siibascos,siitraiva,siientexe,siientcexe,siienttsuj,"
+                +
+                "siientnsu,siienttai,siientdes,siiserexe,siisercexe,siisertsuj,siisernsu,siisertai,siiserdes,siidatdes,siifraemi1,siifraemi2,"
+                +
+                "siinumacu,siinumresf,siinemiter,siidesman,patron,siirefext,siinomensu,siinifensu,siidesnoid,siifraiden,siimergas,siidesexen,"
+                +
+                "siimacro,siiregprev,siientdexe,siiserdexe,aeattipfac,aeattiping,aeatimpcon,tal_mat,tal_franquicia,tal_orden,tal_klm"
+                +
+                ") VALUES ('"
+                + num + "'," + fea + ",'" + doc + "'," + fee + ",'" + gas + "','" + cue + "','" + li1 + "','" + li2
+                + "'," + dt1 + "," + dt2 + "," + fuc + ",'" + forpag + "'," + fin + ",'" + alm + "','" + com + "','"
+                + nom + "','" + nif + "'," + ba1eu + "," + iv1eu + "," + re1eu + "," + ba2eu + "," + iv2eu + "," + re2eu
+                + "," + ba3eu + "," + iv3eu + "," + re3eu + "," + ba4eu + "," + iv4eu + "," + re4eu + "," + ba5eu + ","
+                + iv5eu + "," + re5eu + "," + exeeu + "," + ulceu + "," + toceu + "," + enteu + "," + imceu + ","
+                + imreu + "," + tre + "," + pre + "," + ireeu + ",'" + den + "','" + rut + "','" + obr + "','" + ivainc
+                + "','" + tra + "'," + entped + "," + impuesto + ",'" + tip + "','" + web + "','" + aut + "','" + comis
+                + "'," + negativa + "," + fecope + ",'" + efacgen + "','" + efacenv + "','" + sno + "','" + dir
+                + "','" + pob + "'," + npro + ",'" + pro + "'," + pais + ",'" + mod303 + "','" + mod303a + "','"
+                + mod303b + "','" + mod303c + "','" + mod347 + "'," + usuario_bloqueo + ",'" + emi_deb_pag + "','"
+                + emi_incluir + "','" + emi_antes_dto + "','" + emi_iva_inc + "'," + moneda + "," + cotiza + ","
+                + basmon + "," + totmon + "," + entmon + ",'" + obs_doc + "','" + recargo + "','" + retgar + "',"
+                + porretgar + "," + impretgar + ",'" + tipretgar + "'," + suplidos + "," + iva1 + "," + iva2 + ","
+                + iva3 + "," + iva4 + "," + iva5 + "," + rec1 + "," + rec2 + "," + rec3 + "," + rec4 + "," + rec5 + ",'"
+                + tipivaok + "','" + exento + "','" + numtic + "','" + cri_caja + "','" + ded_cie + "','" + cen_adm
+                + "','" + siiest + "','" + siiact + "','" + siitipfra + "','" + siifraemi + "','" + siitiprec + "','"
+                + siitipsuj + "','" + siitipnsu + "','" + siitipexe + "','" + siidesfra + "'," + siiimpnsu + ","
+                + siiimptai + "," + siiimpexe + ",'" + siinifemi + "','" + siiemiter + "','" + siicupon + "','"
+                + siivardes + "','" + siidatrec + "','" + siidatinm + "','" + siidatagr + "'," + siibasrec + ","
+                + siicuorec + "," + siirecrec + "," + siibascos + "," + siitraiva + "," + siientexe + ",'" + siientcexe
+                + "','" + siienttsuj + "'," + siientnsu + "," + siienttai + ",'" + siientdes + "'," + siiserexe + ",'"
+                + siisercexe + "','" + siisertsuj + "'," + siisernsu + "," + siisertai + ",'" + siiserdes + "','"
+                + siidatdes + "','" + siifraemi1 + "','" + siifraemi2 + "','" + siinumacu + "','" + siinumresf + "','"
+                + siinemiter + "','" + siidesman + "','" + patron + "','" + siirefext + "','" + siinomensu + "','"
+                + siinifensu + "','" + siidesnoid + "','" + siifraiden + "','" + siimergas + "','" + siidesexen + "','"
+                + siimacro + "','" + siiregprev + "','" + siientdexe + "','" + siiserdexe + "','" + aeattipfac + "','"
+                + aeattiping + "'," + aeatimpcon + ",'" + tal_mat + "'," + tal_franquicia + ",'" + tal_orden + "',"
+                + tal_klm + ")";
+    }
+
     public String toUpdate() {
         return "UPDATE FACEMI SET fea=" + fea + ",doc='" + doc + "',fee=" + fee + ",gas='" + gas + "',cue='" + cue
                 + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2 + ",fuc=" + fuc + ",[for]='"
@@ -1869,5 +2062,93 @@ public class FacturaEmitida {
                 + siidesexen + "',siimacro='" + siimacro + "',siiregprev='" + siiregprev + "',siientdexe='" + siientdexe
                 + "',siiserdexe='" + siiserdexe + "',aeattipfac='" + aeattipfac + "',aeattiping='" + aeattiping
                 + "',aeatimpcon=" + aeatimpcon + " WHERE num='" + num + "';";
+    }
+
+    public String toUpdateFit() {
+        return "UPDATE FACEMI SET fea=" + fea + ",doc='" + doc + "',fee=" + fee + ",gas='" + gas + "',cue='" + cue
+                + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2 + ",fuc=" + fuc + ",[for]='"
+                + forpag + "',fin=" + fin + ",alm='" + alm + "',com='" + com + "',nom='" + nom + "',nif='" + nif
+                + "',ba1eu=" + ba1eu + ",iv1eu=" + iv1eu + ",re1eu=" + re1eu + ",ba2eu=" + ba2eu + ",iv2eu=" + iv2eu
+                + ",re2eu=" + re2eu + ",ba3eu=" + ba3eu + ",iv3eu=" + iv3eu + ",re3eu=" + re3eu + ",ba4eu=" + ba4eu
+                + ",iv4eu=" + iv4eu + ",re4eu=" + re4eu + ",ba5eu=" + ba5eu + ",iv5eu=" + iv5eu + ",re5eu=" + re5eu
+                + ",exeeu=" + exeeu + ",ulceu=" + ulceu + ",toceu=" + toceu + ",enteu=" + enteu + ",imceu=" + imceu
+                + ",imreu=" + imreu + ",tre=" + tre + ",pre=" + pre + ",ireeu=" + ireeu + ",den='" + den + "',rut='"
+                + rut + "',obr='" + obr + "',ivainc='" + ivainc + "',tra='" + tra + "',entped=" + entped + ",impuesto="
+                + impuesto + ",tip='" + tip + "',web='" + web + "',aut='" + aut + "',comis='" + comis + "',negativa="
+                + negativa + ",fecope=" + fecope + ",efacgen='" + efacgen + "',efacenv='" + efacenv + "',sno='" + sno
+                + "',dir='" + dir + "',pob='" + pob + "',npro=" + npro + ",pro='" + pro + "',pais=" + pais + ",mod303='"
+                + mod303 + "',mod303a='" + mod303a + "',mod303b='" + mod303b + "',mod303c='" + mod303c + "',mod347='"
+                + mod347 + "',usuario_bloqueo=" + usuario_bloqueo + ",emi_deb_pag='" + emi_deb_pag + "',emi_incluir='"
+                + emi_incluir + "',emi_antes_dto='" + emi_antes_dto + "',emi_iva_inc='" + emi_iva_inc + "',moneda="
+                + moneda + ",cotiza=" + cotiza + ",basmon=" + basmon + ",totmon=" + totmon + ",entmon=" + entmon
+                + ",obs_doc='" + obs_doc + "',recargo='" + recargo + "',retgar='" + retgar + "',porretgar=" + porretgar
+                + ",impretgar=" + impretgar + ",tipretgar='" + tipretgar + "',suplidos=" + suplidos + ",iva1=" + iva1
+                + ",iva2=" + iva2 + ",iva3=" + iva3 + ",iva4=" + iva4 + ",iva5=" + iva5 + ",rec1=" + rec1 + ",rec2="
+                + rec2 + ",rec3=" + rec3 + ",rec4=" + rec4 + ",rec5=" + rec5 + ",tipivaok='" + tipivaok + "',exento='"
+                + exento + "',numtic='" + numtic + "',cri_caja='" + cri_caja + "',ded_cie='" + ded_cie + "',cen_adm='"
+                + cen_adm + "',siiest='" + siiest + "',siiact='" + siiact + "',siitipfra='" + siitipfra
+                + "',siifraemi='" + siifraemi + "',siitiprec='" + siitiprec + "',siitipsuj='" + siitipsuj
+                + "',siitipnsu='" + siitipnsu + "',siitipexe='" + siitipexe + "',siidesfra='" + siidesfra
+                + "',siiimpnsu=" + siiimpnsu + ",siiimptai=" + siiimptai + ",siiimpexe=" + siiimpexe + ",siinifemi='"
+                + siinifemi + "',siiemiter='" + siiemiter + "',siicupon='" + siicupon + "',siivardes='" + siivardes
+                + "',siidatrec='" + siidatrec + "',siidatinm='" + siidatinm + "',siidatagr='" + siidatagr
+                + "',siibasrec=" + siibasrec + ",siicuorec=" + siicuorec + ",siirecrec=" + siirecrec + ",siibascos="
+                + siibascos + ",siitraiva=" + siitraiva + ",siientexe=" + siientexe + ",siientcexe='" + siientcexe
+                + "',siienttsuj='" + siienttsuj + "',siientnsu=" + siientnsu + ",siienttai=" + siienttai
+                + ",siientdes='" + siientdes + "',siiserexe=" + siiserexe + ",siisercexe='" + siisercexe
+                + "',siisertsuj='" + siisertsuj + "',siisernsu=" + siisernsu + ",siisertai=" + siisertai
+                + ",siiserdes='" + siiserdes + "',siidatdes='" + siidatdes + "',siifraemi1='" + siifraemi1
+                + "',siifraemi2='" + siifraemi2 + "',siinumacu='" + siinumacu + "',siinumresf='" + siinumresf
+                + "',siinemiter='" + siinemiter + "',siidesman='" + siidesman + "',patron='" + patron + "',siirefext='"
+                + siirefext + "',siinomensu='" + siinomensu + "',siinifensu='" + siinifensu + "',siidesnoid='"
+                + siidesnoid + "',siifraiden='" + siifraiden + "',siimergas='" + siimergas + "',siidesexen='"
+                + siidesexen + "',siimacro='" + siimacro + "',siiregprev='" + siiregprev + "',siientdexe='" + siientdexe
+                + "',siiserdexe='" + siiserdexe + "',aeattipfac='" + aeattipfac + "',aeattiping='" + aeattiping
+                + "',aeatimpcon=" + aeatimpcon + "cer_cul='" + cer_cul + "',cer_var='" + cer_var + "' WHERE num='" + num
+                + "';";
+    }
+
+    public String toUpdateTall() {
+        return "UPDATE FACEMI SET fea=" + fea + ",doc='" + doc + "',fee=" + fee + ",gas='" + gas + "',cue='" + cue
+                + "',li1='" + li1 + "',li2='" + li2 + "',dt1=" + dt1 + ",dt2=" + dt2 + ",fuc=" + fuc + ",[for]='"
+                + forpag + "',fin=" + fin + ",alm='" + alm + "',com='" + com + "',nom='" + nom + "',nif='" + nif
+                + "',ba1eu=" + ba1eu + ",iv1eu=" + iv1eu + ",re1eu=" + re1eu + ",ba2eu=" + ba2eu + ",iv2eu=" + iv2eu
+                + ",re2eu=" + re2eu + ",ba3eu=" + ba3eu + ",iv3eu=" + iv3eu + ",re3eu=" + re3eu + ",ba4eu=" + ba4eu
+                + ",iv4eu=" + iv4eu + ",re4eu=" + re4eu + ",ba5eu=" + ba5eu + ",iv5eu=" + iv5eu + ",re5eu=" + re5eu
+                + ",exeeu=" + exeeu + ",ulceu=" + ulceu + ",toceu=" + toceu + ",enteu=" + enteu + ",imceu=" + imceu
+                + ",imreu=" + imreu + ",tre=" + tre + ",pre=" + pre + ",ireeu=" + ireeu + ",den='" + den + "',rut='"
+                + rut + "',obr='" + obr + "',ivainc='" + ivainc + "',tra='" + tra + "',entped=" + entped + ",impuesto="
+                + impuesto + ",tip='" + tip + "',web='" + web + "',aut='" + aut + "',comis='" + comis + "',negativa="
+                + negativa + ",fecope=" + fecope + ",efacgen='" + efacgen + "',efacenv='" + efacenv + "',sno='" + sno
+                + "',dir='" + dir + "',pob='" + pob + "',npro=" + npro + ",pro='" + pro + "',pais=" + pais + ",mod303='"
+                + mod303 + "',mod303a='" + mod303a + "',mod303b='" + mod303b + "',mod303c='" + mod303c + "',mod347='"
+                + mod347 + "',usuario_bloqueo=" + usuario_bloqueo + ",emi_deb_pag='" + emi_deb_pag + "',emi_incluir='"
+                + emi_incluir + "',emi_antes_dto='" + emi_antes_dto + "',emi_iva_inc='" + emi_iva_inc + "',moneda="
+                + moneda + ",cotiza=" + cotiza + ",basmon=" + basmon + ",totmon=" + totmon + ",entmon=" + entmon
+                + ",obs_doc='" + obs_doc + "',recargo='" + recargo + "',retgar='" + retgar + "',porretgar=" + porretgar
+                + ",impretgar=" + impretgar + ",tipretgar='" + tipretgar + "',suplidos=" + suplidos + ",iva1=" + iva1
+                + ",iva2=" + iva2 + ",iva3=" + iva3 + ",iva4=" + iva4 + ",iva5=" + iva5 + ",rec1=" + rec1 + ",rec2="
+                + rec2 + ",rec3=" + rec3 + ",rec4=" + rec4 + ",rec5=" + rec5 + ",tipivaok='" + tipivaok + "',exento='"
+                + exento + "',numtic='" + numtic + "',cri_caja='" + cri_caja + "',ded_cie='" + ded_cie + "',cen_adm='"
+                + cen_adm + "',siiest='" + siiest + "',siiact='" + siiact + "',siitipfra='" + siitipfra
+                + "',siifraemi='" + siifraemi + "',siitiprec='" + siitiprec + "',siitipsuj='" + siitipsuj
+                + "',siitipnsu='" + siitipnsu + "',siitipexe='" + siitipexe + "',siidesfra='" + siidesfra
+                + "',siiimpnsu=" + siiimpnsu + ",siiimptai=" + siiimptai + ",siiimpexe=" + siiimpexe + ",siinifemi='"
+                + siinifemi + "',siiemiter='" + siiemiter + "',siicupon='" + siicupon + "',siivardes='" + siivardes
+                + "',siidatrec='" + siidatrec + "',siidatinm='" + siidatinm + "',siidatagr='" + siidatagr
+                + "',siibasrec=" + siibasrec + ",siicuorec=" + siicuorec + ",siirecrec=" + siirecrec + ",siibascos="
+                + siibascos + ",siitraiva=" + siitraiva + ",siientexe=" + siientexe + ",siientcexe='" + siientcexe
+                + "',siienttsuj='" + siienttsuj + "',siientnsu=" + siientnsu + ",siienttai=" + siienttai
+                + ",siientdes='" + siientdes + "',siiserexe=" + siiserexe + ",siisercexe='" + siisercexe
+                + "',siisertsuj='" + siisertsuj + "',siisernsu=" + siisernsu + ",siisertai=" + siisertai
+                + ",siiserdes='" + siiserdes + "',siidatdes='" + siidatdes + "',siifraemi1='" + siifraemi1
+                + "',siifraemi2='" + siifraemi2 + "',siinumacu='" + siinumacu + "',siinumresf='" + siinumresf
+                + "',siinemiter='" + siinemiter + "',siidesman='" + siidesman + "',patron='" + patron + "',siirefext='"
+                + siirefext + "',siinomensu='" + siinomensu + "',siinifensu='" + siinifensu + "',siidesnoid='"
+                + siidesnoid + "',siifraiden='" + siifraiden + "',siimergas='" + siimergas + "',siidesexen='"
+                + siidesexen + "',siimacro='" + siimacro + "',siiregprev='" + siiregprev + "',siientdexe='" + siientdexe
+                + "',siiserdexe='" + siiserdexe + "',aeattipfac='" + aeattipfac + "',aeattiping='" + aeattiping
+                + "',aeatimpcon=" + aeatimpcon + ",tal_mat='" + tal_mat + "',tal_franquicia=" + tal_franquicia
+                + ",tal_orden='" + tal_orden + "',tal_klm=" + tal_klm + " WHERE num='" + num + "';";
     }
 }

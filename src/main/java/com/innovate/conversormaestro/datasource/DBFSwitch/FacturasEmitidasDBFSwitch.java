@@ -652,6 +652,32 @@ public class FacturasEmitidasDBFSwitch {
                             facturaEmitida.setAeatimpcon(Float
                                     .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "cer_cul":
+                            facturaEmitida
+                                    .setCer_Cul(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_var":
+                            facturaEmitida
+                                    .setCer_Var(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                            
+                        case "tal_mat":
+                            facturaEmitida
+                                    .setTal_Mat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "tal_franquicia":
+                            facturaEmitida.setTal_Franquicia(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_orden":
+                            facturaEmitida
+                                    .setTal_Orden(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "tal_klm":
+                            facturaEmitida.setTal_Klm(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;
@@ -664,9 +690,12 @@ public class FacturasEmitidasDBFSwitch {
                 }
                 dbfController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
-            System.out.println(facturaEmitida);
-            System.out.println("----------------------------------------------------------"); */
+            /*
+             * System.out.println("Fila: " + i);
+             * System.out.println(facturaEmitida);
+             * System.out.println(
+             * "----------------------------------------------------------");
+             */
             facturasEmitidas.add(facturaEmitida);
         }
         lista.setLista(facturasEmitidas);

@@ -439,6 +439,55 @@ public class ProveedoresSQLSwitch {
                             proveedor.setCri_Caja(
                                     SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "cer_socio":
+                            proveedor.setCer_Socio(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_altso":
+                            proveedor.setCer_Altso(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_camp":
+                            proveedor.setCer_Camp(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fam1":
+                            proveedor.setCer_Fam1(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fam2":
+                            proveedor.setCer_Fam2(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fam3":
+                            proveedor.setCer_Fam3(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fam4":
+                            proveedor.setCer_Fam4(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fam5":
+                            proveedor.setCer_Fam5(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fam6":
+                            proveedor.setCer_Fam6(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_ropo":
+                            proveedor.setCer_Ropo(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_fvropo":
+                            proveedor.setCer_Fvropo(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_codine":
+                            proveedor.setCer_Codine(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

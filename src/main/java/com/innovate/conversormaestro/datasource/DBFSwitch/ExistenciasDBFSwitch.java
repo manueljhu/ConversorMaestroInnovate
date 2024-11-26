@@ -61,6 +61,31 @@ public class ExistenciasDBFSwitch {
                             existencia.setMax(Float
                                     .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "dis_cai":
+                            existencia.setDis_cai(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cae":
+                            existencia.setDis_cae(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cas":
+                            existencia.setDis_cas(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pii":
+                            existencia.setDis_pii(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pie":
+                            existencia.setDis_pie(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pis":
+                            existencia.setDis_pis(Float
+                                    .parseFloat(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;
@@ -73,9 +98,12 @@ public class ExistenciasDBFSwitch {
                 }
                 dbfController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
-            System.out.println(existencia);
-            System.out.println("----------------------------------------------------------"); */
+            /*
+             * System.out.println("Fila: " + i);
+             * System.out.println(existencia);
+             * System.out.println(
+             * "----------------------------------------------------------");
+             */
             existencias.add(existencia);
         }
         lista.setLista(existencias);

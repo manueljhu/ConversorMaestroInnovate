@@ -164,6 +164,10 @@ public class Cliente {
     private String por_efac = "001";
     private String web_codact = "";
     private String sincro = "X";
+    private String cer_tcomb = "";
+    private String cer_codine = "";
+    private float tal_precio = 0;
+    private String tal_franquicia = "";
 
     public String getCod() {
         return this.cod;
@@ -795,6 +799,22 @@ public class Cliente {
 
     public String getSincro() {
         return this.sincro;
+    }
+
+    public String getCer_tcomb() {
+        return cer_tcomb;
+    }
+
+    public String getCer_codine() {
+        return cer_codine;
+    }
+
+    public float getTal_precio() {
+        return tal_precio;
+    }
+
+    public String getTal_franquicia() {
+        return tal_franquicia;
     }
 
     public void setCod(String cod) {
@@ -1825,9 +1845,38 @@ public class Cliente {
         }
     }
 
+    public void setCer_Tcomb(String cer_tcomb) {
+        if (cer_tcomb.length() > 1) {
+            this.cer_tcomb = cer_tcomb.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_tcomb = cer_tcomb.replace("'", "");
+        }
+    }
+
+    public void setCer_Codine(String cer_codine) {
+        if (cer_codine.length() > 3) {
+            this.cer_codine = cer_codine.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_codine = cer_codine.replace("'", "");
+        }
+    }
+
+    public void setTal_precio(float tal_precio) {
+        this.tal_precio = tal_precio;
+    }
+
+    public void setTal_Franquicia(String tal_franquicia) {
+        if (tal_franquicia.length() > 1) {
+            this.tal_franquicia = tal_franquicia.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.tal_franquicia = tal_franquicia.replace("'", "");
+        }
+    }
+
     @Override
     public String toString() {
         String type = "";
+        String GPVersion = "";
         ConnectionController connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
             SQLController sqlController = SQLController.getSQLController();
@@ -1839,11 +1888,25 @@ public class Cliente {
             ExcelController excelController = ExcelController.getExcelController();
             type = excelController.getTypeTransfer();
         }
-        
+
+        GPVersion = connectionController.getGPVersionDestination();
+
         if (type.equals("Insert")) {
-            return toInsert();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toInsertFit();
+            } else if (GPVersion.equals("Talleres")) {
+                return toInsertTall();
+            } else {
+                return toInsert();
+            }
         } else if (type.equals("Update")) {
-            return toUpdate();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toUpdateFit();
+            } else if (GPVersion.equals("Talleres")) {
+                return toUpdateTall();
+            } else {
+                return toUpdate();
+            }
         } else {
             return "";
         }
@@ -1894,6 +1957,98 @@ public class Cliente {
                 + web_codact + "','" + sincro + "');";
     }
 
+    public String toInsertFit() {
+        return "INSERT INTO CLIENT (cod,nom,sno,dir,pob,npro,pro,nif,te1,te2,fax,mov,per,car,ter,req,red,dto,com,fin,fac,tar,"
+                +
+                "[for],di1,di2,di3,mnp,m30,vto,inc,rie,rut,age,nco,alv,fa1,fa2,tra,mar,dt2,tia,fo2,d1b,d2b,d3b,mnb,imp,tre,ret,fgl,ifg,web,"
+                +
+                "doc,fpd,pais,ext,ob1,ob2,rediva1,rediva2,rediva3,rediva4,rediva5,avi0ped,avi1ped,avi2ped,avi0alb,avi1alb,avi2alb,avi0fac,"
+                +
+                "avi1fac,avi2fac,avi0rec,avi1rec,avi2rec,avi0pre,avi1pre,avi2pre,ivainc,fot,env,xxx,fcr_crm,tip_crm,ftr_crm,tco_crm,ref_crm,"
+                +
+                "vis_crm,pvi_crm,lla_crm,pll_crm,ru1_crm,ru2_crm,ru3_crm,sec_crm,dias_crm,tpl_crm,fna_crm,imprap,dtorap,tar_art,tar_fam,"
+                +
+                "efactura,perrap,facedir,facepob,facenpro,facepro,facepais,facenom,faceape1,faceape2,facefoj,v01,v02,v03,v04,v05,v06,v07,"
+                +
+                "v08,v09,v10,v11,v12,historia,lopd_ori,lopd_otr_o,lopd_ces,lopd_otr_c,cli_facalb,cln_tarsub,cln_tarmar,cln_idioma,moneda,"
+                +
+                "avi0dep,avi_dep,avi_ped,avi_pre,avi_alb,avi_fac,avi_rec,web_acc,web_psw,obs_doc,actividad,emailweb,web_exepor,tip_rem,"
+                +
+                "fec_man,cri_caja,facemed,faceiban,facever,facepol,por_efac,web_codact,sincro,cer_tcomb,cer_codine) VALUES ('"
+                + cod + "','"
+                + nom + "','" + sno + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "','" + nif + "','" + te1
+                + "','" + te2 + "','" + fax + "','" + mov + "','" + per + "','" + car + "','" + ter + "','" + req
+                + "','" + red + "'," + dto + "," + com + "," + fin + "," + fac + "," + tar + "," + forpag + "," + di1
+                + "," + di2 + "," + di3 + "," + mnp + ",'" + m30 + "'," + vto + "," + inc + "," + rie + ",'" + rut
+                + "','" + age + "'," + nco + ",'" + alv + "','" + fa1 + "','" + fa2 + "','" + tra + "','" + mar + "',"
+                + dt2 + ",'" + tia + "'," + fo2 + "," + d1b + "," + d2b + "," + d3b + "," + mnb + "," + imp + "," + tre
+                + "," + ret + ",'" + fgl + "'," + ifg + ",'" + web + "','" + doc + "','" + fpd + "'," + pais + ",'"
+                + ext + "','" + ob1 + "','" + ob2 + "'," + rediva1 + "," + rediva2 + "," + rediva3 + "," + rediva4 + ","
+                + rediva5 + "," + avi0ped + ",'" + avi1ped + "','" + avi2ped + "'," + avi0alb + ",'" + avi1alb + "','"
+                + avi2alb + "'," + avi0fac + ",'" + avi1fac + "','" + avi2fac + "'," + avi0rec + ",'" + avi1rec + "','"
+                + avi2rec + "'," + avi0pre + ",'" + avi1pre + "','" + avi2pre + "','" + ivainc + "','" + fot + "','"
+                + env + "','" + xxx + "'," + fcr_crm + "," + tip_crm + "," + ftr_crm + "," + tco_crm + ",'"
+                + ref_crm + "','" + vis_crm + "'," + pvi_crm + ",'" + lla_crm + "'," + pll_crm + ",'" + ru1_crm + "','"
+                + ru2_crm + "','" + ru3_crm + "'," + sec_crm + ",'" + dias_crm + "','" + tpl_crm + "'," + fna_crm
+                + "," + imprap + "," + dtorap + ",'" + tar_art + "','" + tar_fam + "','" + efactura + "'," + perrap
+                + ",'" + facedir + "','" + facepob + "'," + facenpro + ",'" + facepro + "'," + facepais + ",'" + facenom
+                + "','" + faceape1 + "','" + faceape2 + "','" + facefoj + "','" + v01 + "','" + v02 + "','" + v03
+                + "','" + v04 + "','" + v05 + "','" + v06 + "','" + v07 + "','" + v08 + "','" + v09 + "','" + v10
+                + "','" + v11 + "','" + v12 + "','" + historia + "'," + lopd_ori + ",'" + lopd_otr_o + "','" + lopd_ces
+                + "','" + lopd_otr_c + "','" + cli_facalb + "','" + cln_tarsub + "','" + cln_tarmar + "'," + cln_idioma
+                + "," + moneda + "," + avi0dep + ",'" + avi_dep + "','" + avi_ped + "','" + avi_pre + "','" + avi_alb
+                + "','" + avi_fac + "','" + avi_rec + "','" + web_acc + "','" + web_psw + "','" + obs_doc + "','"
+                + actividad + "','" + emailweb + "','" + web_exepor + "'," + tip_rem + "," + fec_man + ",'" + cri_caja
+                + "','" + facemed + "','" + faceiban + "','" + facever + "','" + facepol + "','" + por_efac + "','"
+                + web_codact + "','" + sincro + "','" + cer_tcomb + "','" + cer_codine + "');";
+    }
+
+    public String toInsertTall() {
+        return "INSERT INTO CLIENT (cod,nom,sno,dir,pob,npro,pro,nif,te1,te2,fax,mov,per,car,ter,req,red,dto,com,fin,fac,tar,"
+                +
+                "[for],di1,di2,di3,mnp,m30,vto,inc,rie,rut,age,nco,alv,fa1,fa2,tra,mar,dt2,tia,fo2,d1b,d2b,d3b,mnb,imp,tre,ret,fgl,ifg,web,"
+                +
+                "doc,fpd,pais,ext,ob1,ob2,rediva1,rediva2,rediva3,rediva4,rediva5,avi0ped,avi1ped,avi2ped,avi0alb,avi1alb,avi2alb,avi0fac,"
+                +
+                "avi1fac,avi2fac,avi0rec,avi1rec,avi2rec,avi0pre,avi1pre,avi2pre,ivainc,fot,env,xxx,fcr_crm,tip_crm,ftr_crm,tco_crm,ref_crm,"
+                +
+                "vis_crm,pvi_crm,lla_crm,pll_crm,ru1_crm,ru2_crm,ru3_crm,sec_crm,dias_crm,tpl_crm,fna_crm,imprap,dtorap,tar_art,tar_fam,"
+                +
+                "efactura,perrap,facedir,facepob,facenpro,facepro,facepais,facenom,faceape1,faceape2,facefoj,v01,v02,v03,v04,v05,v06,v07,"
+                +
+                "v08,v09,v10,v11,v12,historia,lopd_ori,lopd_otr_o,lopd_ces,lopd_otr_c,cli_facalb,cln_tarsub,cln_tarmar,cln_idioma,moneda,"
+                +
+                "avi0dep,avi_dep,avi_ped,avi_pre,avi_alb,avi_fac,avi_rec,web_acc,web_psw,obs_doc,actividad,emailweb,web_exepor,tip_rem,"
+                +
+                "fec_man,cri_caja,facemed,faceiban,facever,facepol,por_efac,web_codact,sincro,tal_precio,tal_franquicia) VALUES ('"
+                + cod + "','"
+                + nom + "','" + sno + "','" + dir + "','" + pob + "'," + npro + ",'" + pro + "','" + nif + "','" + te1
+                + "','" + te2 + "','" + fax + "','" + mov + "','" + per + "','" + car + "','" + ter + "','" + req
+                + "','" + red + "'," + dto + "," + com + "," + fin + "," + fac + "," + tar + "," + forpag + "," + di1
+                + "," + di2 + "," + di3 + "," + mnp + ",'" + m30 + "'," + vto + "," + inc + "," + rie + ",'" + rut
+                + "','" + age + "'," + nco + ",'" + alv + "','" + fa1 + "','" + fa2 + "','" + tra + "','" + mar + "',"
+                + dt2 + ",'" + tia + "'," + fo2 + "," + d1b + "," + d2b + "," + d3b + "," + mnb + "," + imp + "," + tre
+                + "," + ret + ",'" + fgl + "'," + ifg + ",'" + web + "','" + doc + "','" + fpd + "'," + pais + ",'"
+                + ext + "','" + ob1 + "','" + ob2 + "'," + rediva1 + "," + rediva2 + "," + rediva3 + "," + rediva4 + ","
+                + rediva5 + "," + avi0ped + ",'" + avi1ped + "','" + avi2ped + "'," + avi0alb + ",'" + avi1alb + "','"
+                + avi2alb + "'," + avi0fac + ",'" + avi1fac + "','" + avi2fac + "'," + avi0rec + ",'" + avi1rec + "','"
+                + avi2rec + "'," + avi0pre + ",'" + avi1pre + "','" + avi2pre + "','" + ivainc + "','" + fot + "','"
+                + env + "','" + xxx + "'," + fcr_crm + "," + tip_crm + "," + ftr_crm + "," + tco_crm + ",'"
+                + ref_crm + "','" + vis_crm + "'," + pvi_crm + ",'" + lla_crm + "'," + pll_crm + ",'" + ru1_crm + "','"
+                + ru2_crm + "','" + ru3_crm + "'," + sec_crm + ",'" + dias_crm + "','" + tpl_crm + "'," + fna_crm
+                + "," + imprap + "," + dtorap + ",'" + tar_art + "','" + tar_fam + "','" + efactura + "'," + perrap
+                + ",'" + facedir + "','" + facepob + "'," + facenpro + ",'" + facepro + "'," + facepais + ",'" + facenom
+                + "','" + faceape1 + "','" + faceape2 + "','" + facefoj + "','" + v01 + "','" + v02 + "','" + v03
+                + "','" + v04 + "','" + v05 + "','" + v06 + "','" + v07 + "','" + v08 + "','" + v09 + "','" + v10
+                + "','" + v11 + "','" + v12 + "','" + historia + "'," + lopd_ori + ",'" + lopd_otr_o + "','" + lopd_ces
+                + "','" + lopd_otr_c + "','" + cli_facalb + "','" + cln_tarsub + "','" + cln_tarmar + "'," + cln_idioma
+                + "," + moneda + "," + avi0dep + ",'" + avi_dep + "','" + avi_ped + "','" + avi_pre + "','" + avi_alb
+                + "','" + avi_fac + "','" + avi_rec + "','" + web_acc + "','" + web_psw + "','" + obs_doc + "','"
+                + actividad + "','" + emailweb + "','" + web_exepor + "'," + tip_rem + "," + fec_man + ",'" + cri_caja
+                + "','" + facemed + "','" + faceiban + "','" + facever + "','" + facepol + "','" + por_efac + "','"
+                + web_codact + "','" + sincro + "','" + tal_precio + "','" + tal_franquicia + "');";
+    }
+
     public String toUpdate() {
         return "UPDATE CLIENT SET nom='" + nom + "',sno='" + sno + "',dir='" + dir + "',pob='" + pob
                 + "',npro=" + npro + ",pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='"
@@ -1930,5 +2085,83 @@ public class Cliente {
                 + "',tip_rem=" + tip_rem + ",fec_man=" + fec_man + ",cri_caja='" + cri_caja + "',facemed='" + facemed
                 + "',faceiban='" + faceiban + "',facever='" + facever + "',facepol='" + facepol + "',por_efac='"
                 + por_efac + "',web_codact='" + web_codact + "',sincro='" + sincro + "' WHERE cod='" + cod + "';";
+    }
+
+    public String toUpdateFit() {
+        return "UPDATE CLIENT SET nom='" + nom + "',sno='" + sno + "',dir='" + dir + "',pob='" + pob
+                + "',npro=" + npro + ",pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='"
+                + fax + "',mov='" + mov + "',per='" + per + "',car='" + car + "',ter='" + ter + "',req='" + req
+                + "',red='" + red + "',dto=" + dto + ",com=" + com + ",fin=" + fin + ",fac=" + fac + ",tar=" + tar
+                + ",[for]=" + forpag + ",di1=" + di1 + ",di2=" + di2 + ",di3=" + di3 + ",mnp=" + mnp + ",m30='" + m30
+                + "',vto=" + vto + ",inc=" + inc + ",rie=" + rie + ",rut='" + rut + "',age='" + age + "',nco=" + nco
+                + ",alv='" + alv + "',fa1='" + fa1 + "',fa2='" + fa2 + "',tra='" + tra + "',mar='" + mar + "',dt2="
+                + dt2 + ",tia='" + tia + "',fo2=" + fo2 + ",d1b=" + d1b + ",d2b=" + d2b + ",d3b=" + d3b + ",mnb=" + mnb
+                + ",imp=" + imp + ",tre=" + tre + ",ret=" + ret + ",fgl='" + fgl + "',ifg=" + ifg + ",web='" + web
+                + "',doc='" + doc + "',fpd='" + fpd + "',pais=" + pais + ",ext='" + ext + "',ob1='" + ob1 + "',ob2='"
+                + ob2 + "',rediva1=" + rediva1 + ",rediva2=" + rediva2 + ",rediva3=" + rediva3 + ",rediva4=" + rediva4
+                + ",rediva5=" + rediva5 + ",avi0ped=" + avi0ped + ",avi1ped='" + avi1ped + "',avi2ped='" + avi2ped
+                + "',avi0alb=" + avi0alb + ",avi1alb='" + avi1alb + "',avi2alb='" + avi2alb + "',avi0fac=" + avi0fac
+                + ",avi1fac='" + avi1fac + "',avi2fac='" + avi2fac + "',avi0rec=" + avi0rec + ",avi1rec='" + avi1rec
+                + "',avi2rec='" + avi2rec + "',avi0pre=" + avi0pre + ",avi1pre='" + avi1pre + "',avi2pre='" + avi2pre
+                + "',ivainc='" + ivainc + "',fot='" + fot + "',env='" + env + "',xxx='" + xxx + "',fcr_crm=" + fcr_crm
+                + ",tip_crm=" + tip_crm + ",ftr_crm=" + ftr_crm + ",tco_crm=" + tco_crm + ",ref_crm='" + ref_crm
+                + "',vis_crm='" + vis_crm + "',pvi_crm=" + pvi_crm + ",lla_crm='" + lla_crm + "',pll_crm=" + pll_crm
+                + ",ru1_crm='" + ru1_crm + "',ru2_crm='" + ru2_crm + "',ru3_crm='" + ru3_crm + "',sec_crm=" + sec_crm
+                + ",dias_crm='" + dias_crm + "',tpl_crm='" + tpl_crm + "',fna_crm=" + fna_crm + ",imprap=" + imprap
+                + ",dtorap=" + dtorap + ",tar_art='" + tar_art + "',tar_fam='" + tar_fam + "',efactura='" + efactura
+                + "',perrap=" + perrap + ",facedir='" + facedir + "',facepob='" + facepob + "',facenpro=" + facenpro
+                + ",facepro='" + facepro + "',facepais=" + facepais + ",facenom='" + facenom + "',faceape1='" + faceape1
+                + "',faceape2='" + faceape2 + "',facefoj='" + facefoj + "',v01='" + v01 + "',v02='" + v02 + "',v03='"
+                + v03 + "',v04='" + v04 + "',v05='" + v05 + "',v06='" + v06 + "',v07='" + v07 + "',v08='" + v08
+                + "',v09='" + v09 + "',v10='" + v10 + "',v11='" + v11 + "',v12='" + v12 + "',historia='" + historia
+                + "',lopd_ori=" + lopd_ori + ",lopd_otr_o='" + lopd_otr_o + "',lopd_ces='" + lopd_ces + "',lopd_otr_c='"
+                + lopd_otr_c + "',cli_facalb='" + cli_facalb + "',cln_tarsub='" + cln_tarsub + "',cln_tarmar='"
+                + cln_tarmar + "',cln_idioma=" + cln_idioma + ",moneda=" + moneda + ",avi0dep=" + avi0dep + ",avi_dep='"
+                + avi_dep + "',avi_ped='" + avi_ped + "',avi_pre='" + avi_pre + "',avi_alb='" + avi_alb + "',avi_fac='"
+                + avi_fac + "',avi_rec='" + avi_rec + "',web_acc='" + web_acc + "',web_psw='" + web_psw + "',obs_doc='"
+                + obs_doc + "',actividad='" + actividad + "',emailweb='" + emailweb + "',web_exepor='" + web_exepor
+                + "',tip_rem=" + tip_rem + ",fec_man=" + fec_man + ",cri_caja='" + cri_caja + "',facemed='" + facemed
+                + "',faceiban='" + faceiban + "',facever='" + facever + "',facepol='" + facepol + "',por_efac='"
+                + por_efac + "',web_codact='" + web_codact + "',sincro='" + sincro + "',cer_tcomb='" + cer_tcomb
+                + "',cer_codine='" + cer_codine + "' WHERE cod='" + cod + "';";
+    }
+
+    public String toUpdateTall() {
+        return "UPDATE CLIENT SET nom='" + nom + "',sno='" + sno + "',dir='" + dir + "',pob='" + pob
+                + "',npro=" + npro + ",pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='"
+                + fax + "',mov='" + mov + "',per='" + per + "',car='" + car + "',ter='" + ter + "',req='" + req
+                + "',red='" + red + "',dto=" + dto + ",com=" + com + ",fin=" + fin + ",fac=" + fac + ",tar=" + tar
+                + ",[for]=" + forpag + ",di1=" + di1 + ",di2=" + di2 + ",di3=" + di3 + ",mnp=" + mnp + ",m30='" + m30
+                + "',vto=" + vto + ",inc=" + inc + ",rie=" + rie + ",rut='" + rut + "',age='" + age + "',nco=" + nco
+                + ",alv='" + alv + "',fa1='" + fa1 + "',fa2='" + fa2 + "',tra='" + tra + "',mar='" + mar + "',dt2="
+                + dt2 + ",tia='" + tia + "',fo2=" + fo2 + ",d1b=" + d1b + ",d2b=" + d2b + ",d3b=" + d3b + ",mnb=" + mnb
+                + ",imp=" + imp + ",tre=" + tre + ",ret=" + ret + ",fgl='" + fgl + "',ifg=" + ifg + ",web='" + web
+                + "',doc='" + doc + "',fpd='" + fpd + "',pais=" + pais + ",ext='" + ext + "',ob1='" + ob1 + "',ob2='"
+                + ob2 + "',rediva1=" + rediva1 + ",rediva2=" + rediva2 + ",rediva3=" + rediva3 + ",rediva4=" + rediva4
+                + ",rediva5=" + rediva5 + ",avi0ped=" + avi0ped + ",avi1ped='" + avi1ped + "',avi2ped='" + avi2ped
+                + "',avi0alb=" + avi0alb + ",avi1alb='" + avi1alb + "',avi2alb='" + avi2alb + "',avi0fac=" + avi0fac
+                + ",avi1fac='" + avi1fac + "',avi2fac='" + avi2fac + "',avi0rec=" + avi0rec + ",avi1rec='" + avi1rec
+                + "',avi2rec='" + avi2rec + "',avi0pre=" + avi0pre + ",avi1pre='" + avi1pre + "',avi2pre='" + avi2pre
+                + "',ivainc='" + ivainc + "',fot='" + fot + "',env='" + env + "',xxx='" + xxx + "',fcr_crm=" + fcr_crm
+                + ",tip_crm=" + tip_crm + ",ftr_crm=" + ftr_crm + ",tco_crm=" + tco_crm + ",ref_crm='" + ref_crm
+                + "',vis_crm='" + vis_crm + "',pvi_crm=" + pvi_crm + ",lla_crm='" + lla_crm + "',pll_crm=" + pll_crm
+                + ",ru1_crm='" + ru1_crm + "',ru2_crm='" + ru2_crm + "',ru3_crm='" + ru3_crm + "',sec_crm=" + sec_crm
+                + ",dias_crm='" + dias_crm + "',tpl_crm='" + tpl_crm + "',fna_crm=" + fna_crm + ",imprap=" + imprap
+                + ",dtorap=" + dtorap + ",tar_art='" + tar_art + "',tar_fam='" + tar_fam + "',efactura='" + efactura
+                + "',perrap=" + perrap + ",facedir='" + facedir + "',facepob='" + facepob + "',facenpro=" + facenpro
+                + ",facepro='" + facepro + "',facepais=" + facepais + ",facenom='" + facenom + "',faceape1='" + faceape1
+                + "',faceape2='" + faceape2 + "',facefoj='" + facefoj + "',v01='" + v01 + "',v02='" + v02 + "',v03='"
+                + v03 + "',v04='" + v04 + "',v05='" + v05 + "',v06='" + v06 + "',v07='" + v07 + "',v08='" + v08
+                + "',v09='" + v09 + "',v10='" + v10 + "',v11='" + v11 + "',v12='" + v12 + "',historia='" + historia
+                + "',lopd_ori=" + lopd_ori + ",lopd_otr_o='" + lopd_otr_o + "',lopd_ces='" + lopd_ces + "',lopd_otr_c='"
+                + lopd_otr_c + "',cli_facalb='" + cli_facalb + "',cln_tarsub='" + cln_tarsub + "',cln_tarmar='"
+                + cln_tarmar + "',cln_idioma=" + cln_idioma + ",moneda=" + moneda + ",avi0dep=" + avi0dep + ",avi_dep='"
+                + avi_dep + "',avi_ped='" + avi_ped + "',avi_pre='" + avi_pre + "',avi_alb='" + avi_alb + "',avi_fac='"
+                + avi_fac + "',avi_rec='" + avi_rec + "',web_acc='" + web_acc + "',web_psw='" + web_psw + "',obs_doc='"
+                + obs_doc + "',actividad='" + actividad + "',emailweb='" + emailweb + "',web_exepor='" + web_exepor
+                + "',tip_rem=" + tip_rem + ",fec_man=" + fec_man + ",cri_caja='" + cri_caja + "',facemed='" + facemed
+                + "',faceiban='" + faceiban + "',facever='" + facever + "',facepol='" + facepol + "',por_efac='"
+                + por_efac + "',web_codact='" + web_codact + "',sincro='" + sincro + "',tal_precio='" + tal_precio
+                + "',tal_franquicia='" + tal_franquicia + "' WHERE cod='" + cod + "';";
     }
 }

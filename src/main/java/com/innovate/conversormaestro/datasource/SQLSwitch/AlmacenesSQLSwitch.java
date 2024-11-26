@@ -60,6 +60,12 @@ public class AlmacenesSQLSwitch {
                         case "age":
                             almacen.setAge(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             break;
+                        case "cer_tipo":
+                            almacen.setCer_tipo(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_ropo":
+                            almacen.setCer_ropo(SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

@@ -623,6 +623,22 @@ public class ClientesDBFSwitch {
                         case "sincro":
                             cliente.setSincro(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+
+                        case "cer_tcomb":
+                            cliente.setCer_Tcomb(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_codine":
+                            cliente.setCer_Codine(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                            
+                        case "tal_precio":
+                            cliente.setTal_precio(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_franquicia":
+                            cliente.setTal_Franquicia(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;
@@ -635,9 +651,12 @@ public class ClientesDBFSwitch {
                 }
                 dbfController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
-            System.out.println(cliente);
-            System.out.println("----------------------------------------------------------"); */
+            /*
+             * System.out.println("Fila: " + i);
+             * System.out.println(cliente);
+             * System.out.println(
+             * "----------------------------------------------------------");
+             */
             clientes.add(cliente);
         }
         lista.setLista(clientes);

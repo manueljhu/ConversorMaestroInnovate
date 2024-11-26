@@ -669,6 +669,182 @@ public class ArticulosDBFSwitch {
                         case "sincro":
                             articulo.setSincro(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+
+                        case "cer_ret":
+                            articulo.setCer_Ret(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_prebas":
+                            articulo.setCer_Prebas(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_toxico":
+                            articulo.setCer_Toxico(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_numreg":
+                            articulo.setCer_Numreg(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_feccad":
+                            articulo.setCer_Feccad(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_cattox":
+                            articulo.setCer_Cattox(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_numonu":
+                            articulo.setCer_Numonu(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_compon":
+                            articulo.setCer_Compon(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fictec":
+                            articulo.setCer_Fictec(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fer":
+                            articulo.setCer_Fer(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_tipabo":
+                            articulo.setCer_Tipabo(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_riqnpk":
+                            articulo.setCer_Riqnpk(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_ffiseg":
+                            articulo.setCer_Ffiseg(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_dosmax":
+                            articulo.setCer_Dosmax(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_plaseg":
+                            articulo.setCer_Plaseg(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_exe_lq":
+                            articulo.setCer_Exe_Lq(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_catemb":
+                            articulo.setCer_Catemb(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_clase":
+                            articulo.setCer_Clase(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_coertc":
+                            articulo.setCer_Coertc(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_tipfer":
+                            articulo.setCer_Tipfer(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_tipest":
+                            articulo.setCer_Tipest(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_nitro":
+                            articulo.setCer_Nitro(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_precur":
+                            articulo.setCer_Precur(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_comp":
+                            articulo.setCer_Comp(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_concen":
+                            articulo.setCer_Concen(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_cas":
+                            articulo.setCer_Cas(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_uso":
+                            articulo.setCer_Uso(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_pelma":
+                            articulo.setCer_Pelma(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_imppar":
+                            articulo.setCer_Imppar(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_dencom":
+                            articulo.setCer_Dencom(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_aspafi":
+                            articulo.setCer_Aspafi(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_sigfit":
+                            articulo.setCer_Sigfit(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+
+                        case "dis_cai":
+                            articulo.setDis_Cai(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cae":
+                            articulo.setDis_Cae(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cas":
+                            articulo.setDis_Cas(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pii":
+                            articulo.setDis_Pii(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pie":
+                            articulo.setDis_Pie(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pis":
+                            articulo.setDis_Pis(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_tar":
+                            articulo.setDis_Tar(
+                                    Integer.parseInt(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_tva":
+                            articulo.setDis_Tva(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_pva":
+                            articulo.setDis_Pva(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_vpa":
+                            articulo.setDis_Vpa(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_vca":
+                            articulo.setDis_Vca(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pun":
+                            articulo.setDis_Pun(
+                                    Float.parseFloat(
+                                            DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_utr":
+                            articulo.setDis_Utr(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_env":
+                            articulo.setDis_Env(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_uniimp":
+                            articulo.setDis_Uniimp(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_uniped":
+                            articulo.setDis_Uniped(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

@@ -617,6 +617,24 @@ public class ClientesSQLSwitch {
                             cliente.setSincro(
                                     SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "cer_tcomb":
+                            cliente.setCer_Tcomb(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_codine":
+                            cliente.setCer_Codine(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        
+                        case "tal_precio":
+                            cliente.setTal_precio(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_franquicia":
+                            cliente.setTal_Franquicia(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;
@@ -629,9 +647,12 @@ public class ClientesSQLSwitch {
                 }
                 sqlController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
-            System.out.println(cliente);
-            System.out.println("----------------------------------------------------------"); */
+            /*
+             * System.out.println("Fila: " + i);
+             * System.out.println(cliente);
+             * System.out.println(
+             * "----------------------------------------------------------");
+             */
             clientes.add(cliente);
         }
         lista.setLista(clientes);

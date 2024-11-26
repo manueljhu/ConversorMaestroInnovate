@@ -30,6 +30,7 @@ public class ConnectionController {
     private String AccountDigitsDestination;
     private String GroupDigitsDestination;
     private String WarehouseDestination;
+    private String GPVersionDestination;
 
     // SQL conection to the source database
     private String ServerSource;
@@ -128,7 +129,7 @@ public class ConnectionController {
         return result;
     }
 
-    public boolean testConnectionOrigin(String Server, String User, String Password, String Databasename) {
+    public boolean testConnectionOrigin(String Server, String User, String Password, String Databasename, String GPVersion) {
         boolean result = false;
 
         String Servercon = Server;
@@ -166,7 +167,7 @@ public class ConnectionController {
 
     public void saveCredentialsDestination(String ServerD, String UserD, String PasswordD, String EnterpriseD,
             String ExerciseD,
-            String AccountDigitsD, String GroupDigitsD, String WarehouseDestinationD) {
+            String AccountDigitsD, String GroupDigitsD, String WarehouseDestinationD, String GPVersionD) {
         setServerDestination(ServerD);
         setUserDestination(UserD);
         setPasswordDestination(PasswordD);
@@ -175,16 +176,17 @@ public class ConnectionController {
         setAccountDigitsDestination(AccountDigitsD);
         setGroupDigitsDestination(GroupDigitsD);
         setWarehouseDestination(WarehouseDestinationD);
+        setGPVersionDestination(GPVersionD);
 
         setApunTable();
         setAlmaTable();
-        /* System.out.println();
+        System.out.println();
 
         System.out.println("----------------------------------------");
         System.out.println("BBDD Destino \nServer: " + ServerDestination + "\nUser: " + UserDestination + "\nPassword: "
                 + PasswordDestination + "\nEnterprise: " + EnterpriseDestination + "\nExercise: " + ExerciseDestination
                 + "\nAccountDigits: " + AccountDigitsDestination + "\nGroupDigits: " + GroupDigitsDestination
-                + "\nWarehouseDestination: " + WarehouseDestination); */
+                + "\nWarehouseDestination: " + WarehouseDestination + "\nGPVersionDestination: "+ GPVersionDestination);
     }
 
     public void saveCredentialsOriginSQL(String ServerO, String UserO, String PasswordO, String DatabaseO,
@@ -608,6 +610,14 @@ public class ConnectionController {
 
     public void setWarehouseDestination(String warehouseDestination) {
         WarehouseDestination = warehouseDestination;
+    }
+
+    public String getGPVersionDestination() {
+        return GPVersionDestination;
+    }
+
+    public void setGPVersionDestination(String gPVersionDestination) {
+        GPVersionDestination = gPVersionDestination;
     }
 
     public String getServerSource() {

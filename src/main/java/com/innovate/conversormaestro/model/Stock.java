@@ -16,6 +16,12 @@ public class Stock {
     public float ide = 0.00f;
     public float min = 0.00f;
     public float max = 0.00f;
+    public float dis_cai = 0.00f;
+    public float dis_cae = 0.00f;
+    public float dis_cas = 0.00f;
+    public float dis_pii = 0.00f;
+    public float dis_pie = 0.00f;
+    public float dis_pis = 0.00f;
 
     public String getCod() {
         return this.cod;
@@ -47,6 +53,34 @@ public class Stock {
 
     public float getMax() {
         return this.max;
+    }
+
+    public ConnectionController getConnectionController() {
+        return connectionController;
+    }
+
+    public float getDis_cai() {
+        return dis_cai;
+    }
+
+    public float getDis_cae() {
+        return dis_cae;
+    }
+
+    public float getDis_cas() {
+        return dis_cas;
+    }
+
+    public float getDis_pii() {
+        return dis_pii;
+    }
+
+    public float getDis_pie() {
+        return dis_pie;
+    }
+
+    public float getDis_pis() {
+        return dis_pis;
     }
 
     public void setCod(String cod) {
@@ -89,9 +123,38 @@ public class Stock {
         this.max = max;
     }
 
+    public void setConnectionController(ConnectionController connectionController) {
+        this.connectionController = connectionController;
+    }
+
+    public void setDis_cai(float dis_cai) {
+        this.dis_cai = dis_cai;
+    }
+
+    public void setDis_cae(float dis_cae) {
+        this.dis_cae = dis_cae;
+    }
+
+    public void setDis_cas(float dis_cas) {
+        this.dis_cas = dis_cas;
+    }
+
+    public void setDis_pii(float dis_pii) {
+        this.dis_pii = dis_pii;
+    }
+
+    public void setDis_pie(float dis_pie) {
+        this.dis_pie = dis_pie;
+    }
+
+    public void setDis_pis(float dis_pis) {
+        this.dis_pis = dis_pis;
+    }
+
     @Override
     public String toString() {
         String type = "";
+        String GPVersion = "";
         ConnectionController connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
             SQLController sqlController = SQLController.getSQLController();
@@ -103,11 +166,21 @@ public class Stock {
             ExcelController excelController = ExcelController.getExcelController();
             type = excelController.getTypeTransfer();
         }
-        
+
+        GPVersion = connectionController.getGPVersionDestination();
+
         if (type.equals("Insert")) {
-            return toInsert();
+            if (GPVersion.equals("Distribucion")) {
+                return toInsertDis();
+            } else {
+                return toInsert();
+            }
         } else if (type.equals("Update")) {
-            return toUpdate();
+            if (GPVersion.equals("Distribucion")) {
+                return toUpdateDis();
+            } else {
+                return toUpdate();
+            }
         } else {
             return "";
         }
@@ -119,9 +192,25 @@ public class Stock {
                 + sal + ",'" + ubi + "'," + ide + "," + min + "," + max + ")";
     }
 
+    public String toInsertDis() {
+        return "INSERT INTO ALMA" + connectionController.getWarehouseDestination()
+                + " (cod,exi,ent,sal,ubi,ide,min,max,dis_cai,dis_cae,dis_cas,dis_pii,dis_pie,dis_pis) VALUES ('" + cod
+                + "'," + exi + "," + ent + ","
+                + sal + ",'" + ubi + "'," + ide + "," + min + "," + max + "," + dis_cai + "," + dis_cae + "," + dis_cas
+                + "," + dis_pii + "," + dis_pie + "," + dis_pis + ")";
+    }
+
     public String toUpdate() {
         return "UPDATE ALMA" + connectionController.getWarehouseDestination() + " SET exi=" + exi + ",ent=" + ent
                 + ",sal=" + sal + ",ubi='" + ubi + "',ide=" + ide + ",min=" + min + ",max=" + max + " WHERE cod='" + cod
                 + "';";
+    }
+
+    public String toUpdateDis() {
+        return "UPDATE ALMA" + connectionController.getWarehouseDestination() + " SET exi=" + exi + ",ent=" + ent
+                + ",sal=" + sal + ",ubi='" + ubi + "',ide=" + ide + ",min=" + min + ",max=" + max + ", dis_cai="
+                + dis_cai
+                + ", dis_cae=" + dis_cae + ", dis_cas=" + dis_cas + ", dis_pii=" + dis_pii + ", dis_pie=" + dis_pie
+                + ", dis_pis=" + dis_pis + " WHERE cod='" + cod + "';";
     }
 }
