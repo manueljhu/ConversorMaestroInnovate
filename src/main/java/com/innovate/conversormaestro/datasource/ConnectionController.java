@@ -103,7 +103,7 @@ public class ConnectionController {
 
     public static ConnectionController getConectionController() {
         if (instance == null) {
-            System.out.println("ConnectionController generado");
+            //System.out.println("ConnectionController generado");
             instance = new ConnectionController();
         }
         return instance;
@@ -121,8 +121,8 @@ public class ConnectionController {
 
         String URLConection = "jdbc:jtds:sqlserver://" + ServerIP + ";instance=" + ServerInstance
                 + ";DatabaseName=GPBusiness" + Enterprise;
-        System.out.println(URLConection);
-        System.out.println(Password);
+        /* System.out.println(URLConection);
+        System.out.println(Password); */
         result = testConnectionFinal(URLConection, User, Password);
 
         return result;
@@ -153,7 +153,7 @@ public class ConnectionController {
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             con = DriverManager.getConnection(URLConection, User, Password);
-            System.out.println(con);
+            //System.out.println(con);
             result = true;
         } catch (Exception e) {
             result = false;
@@ -178,13 +178,13 @@ public class ConnectionController {
 
         setApunTable();
         setAlmaTable();
-        System.out.println();
+        /* System.out.println();
 
         System.out.println("----------------------------------------");
         System.out.println("BBDD Destino \nServer: " + ServerDestination + "\nUser: " + UserDestination + "\nPassword: "
                 + PasswordDestination + "\nEnterprise: " + EnterpriseDestination + "\nExercise: " + ExerciseDestination
                 + "\nAccountDigits: " + AccountDigitsDestination + "\nGroupDigits: " + GroupDigitsDestination
-                + "\nWarehouseDestination: " + WarehouseDestination);
+                + "\nWarehouseDestination: " + WarehouseDestination); */
     }
 
     public void saveCredentialsOriginSQL(String ServerO, String UserO, String PasswordO, String DatabaseO,
@@ -196,9 +196,9 @@ public class ConnectionController {
         OptionSource = OptionO;
         SourceTab = "SQL";
 
-        System.out.println("----------------------------------------");
+        /* System.out.println("----------------------------------------");
         System.out.println("BBDD Origen \nServer: " + ServerSource + "\nUser: " + UserSource + "\nPassword: "
-                + PasswordSource + "\nDatabase: " + DataBaseSource + "\nOption: " + OptionSource);
+                + PasswordSource + "\nDatabase: " + DataBaseSource + "\nOption: " + OptionSource); */
         // SQLController
     }
 
@@ -208,8 +208,8 @@ public class ConnectionController {
         PathSourceDBF = PathO;
         SourceTab = "DBF";
 
-        System.out.println("----------------------------------------");
-        System.out.println("DBF Origen: \nPath " + PathSourceDBF);
+        /* System.out.println("----------------------------------------");
+        System.out.println("DBF Origen: \nPath " + PathSourceDBF); */
     }
 
     public void saveCredentialsOriginExcel(String PathO) {
@@ -218,8 +218,8 @@ public class ConnectionController {
         PathSourceExcel = PathO;
         SourceTab = "Excel";
 
-        System.out.println("----------------------------------------");
-        System.out.println("Excel Origen: \nPath " + PathSourceExcel);
+        /* System.out.println("----------------------------------------");
+        System.out.println("Excel Origen: \nPath " + PathSourceExcel); */
     }
 
     public ArrayList<String> getDataComboDestination() {
