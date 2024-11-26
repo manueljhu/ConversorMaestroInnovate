@@ -372,6 +372,43 @@ public class ProveedoresExcelSwitch {
                         case "cri_Caja":
                             proveedor.setCri_Caja(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+
+                        case "cer_socio":
+                            proveedor.setCer_Socio(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_altso":
+                            proveedor.setCer_Altso(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_camp":
+                            proveedor.setCer_Camp(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fam1":
+                            proveedor.setCer_Fam1(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fam2":
+                            proveedor.setCer_Fam2(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fam3":
+                            proveedor.setCer_Fam3(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fam4":
+                            proveedor.setCer_Fam4(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fam5":
+                            proveedor.setCer_Fam5(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fam6":
+                            proveedor.setCer_Fam6(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_ropo":
+                            proveedor.setCer_Ropo(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fvropo":
+                            proveedor.setCer_Fvropo(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_codine":
+                            proveedor.setCer_Codine(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

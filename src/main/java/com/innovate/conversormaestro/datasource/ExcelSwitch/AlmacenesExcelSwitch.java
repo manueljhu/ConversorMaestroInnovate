@@ -55,6 +55,12 @@ public class AlmacenesExcelSwitch {
                         case "age":
                             almacen.setAge(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+                        case "cer_tipo":
+                            almacen.setCer_tipo(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_ropo":
+                            almacen.setCer_ropo(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

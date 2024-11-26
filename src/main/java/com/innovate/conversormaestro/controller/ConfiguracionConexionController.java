@@ -56,6 +56,9 @@ public class ConfiguracionConexionController implements Initializable {
     private TextField txWarehouseDestination;
 
     @FXML
+    private ComboBox<String> cbGPVersionDestination;
+
+    @FXML
     private Button btTestConnectionDestination;
 
     private String ServerDestination;
@@ -95,6 +98,7 @@ public class ConfiguracionConexionController implements Initializable {
     private String UserSource;
     private String PasswordSource;
     private String DataBaseSource;
+    private String GPVersion;
     private String NameOption;
 
     // Tabs
@@ -131,6 +135,7 @@ public class ConfiguracionConexionController implements Initializable {
         cbGroupDigitsDestination.getItems().addAll("3", "4", "5");
         cbAccountDigitsDestination.setValue("10");
         cbGroupDigitsDestination.setValue("4");
+        cbGPVersionDestination.getItems().addAll("Estandar", "Distribucion", "Fitosanitarios", "Talleres");
         rbTablesSource.setSelected(true);
 
         rbTablesSource.setToggleGroup(group);
@@ -153,6 +158,7 @@ public class ConfiguracionConexionController implements Initializable {
             cbAccountDigitsDestination.setValue(properties.getProperty("accountDigits.destination"));
             cbGroupDigitsDestination.setValue(properties.getProperty("groupDigits.destination"));
             txWarehouseDestination.setText(properties.getProperty("warehouse.destination"));
+            cbGPVersionDestination.setValue(properties.getProperty("gpVersion.destination"));
 
             txServerSource.setText(properties.getProperty("server.source"));
             txUserSource.setText(properties.getProperty("user.source"));
@@ -194,7 +200,7 @@ public class ConfiguracionConexionController implements Initializable {
     private void testConnectionDestination() {
         if (txServerDestination.getText().isEmpty() || txUserDestination.getText().isEmpty()
                 || txPasswordDestination.getText().isEmpty() || txEnterpriseDestination.getText().isEmpty()
-                || txExerciseDestination.getText().isEmpty() || txWarehouseDestination.getText().isEmpty()) {
+                || txExerciseDestination.getText().isEmpty() || txWarehouseDestination.getText().isEmpty() || cbGPVersionDestination.getValue() == null) {
             MyAlert alert = new MyAlert();
             alert.showAlert(AlertType.ERROR, "Test Connection", "Please fill all the fields!");
             return;
@@ -234,6 +240,7 @@ public class ConfiguracionConexionController implements Initializable {
         AccountDigitsDestination = cbAccountDigitsDestination.getValue();
         GroupDigitsDestination = cbGroupDigitsDestination.getValue();
         WarehouseDestinationDestination = txWarehouseDestination.getText();
+        GPVersion = cbGPVersionDestination.getValue();
     }
 
     // Test connection to the source database
@@ -256,7 +263,7 @@ public class ConfiguracionConexionController implements Initializable {
              */
 
             boolean test = connectionController.testConnectionOrigin(ServerSource, UserSource, PasswordSource,
-                    DataBaseSource);
+                    DataBaseSource, GPVersion);
 
             if (test) {
                 MyAlert alert = new MyAlert();
@@ -359,14 +366,14 @@ public class ConfiguracionConexionController implements Initializable {
                     || txWarehouseDestination.getText().isEmpty()
                     || txServerSource.getText().isEmpty() || txUserSource.getText().isEmpty()
                     || txPasswordSource.getText().isEmpty()
-                    || txDataBaseSource.getText().isEmpty()) {
+                    || txDataBaseSource.getText().isEmpty() || cbGPVersionDestination.getValue() == null) {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
                 setDestination();
                 connectionController.saveCredentialsDestination(ServerDestination, UserDestination, PasswordDestination,
                         EnterpriseDestination, ExerciseDestination, AccountDigitsDestination, GroupDigitsDestination,
-                        WarehouseDestinationDestination);
+                        WarehouseDestinationDestination, GPVersion);
                 setSource();
                 connectionController.saveCredentialsOriginSQL(ServerSource, UserSource, PasswordSource, DataBaseSource,
                         NameOption);
@@ -376,7 +383,7 @@ public class ConfiguracionConexionController implements Initializable {
             if (txServerDestination.getText().isEmpty() || txUserDestination.getText().isEmpty()
                     || txPasswordDestination.getText().isEmpty() || txEnterpriseDestination.getText().isEmpty()
                     || txExerciseDestination.getText().isEmpty()
-                    || txWarehouseDestination.getText().isEmpty() || txPathSourceDBF.getText().isEmpty()) {
+                    || txWarehouseDestination.getText().isEmpty() || txPathSourceDBF.getText().isEmpty()  || cbGPVersionDestination.getValue() == null) {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
@@ -390,7 +397,7 @@ public class ConfiguracionConexionController implements Initializable {
                             PasswordDestination,
                             EnterpriseDestination, ExerciseDestination, AccountDigitsDestination,
                             GroupDigitsDestination,
-                            WarehouseDestinationDestination);
+                            WarehouseDestinationDestination, GPVersion);
                     connectionController.saveCredentialsOriginDBF(txPathSourceDBF.getText());
                     App.setRoot("RelacionCampos");
                 }
@@ -399,7 +406,7 @@ public class ConfiguracionConexionController implements Initializable {
             if (txServerDestination.getText().isEmpty() || txUserDestination.getText().isEmpty()
                     || txPasswordDestination.getText().isEmpty() || txEnterpriseDestination.getText().isEmpty()
                     || txExerciseDestination.getText().isEmpty()
-                    || txWarehouseDestination.getText().isEmpty() || txPathSourceExcel.getText().isEmpty()) {
+                    || txWarehouseDestination.getText().isEmpty() || txPathSourceExcel.getText().isEmpty()  || cbGPVersionDestination.getValue() == null) {
                 MyAlert alert = new MyAlert();
                 alert.showAlert(AlertType.ERROR, "Next", "Please fill all the fields!");
             } else {
@@ -413,7 +420,7 @@ public class ConfiguracionConexionController implements Initializable {
                             PasswordDestination,
                             EnterpriseDestination, ExerciseDestination, AccountDigitsDestination,
                             GroupDigitsDestination,
-                            WarehouseDestinationDestination);
+                            WarehouseDestinationDestination , GPVersion);
                     connectionController.saveCredentialsOriginExcel(txPathSourceExcel.getText());
                     if (excelController.getColumnOrigin().isEmpty()) {
                         MyAlert alert = new MyAlert();

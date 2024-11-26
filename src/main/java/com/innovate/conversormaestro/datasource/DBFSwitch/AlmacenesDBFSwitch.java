@@ -55,6 +55,12 @@ public class AlmacenesDBFSwitch {
                         case "age":
                             almacen.setAge(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+                        case "cer_tipo":
+                            almacen.setCer_tipo(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_ropo":
+                            almacen.setCer_ropo(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

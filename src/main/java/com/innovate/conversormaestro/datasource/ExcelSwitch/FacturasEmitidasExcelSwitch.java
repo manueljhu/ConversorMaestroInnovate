@@ -653,6 +653,32 @@ public class FacturasEmitidasExcelSwitch {
                             facturaEmitida.setAeatimpcon(Float
                                     .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                             break;
+                        
+                        case "cer_cul":
+                            facturaEmitida.setCer_Cul(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_var":
+                            facturaEmitida.setCer_Var(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+
+                        case "tal_mat":
+                            facturaEmitida.setTal_Mat(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "tal_franquicia":
+                            facturaEmitida.setTal_Franquicia(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_orden":
+                            facturaEmitida.setTal_Orden(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "tal_klm":
+                            facturaEmitida.setTal_Klm(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

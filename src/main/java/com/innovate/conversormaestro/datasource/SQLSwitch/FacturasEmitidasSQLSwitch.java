@@ -678,6 +678,32 @@ public class FacturasEmitidasSQLSwitch {
                             facturaEmitida.setAeatimpcon(
                                     SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "cer_cul":
+                            facturaEmitida.setCer_Cul(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_var":
+                            facturaEmitida.setCer_Var(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        
+                        case "tal_mat":
+                            facturaEmitida.setTal_Mat(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_franquicia":
+                            facturaEmitida.setTal_Franquicia(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_orden":
+                            facturaEmitida.setTal_Orden(
+                                    SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_klm":
+                            facturaEmitida.setTal_Klm(
+                                    SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

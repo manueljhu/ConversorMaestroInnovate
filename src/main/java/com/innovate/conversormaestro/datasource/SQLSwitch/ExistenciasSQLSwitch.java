@@ -69,6 +69,31 @@ public class ExistenciasSQLSwitch {
                             existencia
                                     .setMax(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "dis_cai":
+                            existencia
+                                    .setDis_cai(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cae":
+                            existencia
+                                    .setDis_cae(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cas":
+                            existencia
+                                    .setDis_cas(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pii":
+                            existencia
+                                    .setDis_pii(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pie":
+                            existencia
+                                    .setDis_pie(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pis":
+                            existencia
+                                    .setDis_pis(SQLUtils.devuelveFloat(hashtable.get(relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

@@ -106,6 +106,19 @@ public class Proveedor {
     public int tip_Rem = 2;
     public String cri_Caja = "N";
 
+    public String cer_socio = "";
+    public String cer_altso = "NULL";
+    public String cer_camp = "";
+    public String cer_fam1 = "";
+    public String cer_fam2 = "";
+    public String cer_fam3 = "";
+    public String cer_fam4 = "";
+    public String cer_fam5 = "";
+    public String cer_fam6 = "";
+    public String cer_ropo = "";
+    public String cer_fvropo = "NULL";
+    public String cer_codine = "";
+
     public Proveedor() {
     }
 
@@ -503,6 +516,54 @@ public class Proveedor {
 
     public String getCri_Caja() {
         return cri_Caja;
+    }
+
+    public String getCer_socio() {
+        return cer_socio;
+    }
+
+    public String getCer_altso() {
+        return cer_altso;
+    }
+
+    public String getCer_camp() {
+        return cer_camp;
+    }
+
+    public String getCer_fam1() {
+        return cer_fam1;
+    }
+
+    public String getCer_fam2() {
+        return cer_fam2;
+    }
+
+    public String getCer_fam3() {
+        return cer_fam3;
+    }
+
+    public String getCer_fam4() {
+        return cer_fam4;
+    }
+
+    public String getCer_fam5() {
+        return cer_fam5;
+    }
+
+    public String getCer_fam6() {
+        return cer_fam6;
+    }
+
+    public String getCer_ropo() {
+        return cer_ropo;
+    }
+
+    public String getCer_fvropo() {
+        return cer_fvropo;
+    }
+
+    public String getCer_codine() {
+        return cer_codine;
     }
 
     public void setCod(String cod) {
@@ -1153,9 +1214,106 @@ public class Proveedor {
         }
     }
 
+    public void setCer_Socio(String cer_socio) {
+        if (cer_socio.length() > 1) {
+            this.cer_socio = cer_socio.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_socio = cer_socio.replace("'", "");
+        }
+    }
+
+    public void setCer_Altso(String cer_altso) {
+        if (cer_altso == null || cer_altso.equals("NULL")) {
+            this.cer_altso = "NULL";
+        } else {
+            this.cer_altso = "'" + cer_altso + "'";
+        }
+    }
+
+    public void setCer_Camp(String cer_camp) {
+        if (cer_camp.length() > 2) {
+            this.cer_camp = cer_camp.trim().substring(0, 2).replace("'", "");
+        } else {
+            this.cer_camp = cer_camp.replace("'", "");
+        }
+    }
+
+    public void setCer_Fam1(String cer_fam1) {
+        if (cer_fam1.length() > 8) {
+            this.cer_fam1 = cer_fam1.trim().substring(0, 8).replace("'", "");
+        } else {
+            this.cer_fam1 = cer_fam1.replace("'", "");
+        }
+    }
+
+    public void setCer_Fam2(String cer_fam2) {
+        if (cer_fam2.length() > 8) {
+            this.cer_fam2 = cer_fam2.trim().substring(0, 8).replace("'", "");
+        } else {
+            this.cer_fam2 = cer_fam2.replace("'", "");
+        }
+    }
+
+    public void setCer_Fam3(String cer_fam3) {
+        if (cer_fam3.length() > 8) {
+            this.cer_fam3 = cer_fam3.trim().substring(0, 8).replace("'", "");
+        } else {
+            this.cer_fam3 = cer_fam3.replace("'", "");
+        }
+    }
+
+    public void setCer_Fam4(String cer_fam4) {
+        if (cer_fam4.length() > 8) {
+            this.cer_fam4 = cer_fam4.trim().substring(0, 8).replace("'", "");
+        } else {
+            this.cer_fam4 = cer_fam4.replace("'", "");
+        }
+    }
+
+    public void setCer_Fam5(String cer_fam5) {
+        if (cer_fam5.length() > 8) {
+            this.cer_fam5 = cer_fam5.trim().substring(0, 8).replace("'", "");
+        } else {
+            this.cer_fam5 = cer_fam5.replace("'", "");
+        }
+    }
+
+    public void setCer_Fam6(String cer_fam6) {
+        if (cer_fam6.length() > 8) {
+            this.cer_fam6 = cer_fam6.trim().substring(0, 8).replace("'", "");
+        } else {
+            this.cer_fam6 = cer_fam6.replace("'", "");
+        }
+    }
+
+    public void setCer_Ropo(String cer_ropo) {
+        if (cer_ropo.length() > 30) {
+            this.cer_ropo = cer_ropo.trim().substring(0, 30).replace("'", "");
+        } else {
+            this.cer_ropo = cer_ropo.replace("'", "");
+        }
+    }
+
+    public void setCer_Fvropo(String cer_fvropo) {
+        if (cer_fvropo == null || cer_fvropo.equals("NULL")) {
+            this.cer_fvropo = "NULL";
+        } else {
+            this.cer_fvropo = "'" + cer_fvropo + "'";
+        }
+    }
+
+    public void setCer_Codine(String cer_codine) {
+        if (cer_codine.length() > 3) {
+            this.cer_codine = cer_codine.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_codine = cer_codine.replace("'", "");
+        }
+    }
+
     @Override
     public String toString() {
         String type = "";
+        String GPVersion = "";
         ConnectionController connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
             SQLController sqlController = SQLController.getSQLController();
@@ -1167,11 +1325,21 @@ public class Proveedor {
             ExcelController excelController = ExcelController.getExcelController();
             type = excelController.getTypeTransfer();
         }
-        
+
+        GPVersion = connectionController.getGPVersionDestination();
+
         if (type.equals("Insert")) {
-            return toInsert();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toInsertFit();
+            } else {
+                return toInsert();
+            }
         } else if (type.equals("Update")) {
-            return toUpdate();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toUpdateFit();
+            } else {
+                return toUpdate();
+            }
         } else {
             return "";
         }
@@ -1207,6 +1375,40 @@ public class Proveedor {
                 + ",'" + cri_Caja + "')";
     }
 
+    public String toInsertFit() {
+        return "INSERT INTO PROVEE (cod,nom,dir,npro,pob,pro,nif,te1,te2,fax,mov,ter,per,car,[for],dto,red,por,poa,ctg,"
+                +
+                "mar,dt2,di1,di2,di3,mnp,tia,tre,ret,ob1,ob2,ob3,web,ext,rediva1,rediva2,rediva3,rediva4,rediva5,avi0ped,avi1ped,"
+                +
+                "avi2ped,avi0alb,avi1alb,avi2alb,avi0fac,avi1fac,avi2fac,avi0rec,avi1rec,avi2rec,ivainc,fot,doc,pais,xxx,imprap,"
+                +
+                "dtorap,perrap,v01,v02,v03,v04,v05,v06,v07,v08,v09,v10,v11,v12,historia,lopd_ori,lopd_otr_o,lopd_ces,lopd_otr_c,"
+                +
+                "pro_idioma,moneda,avi_ped,avi_alb,avi_fac,avi_rec,actividad,contrato,fec_eval,res_eval,fec_apro,nota_eval,product1,"
+                +
+                "product2,obs_cal,cer_cal,cer_med,cer_pre,perval,diasmax,autof,tip_rem,cri_caja,cer_socio,cer_altso,cer_camp,cer_fam1,"
+                +
+                "cer_fam2,cer_fam3,cer_fam4,cer_fam5,cer_fam6,cer_ropo,cer_fvropo,cer_codine) VALUES " +
+                "('" + cod + "','" + nom + "','" + dir + "'," + npro + ",'" + pob + "','" + pro + "','" + nif + "','"
+                + te1 + "','" + te2 + "','" + fax + "','" + mov + "','" + ter + "','" + per + "','" + car + "',"
+                + forpag + "," + dto + ",'" + red + "','" + por + "','" + poa + "','" + ctg + "','" + mar + "'," + dt2
+                + "," + di1 + "," + di2 + "," + di3 + "," + mnp + ",'" + tia + "'," + tre + "," + ret + ",'" + ob1
+                + "','" + ob2 + "','" + ob3 + "','" + web + "','" + ext + "'," + rediva1 + "," + rediva2 + "," + rediva3
+                + "," + rediva4 + "," + rediva5 + "," + avi0ped + ",'" + avi1ped + "','" + avi2ped + "'," + avi0alb
+                + ",'" + avi1alb + "','" + avi2alb + "'," + avi0fac + ",'" + avi1fac + "','" + avi2fac + "'," + avi0rec
+                + ",'" + avi1rec + "','" + avi2rec + "','" + ivainc + "','" + fot + "','" + doc + "'," + pais + ",'"
+                + xxx + "'," + imprap + "," + dtorap + "," + perrap + ",'" + v01 + "','" + v02 + "','" + v03 + "','"
+                + v04 + "','" + v05 + "','" + v06 + "','" + v07 + "','" + v08 + "','" + v09 + "','" + v10 + "','" + v11
+                + "','" + v12 + "','" + historia + "'," + lopd_ori + ",'" + lopd_Otr_O + "','" + lopd_Ces + "','"
+                + lopd_Otr_C + "'," + pro_idioma + "," + moneda + ",'" + avi_Ped + "','" + avi_Alb + "','" + avi_Fac
+                + "','" + avi_Rec + "','" + actividad + "','" + contrato + "'," + fec_Eval + ",'" + res_Eval + "',"
+                + fec_Apro + "," + nota_Eval + ",'" + product1 + "','" + product2 + "','" + obs_Cal + "','" + cer_Cal
+                + "','" + cer_Med + "','" + cer_Pre + "'," + perval + "," + diasmax + ",'" + autof + "'," + tip_Rem
+                + ",'" + cri_Caja + "','" + cer_socio + "'," + cer_altso + ",'" + cer_camp + "','" + cer_fam1 + "','"
+                + cer_fam2 + "','" + cer_fam3 + "','" + cer_fam4 + "','" + cer_fam5 + "','" + cer_fam6 + "','"
+                + cer_ropo + "'," + cer_fvropo + ",'" + cer_codine + "')";
+    }
+
     public String toUpdate() {
         return "UPDATE PROVEE SET nom='" + nom + "',dir='" + dir + "',npro=" + npro + ",pob='" + pob
                 + "',pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='" + fax + "',mov='"
@@ -1230,5 +1432,35 @@ public class Proveedor {
                 + "',product2='" + product2 + "',obs_cal='" + obs_Cal + "',cer_cal='" + cer_Cal + "',cer_med='"
                 + cer_Med + "',cer_pre='" + cer_Pre + "',perval=" + perval + ",diasmax=" + diasmax + ",autof='" + autof
                 + "',tip_rem=" + tip_Rem + ",cri_caja='" + cri_Caja + "' WHERE cod='" + cod + "';";
+    }
+
+    public String toUpdateFit() {
+        return "UPDATE PROVEE SET nom='" + nom + "',dir='" + dir + "',npro=" + npro + ",pob='" + pob
+                + "',pro='" + pro + "',nif='" + nif + "',te1='" + te1 + "',te2='" + te2 + "',fax='" + fax + "',mov='"
+                + mov + "',ter='" + ter + "',per='" + per + "',car='" + car + "',[for]=" + forpag + ",dto=" + dto
+                + ",red='" + red + "',por='" + por + "',poa='" + poa + "',ctg='" + ctg + "',mar='" + mar + "',dt2="
+                + dt2 + ",di1=" + di1 + ",di2=" + di2 + ",di3=" + di3 + ",mnp=" + mnp + ",tia='" + tia + "',tre=" + tre
+                + ",ret=" + ret + ",ob1='" + ob1 + "',ob2='" + ob2 + "',ob3='" + ob3 + "',web='" + web + "',ext='" + ext
+                + "',rediva1=" + rediva1 + ",rediva2=" + rediva2 + ",rediva3=" + rediva3 + ",rediva4=" + rediva4
+                + ",rediva5=" + rediva5 + ",avi0ped=" + avi0ped + ",avi1ped='" + avi1ped + "',avi2ped='" + avi2ped
+                + "',avi0alb=" + avi0alb + ",avi1alb='" + avi1alb + "',avi2alb='" + avi2alb + "',avi0fac=" + avi0fac
+                + ",avi1fac='" + avi1fac + "',avi2fac='" + avi2fac + "',avi0rec=" + avi0rec + ",avi1rec='" + avi1rec
+                + "',avi2rec='" + avi2rec + "',ivainc='" + ivainc + "',fot='" + fot + "',doc='" + doc + "',pais=" + pais
+                + ",xxx='" + xxx + "',imprap=" + imprap + ",dtorap=" + dtorap + ",perrap=" + perrap + ",v01='" + v01
+                + "',v02='" + v02 + "',v03='" + v03 + "',v04='" + v04 + "',v05='" + v05 + "',v06='" + v06 + "',v07='"
+                + v07 + "',v08='" + v08 + "',v09='" + v09 + "',v10='" + v10 + "',v11='" + v11 + "',v12='" + v12
+                + "',historia='" + historia + "',lopd_ori=" + lopd_ori + ",lopd_otr_o='" + lopd_Otr_O + "',lopd_ces='"
+                + lopd_Ces + "',lopd_otr_c='" + lopd_Otr_C + "',pro_idioma=" + pro_idioma + ",moneda=" + moneda
+                + ",avi_ped='" + avi_Ped + "',avi_alb='" + avi_Alb + "',avi_fac='" + avi_Fac + "',avi_rec='" + avi_Rec
+                + "',actividad='" + actividad + "',contrato='" + contrato + "',fec_eval=" + fec_Eval + ",res_eval='"
+                + res_Eval + "',fec_apro=" + fec_Apro + ",nota_eval=" + nota_Eval + ",product1='" + product1
+                + "',product2='" + product2 + "',obs_cal='" + obs_Cal + "',cer_cal='" + cer_Cal + "',cer_med='"
+                + cer_Med + "',cer_pre='" + cer_Pre + "',perval=" + perval + ",diasmax=" + diasmax + ",autof='" + autof
+                + "',tip_rem=" + tip_Rem + ",cri_caja='" + cri_Caja + "',cer_socio='" + cer_socio + "',cer_altso="
+                + cer_altso + ",cer_camp='" + cer_camp + "',cer_fam1='" + cer_fam1 + "',cer_fam2='" + cer_fam2
+                + "',cer_fam3='"
+                + cer_fam3 + "',cer_fam4='" + cer_fam4 + "',cer_fam5='" + cer_fam5 + "',cer_fam6='" + cer_fam6
+                + "',cer_ropo='"
+                + cer_ropo + "',cer_fvropo=" + cer_fvropo + ",cer_codine='" + cer_codine + "' WHERE cod='" + cod + "';";
     }
 }

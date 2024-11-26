@@ -61,6 +61,31 @@ public class ExistenciasExcelSwitch {
                             existencia.setMax(Float
                                     .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
                             break;
+
+                        case "dis_cae":
+                            existencia.setDis_cae(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cas":
+                            existencia.setDis_cas(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cai":
+                            existencia.setDis_cai(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pii":
+                            existencia.setDis_pii(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pie":
+                            existencia.setDis_pie(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pis":
+                            existencia.setDis_pis(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

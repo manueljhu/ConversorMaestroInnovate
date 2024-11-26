@@ -167,644 +167,886 @@ public class Articulo {
     private String web_h2_2 = "";
     private String sincro = "X";
 
+    private String cer_ret = "";
+    private float cer_prebas = 0.000000f;
+    private String cer_toxico = "";
+    private String cer_numreg = "";
+    private String cer_feccad = "NULL";
+    private String cer_cattox = "";
+    private String cer_numonu = "";
+    private String cer_compon = "";
+    private String cer_fictec = "";
+    private String cer_fer = "";
+    private String cer_tipabo = "";
+    private String cer_riqnpk = "";
+    private String cer_ffiseg = "NULL";
+    private float cer_dosmax = 0.000000f;
+    private String cer_plaseg = "";
+    private String cer_exe_lq = "";
+    private String cer_catemb = "";
+    private String cer_clase = "";
+    private float cer_coertc = 0.000000f;
+    private String cer_tipfer = "";
+    private String cer_tipest = "";
+    private float cer_nitro = 0.000000f;
+    private String cer_precur = "";
+    private String cer_comp = "";
+    private float cer_concen = 0.000000f;
+    private String cer_cas = "";
+    private String cer_uso = "";
+    private String cer_pelma = "";
+    private String cer_imppar = "";
+    private String cer_dencom = "";
+    private String cer_aspafi = "";
+    private String cer_sigfit = "";
+
+    private float dis_cai = 0.000000f;
+    private float dis_cae = 0.000000f;
+    private float dis_cas = 0.000000f;
+    private float dis_pii = 0.000000f;
+    private float dis_pie = 0.000000f;
+    private float dis_pis = 0.000000f;
+    private int dis_tar = 0;
+    private String dis_tva = "";
+    private String dis_pva = "";
+    private float dis_vpa = 0.000000f;
+    private float dis_vca = 0.000000f;
+    private float dis_pun = 0.000000f;
+    private String dis_utr = "";
+    private String dis_env = "";
+    private String dis_uniimp = "";
+    private String dis_uniped = "";
+
     public String getCod() {
-        return this.cod;
+        return cod;
     }
 
     public String getNom() {
-        return this.nom;
+        return nom;
     }
 
     public String getFam() {
-        return this.fam;
+        return fam;
     }
 
     public String getObs() {
-        return this.obs;
+        return obs;
     }
 
     public float getMin() {
-        return this.min;
+        return min;
     }
 
     public float getMax() {
-        return this.max;
+        return max;
     }
 
     public String getMed() {
-        return this.med;
+        return med;
     }
 
     public String getUni() {
-        return this.uni;
+        return uni;
     }
 
     public String getCla() {
-        return this.cla;
+        return cla;
     }
 
     public int getIva() {
-        return this.iva;
+        return iva;
     }
 
     public String getUbi() {
-        return this.ubi;
+        return ubi;
     }
 
     public String getRea() {
-        return this.rea;
+        return rea;
     }
 
     public String getRep() {
-        return this.rep;
+        return rep;
     }
 
     public float getCos() {
-        return this.cos;
+        return cos;
     }
 
     public float getPba() {
-        return this.pba;
+        return pba;
     }
 
     public String getDtocom1() {
-        return this.dtocom1;
+        return dtocom1;
     }
 
     public String getDtocom2() {
-        return this.dtocom2;
+        return dtocom2;
     }
 
     public String getDtoven1() {
-        return this.dtoven1;
+        return dtoven1;
     }
 
     public String getDtoven2() {
-        return this.dtoven2;
+        return dtoven2;
     }
 
     public float getDt1() {
-        return this.dt1;
+        return dt1;
     }
 
     public float getDt2() {
-        return this.dt2;
+        return dt2;
     }
 
     public float getDt3() {
-        return this.dt3;
+        return dt3;
     }
 
     public float getDt4() {
-        return this.dt4;
+        return dt4;
     }
 
     public float getDt5() {
-        return this.dt5;
+        return dt5;
     }
 
     public float getCo1() {
-        return this.co1;
+        return co1;
     }
 
     public float getCo2() {
-        return this.co2;
+        return co2;
     }
 
     public float getCo3() {
-        return this.co3;
+        return co3;
     }
 
     public float getCo4() {
-        return this.co4;
+        return co4;
     }
 
     public float getCo5() {
-        return this.co5;
+        return co5;
     }
 
     public float getPmc() {
-        return this.pmc;
+        return pmc;
     }
 
     public float getUpc() {
-        return this.upc;
+        return upc;
     }
 
     public String getUfc() {
-        return this.ufc;
+        return ufc;
     }
 
     public String getPro() {
-        return this.pro;
+        return pro;
     }
 
     public float getPmv() {
-        return this.pmv;
+        return pmv;
     }
 
     public float getUpv() {
-        return this.upv;
+        return upv;
     }
 
     public String getUfv() {
-        return this.ufv;
+        return ufv;
     }
 
     public float getExi() {
-        return this.exi;
+        return exi;
     }
 
     public float getVai() {
-        return this.vai;
+        return vai;
     }
 
     public float getEnt() {
-        return this.ent;
+        return ent;
     }
 
     public float getPtc() {
-        return this.ptc;
+        return ptc;
     }
 
     public float getSal() {
-        return this.sal;
+        return sal;
     }
 
     public float getPtv() {
-        return this.ptv;
+        return ptv;
     }
 
     public float getMa1() {
-        return this.ma1;
+        return ma1;
     }
 
     public float getMa2() {
-        return this.ma2;
+        return ma2;
     }
 
     public float getMa3() {
-        return this.ma3;
+        return ma3;
     }
 
     public float getMa4() {
-        return this.ma4;
+        return ma4;
     }
 
     public float getMa5() {
-        return this.ma5;
+        return ma5;
     }
 
     public float getD01() {
-        return this.d01;
+        return d01;
     }
 
     public float getD02() {
-        return this.d02;
+        return d02;
     }
 
     public float getD03() {
-        return this.d03;
+        return d03;
     }
 
     public float getD04() {
-        return this.d04;
+        return d04;
     }
 
     public float getD05() {
-        return this.d05;
+        return d05;
     }
 
     public String getCuc() {
-        return this.cuc;
+        return cuc;
     }
 
     public String getCuv() {
-        return this.cuv;
+        return cuv;
     }
 
     public String getBar() {
-        return this.bar;
+        return bar;
     }
 
     public float getP21() {
-        return this.p21;
+        return p21;
     }
 
     public float getP22() {
-        return this.p22;
+        return p22;
     }
 
     public float getP23() {
-        return this.p23;
+        return p23;
     }
 
     public float getP24() {
-        return this.p24;
+        return p24;
     }
 
     public float getP25() {
-        return this.p25;
+        return p25;
     }
 
     public int getIv2() {
-        return this.iv2;
+        return iv2;
     }
 
     public String getIma() {
-        return this.ima;
+        return ima;
     }
 
     public String getAbr() {
-        return this.abr;
+        return abr;
     }
 
     public float getCoi() {
-        return this.coi;
+        return coi;
     }
 
     public int getDi1() {
-        return this.di1;
+        return di1;
     }
 
     public int getDi2() {
-        return this.di2;
+        return di2;
     }
 
     public int getSec() {
-        return this.sec;
+        return sec;
     }
 
     public String getTem() {
-        return this.tem;
+        return tem;
     }
 
     public float getIde() {
-        return this.ide;
+        return ide;
     }
 
     public String getTra() {
-        return this.tra;
+        return tra;
     }
 
     public String getCoe() {
-        return this.coe;
+        return coe;
     }
 
     public String getEim() {
-        return this.eim;
+        return eim;
     }
 
     public int getGru() {
-        return this.gru;
+        return gru;
     }
 
     public String getPos() {
-        return this.pos;
+        return pos;
     }
 
     public String getFot() {
-        return this.fot;
+        return fot;
     }
 
     public String getTrazab() {
-        return this.trazab;
+        return trazab;
     }
 
     public String getMedida() {
-        return this.medida;
+        return medida;
     }
 
-    public int getNum_Med() {
-        return this.num_med;
+    public int getNum_med() {
+        return num_med;
     }
 
     public float getMed_1() {
-        return this.med_1;
+        return med_1;
     }
 
     public float getMed_2() {
-        return this.med_2;
+        return med_2;
     }
 
     public float getMed_3() {
-        return this.med_3;
+        return med_3;
     }
 
     public float getBultos() {
-        return this.bultos;
+        return bultos;
     }
 
     public float getPaquet() {
-        return this.paquet;
+        return paquet;
     }
 
     public String getImpues() {
-        return this.impues;
+        return impues;
     }
 
-    public String getArt_Imp() {
-        return this.art_imp;
+    public String getArt_imp() {
+        return art_imp;
     }
 
-    public String getSum_Imp() {
-        return this.sum_imp;
+    public String getSum_imp() {
+        return sum_imp;
     }
 
-    public float getFac_Can() {
-        return this.fac_can;
+    public float getFac_can() {
+        return fac_can;
     }
 
-    public float getFac_Imp() {
-        return this.fac_imp;
+    public float getFac_imp() {
+        return fac_imp;
     }
 
-    public String getFec_Cre() {
-        return this.fec_cre;
+    public String getFec_cre() {
+        return fec_cre;
     }
 
     public String getObsole() {
-        return this.obsole;
+        return obsole;
     }
 
-    public String getPer_Com() {
-        return this.per_com;
+    public String getPer_com() {
+        return per_com;
     }
 
-    public String getPer_Ven() {
-        return this.per_ven;
+    public String getPer_ven() {
+        return per_ven;
     }
 
     public float getPeso() {
-        return this.peso;
+        return peso;
     }
 
     public float getVolumen() {
-        return this.volumen;
+        return volumen;
     }
 
-    public String getMen_Sto() {
-        return this.men_sto;
+    public String getMen_sto() {
+        return men_sto;
     }
 
-    public String getCon_Sto() {
-        return this.con_sto;
+    public String getCon_sto() {
+        return con_sto;
     }
 
     public String getMarca1() {
-        return this.marca1;
+        return marca1;
     }
 
     public String getMarca2() {
-        return this.marca2;
+        return marca2;
     }
 
-    public String getPed_Tex() {
-        return this.ped_tex;
+    public String getPed_tex() {
+        return ped_tex;
     }
 
-    public String getPed_Cos() {
-        return this.ped_cos;
+    public String getPed_cos() {
+        return ped_cos;
     }
 
     public String getEnv() {
-        return this.env;
+        return env;
     }
 
     public String getV01() {
-        return this.v01;
+        return v01;
     }
 
     public String getV02() {
-        return this.v02;
+        return v02;
     }
 
     public String getV03() {
-        return this.v03;
+        return v03;
     }
 
     public String getV04() {
-        return this.v04;
+        return v04;
     }
 
     public String getV05() {
-        return this.v05;
+        return v05;
     }
 
     public String getV06() {
-        return this.v06;
+        return v06;
     }
 
     public String getV07() {
-        return this.v07;
+        return v07;
     }
 
     public String getV08() {
-        return this.v08;
+        return v08;
     }
 
     public String getV09() {
-        return this.v09;
+        return v09;
     }
 
     public String getV10() {
-        return this.v10;
+        return v10;
     }
 
     public String getV11() {
-        return this.v11;
+        return v11;
     }
 
     public String getV12() {
-        return this.v12;
+        return v12;
     }
 
     public String getCtadevcom() {
-        return this.ctadevcom;
+        return ctadevcom;
     }
 
     public String getCtadevven() {
-        return this.ctadevven;
+        return ctadevven;
     }
 
     public String getCtadtocom() {
-        return this.ctadtocom;
+        return ctadtocom;
     }
 
     public String getCtadtoven() {
-        return this.ctadtoven;
+        return ctadtoven;
     }
 
     public float getMeses() {
-        return this.meses;
+        return meses;
     }
 
     public String getImaweb() {
-        return this.imaweb;
+        return imaweb;
     }
 
     public String getFabpro() {
-        return this.fabpro;
+        return fabpro;
     }
 
     public String getFabtip() {
-        return this.fabtip;
+        return fabtip;
     }
 
     public String getNse() {
-        return this.nse;
+        return nse;
     }
 
     public String getHistoria() {
-        return this.historia;
+        return historia;
     }
 
-    public float getArt_Minped() {
-        return this.art_minped;
+    public float getArt_minped() {
+        return art_minped;
     }
 
-    public String getArt_Subfam() {
-        return this.art_subfam;
+    public String getArt_subfam() {
+        return art_subfam;
     }
 
-    public String getArt_Marca() {
-        return this.art_marca;
+    public String getArt_marca() {
+        return art_marca;
     }
 
-    public String getWeb_Nov() {
-        return this.web_nov;
+    public String getWeb_nov() {
+        return web_nov;
     }
 
-    public String getWeb_Fealno() {
-        return this.web_fealno;
+    public String getWeb_fealno() {
+        return web_fealno;
     }
 
-    public String getWeb_Des() {
-        return this.web_des;
+    public String getWeb_des() {
+        return web_des;
     }
 
     public float getCoefici() {
-        return this.coefici;
+        return coefici;
     }
 
-    public String getWeb_Sub() {
-        return this.web_sub;
+    public String getWeb_sub() {
+        return web_sub;
     }
 
-    public String getWeb_Actd() {
-        return this.web_actd;
+    public String getWeb_actd() {
+        return web_actd;
     }
 
-    public String getWeb_Acth() {
-        return this.web_acth;
+    public String getWeb_acth() {
+        return web_acth;
     }
 
     public String getDivs1() {
-        return this.divs1;
+        return divs1;
     }
 
     public String getDivs2() {
-        return this.divs2;
+        return divs2;
     }
 
-    public float getWeb_Cat1() {
-        return this.web_cat1;
+    public float getWeb_cat1() {
+        return web_cat1;
     }
 
-    public float getWeb_Cat2() {
-        return this.web_cat2;
+    public float getWeb_cat2() {
+        return web_cat2;
     }
 
-    public float getWeb_Cat3() {
-        return this.web_cat3;
+    public float getWeb_cat3() {
+        return web_cat3;
     }
 
     public String getNtv() {
-        return this.ntv;
+        return ntv;
     }
 
     public String getAgr() {
-        return this.agr;
+        return agr;
     }
 
     public String getCom() {
-        return this.com;
+        return com;
     }
 
     public String getHor() {
-        return this.hor;
+        return hor;
     }
 
     public float getCome() {
-        return this.come;
+        return come;
     }
 
     public int getTim() {
-        return this.tim;
+        return tim;
     }
 
     public float getDos() {
-        return this.dos;
+        return dos;
     }
 
-    public float getNum_Pro() {
-        return this.num_pro;
+    public float getNum_pro() {
+        return num_pro;
     }
 
-    public float getNum_Com() {
-        return this.num_com;
+    public float getNum_com() {
+        return num_com;
     }
 
     public String getCsi() {
-        return this.csi;
+        return csi;
     }
 
-    public String getInc_Pre() {
-        return this.inc_pre;
+    public String getInc_pre() {
+        return inc_pre;
     }
 
-    public float getInc_Red() {
-        return this.inc_red;
+    public float getInc_red() {
+        return inc_red;
     }
 
-    public float getWeb_Orcat1() {
-        return this.web_orcat1;
+    public float getWeb_orcat1() {
+        return web_orcat1;
     }
 
-    public float getWeb_Orcat2() {
-        return this.web_orcat2;
+    public float getWeb_orcat2() {
+        return web_orcat2;
     }
 
-    public float getWeb_Orcat3() {
-        return this.web_orcat3;
+    public float getWeb_orcat3() {
+        return web_orcat3;
     }
 
-    public String getWeb_Metat() {
-        return this.web_metat;
+    public String getWeb_metat() {
+        return web_metat;
     }
 
-    public String getWeb_Metad() {
-        return this.web_metad;
+    public String getWeb_metad() {
+        return web_metad;
     }
 
-    public String getWeb_Urla() {
-        return this.web_urla;
+    public String getWeb_urla() {
+        return web_urla;
     }
 
-    public String getWeb_H1() {
-        return this.web_h1;
+    public String getWeb_h1() {
+        return web_h1;
     }
 
-    public String getWeb_H2_1() {
-        return this.web_h2_1;
+    public String getWeb_h2_1() {
+        return web_h2_1;
     }
 
-    public String getWeb_H2_2() {
-        return this.web_h2_2;
+    public String getWeb_h2_2() {
+        return web_h2_2;
     }
 
     public String getSincro() {
-        return this.sincro;
+        return sincro;
+    }
+
+    public String getCer_ret() {
+        return cer_ret;
+    }
+
+    public float getCer_prebas() {
+        return cer_prebas;
+    }
+
+    public String getCer_toxico() {
+        return cer_toxico;
+    }
+
+    public String getCer_numreg() {
+        return cer_numreg;
+    }
+
+    public String getCer_feccad() {
+        return cer_feccad;
+    }
+
+    public String getCer_cattox() {
+        return cer_cattox;
+    }
+
+    public String getCer_numonu() {
+        return cer_numonu;
+    }
+
+    public String getCer_compon() {
+        return cer_compon;
+    }
+
+    public String getCer_fictec() {
+        return cer_fictec;
+    }
+
+    public String getCer_fer() {
+        return cer_fer;
+    }
+
+    public String getCer_tipabo() {
+        return cer_tipabo;
+    }
+
+    public String getCer_riqnpk() {
+        return cer_riqnpk;
+    }
+
+    public String getCer_ffiseg() {
+        return cer_ffiseg;
+    }
+
+    public float getCer_dosmax() {
+        return cer_dosmax;
+    }
+
+    public String getCer_plaseg() {
+        return cer_plaseg;
+    }
+
+    public String getCer_exe_lq() {
+        return cer_exe_lq;
+    }
+
+    public String getCer_catemb() {
+        return cer_catemb;
+    }
+
+    public String getCer_clase() {
+        return cer_clase;
+    }
+
+    public float getCer_coertc() {
+        return cer_coertc;
+    }
+
+    public String getCer_tipfer() {
+        return cer_tipfer;
+    }
+
+    public String getCer_tipest() {
+        return cer_tipest;
+    }
+
+    public float getCer_nitro() {
+        return cer_nitro;
+    }
+
+    public String getCer_precur() {
+        return cer_precur;
+    }
+
+    public String getCer_comp() {
+        return cer_comp;
+    }
+
+    public float getCer_concen() {
+        return cer_concen;
+    }
+
+    public String getCer_cas() {
+        return cer_cas;
+    }
+
+    public String getCer_uso() {
+        return cer_uso;
+    }
+
+    public String getCer_pelma() {
+        return cer_pelma;
+    }
+
+    public String getCer_imppar() {
+        return cer_imppar;
+    }
+
+    public String getCer_dencom() {
+        return cer_dencom;
+    }
+
+    public String getCer_aspafi() {
+        return cer_aspafi;
+    }
+
+    public String getCer_sigfit() {
+        return cer_sigfit;
+    }
+
+    public float getDis_cai() {
+        return dis_cai;
+    }
+
+    public float getDis_cae() {
+        return dis_cae;
+    }
+
+    public float getDis_cas() {
+        return dis_cas;
+    }
+
+    public float getDis_pii() {
+        return dis_pii;
+    }
+
+    public float getDis_pie() {
+        return dis_pie;
+    }
+
+    public float getDis_pis() {
+        return dis_pis;
+    }
+
+    public int getDis_tar() {
+        return dis_tar;
+    }
+
+    public String getDis_tva() {
+        return dis_tva;
+    }
+
+    public String getDis_pva() {
+        return dis_pva;
+    }
+
+    public float getDis_vpa() {
+        return dis_vpa;
+    }
+
+    public float getDis_vca() {
+        return dis_vca;
+    }
+
+    public float getDis_pun() {
+        return dis_pun;
+    }
+
+    public String getDis_utr() {
+        return dis_utr;
+    }
+
+    public String getDis_env() {
+        return dis_env;
+    }
+
+    public String getDis_uniimp() {
+        return dis_uniimp;
+    }
+
+    public String getDis_uniped() {
+        return dis_uniped;
     }
 
     public void setCod(String cod) {
@@ -1787,9 +2029,394 @@ public class Articulo {
         }
     }
 
+    public void setCer_ret(String cer_ret) {
+        if (cer_ret.length() > 1) {
+            this.cer_ret = cer_ret.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_ret = cer_ret.replace("'", "");
+        }
+    }
+
+    public void setCer_prebas(float cer_prebas) {
+        this.cer_prebas = cer_prebas;
+    }
+
+    public void setCer_toxico(String cer_toxico) {
+        if (cer_toxico.length() > 1) {
+            this.cer_toxico = cer_toxico.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_toxico = cer_toxico.replace("'", "");
+        }
+    }
+
+    public void setCer_numreg(String cer_numreg) {
+        if (cer_numreg.length() > 20) {
+            this.cer_numreg = cer_numreg.trim().substring(0, 20).replace("'", "");
+        } else {
+            this.cer_numreg = cer_numreg.replace("'", "");
+        }
+    }
+
+    public void setCer_feccad(String cer_feccad) {
+        this.cer_feccad = cer_feccad;
+    }
+
+    public void setCer_cattox(String cer_cattox) {
+        if (cer_cattox.length() > 3) {
+            this.cer_cattox = cer_cattox.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_cattox = cer_cattox.replace("'", "");
+        }
+    }
+
+    public void setCer_numonu(String cer_numonu) {
+        if (cer_numonu.length() > 6) {
+            this.cer_numonu = cer_numonu.trim().substring(0, 6).replace("'", "");
+        } else {
+            this.cer_numonu = cer_numonu.replace("'", "");
+        }
+    }
+
+    public void setCer_compon(String cer_compon) {
+        if (cer_compon.length() > 16) {
+            this.cer_compon = cer_compon.trim().substring(0, 16).replace("'", "");
+        } else {
+            this.cer_compon = cer_compon.replace("'", "");
+        }
+    }
+
+    public void setCer_fictec(String cer_fictec) {
+        if (cer_fictec.length() > 80) {
+            this.cer_fictec = cer_fictec.trim().substring(0, 80).replace("'", "");
+        } else {
+            this.cer_fictec = cer_fictec.replace("'", "");
+        }
+    }
+
+    public void setCer_Ret(String cer_ret) {
+        if (cer_ret.length() > 1) {
+            this.cer_ret = cer_ret.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_ret = cer_ret.replace("'", "");
+        }
+    }
+
+    public void setCer_Prebas(float cer_prebas) {
+        this.cer_prebas = cer_prebas;
+    }
+
+    public void setCer_Toxico(String cer_toxico) {
+        if (cer_toxico.length() > 1) {
+            this.cer_toxico = cer_toxico.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_toxico = cer_toxico.replace("'", "");
+        }
+    }
+
+    public void setCer_Numreg(String cer_numreg) {
+        if (cer_numreg.length() > 20) {
+            this.cer_numreg = cer_numreg.trim().substring(0, 20).replace("'", "");
+        } else {
+            this.cer_numreg = cer_numreg.replace("'", "");
+        }
+    }
+
+    public void setCer_Feccad(String cer_feccad) {
+        if (cer_feccad == null || cer_feccad.equals("NULL")) {
+            this.cer_feccad = "NULL";
+        } else {
+            this.cer_feccad = "'" + cer_feccad + "'";
+        }
+    }
+
+    public void setCer_Cattox(String cer_cattox) {
+        if (cer_cattox.length() > 3) {
+            this.cer_cattox = cer_cattox.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_cattox = cer_cattox.replace("'", "");
+        }
+    }
+
+    public void setCer_Numonu(String cer_numonu) {
+        if (cer_numonu.length() > 6) {
+            this.cer_numonu = cer_numonu.trim().substring(0, 6).replace("'", "");
+        } else {
+            this.cer_numonu = cer_numonu.replace("'", "");
+        }
+    }
+
+    public void setCer_Compon(String cer_compon) {
+        this.cer_compon = cer_compon;
+    }
+
+    public void setCer_Fictec(String cer_fictec) {
+        if (cer_fictec.length() > 80) {
+            this.cer_fictec = cer_fictec.trim().substring(0, 80).replace("'", "");
+        } else {
+            this.cer_fictec = cer_fictec.replace("'", "");
+        }
+    }
+
+    public void setCer_Fer(String cer_fer) {
+        if (cer_fer.length() > 1) {
+            this.cer_fer = cer_fer.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_fer = cer_fer.replace("'", "");
+        }
+    }
+
+    public void setCer_Tipabo(String cer_tipabo) {
+        if (cer_tipabo.length() > 3) {
+            this.cer_tipabo = cer_tipabo.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_tipabo = cer_tipabo.replace("'", "");
+        }
+    }
+
+    public void setCer_Riqnpk(String cer_riqnpk) {
+        if (cer_riqnpk.length() > 8) {
+            this.cer_riqnpk = cer_riqnpk.trim().substring(0, 8).replace("'", "");
+        } else {
+            this.cer_riqnpk = cer_riqnpk.replace("'", "");
+        }
+    }
+
+    public void setCer_Ffiseg(String cer_ffiseg) {
+        if (cer_ffiseg == null || cer_ffiseg.equals("NULL")) {
+            this.cer_ffiseg = "NULL";
+        } else {
+            this.cer_ffiseg = "'" + cer_ffiseg + "'";
+        }
+    }
+
+    public void setCer_Dosmax(float cer_dosmax) {
+        this.cer_dosmax = cer_dosmax;
+    }
+
+    public void setCer_Plaseg(String cer_plaseg) {
+        if (cer_plaseg.length() > 50) {
+            this.cer_plaseg = cer_plaseg.trim().substring(0, 50).replace("'", "");
+        } else {
+            this.cer_plaseg = cer_plaseg.replace("'", "");
+        }
+    }
+
+    public void setCer_Exe_Lq(String cer_exe_lq) {
+        if (cer_exe_lq.length() > 1) {
+            this.cer_exe_lq = cer_exe_lq.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_exe_lq = cer_exe_lq.replace("'", "");
+        }
+    }
+
+    public void setCer_Catemb(String cer_catemb) {
+        if (cer_catemb.length() > 6) {
+            this.cer_catemb = cer_catemb.trim().substring(0, 6).replace("'", "");
+        } else {
+            this.cer_catemb = cer_catemb.replace("'", "");
+        }
+    }
+
+    public void setCer_Clase(String cer_clase) {
+        if (cer_clase.length() > 3) {
+            this.cer_clase = cer_clase.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_clase = cer_clase.replace("'", "");
+        }
+    }
+
+    public void setCer_Coertc(float cer_coertc) {
+        this.cer_coertc = cer_coertc;
+    }
+
+    public void setCer_Tipfer(String cer_tipfer) {
+        if (cer_tipfer.length() > 1) {
+            this.cer_tipfer = cer_tipfer.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_tipfer = cer_tipfer.replace("'", "");
+        }
+    }
+
+    public void setCer_Tipest(String cer_tipest) {
+        if (cer_tipest.length() > 3) {
+            this.cer_tipest = cer_tipest.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.cer_tipest = cer_tipest.replace("'", "");
+        }
+    }
+
+    public void setCer_Nitro(float cer_nitro) {
+        this.cer_nitro = cer_nitro;
+    }
+
+    public void setCer_Precur(String cer_precur) {
+        if (cer_precur.length() > 1) {
+            this.cer_precur = cer_precur.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_precur = cer_precur.replace("'", "");
+        }
+    }
+
+    public void setCer_Comp(String cer_comp) {
+        if (cer_comp.length() > 50) {
+            this.cer_comp = cer_comp.trim().substring(0, 50).replace("'", "");
+        } else {
+            this.cer_comp = cer_comp.replace("'", "");
+        }
+    }
+
+    public void setCer_Concen(float cer_concen) {
+        this.cer_concen = cer_concen;
+    }
+
+    public void setCer_Cas(String cer_cas) {
+        if (cer_cas.length() > 15) {
+            this.cer_cas = cer_cas.trim().substring(0, 15).replace("'", "");
+        } else {
+            this.cer_cas = cer_cas.replace("'", "");
+        }
+    }
+
+    public void setCer_Uso(String cer_uso) {
+        if (cer_uso.length() > 50) {
+            this.cer_uso = cer_uso.trim().substring(0, 50).replace("'", "");
+        } else {
+            this.cer_uso = cer_uso.replace("'", "");
+        }
+    }
+
+    public void setCer_Pelma(String cer_pelma) {
+        if (cer_pelma.length() > 1) {
+            this.cer_pelma = cer_pelma.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_pelma = cer_pelma.replace("'", "");
+        }
+    }
+
+    public void setCer_Imppar(String cer_imppar) {
+        if (cer_imppar.length() > 1) {
+            this.cer_imppar = cer_imppar.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_imppar = cer_imppar.replace("'", "");
+        }
+    }
+
+    public void setCer_Dencom(String cer_dencom) {
+        if (cer_dencom.length() > 1) {
+            this.cer_dencom = cer_dencom.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_dencom = cer_dencom.replace("'", "");
+        }
+    }
+
+    public void setCer_Aspafi(String cer_aspafi) {
+        if (cer_aspafi.length() > 50) {
+            this.cer_aspafi = cer_aspafi.trim().substring(0, 50).replace("'", "");
+        } else {
+            this.cer_aspafi = cer_aspafi.replace("'", "");
+        }
+    }
+
+    public void setCer_Sigfit(String cer_sigfit) {
+        if (cer_sigfit.length() > 1) {
+            this.cer_sigfit = cer_sigfit.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.cer_sigfit = cer_sigfit.replace("'", "");
+        }
+    }
+
+    public void setDis_Cai(float dis_cai) {
+        this.dis_cai = dis_cai;
+    }
+
+    public void setDis_Cae(float dis_cae) {
+        this.dis_cae = dis_cae;
+    }
+
+    public void setDis_Cas(float dis_cas) {
+        this.dis_cas = dis_cas;
+    }
+
+    public void setDis_Pii(float dis_pii) {
+        this.dis_pii = dis_pii;
+    }
+
+    public void setDis_Pie(float dis_pie) {
+        this.dis_pie = dis_pie;
+    }
+
+    public void setDis_Pis(float dis_pis) {
+        this.dis_pis = dis_pis;
+    }
+
+    public void setDis_Tar(int dis_tar) {
+        this.dis_tar = dis_tar;
+    }
+
+    public void setDis_Tva(String dis_tva) {
+        if (dis_tva.length() > 1) {
+            this.dis_tva = dis_tva.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.dis_tva = dis_tva.replace("'", "");
+        }
+    }
+
+    public void setDis_Pva(String dis_pva) {
+        if (dis_pva.length() > 1) {
+            this.dis_pva = dis_pva.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.dis_pva = dis_pva.replace("'", "");
+        }
+    }
+
+    public void setDis_Vpa(float dis_vpa) {
+        this.dis_vpa = dis_vpa;
+    }
+
+    public void setDis_Vca(float dis_vca) {
+        this.dis_vca = dis_vca;
+    }
+
+    public void setDis_Pun(float dis_pun) {
+        this.dis_pun = dis_pun;
+    }
+
+    public void setDis_Utr(String dis_utr) {
+        if (dis_utr.length() > 1) {
+            this.dis_utr = dis_utr.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.dis_utr = dis_utr.replace("'", "");
+        }
+    }
+
+    public void setDis_Env(String dis_env) {
+        if (dis_env.length() > 3) {
+            this.dis_env = dis_env.trim().substring(0, 3).replace("'", "");
+        } else {
+            this.dis_env = dis_env.replace("'", "");
+        }
+    }
+
+    public void setDis_Uniimp(String dis_uniimp) {
+        if (dis_uniimp.length() > 1) {
+            this.dis_uniimp = dis_uniimp.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.dis_uniimp = dis_uniimp.replace("'", "");
+        }
+    }
+
+    public void setDis_Uniped(String dis_uniped) {
+        if (dis_uniped.length() > 1) {
+            this.dis_uniped = dis_uniped.trim().substring(0, 1).replace("'", "");
+        } else {
+            this.dis_uniped = dis_uniped.replace("'", "");
+        }
+    }
+
     @Override
     public String toString() {
         String type = "";
+        String GPVersion = "";
         ConnectionController connectionController = ConnectionController.getConectionController();
         if (connectionController.getSourceTab().equals("SQL")) {
             SQLController sqlController = SQLController.getSQLController();
@@ -1801,11 +2428,25 @@ public class Articulo {
             ExcelController excelController = ExcelController.getExcelController();
             type = excelController.getTypeTransfer();
         }
-        
+
+        GPVersion = connectionController.getGPVersionDestination();
+
         if (type.equals("Insert")) {
-            return toInsert();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toInsertFit();
+            } else if (GPVersion.equals("Distribucion")) {
+                return toInsertDis();
+            } else {
+                return toInsert();
+            }
         } else if (type.equals("Update")) {
-            return toUpdate();
+            if (GPVersion.equals("Fitosanitarios")) {
+                return toUpdateFit();
+            } else if (GPVersion.equals("Distribucion")) {
+                return toUpdateDis();
+            } else {
+                return toUpdate();
+            }
         } else {
             return "";
         }
@@ -1856,6 +2497,121 @@ public class Articulo {
                 + web_h2_2 + "','" + sincro + "')";
     }
 
+    public String toInsertFit() {
+        return "INSERT INTO ARTICU(cod, nom, fam, obs, min, max, med, uni, cla, iva, ubi, rea, rep, cos, pba, " +
+                "dtocom1, dtocom2, dtoven1, dtoven2, dt1, dt2, dt3, dt4, dt5, co1, co2, co3, co4, co5, pmc, upc, ufc, pro, "
+                +
+                "pmv, upv, ufv, exi, vai, ent, ptc, sal, ptv, ma1, ma2, ma3, ma4, ma5, d01, d02, d03, d04, d05, cuc, cuv, bar, "
+                +
+                "p21, p22, p23, p24, p25, iv2, ima, abr, coi, di1, di2, sec, tem, ide, tra, coe, eim, gru, pos, fot, trazab, "
+                +
+                "medida, num_med, med_1, med_2, med_3, bultos, paquet, impues, art_imp, sum_imp, fac_can, fac_imp, fec_cre, obsole, "
+                +
+                "per_com, per_ven, peso, volumen, men_sto, con_sto, marca1, marca2, ped_tex, ped_cos, env, v01, v02, v03, v04, v05, "
+                +
+                "v06, v07, v08, v09, v10, v11, v12, ctadevcom, ctadevven, ctadtocom, ctadtoven, meses, imaweb, fabpro, fabtip, nse, "
+                +
+                "historia, art_minped, art_subfam, art_marca, web_nov, web_fealno, web_des, coefici, web_sub, web_actd, web_acth, divs1, "
+                +
+                "divs2, web_cat1, web_cat2, web_cat3, ntv, agr, com, hor, come, tim, dos, num_pro, num_com, csi, inc_pre, inc_red, "
+                +
+                "web_orcat1, web_orcat2, web_orcat3, web_metat, web_metad, web_urla, web_h1, web_h2_1, web_h2_2, sincro, cer_ret, "
+                +
+                "cer_prebas, cer_toxico, cer_numreg, cer_feccad, cer_cattox, cer_numonu, cer_compon, cer_fictec, cer_fer, cer_tipabo, "
+                +
+                "cer_riqnpk, cer_ffiseg, cer_dosmax, cer_plaseg, cer_exe_lq, cer_catemb, cer_clase, cer_coertc, cer_tipfer, cer_tipest, "
+                +
+                "cer_nitro, cer_precur, cer_comp, cer_concen, cer_cas, cer_uso, cer_pelma, cer_imppar, cer_dencom, cer_aspafi, cer_sigfit"
+                +
+                ") VALUES ('"
+                + cod + "','" + nom + "','" + fam + "','" + obs + "'," + min + "," + max + ",'" + med + "','" + uni
+                + "','" + cla + "'," + iva + ",'" + ubi + "','" + rea + "','" + rep + "'," + cos + "," + pba + ",'"
+                + dtocom1 + "','" + dtocom2 + "','" + dtoven1 + "','" + dtoven2 + "'," + dt1 + "," + dt2 + "," + dt3
+                + "," + dt4 + "," + dt5 + "," + co1 + "," + co2 + "," + co3 + "," + co4 + "," + co5 + "," + pmc + ","
+                + upc + "," + ufc + ",'" + pro + "'," + pmv + "," + upv + "," + ufv + "," + exi + "," + vai + ","
+                + ent + "," + ptc + "," + sal + "," + ptv + "," + ma1 + "," + ma2 + "," + ma3 + "," + ma4 + "," + ma5
+                + "," + d01 + "," + d02 + "," + d03 + "," + d04 + "," + d05 + ",'" + cuc + "','" + cuv + "','" + bar
+                + "'," + p21 + "," + p22 + "," + p23 + "," + p24 + "," + p25 + "," + iv2 + ",'" + ima + "','" + abr
+                + "'," + coi + "," + di1 + "," + di2 + "," + sec + ",'" + tem + "'," + ide + ",'" + tra + "','" + coe
+                + "','" + eim + "'," + gru + ",'" + pos + "','" + fot + "','" + trazab + "','" + medida + "'," + num_med
+                + "," + med_1 + "," + med_2 + "," + med_3 + "," + bultos + "," + paquet + ",'" + impues + "','"
+                + art_imp + "','" + sum_imp + "'," + fac_can + "," + fac_imp + "," + fec_cre + ",'" + obsole + "','"
+                + per_com + "','" + per_ven + "'," + peso + "," + volumen + ",'" + men_sto + "','" + con_sto + "','"
+                + marca1 + "','" + marca2 + "','" + ped_tex + "','" + ped_cos + "','" + env + "','" + v01 + "','" + v02
+                + "','" + v03 + "','" + v04 + "','" + v05 + "','" + v06 + "','" + v07 + "','" + v08 + "','" + v09
+                + "','" + v10 + "','" + v11 + "','" + v12 + "','" + ctadevcom + "','" + ctadevven + "','" + ctadtocom
+                + "','" + ctadtoven + "'," + meses + ",'" + imaweb + "','" + fabpro + "','" + fabtip + "','" + nse
+                + "','" + historia + "'," + art_minped + ",'" + art_subfam + "','" + art_marca + "','" + web_nov + "',"
+                + web_fealno + ",'" + web_des + "'," + coefici + ",'" + web_sub + "'," + web_actd + "," + web_acth
+                + ",'" + divs1 + "','" + divs2 + "'," + web_cat1 + "," + web_cat2 + "," + web_cat3 + ",'" + ntv + "','"
+                + agr + "','" + com + "','" + hor + "'," + come + "," + tim + "," + dos + "," + num_pro + "," + num_com
+                + ",'" + csi + "','" + inc_pre + "'," + inc_red + "," + web_orcat1 + "," + web_orcat2 + "," + web_orcat3
+                + ",'" + web_metat + "','" + web_metad + "','" + web_urla + "','" + web_h1 + "','" + web_h2_1 + "','"
+                + web_h2_2 + "','" + sincro + "','" + cer_ret + "'," + cer_prebas + ",'" + cer_toxico + "','"
+                + cer_numreg
+                + "'," + cer_feccad + ",'" + cer_cattox + "','" + cer_numonu + "','" + cer_compon + "','" + cer_fictec
+                + "','"
+                + cer_fer + "','" + cer_tipabo + "','" + cer_riqnpk + "'," + cer_ffiseg + "," + cer_dosmax + ",'"
+                + cer_plaseg + "','"
+                + cer_exe_lq + "','" + cer_catemb + "','" + cer_clase + "'," + cer_coertc + ",'" + cer_tipfer + "','"
+                + cer_tipest
+                + "'," + cer_nitro + ",'" + cer_precur + "','" + cer_comp + "'," + cer_concen + ",'" + cer_cas + "','"
+                + cer_uso
+                + "','" + cer_pelma + "','" + cer_imppar + "','" + cer_dencom + "','" + cer_aspafi + "','" + cer_sigfit
+                + "')";
+    }
+
+    public String toInsertDis() {
+        return "INSERT INTO ARTICU(cod, nom, fam, obs, min, max, med, uni, cla, iva, ubi, rea, rep, cos, pba, " +
+                "dtocom1, dtocom2, dtoven1, dtoven2, dt1, dt2, dt3, dt4, dt5, co1, co2, co3, co4, co5, pmc, upc, ufc, pro, "
+                +
+                "pmv, upv, ufv, exi, vai, ent, ptc, sal, ptv, ma1, ma2, ma3, ma4, ma5, d01, d02, d03, d04, d05, cuc, cuv, bar, "
+                +
+                "p21, p22, p23, p24, p25, iv2, ima, abr, coi, di1, di2, sec, tem, ide, tra, coe, eim, gru, pos, fot, trazab, "
+                +
+                "medida, num_med, med_1, med_2, med_3, bultos, paquet, impues, art_imp, sum_imp, fac_can, fac_imp, fec_cre, obsole, "
+                +
+                "per_com, per_ven, peso, volumen, men_sto, con_sto, marca1, marca2, ped_tex, ped_cos, env, v01, v02, v03, v04, v05, "
+                +
+                "v06, v07, v08, v09, v10, v11, v12, ctadevcom, ctadevven, ctadtocom, ctadtoven, meses, imaweb, fabpro, fabtip, nse, "
+                +
+                "historia, art_minped, art_subfam, art_marca, web_nov, web_fealno, web_des, coefici, web_sub, web_actd, web_acth, divs1, "
+                +
+                "divs2, web_cat1, web_cat2, web_cat3, ntv, agr, com, hor, come, tim, dos, num_pro, num_com, csi, inc_pre, inc_red, "
+                +
+                "web_orcat1, web_orcat2, web_orcat3, web_metat, web_metad, web_urla, web_h1, web_h2_1, web_h2_2, sincro, dis_cai, dis_cae, "
+                +
+                "dis_cas, dis_pii, dis_pie, dis_pis, dis_tar, dis_tva, dis_pva, dis_vpa, dis_vca, dis_pun, dis_utr, dis_env, dis_uniimp, "
+                +
+                "dis_uniped) VALUES ('"
+                + cod + "','" + nom + "','" + fam + "','" + obs + "'," + min + "," + max + ",'" + med + "','" + uni
+                + "','" + cla + "'," + iva + ",'" + ubi + "','" + rea + "','" + rep + "'," + cos + "," + pba + ",'"
+                + dtocom1 + "','" + dtocom2 + "','" + dtoven1 + "','" + dtoven2 + "'," + dt1 + "," + dt2 + "," + dt3
+                + "," + dt4 + "," + dt5 + "," + co1 + "," + co2 + "," + co3 + "," + co4 + "," + co5 + "," + pmc + ","
+                + upc + "," + ufc + ",'" + pro + "'," + pmv + "," + upv + "," + ufv + "," + exi + "," + vai + ","
+                + ent + "," + ptc + "," + sal + "," + ptv + "," + ma1 + "," + ma2 + "," + ma3 + "," + ma4 + "," + ma5
+                + "," + d01 + "," + d02 + "," + d03 + "," + d04 + "," + d05 + ",'" + cuc + "','" + cuv + "','" + bar
+                + "'," + p21 + "," + p22 + "," + p23 + "," + p24 + "," + p25 + "," + iv2 + ",'" + ima + "','" + abr
+                + "'," + coi + "," + di1 + "," + di2 + "," + sec + ",'" + tem + "'," + ide + ",'" + tra + "','" + coe
+                + "','" + eim + "'," + gru + ",'" + pos + "','" + fot + "','" + trazab + "','" + medida + "'," + num_med
+                + "," + med_1 + "," + med_2 + "," + med_3 + "," + bultos + "," + paquet + ",'" + impues + "','"
+                + art_imp + "','" + sum_imp + "'," + fac_can + "," + fac_imp + "," + fec_cre + ",'" + obsole + "','"
+                + per_com + "','" + per_ven + "'," + peso + "," + volumen + ",'" + men_sto + "','" + con_sto + "','"
+                + marca1 + "','" + marca2 + "','" + ped_tex + "','" + ped_cos + "','" + env + "','" + v01 + "','" + v02
+                + "','" + v03 + "','" + v04 + "','" + v05 + "','" + v06 + "','" + v07 + "','" + v08 + "','" + v09
+                + "','" + v10 + "','" + v11 + "','" + v12 + "','" + ctadevcom + "','" + ctadevven + "','" + ctadtocom
+                + "','" + ctadtoven + "'," + meses + ",'" + imaweb + "','" + fabpro + "','" + fabtip + "','" + nse
+                + "','" + historia + "'," + art_minped + ",'" + art_subfam + "','" + art_marca + "','" + web_nov + "',"
+                + web_fealno + ",'" + web_des + "'," + coefici + ",'" + web_sub + "'," + web_actd + "," + web_acth
+                + ",'" + divs1 + "','" + divs2 + "'," + web_cat1 + "," + web_cat2 + "," + web_cat3 + ",'" + ntv + "','"
+                + agr + "','" + com + "','" + hor + "'," + come + "," + tim + "," + dos + "," + num_pro + "," + num_com
+                + ",'" + csi + "','" + inc_pre + "'," + inc_red + "," + web_orcat1 + "," + web_orcat2 + "," + web_orcat3
+                + ",'" + web_metat + "','" + web_metad + "','" + web_urla + "','" + web_h1 + "','" + web_h2_1 + "','"
+                + web_h2_2 + "','" + sincro + "'," + dis_cai + "," + dis_cae + "," + dis_cas + "," + dis_pii + "," + dis_pie
+                + "," + dis_pis + "," + dis_tar + ",'" + dis_tva + "','" + dis_pva + "'," + dis_vpa + "," + dis_vca + ","
+                + dis_pun + ",'" + dis_utr + "','" + dis_env + "','" + dis_uniimp + "','" + dis_uniped + "')";
+    }
+
     public String toUpdate() {
         return "UPDATE ARTICU SET nom='" + nom + "',fam='" + fam + "',obs='" + obs + "',min=" + min
                 + ",max=" + max + ",med='" + med + "',uni='" + uni + "',cla='" + cla + "',iva=" + iva + ",ubi='" + ubi
@@ -1893,4 +2649,97 @@ public class Articulo {
                 + web_h2_2 + "',sincro='" + sincro + "' WHERE  cod='" + cod + "';";
     }
 
+    public String toUpdateFit() {
+        return "UPDATE ARTICU SET nom='" + nom + "',fam='" + fam + "',obs='" + obs + "',min=" + min
+                + ",max=" + max + ",med='" + med + "',uni='" + uni + "',cla='" + cla + "',iva=" + iva + ",ubi='" + ubi
+                + "',rea='" + rea + "',rep='" + rep + "',cos=" + cos + ",pba=" + pba + ",dtocom1='" + dtocom1
+                + "',dtocom2='" + dtocom2 + "',dtoven1='" + dtoven1 + "',dtoven2='" + dtoven2 + "',dt1=" + dt1 + ",dt2="
+                + dt2 + ",dt3=" + dt3 + ",dt4=" + dt4 + ",dt5=" + dt5 + ",co1=" + co1 + ",co2=" + co2 + ",co3=" + co3
+                + ",co4=" + co4 + ",co5=" + co5 + ",pmc=" + pmc + ",upc=" + upc + ",ufc=" + ufc + ",pro='" + pro
+                + "',pmv=" + pmv + ",upv=" + upv + ",ufv=" + ufv + ",exi=" + exi + ",vai=" + vai + ",ent=" + ent
+                + ",ptc=" + ptc + ",sal=" + sal + ",ptv=" + ptv + ",ma1=" + ma1 + ",ma2=" + ma2 + ",ma3=" + ma3
+                + ",ma4=" + ma4 + ",ma5=" + ma5 + ",d01=" + d01 + ",d02=" + d02 + ",d03=" + d03 + ",d04=" + d04
+                + ",d05=" + d05 + ",cuc='" + cuc + "',cuv='" + cuv + "',bar='" + bar + "',p21=" + p21 + ",p22=" + p22
+                + ",p23=" + p23 + ",p24=" + p24 + ",p25=" + p25 + ",iv2=" + iv2 + ",ima='" + ima + "',abr='" + abr
+                + "',coi=" + coi + ",di1=" + di1 + ",di2=" + di2 + ",sec=" + sec + ",tem='" + tem + "',ide=" + ide
+                + ",tra='" + tra + "',coe='" + coe + "',eim='" + eim + "',gru=" + gru + ",pos='" + pos + "',fot='" + fot
+                + "',trazab='" + trazab + "',medida='" + medida + "',num_med=" + num_med + ",med_1=" + med_1 + ",med_2="
+                + med_2 + ",med_3=" + med_3 + ",bultos=" + bultos + ",paquet=" + paquet + ",impues='" + impues
+                + "',art_imp='" + art_imp + "',sum_imp='" + sum_imp + "',fac_can=" + fac_can + ",fac_imp=" + fac_imp
+                + ",fec_cre=" + fec_cre + ",obsole='" + obsole + "',per_com='" + per_com + "',per_ven='" + per_ven
+                + "',peso=" + peso + ",volumen=" + volumen + ",men_sto='" + men_sto + "',con_sto='" + con_sto
+                + "',marca1='" + marca1 + "',marca2='" + marca2 + "',ped_tex='" + ped_tex + "',ped_cos='" + ped_cos
+                + "',env='" + env + "',v01='" + v01 + "',v02='" + v02 + "',v03='" + v03 + "',v04='" + v04 + "',v05='"
+                + v05 + "',v06='" + v06 + "',v07='" + v07 + "',v08='" + v08 + "',v09='" + v09 + "',v10='" + v10
+                + "',v11='" + v11 + "',v12='" + v12 + "',ctadevcom='" + ctadevcom + "',ctadevven='" + ctadevven
+                + "',ctadtocom='" + ctadtocom + "',ctadtoven='" + ctadtoven + "',meses=" + meses + ",imaweb='" + imaweb
+                + "',fabpro='" + fabpro + "',fabtip='" + fabtip + "',nse='" + nse + "',historia='" + historia
+                + "',art_minped=" + art_minped + ",art_subfam='" + art_subfam + "',art_marca='" + art_marca
+                + "',web_nov='" + web_nov + "',web_fealno=" + web_fealno + ",web_des='" + web_des + "',coefici="
+                + coefici + ",web_sub='" + web_sub + "',web_actd=" + web_actd + ",web_acth=" + web_acth + ",divs1='"
+                + divs1 + "',divs2='" + divs2 + "',web_cat1=" + web_cat1 + ",web_cat2=" + web_cat2 + ",web_cat3="
+                + web_cat3 + ",ntv='" + ntv + "',agr='" + agr + "',com='" + com + "',hor='" + hor + "',come=" + come
+                + ",tim=" + tim + ",dos=" + dos + ",num_pro=" + num_pro + ",num_com=" + num_com + ",csi='" + csi
+                + "',inc_pre='" + inc_pre + "',inc_red=" + inc_red + ",web_orcat1=" + web_orcat1 + ",web_orcat2="
+                + web_orcat2 + ",web_orcat3=" + web_orcat3 + ",web_metat='" + web_metat + "',web_metad='" + web_metad
+                + "',web_urla='" + web_urla + "',web_h1='" + web_h1 + "',web_h2_1='" + web_h2_1 + "',web_h2_2='"
+                + web_h2_2 + "',sincro='" + sincro + "',cer_ret='" + cer_ret + "',cer_prebas=" + cer_prebas
+                + ",cer_toxico='"
+                + cer_toxico + "',cer_numreg='" + cer_numreg + "',cer_feccad=" + cer_feccad + ",cer_cattox='"
+                + cer_cattox
+                + "',cer_numonu='" + cer_numonu + "',cer_compon='" + cer_compon + "',cer_fictec='" + cer_fictec
+                + "',cer_fer='"
+                + cer_fer + "',cer_tipabo='" + cer_tipabo + "',cer_riqnpk='" + cer_riqnpk + "',cer_ffiseg=" + cer_ffiseg
+                + ",cer_dosmax=" + cer_dosmax + ",cer_plaseg='" + cer_plaseg + "',cer_exe_lq='" + cer_exe_lq
+                + "',cer_catemb='"
+                + cer_catemb + "',cer_clase='" + cer_clase + "',cer_coertc=" + cer_coertc + ",cer_tipfer='" + cer_tipfer
+                + "',cer_tipest='" + cer_tipest + "',cer_nitro=" + cer_nitro + ",cer_precur='" + cer_precur
+                + "',cer_comp='"
+                + cer_comp + "',cer_concen=" + cer_concen + ",cer_cas='" + cer_cas + "',cer_uso='" + cer_uso
+                + "',cer_pelma='"
+                + cer_pelma + "',cer_imppar='" + cer_imppar + "',cer_dencom='" + cer_dencom + "',cer_aspafi='"
+                + cer_aspafi
+                + "',cer_sigfit='" + cer_sigfit + "' WHERE  cod='" + cod + "'";
+    }
+
+    public String toUpdateDis() {
+        return "UPDATE ARTICU SET nom='" + nom + "',fam='" + fam + "',obs='" + obs + "',min=" + min
+                + ",max=" + max + ",med='" + med + "',uni='" + uni + "',cla='" + cla + "',iva=" + iva + ",ubi='" + ubi
+                + "',rea='" + rea + "',rep='" + rep + "',cos=" + cos + ",pba=" + pba + ",dtocom1='" + dtocom1
+                + "',dtocom2='" + dtocom2 + "',dtoven1='" + dtoven1 + "',dtoven2='" + dtoven2 + "',dt1=" + dt1 + ",dt2="
+                + dt2 + ",dt3=" + dt3 + ",dt4=" + dt4 + ",dt5=" + dt5 + ",co1=" + co1 + ",co2=" + co2 + ",co3=" + co3
+                + ",co4=" + co4 + ",co5=" + co5 + ",pmc=" + pmc + ",upc=" + upc + ",ufc=" + ufc + ",pro='" + pro
+                + "',pmv=" + pmv + ",upv=" + upv + ",ufv=" + ufv + ",exi=" + exi + ",vai=" + vai + ",ent=" + ent
+                + ",ptc=" + ptc + ",sal=" + sal + ",ptv=" + ptv + ",ma1=" + ma1 + ",ma2=" + ma2 + ",ma3=" + ma3
+                + ",ma4=" + ma4 + ",ma5=" + ma5 + ",d01=" + d01 + ",d02=" + d02 + ",d03=" + d03 + ",d04=" + d04
+                + ",d05=" + d05 + ",cuc='" + cuc + "',cuv='" + cuv + "',bar='" + bar + "',p21=" + p21 + ",p22=" + p22
+                + ",p23=" + p23 + ",p24=" + p24 + ",p25=" + p25 + ",iv2=" + iv2 + ",ima='" + ima + "',abr='" + abr
+                + "',coi=" + coi + ",di1=" + di1 + ",di2=" + di2 + ",sec=" + sec + ",tem='" + tem + "',ide=" + ide
+                + ",tra='" + tra + "',coe='" + coe + "',eim='" + eim + "',gru=" + gru + ",pos='" + pos + "',fot='" + fot
+                + "',trazab='" + trazab + "',medida='" + medida + "',num_med=" + num_med + ",med_1=" + med_1 + ",med_2="
+                + med_2 + ",med_3=" + med_3 + ",bultos=" + bultos + ",paquet=" + paquet + ",impues='" + impues
+                + "',art_imp='" + art_imp + "',sum_imp='" + sum_imp + "',fac_can=" + fac_can + ",fac_imp=" + fac_imp
+                + ",fec_cre=" + fec_cre + ",obsole='" + obsole + "',per_com='" + per_com + "',per_ven='" + per_ven
+                + "',peso=" + peso + ",volumen=" + volumen + ",men_sto='" + men_sto + "',con_sto='" + con_sto
+                + "',marca1='" + marca1 + "',marca2='" + marca2 + "',ped_tex='" + ped_tex + "',ped_cos='" + ped_cos
+                + "',env='" + env + "',v01='" + v01 + "',v02='" + v02 + "',v03='" + v03 + "',v04='" + v04 + "',v05='"
+                + v05 + "',v06='" + v06 + "',v07='" + v07 + "',v08='" + v08 + "',v09='" + v09 + "',v10='" + v10
+                + "',v11='" + v11 + "',v12='" + v12 + "',ctadevcom='" + ctadevcom + "',ctadevven='" + ctadevven
+                + "',ctadtocom='" + ctadtocom + "',ctadtoven='" + ctadtoven + "',meses=" + meses + ",imaweb='" + imaweb
+                + "',fabpro='" + fabpro + "',fabtip='" + fabtip + "',nse='" + nse + "',historia='" + historia
+                + "',art_minped=" + art_minped + ",art_subfam='" + art_subfam + "',art_marca='" + art_marca
+                + "',web_nov='" + web_nov + "',web_fealno=" + web_fealno + ",web_des='" + web_des + "',coefici="
+                + coefici + ",web_sub='" + web_sub + "',web_actd=" + web_actd + ",web_acth=" + web_acth + ",divs1='"
+                + divs1 + "',divs2='" + divs2 + "',web_cat1=" + web_cat1 + ",web_cat2=" + web_cat2 + ",web_cat3="
+                + web_cat3 + ",ntv='" + ntv + "',agr='" + agr + "',com='" + com + "',hor='" + hor + "',come=" + come
+                + ",tim=" + tim + ",dos=" + dos + ",num_pro=" + num_pro + ",num_com=" + num_com + ",csi='" + csi
+                + "',inc_pre='" + inc_pre + "',inc_red=" + inc_red + ",web_orcat1=" + web_orcat1 + ",web_orcat2="
+                + web_orcat2 + ",web_orcat3=" + web_orcat3 + ",web_metat='" + web_metat + "',web_metad='" + web_metad
+                + "',web_urla='" + web_urla + "',web_h1='" + web_h1 + "',web_h2_1='" + web_h2_1 + "',web_h2_2='"
+                + web_h2_2 + "',sincro='" + sincro + "',dis_cai='" + dis_cai + "',dis_cae='" + dis_cae + "',dis_cas='"
+                + dis_cas + "',dis_pii='" + dis_pii + "',dis_pie='" + dis_pie + "',dis_pis='" + dis_pis + "',dis_tar='"
+                + dis_tar + "',dis_tva='" + dis_tva + "',dis_pva='" + dis_pva + "',dis_vpa=" + dis_vpa + ",dis_vca="
+                + dis_vca + ",dis_pun='" + dis_pun + "',dis_utr='" + dis_utr + "',dis_env='" + dis_env + "',dis_uniimp='"
+                + dis_uniimp + "',dis_uniped='" + dis_uniped + "' WHERE  cod='" + cod + "'";
+    }
 }

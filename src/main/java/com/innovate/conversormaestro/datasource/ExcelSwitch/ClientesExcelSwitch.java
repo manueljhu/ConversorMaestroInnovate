@@ -625,6 +625,23 @@ public class ClientesExcelSwitch {
                         case "sincro":
                             cliente.setSincro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+
+                        case "cer_tcomb":
+                            cliente.setCer_Tcomb(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_codine":
+                            cliente.setCer_Codine(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                            
+                        case "tal_precio":
+                            cliente.setTal_precio(
+                                    Float.parseFloat(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "tal_franquicia":
+                            cliente.setTal_Franquicia(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

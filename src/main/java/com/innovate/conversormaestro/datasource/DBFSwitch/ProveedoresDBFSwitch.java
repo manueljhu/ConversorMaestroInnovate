@@ -369,6 +369,43 @@ public class ProveedoresDBFSwitch {
                         case "cri_Caja":
                             proveedor.setCri_Caja(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+                        
+                        case "cer_socio":
+                            proveedor.setCer_Socio(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_AltSo":
+                            proveedor.setCer_Altso(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Camp":
+                            proveedor.setCer_Camp(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Fam1":
+                            proveedor.setCer_Fam1(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Fam2":
+                            proveedor.setCer_Fam2(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Fam3":
+                            proveedor.setCer_Fam3(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Fam4":
+                            proveedor.setCer_Fam4(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Fam5":
+                            proveedor.setCer_Fam5(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Fam6":
+                            proveedor.setCer_Fam6(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Ropo":
+                            proveedor.setCer_Ropo(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_FvRopo":
+                            proveedor.setCer_Fvropo(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_Codine":
+                            proveedor.setCer_Codine(DBFUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;

@@ -674,6 +674,192 @@ public class ArticulosExcelSwitch {
                         case "sincro":
                             articulo.setSincro(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
                             break;
+
+                        case "cer_ret":
+                            articulo.setCer_Ret(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_prebas":
+                            articulo.setCer_Prebas(
+                                    Float.parseFloat(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_toxico":
+                            articulo.setCer_Toxico(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_numreg":
+                            articulo.setCer_Numreg(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_feccad":
+                            articulo.setCer_Feccad(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_cattox":
+                            articulo.setCer_Cattox(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_numonu":
+                            articulo.setCer_Numonu(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_compon":
+                            articulo.setCer_Compon(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fictec":
+                            articulo.setCer_Fictec(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_fer":
+                            articulo.setCer_Fer(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_tipabo":
+                            articulo.setCer_Tipabo(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_riqnpk":
+                            articulo.setCer_Riqnpk(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_ffiseg":
+                            articulo.setCer_Ffiseg(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_dosmax":
+                            articulo.setCer_Dosmax(
+                                    Float.parseFloat(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_plaseg":
+                            articulo.setCer_Plaseg(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_exe_lq":
+                            articulo.setCer_Exe_Lq(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_catemb":
+                            articulo.setCer_Catemb(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_clase":
+                            articulo.setCer_Clase(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_coertc":
+                            articulo.setCer_Coertc(
+                                    Float.parseFloat(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_tipfer":
+                            articulo.setCer_Tipfer(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_tipest":
+                            articulo.setCer_Tipest(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_nitro":
+                            articulo.setCer_Nitro(
+                                    Float.parseFloat(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_precur":
+                            articulo.setCer_Precur(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_comp":
+                            articulo.setCer_Comp(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_concen":
+                            articulo.setCer_Concen(
+                                    Float.parseFloat(
+                                            excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "cer_cas":
+                            articulo.setCer_Cas(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_uso":
+                            articulo.setCer_Uso(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_pelma":
+                            articulo.setCer_Pelma(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_imppar":
+                            articulo.setCer_Imppar(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_dencom":
+                            articulo.setCer_Dencom(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_aspafi":
+                            articulo.setCer_Aspafi(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "cer_sigfit":
+                            articulo.setCer_Sigfit(
+                                    excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+
+                        case "dis_cai":
+                            articulo.setDis_Cai(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cae":
+                            articulo.setDis_Cae(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_cas":
+                            articulo.setDis_Cas(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pii":
+                            articulo.setDis_Pii(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pie":
+                            articulo.setDis_Pie(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pis":
+                            articulo.setDis_Pis(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_tar":
+                            articulo.setDis_Tar(Integer
+                                    .parseInt(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_tva":
+                            articulo.setDis_Tva(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_pva":
+                            articulo.setDis_Pva(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_vpa":
+                            articulo.setDis_Vpa(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_vca":
+                            articulo.setDis_Vca(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_pun":
+                            articulo.setDis_Pun(Float
+                                    .parseFloat(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen())));
+                            break;
+                        case "dis_utr":
+                            articulo.setDis_Utr(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_env":
+                            articulo.setDis_Env(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_uniimp":
+                            articulo.setDis_Uniimp(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
+                        case "dis_uniped":
+                            articulo.setDis_Uniped(excelUtils.devuelveValorCelda(i, relaciones.get(j).getCampoOrigen()));
+                            break;
                     }
                 } catch (Exception e) {
                     nErrors++;
@@ -686,9 +872,12 @@ public class ArticulosExcelSwitch {
                 }
                 excelController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
-            System.out.println(articulo);
-            System.out.println("----------------------------------------------------------"); */
+            /*
+             * System.out.println("Fila: " + i);
+             * System.out.println(articulo);
+             * System.out.println(
+             * "----------------------------------------------------------");
+             */
             articulos.add(articulo);
         }
         lista.setLista(articulos);
