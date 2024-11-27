@@ -647,12 +647,10 @@ public class ClientesSQLSwitch {
                 }
                 sqlController.setnErrors(nErrors);
             }
-            /*
-             * System.out.println("Fila: " + i);
-             * System.out.println(cliente);
-             * System.out.println(
-             * "----------------------------------------------------------");
-             */
+            
+            System.out.println("Fila: " + i);
+            System.out.println(cliente);
+            System.out.println("----------------------------------------------------------");
             clientes.add(cliente);
         }
         lista.setLista(clientes);

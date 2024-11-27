@@ -47,7 +47,7 @@ public class SQLUtils {
     public String devuelveString(Object objeto) {
         String result = "";
         if (objeto != null) {
-            result = objeto.toString();
+            result = objeto.toString().trim();
         } else {
             result = null;
         }

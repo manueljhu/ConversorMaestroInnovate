@@ -106,9 +106,9 @@ public class ExistenciasSQLSwitch {
                 }
                 sqlController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
+            System.out.println("Fila: " + i);
             System.out.println(existencia);
-            System.out.println("----------------------------------------------------------"); */
+            System.out.println("----------------------------------------------------------");
             existencias.add(existencia);
         }
         lista.setLista(existencias);
