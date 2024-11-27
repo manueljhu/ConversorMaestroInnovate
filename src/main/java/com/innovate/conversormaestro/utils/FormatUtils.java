@@ -493,6 +493,9 @@ public class FormatUtils {
                         +
                         "cob = 'N', car = 0, porcobdir = 100.00, inclib = 'N', reppro = 'S', cuecobdir = '' FROM FORPAG WHERE id > 7";
                 break;
+            case "Lotes de Trazabilidad":
+                result = "TRUNCATE TABLE TABLOT";
+                break;
             case "Marcas articulo":
                 result = "TRUNCATE TABLE MARART";
                 break;
@@ -510,6 +513,9 @@ public class FormatUtils {
                 break;
             case "Subfamilias":
                 result = "TRUNCATE TABLE SUBFAM";
+                break;
+            case "Vehiculos":
+                result = "TRUNCATE TABLE TAL_VEHCLI";
                 break;
         }
         return result;

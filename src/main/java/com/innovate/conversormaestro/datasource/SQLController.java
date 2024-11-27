@@ -37,12 +37,14 @@ public class SQLController {
     private static FacturasRecibidasSQLSwitch facturasRecibidasSwitch;
     private static FamiliasSQLSwitch familiasSwitch;
     private static FormasPagoSQLSwitch formasPagoSwitch;
+    private static LotesTrazabilidadSQLSwitch lotesTrazabilidadSwitch;
     private static MarcasArticuloSQLSwitch marcasArticuloSwitch;
     private static PlanContableSQLSwitch planContableSwitch;
     private static PrevisionesCobroSQLSwitch previsionesCobroSwitch;
     private static PrevisionesPagoSQLSwitch previsionesPagoSwitch;
     private static ProveedoresSQLSwitch proveedoresSwitch;
     private static SubFamiliasSQLSwitch subFamiliasSwitch;
+    private static VehiculosSQLSwitch vehiculosSwitch;
 
     public SQLController() {
         connectionController = ConnectionController.getConectionController();
@@ -272,6 +274,10 @@ public class SQLController {
                 formasPagoSwitch = new FormasPagoSQLSwitch();
                 formasPagoSwitch.FormasPago(this.relaciones);
                 break;
+            case "Lotes de Trazabilidad":
+                lotesTrazabilidadSwitch = new LotesTrazabilidadSQLSwitch();
+                lotesTrazabilidadSwitch.LotesTrazabilidad(this.relaciones);
+                break;
             case "Marcas articulo":
                 marcasArticuloSwitch = new MarcasArticuloSQLSwitch();
                 marcasArticuloSwitch.MarcasArticulos(this.relaciones);
@@ -296,6 +302,10 @@ public class SQLController {
             case "Subfamilias":
                 subFamiliasSwitch = new SubFamiliasSQLSwitch();
                 subFamiliasSwitch.Subfamilias(this.relaciones);
+                break;
+            case "Vehiculos":
+                vehiculosSwitch = new VehiculosSQLSwitch();
+                vehiculosSwitch.Vehiculos(this.relaciones);
                 break;
         }
     }

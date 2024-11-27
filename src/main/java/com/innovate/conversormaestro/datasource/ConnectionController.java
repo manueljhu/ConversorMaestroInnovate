@@ -49,8 +49,10 @@ public class ConnectionController {
 
     private boolean firstTime;
     private String error;
+    private boolean exist = false;
 
     private ConnectionController() {
+        GPVersionDestination = "";
         tables = new ArrayList<Tables>();
         Tables table = new Tables();
         table = new Tables("AGENTG", "Agentes");
@@ -87,6 +89,8 @@ public class ConnectionController {
         tables.add(table);
         table = new Tables("FORPAG", "Formas de pago");
         tables.add(table);
+        table = new Tables("TABLOT", "Lotes de Trazabilidad");
+        tables.add(table);
         table = new Tables("MARART", "Marcas articulo");
         tables.add(table);
         table = new Tables("CUENTA", "Plan contable");
@@ -99,7 +103,6 @@ public class ConnectionController {
         tables.add(table);
         table = new Tables("SUBFAM", "Subfamilias");
         tables.add(table);
-
     }
 
     public static ConnectionController getConectionController() {
@@ -225,7 +228,17 @@ public class ConnectionController {
     }
 
     public ArrayList<String> getDataComboDestination() {
+        Tables extraField = new Tables();
+        
 
+        if (!exist){
+            if (GPVersionDestination.equals("Talleres")){
+                extraField = new Tables("TAL_VEHCLI", "Vehiculos");
+                tables.add(extraField);
+                exist = true;
+            }
+        }
+        
         ArrayList<String> result = new ArrayList<String>();
 
         for (Tables table : tables) {

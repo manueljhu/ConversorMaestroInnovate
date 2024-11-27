@@ -43,12 +43,14 @@ public class DBFController {
     private static FacturasRecibidasDBFSwitch facturasRecibidasSwitch;
     private static FamiliasDBFSwitch familiasSwitch;
     private static FormasPagoDBFSwitch formasPagoSwitch;
+    private static LotesTrazabilidadDBFSwitch loteTrazabilidadSwitch;
     private static MarcasArticuloDBFSwitch marcasArticuloSwitch;
     private static PlanContableDBFSwitch planContableSwitch;
     private static PrevisionesCobroDBFSwitch previsionesCobroSwitch;
     private static PrevisionesPagoDBFSwitch previsionesPagoSwitch;
     private static ProveedoresDBFSwitch proveedoresSwitch;
     private static SubFamiliasDBFSwitch subFamiliasSwitch;
+    private static VehiculosDBFSwitch vehiculosSwitch;
 
     public DBFController() {
     }
@@ -224,6 +226,10 @@ public class DBFController {
                 formasPagoSwitch = new FormasPagoDBFSwitch();
                 formasPagoSwitch.FormasPago(this.relaciones);
                 break;
+            case "Lotes de trazabilidad":
+                loteTrazabilidadSwitch = new LotesTrazabilidadDBFSwitch();
+                loteTrazabilidadSwitch.LotesTrazabilidad(this.relaciones);
+                break;
             case "Marcas articulo":
                 marcasArticuloSwitch = new MarcasArticuloDBFSwitch();
                 marcasArticuloSwitch.MarcasArticulos(this.relaciones);
@@ -248,6 +254,10 @@ public class DBFController {
             case "Subfamilias":
                 subFamiliasSwitch = new SubFamiliasDBFSwitch();
                 subFamiliasSwitch.Subfamilias(this.relaciones);
+                break;
+            case "Vehiculos":
+                vehiculosSwitch = new VehiculosDBFSwitch();
+                vehiculosSwitch.Vehiculos(this.relaciones);
                 break;
         }
     }

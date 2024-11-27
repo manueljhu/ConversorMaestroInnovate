@@ -42,12 +42,14 @@ public class ExcelController {
     private static FacturasRecibidasExcelSwitch facturasRecibidasSwitch;
     private static FamiliasExcelSwitch familiasSwitch;
     private static FormasPagoExcelSwitch formasPagoSwitch;
+    private static LotesTrazabilidadExcelSwitch lotesTrazabilidadSwitch;
     private static MarcasArticuloExcelSwitch marcasArticuloSwitch;
     private static PlanContableExcelSwitch planContableSwitch;
     private static PrevisionesCobroExcelSwitch previsionesCobroSwitch;
     private static PrevisionesPagoExcelSwitch previsionesPagoSwitch;
     private static ProveedoresExcelSwitch proveedoresSwitch;
     private static SubFamiliasExcelSwitch subFamiliasSwitch;
+    private static VehiculosExcelSwitch vehiculosSwitch;
 
     public ExcelController() {
     }
@@ -233,6 +235,10 @@ public class ExcelController {
                 formasPagoSwitch = new FormasPagoExcelSwitch();
                 formasPagoSwitch.FormasPago(this.relaciones);
                 break;
+            case "Lotes de Trazabilidad":
+                lotesTrazabilidadSwitch = new LotesTrazabilidadExcelSwitch();
+                lotesTrazabilidadSwitch.LotesTrazabilidad(this.relaciones);
+                break;
             case "Marcas articulo":
                 marcasArticuloSwitch = new MarcasArticuloExcelSwitch();
                 marcasArticuloSwitch.MarcasArticulos(this.relaciones);
@@ -256,6 +262,10 @@ public class ExcelController {
             case "Subfamilias":
                 subFamiliasSwitch = new SubFamiliasExcelSwitch();
                 subFamiliasSwitch.Subfamilias(this.relaciones);
+                break;
+            case "Vehiculos":
+                vehiculosSwitch = new VehiculosExcelSwitch();
+                vehiculosSwitch.Vehiculos(this.relaciones);
                 break;
         }
     }
