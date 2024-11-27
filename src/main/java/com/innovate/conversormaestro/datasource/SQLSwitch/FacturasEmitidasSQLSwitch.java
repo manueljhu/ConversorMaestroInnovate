@@ -716,9 +716,9 @@ public class FacturasEmitidasSQLSwitch {
                 }
                 sqlController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
+            System.out.println("Fila: " + i);
             System.out.println(facturaEmitida);
-            System.out.println("----------------------------------------------------------"); */
+            System.out.println("----------------------------------------------------------");
             facturasEmitidas.add(facturaEmitida);
         }
         lista.setLista(facturasEmitidas);

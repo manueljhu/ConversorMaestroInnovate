@@ -185,8 +185,8 @@ public class Articulo {
     private String cer_exe_lq = "";
     private String cer_catemb = "";
     private String cer_clase = "";
-    private float cer_coertc = 0.000000f;
-    private String cer_tipfer = "";
+    private float cer_coertc = 1.000000f;
+    private String cer_tipfer = "A";
     private String cer_tipest = "";
     private float cer_nitro = 0.000000f;
     private String cer_precur = "";
@@ -206,16 +206,16 @@ public class Articulo {
     private float dis_pii = 0.000000f;
     private float dis_pie = 0.000000f;
     private float dis_pis = 0.000000f;
-    private int dis_tar = 0;
-    private String dis_tva = "";
+    private int dis_tar = 7;
+    private String dis_tva = "K";
     private String dis_pva = "";
     private float dis_vpa = 0.000000f;
     private float dis_vca = 0.000000f;
     private float dis_pun = 0.000000f;
-    private String dis_utr = "";
+    private String dis_utr = "K";
     private String dis_env = "";
-    private String dis_uniimp = "";
-    private String dis_uniped = "";
+    private String dis_uniimp = "K";
+    private String dis_uniped = "K";
 
     public String getCod() {
         return cod;

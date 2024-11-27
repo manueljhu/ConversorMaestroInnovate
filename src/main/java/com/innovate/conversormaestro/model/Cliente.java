@@ -164,9 +164,11 @@ public class Cliente {
     private String por_efac = "001";
     private String web_codact = "";
     private String sincro = "X";
+
     private String cer_tcomb = "";
     private String cer_codine = "";
-    private float tal_precio = 0;
+
+    private float tal_precio = 0.000000f;
     private String tal_franquicia = "";
 
     public String getCod() {

@@ -171,7 +171,7 @@ public class FacturaEmitida {
     private String tal_mat = "";
     private float tal_franquicia = 0.000000f;
     private String tal_orden = "";
-    private float tal_klm = 0.000000f;
+    private float tal_klm = 0;
 
     public String getNum() {
         return this.num;

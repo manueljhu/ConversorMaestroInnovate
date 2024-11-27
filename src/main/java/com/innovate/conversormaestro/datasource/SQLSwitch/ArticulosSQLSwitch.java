@@ -604,6 +604,7 @@ public class ArticulosSQLSwitch {
                             break;
 
                         case "cer_ret":
+                            System.out.println("cer_ret: "+ SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             articulo.setCer_Ret(
                                     SQLUtils.devuelveString(hashtable.get(relaciones.get(j).getCampoOrigen())));
                             break;
@@ -808,9 +809,9 @@ public class ArticulosSQLSwitch {
                 }
                 sqlController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i); 
+            System.out.println("Fila: " + i); 
             System.out.println(articulo);
-            System.out.println("----------------------------------------------------------"); */
+            System.out.println("----------------------------------------------------------");
             articulos.add(articulo);
         }
         lista.setLista(articulos);

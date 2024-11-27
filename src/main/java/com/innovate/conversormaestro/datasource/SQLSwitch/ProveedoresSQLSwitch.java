@@ -500,9 +500,9 @@ public class ProveedoresSQLSwitch {
                 }
                 sqlController.setnErrors(nErrors);
             }
-            /* System.out.println("Fila: " + i);
+            System.out.println("Fila: " + i);
             System.out.println(proveedor);
-            System.out.println("----------------------------------------------------------"); */
+            System.out.println("----------------------------------------------------------");
             proveedores.add(proveedor);
         }
         lista.setLista(proveedores);

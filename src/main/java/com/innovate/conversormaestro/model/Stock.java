@@ -16,12 +16,13 @@ public class Stock {
     public float ide = 0.00f;
     public float min = 0.00f;
     public float max = 0.00f;
-    public float dis_cai = 0.00f;
-    public float dis_cae = 0.00f;
-    public float dis_cas = 0.00f;
-    public float dis_pii = 0.00f;
-    public float dis_pie = 0.00f;
-    public float dis_pis = 0.00f;
+
+    public float dis_cai = 0.000000f;
+    public float dis_cae = 0.000000f;
+    public float dis_cas = 0.000000f;
+    public float dis_pii = 0.000000f;
+    public float dis_pie = 0.000000f;
+    public float dis_pis = 0.000000f;
 
     public String getCod() {
         return this.cod;

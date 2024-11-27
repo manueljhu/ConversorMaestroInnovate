@@ -121,9 +121,9 @@ public class ConnectionController {
         String ServerInstance = ServerElements[1];
 
         String URLConection = "jdbc:jtds:sqlserver://" + ServerIP + ";instance=" + ServerInstance
-                + ";DatabaseName=GPBusiness" + Enterprise;
-        /* System.out.println(URLConection);
-        System.out.println(Password); */
+                + ";DatabaseName=GpBusiness" + Enterprise;
+        System.out.println(URLConection);
+        System.out.println(Password);
         result = testConnectionFinal(URLConection, User, Password);
 
         return result;
@@ -273,7 +273,7 @@ public class ConnectionController {
         String ServerInstance = ServerElements[1];
 
         String URLConection = "jdbc:jtds:sqlserver://" + ServerIP + ";instance=" + ServerInstance
-                + ";DatabaseName=GPBusiness" + getEnterpriseDestination();
+                + ";DatabaseName=GpBusiness" + getEnterpriseDestination();
 
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
@@ -334,7 +334,7 @@ public class ConnectionController {
         String ServerInstance = ServerElements[1];
 
         String URLConection = "jdbc:jtds:sqlserver://" + ServerIP + ";instance=" + ServerInstance
-                + ";DatabaseName=GPBusiness00";
+                + ";DatabaseName=GpBusiness00";
 
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
